@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "motion/react";
+import HeroGlow from "./HeroGlow";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -34,6 +35,7 @@ export default function Hero() {
 
   return (
     <section className="hero section-brand-blue" id="overview" aria-label="OrenGen Worldwide homepage hero">
+      <HeroGlow />
       <div className="container hero-grid">
         <motion.div variants={container} initial="hidden" animate="show">
           <motion.div className="eyebrow" variants={item}>
@@ -41,7 +43,7 @@ export default function Hero() {
           </motion.div>
           <motion.h1 variants={item}>
             Enterprise AI Infrastructure for organizations that refuse to{" "}
-            <span className="gradient-word">rent their intelligence.</span>
+            <span className="gradient-word shimmer">rent their intelligence.</span>
           </motion.h1>
           <motion.p className="lead" variants={item}>
             OrenGen Worldwide architects hosted and self-hosted AI-enabled ecosystems with a
