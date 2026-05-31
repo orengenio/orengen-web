@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import { FOUNDER_AVATAR_URL } from "@/lib/brandAssets";
+import KpiNumber from "./KpiNumber";
 
 /* ===== Process band — section-specific steps; column count adapts (4 / 5 / 6) ===== */
 type ProcStep = { label: string; icon: ReactNode };
@@ -50,10 +51,10 @@ const COSTS = [
 ];
 
 const KPIS = [
-  { num: "20", sup: "+", label: "Enterprise Deployments", p: "AI, automation, infrastructure, web, workflow, and operating-system buildouts across commercial and regulated environments." },
-  { num: "4.9", sup: "/5", label: "Client Satisfaction Target", p: "Service delivery built around executive clarity, fast implementation, clean handoff, and operational usefulness." },
-  { num: "99.9", sup: "%", label: "Uptime SLA Path", p: "Architecture designed for production-grade reliability using monitored hosted and self-hosted deployment patterns." },
-  { num: "$13M", sup: "+", label: "Operational Savings", p: "Documented transformation and cost-reduction background from enterprise operations." },
+  { to: 20, decimals: 0, prefix: "", numSuffix: "", sup: "+", label: "Enterprise Deployments", p: "AI, automation, infrastructure, web, workflow, and operating-system buildouts across commercial and regulated environments." },
+  { to: 4.9, decimals: 1, prefix: "", numSuffix: "", sup: "/5", label: "Client Satisfaction Target", p: "Service delivery built around executive clarity, fast implementation, clean handoff, and operational usefulness." },
+  { to: 99.9, decimals: 1, prefix: "", numSuffix: "", sup: "%", label: "Uptime SLA Path", p: "Architecture designed for production-grade reliability using monitored hosted and self-hosted deployment patterns." },
+  { to: 13, decimals: 0, prefix: "$", numSuffix: "M", sup: "+", label: "Operational Savings", p: "Documented transformation and cost-reduction background from enterprise operations." },
 ];
 
 const JOURNEY = [
@@ -169,7 +170,10 @@ export default function Sections() {
           <div className="kpi-grid reveal">
             {KPIS.map((k) => (
               <div className="kpi" key={k.label}>
-                <div className="num">{k.num}<span>{k.sup}</span></div>
+                <div className="num">
+                  <KpiNumber to={k.to} decimals={k.decimals} prefix={k.prefix} suffix={k.numSuffix} />
+                  <span>{k.sup}</span>
+                </div>
                 <div className="label">{k.label}</div>
                 <p>{k.p}</p>
               </div>
