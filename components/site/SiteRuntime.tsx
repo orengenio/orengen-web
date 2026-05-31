@@ -207,6 +207,15 @@ export default function SiteRuntime() {
       if (!taglineEl || !taglineBox || !fuseContainer) return;
       const chars = taglineEl.querySelectorAll<HTMLElement>(".tl-char");
 
+      // Reduced-motion: light the tagline instantly, skip the spark engine entirely.
+      if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+        chars.forEach((c) => c.classList.add("lit"));
+        taglineBox.classList.add("ignited");
+        const burn = document.getElementById("fuseBurn");
+        if (burn) burn.style.display = "none";
+        return;
+      }
+
       const spawnAmbientSpark = (x: number, y: number, edge: number) => {
         const spark = document.createElement("div");
         spark.className = "og-spark";

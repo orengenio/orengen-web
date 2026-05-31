@@ -2465,3 +2465,13 @@
 
   /* Clean out old payment remnants */
   .og-payment, .og-payment img { display:none !important; }
+
+/* ===== Accessibility: respect prefers-reduced-motion across all ported animations ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
