@@ -2044,6 +2044,11 @@
   }
 
   .section-brand-white {
+    /* Apply the scoped (dark) text color so plain prose on white reading
+       sections (e.g. the /legal/* docs) inherits dark text instead of the
+       global near-white --og-text — otherwise paragraphs/lists render
+       white-on-white. Headings/links keep their own explicit colors. */
+    color: var(--og-text);
     --og-bg: #f8fafc;
     --og-surface: rgba(0,37,75,.05);
     --og-surface-solid: #ffffff;

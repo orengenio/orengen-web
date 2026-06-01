@@ -26,23 +26,15 @@ export default function SiteRuntime() {
       cleanups.push(() => el.removeEventListener(type, handler, opts));
     };
 
-    /* ===== Theme ===== */
-    const themeToggle = document.getElementById("themeToggle");
-    const setTheme = (next: string) => {
-      root.setAttribute("data-theme", next);
-      try {
-        localStorage.setItem("orengen-theme", next);
-      } catch {}
-      if (themeToggle) themeToggle.textContent = next === "dark" ? "☀️" : "🌙";
-    };
-    let saved = "dark";
+    /* ===== Theme — forced dark =====
+       The light theme was never fully implemented (dark section backgrounds
+       and some hardcoded text colors don't flip), so the site is locked to its
+       dark-first brand theme and the toggle is retired. Any previously-saved
+       "light" preference is cleared so returning visitors get dark too. */
+    root.setAttribute("data-theme", "dark");
     try {
-      saved = localStorage.getItem("orengen-theme") || root.getAttribute("data-theme") || "dark";
+      localStorage.removeItem("orengen-theme");
     } catch {}
-    setTheme(saved);
-    on(themeToggle, "click", () =>
-      setTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark"),
-    );
 
     /* ===== Mobile panel ===== */
     const mobileToggle = document.getElementById("mobileToggle");

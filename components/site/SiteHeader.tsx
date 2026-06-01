@@ -234,14 +234,7 @@ export default function SiteHeader() {
               <div id="google_translate_element" className="translate-hidden" aria-hidden="true" />
             </div>
 
-            <button
-              className="icon-btn theme-btn"
-              type="button"
-              id="themeToggle"
-              aria-label="Toggle dark and light theme"
-            >
-              ☀️
-            </button>
+            {/* Theme toggle removed — site is locked to its dark-first brand theme. */}
             <a className="icon-btn cart-btn" href="/cart" aria-label="Cart">
               🛒
             </a>
