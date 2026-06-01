@@ -102,6 +102,16 @@ const JSON_LD = {
       category:
         "Visual Configuration Tool · AI Solution Builder · Interactive Pricing",
       brand: { "@id": "https://orengen.io/#organization" },
+      // Required by Google for Product/SoftwareApplication rich results (one of
+      // offers / review / aggregateRating). Range mirrors the module prices the
+      // builder actually shows: $47–$997 /mo across 7 modules × 3 tiers.
+      offers: {
+        "@type": "AggregateOffer",
+        priceCurrency: "USD",
+        lowPrice: "47",
+        highPrice: "997",
+        offerCount: "21",
+      },
     },
     {
       "@type": "Service",
