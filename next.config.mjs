@@ -10,6 +10,12 @@ const nextConfig = {
       { protocol: "https", hostname: "cdn.content360.io" },
     ],
   },
+  async redirects() {
+    return [
+      // Header links to /contact; reuse the homepage contact section/form.
+      { source: "/contact", destination: "/#contact", permanent: false },
+    ];
+  },
 };
 
 export default nextConfig;
