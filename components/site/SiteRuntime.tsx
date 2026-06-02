@@ -118,6 +118,58 @@ export default function SiteRuntime() {
         setLangOpen(!langOptions.classList.contains("open"));
       });
       on(document, "click", () => setLangOpen(false));
+
+      /* ----- Google free Website Translator ----- */
+      const w = window as unknown as {
+        googleTranslateElementInit?: () => void;
+        google?: {
+          translate?: { TranslateElement?: new (opts: object, el: string) => void };
+        };
+      };
+      w.googleTranslateElementInit = () => {
+        const TE = w.google?.translate?.TranslateElement;
+        if (TE) {
+          new TE(
+            {
+              pageLanguage: "en",
+              includedLanguages: "en,es,fr,de,pt,zh-CN,ja,ar,hi",
+              autoDisplay: false,
+            },
+            "google_translate_element",
+          );
+        }
+      };
+      if (!document.getElementById("google-translate-script")) {
+        const gt = document.createElement("script");
+        gt.id = "google-translate-script";
+        gt.src =
+          "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+        gt.async = true;
+        document.body.appendChild(gt);
+      }
+      const applyLang = (lang: string) => {
+        const combo = document.querySelector<HTMLSelectElement>(".goog-te-combo");
+        if (combo) {
+          combo.value = lang;
+          combo.dispatchEvent(new Event("change"));
+        } else {
+          // Widget not ready yet — persist via Google's cookie and reload.
+          const val = `/en/${lang}`;
+          document.cookie = `googtrans=${val};path=/`;
+          document.cookie = `googtrans=${val};path=/;domain=${location.hostname}`;
+          location.reload();
+        }
+      };
+      langOptions.querySelectorAll<HTMLElement>("[data-lang]").forEach((btn) => {
+        on(btn, "click", (e) => {
+          e.stopPropagation();
+          const lang = btn.getAttribute("data-lang") || "en";
+          applyLang(lang);
+          langToggle.textContent =
+            (lang === "zh-CN" ? "ZH" : lang.toUpperCase()) + " ▾";
+          setLangOpen(false);
+        });
+      });
     }
 
     /* ===== Login menu ===== */
