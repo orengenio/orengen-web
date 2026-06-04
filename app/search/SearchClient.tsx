@@ -14,6 +14,7 @@ const INDEX: Entry[] = [
   // Company
   { cat: "Company", title: "Home", url: "/", desc: "OrenGen Worldwide — enterprise AI infrastructure for those who refuse to rent their intelligence." },
   { cat: "Company", title: "About OrenGen", url: "/about", desc: "Sovereign, self-hosted AI ecosystems with NIST-aligned governance." },
+  { cat: "Government", title: "Capability Statement", url: "/capability-statement", desc: "Government-contracting capability statement — core competencies, NAICS, CAGE 12XC1, UEI, and certifications." },
   { cat: "Company", title: "Pricing", url: "/pricing", desc: "Transparent pricing and engagement models for OrenGen services." },
   { cat: "Tool", title: "OrenKanBuilder", url: "/orenkanbuilder", desc: "Drag-and-drop builder to configure and price your custom AI engine." },
   { cat: "Company", title: "FAQs", url: "/faqs", desc: "Answers on deployment, pricing, security, and how OrenGen works." },

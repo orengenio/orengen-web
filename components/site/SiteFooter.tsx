@@ -110,7 +110,7 @@ const COLUMNS: { title: string; links: { href: string; label: string; ext?: bool
       { href: "/orengov/public-sector/education", label: "OrenGov Education" },
       { href: "/orengov/defense", label: "OrenGov Defense" },
       { href: "/orenhealth", label: "OrenHealth" },
-      { href: "/orenhealth/healthcare", label: "OrenHealth Healthcare" },
+      { href: "/orenhealth", label: "OrenHealth Healthcare" },
       { href: "/orenhealth/hospitals", label: "OrenHealth Hospitals" },
       { href: "/orenhealth/specialty-clinics", label: "OrenHealth Specialty Clinics" },
       { href: "/orenhealth/research", label: "OrenHealth Research" },

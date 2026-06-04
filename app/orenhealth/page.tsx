@@ -62,12 +62,12 @@ export default function OrenHealthPage() {
                   what it is — protected.
                 </p>
                 <div className="cta-row">
-                  <a className="btn btn-primary" href="/briefing">
+                  <a className="btn btn-primary" href="https://api.orengen.io/widget/booking/EvvNIyeXdLksQikeO6en" target="_blank" rel="noopener noreferrer">
                     Open a Capability Briefing
                   </a>
                   <a
                     className="btn btn-secondary"
-                    href="/orenhealth/cap-statement"
+                    href="/capability-statement"
                   >
                     Download Capability Statement
                   </a>
@@ -678,12 +678,12 @@ export default function OrenHealthPage() {
                   before BAA execution or scope confirmation.
                 </p>
                 <div className="cta-row">
-                  <a className="btn btn-primary" href="/briefing">
+                  <a className="btn btn-primary" href="https://api.orengen.io/widget/booking/EvvNIyeXdLksQikeO6en" target="_blank" rel="noopener noreferrer">
                     Open a Capability Briefing
                   </a>
                   <a
                     className="btn btn-secondary"
-                    href="/orenhealth/cap-statement"
+                    href="/capability-statement"
                   >
                     Download Capability Statement
                   </a>
