@@ -16,6 +16,9 @@ const nextConfig = {
       { source: "/contact", destination: "/contact-us", permanent: false },
       // Renamed for SMS/10DLC compliance scanning (program terms unchanged).
       { source: "/affiliate-program", destination: "/referral-partner-program", permanent: false },
+      // /gdpr-compliance never existed as a page; the footer linked it dead.
+      // GDPR content lives in the privacy policy's own section.
+      { source: "/gdpr-compliance", destination: "/legal/privacy-policy#gdpr-rights", permanent: false },
     ];
   },
 };

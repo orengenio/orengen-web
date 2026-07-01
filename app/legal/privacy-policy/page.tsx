@@ -444,7 +444,7 @@ export default function PrivacyPolicyPage() {
                   structured, machine-readable format
                 </li>
               </ul>
-              <h3>8.2 GDPR Rights (EEA, UK, Switzerland Residents)</h3>
+              <h3 id="gdpr-rights">8.2 GDPR Rights (EEA, UK, Switzerland Residents)</h3>
               <p>
                 If you are located in the European Economic Area, United Kingdom,
                 or Switzerland, you have additional rights:

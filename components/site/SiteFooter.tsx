@@ -217,7 +217,7 @@ export default function SiteFooter() {
             <div className="og-trust-hub">
               <a href="/legal/security-overview">Security Overview</a>
               <a href="/legal/privacy-policy">Privacy &amp; Data Handling</a>
-              <a href="/gdpr-compliance">Compliance &amp; Governance</a>
+              <a href="/legal/privacy-policy#gdpr-rights">Compliance &amp; Governance</a>
               <a href="/legal/ai-communications-opt-in">Responsible AI Communications</a>
               <a href="https://orengen-status-page.instatus.com" target="_blank" rel="noopener">Platform Status</a>
               <a href="/capability-statement">Capability Statement</a>
