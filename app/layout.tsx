@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Public_Sans } from "next/font/google";
 import { FAVICON_URL } from "@/lib/brandAssets";
-import TempChatWidget from "@/components/site/TempChatWidget";
+import ChatWidget from "@/components/site/ChatWidget";
 import "./globals.css";
 
 const publicSans = Public_Sans({
@@ -70,8 +70,7 @@ export default function RootLayout({
     <html lang="en" data-theme="dark" className={publicSans.variable}>
       <body>
         {children}
-        {/* TEMPORARY: Aminos AI chat — remove once GoHighLevel SMS/voice is live */}
-        <TempChatWidget />
+        <ChatWidget />
       </body>
     </html>
   );
