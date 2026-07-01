@@ -76,7 +76,7 @@ export default function OrenGovStateLocalPage() {
                   perimeter.
                 </p>
                 <div className="cta-row">
-                  <a className="btn btn-primary" href="https://api.orengen.io/widget/booking/EvvNIyeXdLksQikeO6en" target="_blank" rel="noopener noreferrer">
+                  <a className="btn btn-primary" href="https://api.orengen.io/booking/og-j39qvisxpas" target="_blank" rel="noopener noreferrer">
                     Open a Capability Briefing
                   </a>
                   <a className="btn btn-secondary" href="/capability-statement">
@@ -588,7 +588,7 @@ export default function OrenGovStateLocalPage() {
                   pathway.
                 </p>
                 <div className="cta-row">
-                  <a className="btn btn-primary" href="https://api.orengen.io/widget/booking/EvvNIyeXdLksQikeO6en" target="_blank" rel="noopener noreferrer">
+                  <a className="btn btn-primary" href="https://api.orengen.io/booking/og-j39qvisxpas" target="_blank" rel="noopener noreferrer">
                     Open a Capability Briefing
                   </a>
                   <a className="btn btn-secondary" href="/capability-statement">
