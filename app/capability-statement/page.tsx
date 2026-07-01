@@ -74,7 +74,7 @@ export default function CapabilityStatementPage() {
                   >
                     Open a Capability Briefing
                   </a>
-                  <a className="btn btn-secondary" href="/#contact">
+                  <a className="btn btn-secondary" href="/contact-us">
                     Contact OrenGen
                   </a>
                 </div>
@@ -478,7 +478,7 @@ export default function CapabilityStatementPage() {
                   >
                     Open a Capability Briefing
                   </a>
-                  <a className="btn btn-secondary" href="/#contact">
+                  <a className="btn btn-secondary" href="/contact-us">
                     Contact OrenGen
                   </a>
                 </div>

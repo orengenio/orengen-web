@@ -200,7 +200,7 @@ export default function SiteHeader() {
                 <MegaItem href="/sales-partner-program" title="Sales Partner Program" desc="Partner pathway for sales and channel growth." />
                 <MegaItem href="/affiliate-program" title="Affiliate Program" desc="Affiliate growth program and referral pathway." />
                 <MegaItem href="/pricing" title="Pricing" desc="Commercial paths and plan logic." />
-                <MegaItem href="/contact" title="Contact" desc="Route your inquiry to the right team." />
+                <MegaItem href="/contact-us" title="Contact" desc="Route your inquiry to the right team." />
               </div>
             </div>
 
@@ -238,7 +238,7 @@ export default function SiteHeader() {
             <a className="icon-btn cart-btn" href="/cart" aria-label="Cart">
               🛒
             </a>
-            <a className="book-btn" href="#contact">
+            <a className="book-btn" href="/contact-us">
               Book a Call
             </a>
 
@@ -342,7 +342,7 @@ export default function SiteHeader() {
         <a href="/affiliate-program">Affiliate Program <span>→</span></a>
         <a href="/sales-partner-program">Sales Partner Program <span>→</span></a>
         <a href="/case-studies">Case Studies <span>→</span></a>
-        <a href="#contact">Book a Call <span>→</span></a>
+        <a href="/contact-us">Book a Call <span>→</span></a>
         <a href="https://app.orengen.io">Login <span>→</span></a>
       </div>
     </>

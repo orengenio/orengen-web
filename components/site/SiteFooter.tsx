@@ -98,12 +98,13 @@ const COLUMNS: { title: string; links: { href: string; label: string; ext?: bool
       { href: "/support", label: "Support" },
       { href: "/faqs", label: "FAQs" },
       { href: "/pricing", label: "Pricing" },
+      { href: "/contact-us", label: "Contact Us" },
     ],
   },
   {
     title: "Buyer Journey",
     links: [
-      { href: "#contact", label: "Book Architecture Brief" },
+      { href: "/contact-us", label: "Book Architecture Brief" },
       { href: "/orengov", label: "OrenGov" },
       { href: "/orengov/public-sector", label: "OrenGov Public Sector" },
       { href: "/orengov/public-sector/state-local", label: "OrenGov State Local" },

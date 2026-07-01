@@ -12,8 +12,8 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // Header links to /contact; reuse the homepage contact section/form.
-      { source: "/contact", destination: "/#contact", permanent: false },
+      // Legacy /contact links now land on the dedicated /contact-us page.
+      { source: "/contact", destination: "/contact-us", permanent: false },
     ];
   },
 };

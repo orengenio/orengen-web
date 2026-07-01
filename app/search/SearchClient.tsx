@@ -22,7 +22,7 @@ const INDEX: Entry[] = [
   { cat: "Blog", title: "OrenSignal — Blog", url: "/blog", desc: "AI, infrastructure, governance, and market signals." },
   { cat: "Partners", title: "Affiliate Program", url: "/affiliate-program", desc: "Earn by referring clients to OrenGen." },
   { cat: "Partners", title: "Sales Partner Program", url: "/sales-partner-program", desc: "Build your book as an OrenGen sales partner." },
-  { cat: "Company", title: "Contact", url: "/#contact", desc: "Get in touch or book a strategy call." },
+  { cat: "Company", title: "Contact", url: "/contact-us", desc: "Get in touch or book a strategy call." },
   { cat: "Account", title: "Login", url: "https://app.orengen.io", desc: "Sign in to your OrenGen Counterpart portal." },
   // Products
   { cat: "Products", title: "OrenAgents", url: "/orenagents", desc: "AI voice and chat agents and digital employees." },

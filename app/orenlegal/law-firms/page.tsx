@@ -61,7 +61,7 @@ export default function OrenLegalLawFirmsPage() {
                   consistency across legal teams.
                 </p>
                 <div className="cta-row">
-                  <a className="btn btn-primary" href="/contact">
+                  <a className="btn btn-primary" href="/contact-us">
                     Book Firm Operations Briefing
                   </a>
                   <a className="btn btn-secondary" href="/orenlegal">
