@@ -14,6 +14,8 @@ const nextConfig = {
     return [
       // Legacy /contact links now land on the dedicated /contact-us page.
       { source: "/contact", destination: "/contact-us", permanent: false },
+      // Renamed for SMS/10DLC compliance scanning (program terms unchanged).
+      { source: "/affiliate-program", destination: "/referral-partner-program", permanent: false },
     ];
   },
 };

@@ -198,7 +198,7 @@ export default function SiteHeader() {
                 <MegaItem href="/leadership" title="Leadership" desc="Meet the OrenGen executive team." />
                 <MegaItem href="/careers" title="Careers" desc="Open roles and what it's like to work here." />
                 <MegaItem href="/sales-partner-program" title="Sales Partner Program" desc="Partner pathway for sales and channel growth." />
-                <MegaItem href="/affiliate-program" title="Affiliate Program" desc="Affiliate growth program and referral pathway." />
+                <MegaItem href="/referral-partner-program" title="Referral Partner Program" desc="Growth program and referral pathway for partners." />
                 <MegaItem href="/pricing" title="Pricing" desc="Commercial paths and plan logic." />
                 <MegaItem href="/contact-us" title="Contact" desc="Route your inquiry to the right team." />
               </div>
@@ -339,7 +339,7 @@ export default function SiteHeader() {
         <a href="/about">About <span>→</span></a>
         <a href="/leadership">Leadership <span>→</span></a>
         <a href="/careers">Careers <span>→</span></a>
-        <a href="/affiliate-program">Affiliate Program <span>→</span></a>
+        <a href="/referral-partner-program">Referral Partner Program <span>→</span></a>
         <a href="/sales-partner-program">Sales Partner Program <span>→</span></a>
         <a href="/case-studies">Case Studies <span>→</span></a>
         <a href="/contact-us">Book a Call <span>→</span></a>

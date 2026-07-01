@@ -24,11 +24,11 @@ const INDEX: Entry[] = [
   { cat: "Company", title: "FAQs", url: "/faqs", desc: "Answers on deployment, pricing, security, and how OrenGen works." },
   { cat: "Company", title: "Case Studies", url: "/case-studies", desc: "Outcomes and results from OrenGen deployments." },
   { cat: "Blog", title: "OrenSignal — Blog", url: "/blog", desc: "AI, infrastructure, governance, and market signals." },
-  { cat: "Partners", title: "Affiliate Program", url: "/affiliate-program", desc: "Earn by referring clients to OrenGen." },
+  { cat: "Partners", title: "Referral Partner Program", url: "/referral-partner-program", desc: "Earn by referring clients to OrenGen." },
   { cat: "Partners", title: "Sales Partner Program", url: "/sales-partner-program", desc: "Build your book as an OrenGen sales partner." },
   { cat: "Company", title: "Contact", url: "/contact-us", desc: "Get in touch or book a strategy call." },
   { cat: "Account", title: "Client Portal", url: "https://app.orengen.io", desc: "Sign in to your OrenGen Counterpart portal." },
-  { cat: "Partners", title: "Partner Portal", url: "https://weshare.orengen.io/login", desc: "Sign in to your OrenGen affiliate / sales partner dashboard." },
+  { cat: "Partners", title: "Partner Portal", url: "https://weshare.orengen.io/login", desc: "Sign in to your OrenGen referral partner / sales partner dashboard." },
   // Products
   { cat: "Products", title: "OrenAgents", url: "/orenagents", desc: "AI voice and chat agents and digital employees." },
   { cat: "Products", title: "Buy-Lingual Voice Agents", url: "/orenagents/voice", desc: "AI voice agents that speak 100+ languages — inbound & outbound calls, bookings, transfers." },

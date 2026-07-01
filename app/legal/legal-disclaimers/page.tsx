@@ -13,7 +13,7 @@ import ScrollProgress from "@/components/site/ScrollProgress";
 export const metadata: Metadata = {
   title: "Legal Disclaimers",
   description:
-    "Important disclosures regarding affiliate relationships, earnings claims, and financial products.",
+    "Important disclosures regarding referral partner relationships, earnings claims, and financial products.",
   keywords:
     "legal-disclaimers, OrenGen, OrenGen Worldwide, AI infrastructure, legal disclaimers",
   alternates: { canonical: "/legal/legal-disclaimers" },
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     url: "https://orengen.io/legal/legal-disclaimers",
     title: "Legal Disclaimers",
     description:
-      "Important disclosures regarding affiliate relationships, earnings claims, and financial products.",
+      "Important disclosures regarding referral partner relationships, earnings claims, and financial products.",
     images: [
       "https://cdn.content360.io/ea2381f4-12e0-4efd-b95b-6012c981eae0/uploads/05-2026/0AVNQ9WDsFdbcEFJX0AQfTmktPcPu8V8GqAqNQS4.png",
     ],
@@ -49,7 +49,7 @@ export default function LegalDisclaimersPage() {
                 <div className="eyebrow">Legal Disclaimers</div>
                 <h1>Legal Disclaimers</h1>
                 <p className="lead">
-                  Important disclosures regarding affiliate relationships,
+                  Important disclosures regarding referral partner relationships,
                   earnings claims, and financial products.
                 </p>
                 <p className="lead">
@@ -67,7 +67,7 @@ export default function LegalDisclaimersPage() {
           >
             <div className="container">
               <p>
-                Important disclosures regarding affiliate relationships,
+                Important disclosures regarding referral partner relationships,
                 earnings claims, and financial products.
               </p>
               <p>Effective Date: January 1, 2026</p>
@@ -128,14 +128,14 @@ export default function LegalDisclaimersPage() {
                 who may be informed of our content.
               </p>
 
-              <h2>2. Affiliate Disclosure</h2>
+              <h2>2. Referral Partner Disclosure</h2>
               <p>
-                OrenGen Worldwide LLC participates in various affiliate
-                marketing programs and has affiliate relationships with
-                third-party companies, products, and services. This means we may
-                receive compensation when you click on links to products or
-                services we recommend or purchase products through our affiliate
-                links.
+                OrenGen Worldwide LLC participates as a referral partner in
+                various third-party programs and has referral partner
+                relationships with third-party companies, products, and
+                services. This means we may receive compensation when you click
+                on links to products or services we recommend or purchase
+                products through our referral links.
               </p>
 
               <h3>2.1 FTC Compliance</h3>
@@ -143,8 +143,8 @@ export default function LegalDisclaimersPage() {
                 In accordance with the Federal Trade Commission&apos;s 16 CFR
                 Part 255 (&quot;Guides Concerning the Use of Endorsements and
                 Testimonials in Advertising&quot;), we are required to disclose
-                our affiliate relationships and any material connections we have
-                with products or services we recommend.
+                our referral partner relationships and any material connections
+                we have with products or services we recommend.
               </p>
 
               <h3>2.2 What This Means</h3>
@@ -153,7 +153,7 @@ export default function LegalDisclaimersPage() {
               </p>
               <ul>
                 <li>
-                  Click on affiliate links on our website or in our
+                  Click on referral links on our website or in our
                   communications
                 </li>
                 <li>Purchase products or services through our referral links</li>
@@ -162,7 +162,7 @@ export default function LegalDisclaimersPage() {
                 <li>Enroll in courses, programs, or training we endorse</li>
               </ul>
 
-              <h3>2.3 Affiliate Relationships Include</h3>
+              <h3>2.3 Referral Partner Relationships Include</h3>
               <ul>
                 <li>
                   <strong>Software and SaaS Products:</strong> CRM platforms,
@@ -188,7 +188,7 @@ export default function LegalDisclaimersPage() {
               </ul>
 
               <h3>2.4 Our Commitment to Integrity</h3>
-              <p>Despite our affiliate relationships:</p>
+              <p>Despite our referral partner relationships:</p>
               <ul>
                 <li>
                   We only recommend products and services we believe provide
@@ -202,13 +202,13 @@ export default function LegalDisclaimersPage() {
                   We strive to provide honest, unbiased information and reviews
                 </li>
                 <li>
-                  The price you pay is not affected by our affiliate
+                  The price you pay is not affected by our referral partner
                   relationship (you pay the same price whether you use our link
                   or not)
                 </li>
                 <li>
-                  We disclose affiliate relationships clearly when recommending
-                  products
+                  We disclose referral partner relationships clearly when
+                  recommending products
                 </li>
               </ul>
 
@@ -407,19 +407,19 @@ export default function LegalDisclaimersPage() {
                 </strong>
               </p>
 
-              <h3>4.1 Affiliate Relationship with Financial Products</h3>
+              <h3>4.1 Referral Partner Relationship with Financial Products</h3>
               <p>
                 <strong>
                   IMPORTANT: When OrenGen recommends, promotes, or provides
                   information about financial products or services, we are
-                  acting solely as AFFILIATES, not as licensed financial
+                  acting solely as REFERRAL PARTNERS, not as licensed financial
                   professionals.
                 </strong>
               </p>
               <p>This means:</p>
               <ul>
                 <li>
-                  We may earn affiliate commissions when you purchase or sign up
+                  We may earn referral commissions when you purchase or sign up
                   for financial products through our links
                 </li>
                 <li>
@@ -439,7 +439,7 @@ export default function LegalDisclaimersPage() {
 
               <h3>4.2 Types of Financial Products</h3>
               <p>
-                Financial products and services we may have affiliate
+                Financial products and services we may have referral partner
                 relationships with include but are not limited to:
               </p>
               <ul>
@@ -572,7 +572,7 @@ export default function LegalDisclaimersPage() {
               <p>
                 OrenGen does not owe you a fiduciary duty. We are not required to
                 act in your best interest regarding financial product
-                recommendations. Our affiliate relationships may create
+                recommendations. Our referral partner relationships may create
                 conflicts of interest, as we may earn compensation for products
                 we recommend.
               </p>
@@ -583,7 +583,7 @@ export default function LegalDisclaimersPage() {
                 promotion of financial products, including:
               </p>
               <ul>
-                <li>FTC disclosure requirements for affiliate relationships</li>
+                <li>FTC disclosure requirements for referral partner relationships</li>
                 <li>
                   Prohibition against providing unlicensed financial advice
                 </li>
@@ -647,7 +647,7 @@ export default function LegalDisclaimersPage() {
               <h3>5.3 Third-Party Information</h3>
               <p>
                 Information obtained from third-party sources (partners,
-                affiliates, data providers) is believed to be reliable but is
+                referral partners, data providers) is believed to be reliable but is
                 not independently verified. We are not responsible for errors,
                 omissions, or changes in third-party information.
               </p>

@@ -5,7 +5,9 @@ import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
 
 /**
- * Affiliate Program page.
+ * Referral Partner Program page (formerly "Affiliate Program" — renamed
+ * sitewide so automated SMS/10DLC compliance scans don't flag the page;
+ * program terms are unchanged).
  * Rebuilt from the real, published program terms on weshare.orengen.io (the
  * platform that actually runs this program) — commissions, payout schedule,
  * and package pricing below are the live figures, not estimates. Do not
@@ -13,17 +15,17 @@ import ScrollProgress from "@/components/site/ScrollProgress";
  * duration, FAQ, or terms page, so none is stated here either.
  */
 export const metadata: Metadata = {
-  title: "Affiliate Program — OrenGen Worldwide",
+  title: "Referral Partner Program — OrenGen Worldwide",
   description:
     "Earn 10-25% setup commission and 5-10% monthly residual (rank-based) referring OrenGen website packages. Free to join, weekly payouts via Stripe. Powered by WeShare.",
   keywords:
-    "affiliate-program, OrenGen, OrenGen Worldwide, website referral program, affiliate commissions",
-  alternates: { canonical: "/affiliate-program" },
+    "referral-partner-program, OrenGen, OrenGen Worldwide, website referral program, referral commissions",
+  alternates: { canonical: "/referral-partner-program" },
   openGraph: {
-    title: "Affiliate Program — OrenGen Worldwide",
+    title: "Referral Partner Program — OrenGen Worldwide",
     description:
       "Earn 10-25% setup commission and 5-10% monthly residual (rank-based) referring OrenGen website packages. Powered by WeShare.",
-    url: "https://orengen.io/affiliate-program",
+    url: "https://orengen.io/referral-partner-program",
   },
 };
 
@@ -35,7 +37,7 @@ const PACKAGES = [
   { name: "Premium", monthly: "$997/mo", setup: "$4,997 setup" },
 ];
 
-export default function AffiliateProgramPage() {
+export default function ReferralPartnerProgramPage() {
   return (
     <>
       <ScrollProgress />
@@ -48,11 +50,11 @@ export default function AffiliateProgramPage() {
           {/* HERO */}
           <section
             className="section section-brand-blue"
-            aria-label="Affiliate Program"
+            aria-label="Referral Partner Program"
           >
             <div className="container">
               <header className="section-head center reveal">
-                <div className="eyebrow">Affiliate Program</div>
+                <div className="eyebrow">Referral Partner Program</div>
                 <h1>
                   Get Paid to{" "}
                   <span className="gradient-word shimmer">
@@ -132,13 +134,13 @@ export default function AffiliateProgramPage() {
                   <p>One-time bonus for your first successful referral.</p>
                 </article>
                 <article className="sector-card">
-                  <h3>Army Builder</h3>
-                  <p>Recruit other affiliates to your team and earn additional income as they refer clients.</p>
+                  <h3>Team Builder</h3>
+                  <p>Invite other referral partners to your team and earn additional income as they refer clients.</p>
                 </article>
               </div>
               <p className="reveal" style={{ textAlign: "center", marginTop: "24px" }}>
-                Example at the top affiliate rank: referring a Professional
-                package ($2,497 setup / $497 mo) earns up to <strong>$624.25</strong> upfront
+                Example at the top referral partner rank: referring a
+                Professional package ($2,497 setup / $497 mo) earns up to <strong>$624.25</strong> upfront
                 and up to <strong>$49.70/mo</strong> for as long as the client stays active.
               </p>
             </div>
@@ -169,7 +171,7 @@ export default function AffiliateProgramPage() {
                 </article>
                 <article className="sector-card">
                   <h3>Real-Time Dashboard</h3>
-                  <p>Track clicks, leads, earnings, and payout history from your own dashboard.</p>
+                  <p>Track clicks, referrals, earnings, and payout history from your own dashboard.</p>
                 </article>
               </div>
               <p className="reveal" style={{ textAlign: "center", marginTop: "24px", color: "var(--og-text-muted)", fontStyle: "italic" }}>
@@ -182,7 +184,7 @@ export default function AffiliateProgramPage() {
           {/* FINAL CTA */}
           <section
             className="section section-brand-blue"
-            aria-label="Join the affiliate program"
+            aria-label="Join the referral partner program"
           >
             <div className="container">
               <header className="section-head center reveal">

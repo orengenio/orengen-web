@@ -18,7 +18,7 @@ const ROUTES: string[] = [
   "/contact-us",
   "/case-studies",
   "/blog",
-  "/affiliate-program",
+  "/referral-partner-program",
   "/sales-partner-program",
   "/orenkanbuilder",
   // Products

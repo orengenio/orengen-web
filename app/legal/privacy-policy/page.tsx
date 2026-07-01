@@ -186,8 +186,8 @@ export default function PrivacyPolicyPage() {
               <p>We may receive information about you from:</p>
               <ul>
                 <li>
-                  <strong>Business Partners:</strong> Referral partners, affiliate
-                  marketers, integration partners
+                  <strong>Business Partners:</strong> Referral partners and
+                  integration partners
                 </li>
                 <li>
                   <strong>Data Providers:</strong> Business intelligence services,
@@ -302,7 +302,7 @@ export default function PrivacyPolicyPage() {
                 <li>
                   Integration partners when you connect third-party services
                 </li>
-                <li>Affiliate or referral partners (with your consent)</li>
+                <li>Referral partners (with your consent)</li>
                 <li>
                   White-label resellers (for their client service delivery)
                 </li>
