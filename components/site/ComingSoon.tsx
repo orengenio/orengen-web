@@ -42,7 +42,7 @@ export default function ComingSoon({
                 </h1>
                 <p className="lead">{blurb}</p>
                 <div className="cta-row">
-                  <a className="btn btn-primary" href="/#contact">
+                  <a className="btn btn-primary" href="/contact-us">
                     Talk to OrenGen
                   </a>
                   <a className="btn btn-secondary" href="/orenkanbuilder">

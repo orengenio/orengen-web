@@ -108,7 +108,7 @@ export default function OrenLegalPage() {
             <div className="container">
               <header className="section-head center reveal">
                 <div className="cta-row">
-                  <a className="btn btn-primary" href="/contact">
+                  <a className="btn btn-primary" href="/contact-us">
                     Book OrenLegal Briefing
                   </a>
                 </div>

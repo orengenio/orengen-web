@@ -457,7 +457,7 @@ export default function OrenHealthPage() {
                     <li>EHR Integration</li>
                     <li>Multi-Facility</li>
                   </ul>
-                  <a className="card-link" href="/orenhealth/hospitals">
+                  <a className="card-link" href="#briefing">
                     Explore Hospital Path
                   </a>
                 </article>
@@ -662,6 +662,7 @@ export default function OrenHealthPage() {
           {/* ========== 7. FINAL CTA ========== */}
           <section
             className="section section-brand-blue"
+            id="briefing"
             aria-label="Open the Capability Briefing"
           >
             <div className="container">

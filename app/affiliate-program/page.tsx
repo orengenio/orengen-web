@@ -14,13 +14,10 @@ import ScrollProgress from "@/components/site/ScrollProgress";
  * <meta>/<link rel="canonical"> tags but no <title>, so the metadata below is
  * built from those head tags + og:title (head data, not visible body wording).
  *
- * The source body is a stale partial export: its Commission section contains
- * three unrendered React template artifacts ({t.pct}, {t.label}, {t.desc}) left
- * over from an un-expanded .map(). They are literal visible text in the source
- * HTML, so they are reproduced byte-for-byte via numeric entities
- * (&#123; = "{", &#125; = "}") to keep the wording identical while staying valid
- * JSX. The sibling page.tsx in the same folder is the richer original and is
- * intentionally ignored per instructions (the .html is the source of truth).
+ * Commission Structure previously rendered literal, unrendered template
+ * artifacts ({t.pct}/{t.label}/{t.desc}) left over from the source's
+ * un-expanded .map(); replaced with the actual tiers stated in the intro
+ * copy above (15% direct / 5% network) instead of reproducing the bug.
  */
 export const metadata: Metadata = {
   title: "Affiliate Program — OrenGen Worldwide",
@@ -101,9 +98,18 @@ export default function AffiliateProgramPage() {
               <h2>
                 Commission <span style={ACCENT}>Structure</span>
               </h2>
-              <p>&#123;t.pct&#125;</p>
-              <p>&#123;t.label&#125;</p>
-              <p>&#123;t.desc&#125;</p>
+              <div className="sector-grid reveal">
+                <article className="sector-card">
+                  <div className="step">15%</div>
+                  <h3>Direct Referral</h3>
+                  <p>Recurring commission on every business you refer to OrenGen.</p>
+                </article>
+                <article className="sector-card">
+                  <div className="step">5%</div>
+                  <h3>Network Tier</h3>
+                  <p>Recurring commission on referrals made by your network.</p>
+                </article>
+              </div>
             </div>
           </section>
 
@@ -122,7 +128,9 @@ export default function AffiliateProgramPage() {
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
-                    href="mailto:partners@orengen.io?subject=Affiliate%20Application"
+                    href="https://weshare.orengen.io/register"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Apply Now
                   </a>

@@ -224,7 +224,7 @@ export default function PricingPage() {
                     inbox, white-label reports.
                   </p>
                 </article>
-                <article className="sector-card">
+                <article className="sector-card" id="orenautomations">
                   <div className="step">OrenAutomations</div>
                   <h3>Custom</h3>
                   <p>
@@ -252,6 +252,7 @@ export default function PricingPage() {
           {/* OrenConsulting — Fractional C-Suite + Custom AI Engineering */}
           <section
             className="section alt section-brand-white"
+            id="orenconsulting"
             aria-label="OrenConsulting — Fractional C-Suite + Custom AI Engineering"
           >
             <div className="container">

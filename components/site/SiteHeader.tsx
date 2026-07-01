@@ -89,8 +89,8 @@ export default function SiteHeader() {
                         <MegaItem href="/orenweb/talk" title="OrenWeb Talk" desc="Voice and conversational AI embedded in websites." />
                       </div>
                     </div>
-                    <MegaItem href="/orenautomations" title="OrenAutomations" desc="Workflow automation, API sync, and orchestration." />
-                    <MegaItem href="/orenconsulting" title="OrenConsulting" desc="Executive advisory and implementation strategy." />
+                    <MegaItem href="/pricing#orenautomations" title="OrenAutomations" desc="Workflow automation, API sync, and orchestration." />
+                    <MegaItem href="/pricing#orenconsulting" title="OrenConsulting" desc="Executive advisory and implementation strategy." />
                     <MegaItem href="/marketplace" title="Marketplace" desc="Partner, tooling, and integration marketplace." />
                   </div>
                 </div>
@@ -120,7 +120,6 @@ export default function SiteHeader() {
                       </button>
                       <div className="mega-children">
                         <MegaItem href="/orengov" title="OrenGov" desc="Main public-sector operating and delivery route." />
-                        <MegaItem href="/orengov/public-sector" title="Public Sector" desc="Federal and agency-aligned deployment path." />
                         <MegaItem href="/orengov/public-sector/state-local" title="State & Local" desc="State and municipal implementation pathway." />
                         <MegaItem href="/orengov/public-sector/education" title="Education" desc="Education system modernization and operations path." />
                         <MegaItem href="/orengov/defense" title="Defense" desc="Defense-adjacent operating and compliance path." />
@@ -139,7 +138,6 @@ export default function SiteHeader() {
                       </button>
                       <div className="mega-children">
                         <MegaItem href="/orenhealth" title="OrenHealth" desc="Main healthcare and life-sciences operating path." />
-                        <MegaItem href="/orenhealth/hospitals" title="Hospitals" desc="Hospital operations modernization route." />
                         <MegaItem href="/orenhealth/specialty-clinics" title="Specialty Clinics" desc="Clinic workflow and operations pathway." />
                         <MegaItem href="/orenhealth/research" title="Research" desc="Clinical research and life sciences path." />
                       </div>
@@ -200,7 +198,7 @@ export default function SiteHeader() {
                 <MegaItem href="/sales-partner-program" title="Sales Partner Program" desc="Partner pathway for sales and channel growth." />
                 <MegaItem href="/affiliate-program" title="Affiliate Program" desc="Affiliate growth program and referral pathway." />
                 <MegaItem href="/pricing" title="Pricing" desc="Commercial paths and plan logic." />
-                <MegaItem href="/contact" title="Contact" desc="Route your inquiry to the right team." />
+                <MegaItem href="/contact-us" title="Contact" desc="Route your inquiry to the right team." />
               </div>
             </div>
 
@@ -238,7 +236,7 @@ export default function SiteHeader() {
             <a className="icon-btn cart-btn" href="/cart" aria-label="Cart">
               🛒
             </a>
-            <a className="book-btn" href="#contact">
+            <a className="book-btn" href="/contact-us">
               Book a Call
             </a>
 
@@ -250,11 +248,11 @@ export default function SiteHeader() {
                 aria-expanded="false"
                 aria-controls="loginOptions"
               >
-                Login ▾
+                Client Portal ▾
               </button>
               <div className="login-options" id="loginOptions" hidden>
-                <a href="https://app.orengen.io">Access Portal</a>
-                <a href="https://app.orengen.io">Client Login</a>
+                <a href="https://app.orengen.io">Client Portal</a>
+                <a href="https://weshare.orengen.io/login">Sales Partner Portal</a>
               </div>
             </div>
 
@@ -298,8 +296,8 @@ export default function SiteHeader() {
           <a className="mobile-sub" href="/orenweb/talk">OrenWeb Talk <span>→</span></a>
         </div>
         <a href="/orensocial">OrenSocial <span>→</span></a>
-        <a href="/orenautomations">OrenAutomations <span>→</span></a>
-        <a href="/orenconsulting">OrenConsulting <span>→</span></a>
+        <a href="/pricing#orenautomations">OrenAutomations <span>→</span></a>
+        <a href="/pricing#orenconsulting">OrenConsulting <span>→</span></a>
         <a href="/marketplace">Marketplace <span>→</span></a>
         <div className="mobile-group">Solutions</div>
         <button className="mobile-acc" type="button" aria-expanded="false">
@@ -307,7 +305,6 @@ export default function SiteHeader() {
         </button>
         <div className="mobile-children">
           <a className="mobile-sub" href="/orengov">OrenGov <span>→</span></a>
-          <a className="mobile-sub" href="/orengov/public-sector">Public Sector <span>→</span></a>
           <a className="mobile-sub" href="/orengov/public-sector/state-local">State &amp; Local <span>→</span></a>
           <a className="mobile-sub" href="/orengov/public-sector/education">Education <span>→</span></a>
           <a className="mobile-sub" href="/orengov/defense">Defense <span>→</span></a>
@@ -317,7 +314,6 @@ export default function SiteHeader() {
         </button>
         <div className="mobile-children">
           <a className="mobile-sub" href="/orenhealth">OrenHealth <span>→</span></a>
-          <a className="mobile-sub" href="/orenhealth/hospitals">Hospitals <span>→</span></a>
           <a className="mobile-sub" href="/orenhealth/specialty-clinics">Specialty Clinics <span>→</span></a>
           <a className="mobile-sub" href="/orenhealth/research">Research <span>→</span></a>
         </div>
@@ -342,8 +338,9 @@ export default function SiteHeader() {
         <a href="/affiliate-program">Affiliate Program <span>→</span></a>
         <a href="/sales-partner-program">Sales Partner Program <span>→</span></a>
         <a href="/case-studies">Case Studies <span>→</span></a>
-        <a href="#contact">Book a Call <span>→</span></a>
-        <a href="https://app.orengen.io">Login <span>→</span></a>
+        <a href="/contact-us">Book a Call <span>→</span></a>
+        <a href="https://app.orengen.io">Client Portal <span>→</span></a>
+        <a href="https://weshare.orengen.io/login">Sales Partner Portal <span>→</span></a>
       </div>
     </>
   );

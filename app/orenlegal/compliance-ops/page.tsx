@@ -44,7 +44,7 @@ export default function OrenLegalComplianceOpsPage() {
                   evidence-ready process trails.
                 </p>
                 <div className="cta-row">
-                  <a className="btn btn-primary" href="/contact">
+                  <a className="btn btn-primary" href="/contact-us">
                     Book Compliance Ops Briefing
                   </a>
                   <a className="btn btn-secondary" href="/orenlegal">

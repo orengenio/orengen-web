@@ -13,6 +13,7 @@ const ROUTES: string[] = [
   "/capability-statement",
   "/pricing",
   "/faqs",
+  "/contact-us",
   "/case-studies",
   "/blog",
   "/affiliate-program",

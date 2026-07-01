@@ -49,7 +49,7 @@ export default function OrenGovDefensePage() {
           >
             <div className="container">
               <header className="section-head center reveal">
-                <a className="card-link" href="/orengov/public-sector">
+                <a className="card-link" href="/orengov">
                   OrenGov / Defense &amp; DoD
                 </a>
                 <div className="eyebrow">
