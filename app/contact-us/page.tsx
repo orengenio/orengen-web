@@ -129,7 +129,7 @@ export default function ContactUsPage() {
                   <p>Schedule a 30-minute call directly on our calendar.</p>
                   <a
                     className="card-link"
-                    href="https://api.orengen.io/booking/og-j39qvisxpas"
+                    href="https://api.orengen.io/booking/og-j39qvisxpas/sc/discovery-meet"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
