@@ -147,6 +147,7 @@
     @media (min-width: 1080px) { .brand-mark { display: block; } }
 
     .nav-links {
+      position: relative;
       display: none;
       align-items: center;
       gap: 3px;
@@ -188,7 +189,7 @@
       color: var(--og-navy);
       background: rgba(0,37,75,.075);
     }
-    .nav-drop { position: relative; }
+    .nav-drop { position: static; }
     .nav-drop svg { width: 14px; height: 14px; transition: transform .22s var(--og-ease); }
     .nav-drop:hover svg, .nav-drop:focus-within svg { transform: rotate(180deg); }
 

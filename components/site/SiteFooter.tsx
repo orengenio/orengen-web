@@ -92,6 +92,8 @@ const COLUMNS: { title: string; links: { href: string; label: string; ext?: bool
     title: "Company",
     links: [
       { href: "/about", label: "About" },
+      { href: "/leadership", label: "Leadership" },
+      { href: "/careers", label: "Careers" },
       { href: "/blog", label: "OrenSignal" },
       { href: "/case-studies", label: "Case Studies" },
       { href: "/integrations", label: "Integrations" },
@@ -124,7 +126,7 @@ const COLUMNS: { title: string; links: { href: string; label: string; ext?: bool
     links: [
       { href: "/affiliate-program", label: "Affiliate Program" },
       { href: "/sales-partner-program", label: "Sales Partner Program" },
-      { href: "https://weshare.orengen.io/login", label: "Sales Partner Portal", ext: true },
+      { href: "https://weshare.orengen.io/login", label: "Partner Portal", ext: true },
       { href: "/legal/legal-disclaimers", label: "Legal Disclaimers" },
     ],
   },

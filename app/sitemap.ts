@@ -10,6 +10,8 @@ const BASE = "https://orengen.io";
 const ROUTES: string[] = [
   "",
   "/about",
+  "/leadership",
+  "/careers",
   "/capability-statement",
   "/pricing",
   "/faqs",

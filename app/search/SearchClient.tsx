@@ -14,6 +14,8 @@ const INDEX: Entry[] = [
   // Company
   { cat: "Company", title: "Home", url: "/", desc: "OrenGen Worldwide — enterprise AI infrastructure for those who refuse to rent their intelligence." },
   { cat: "Company", title: "About OrenGen", url: "/about", desc: "Sovereign, self-hosted AI ecosystems with NIST-aligned governance." },
+  { cat: "Company", title: "Leadership", url: "/leadership", desc: "Meet the OrenGen Worldwide executive team." },
+  { cat: "Company", title: "Careers", url: "/careers", desc: "Open roles and what it's like to work at OrenGen." },
   { cat: "Government", title: "Capability Statement", url: "/capability-statement", desc: "Government-contracting capability statement — core competencies, NAICS, CAGE 12XC1, UEI, and certifications." },
   { cat: "Company", title: "Pricing", url: "/pricing", desc: "Transparent pricing and engagement models for OrenGen services." },
   { cat: "Products", title: "OrenAutomations", url: "/pricing#orenautomations", desc: "White-glove workflow automation on self-hosted n8n." },
@@ -26,7 +28,7 @@ const INDEX: Entry[] = [
   { cat: "Partners", title: "Sales Partner Program", url: "/sales-partner-program", desc: "Build your book as an OrenGen sales partner." },
   { cat: "Company", title: "Contact", url: "/contact-us", desc: "Get in touch or book a strategy call." },
   { cat: "Account", title: "Client Portal", url: "https://app.orengen.io", desc: "Sign in to your OrenGen Counterpart portal." },
-  { cat: "Partners", title: "Sales Partner Portal", url: "https://weshare.orengen.io/login", desc: "Sign in to your OrenGen affiliate / sales partner dashboard." },
+  { cat: "Partners", title: "Partner Portal", url: "https://weshare.orengen.io/login", desc: "Sign in to your OrenGen affiliate / sales partner dashboard." },
   // Products
   { cat: "Products", title: "OrenAgents", url: "/orenagents", desc: "AI voice and chat agents and digital employees." },
   { cat: "Products", title: "Buy-Lingual Voice Agents", url: "/orenagents/voice", desc: "AI voice agents that speak 100+ languages — inbound & outbound calls, bookings, transfers." },

@@ -77,7 +77,9 @@ export default function OrenHealthResearchPage() {
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
-                    href="https://calendly.com/orengenio/30min"
+                    href="https://api.orengen.io/widget/booking/EvvNIyeXdLksQikeO6en"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Open a Research Briefing
                   </a>
@@ -606,7 +608,9 @@ export default function OrenHealthResearchPage() {
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
-                    href="https://calendly.com/orengenio/30min"
+                    href="https://api.orengen.io/widget/booking/EvvNIyeXdLksQikeO6en"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Schedule the Briefing
                   </a>
