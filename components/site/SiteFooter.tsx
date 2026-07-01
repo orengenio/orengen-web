@@ -124,7 +124,7 @@ const COLUMNS: { title: string; links: { href: string; label: string; ext?: bool
   {
     title: "Partnerships",
     links: [
-      { href: "/affiliate-program", label: "Affiliate Program" },
+      { href: "/referral-partner-program", label: "Referral Partner Program" },
       { href: "/sales-partner-program", label: "Sales Partner Program" },
       { href: "https://weshare.orengen.io/login", label: "Partner Portal", ext: true },
       { href: "/legal/legal-disclaimers", label: "Legal Disclaimers" },
