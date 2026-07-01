@@ -75,7 +75,7 @@ export default function OrenHealthSpecialtyClinicsPage() {
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
-                    href="https://api.orengen.io/widget/booking/EvvNIyeXdLksQikeO6en"
+                    href="https://api.orengen.io/booking/og-j39qvisxpas/sc/discovery-meet"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -592,7 +592,7 @@ export default function OrenHealthSpecialtyClinicsPage() {
                 <div className="cta-row" style={{ justifyContent: "center" }}>
                   <a
                     className="btn btn-primary"
-                    href="https://api.orengen.io/widget/booking/EvvNIyeXdLksQikeO6en"
+                    href="https://api.orengen.io/booking/og-j39qvisxpas/sc/discovery-meet"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
