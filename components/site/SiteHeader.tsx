@@ -195,6 +195,8 @@ export default function SiteHeader() {
               </button>
               <div className="mega small" role="menu">
                 <MegaItem href="/about" title="About" desc="Company, leadership, mission, credibility." />
+                <MegaItem href="/leadership" title="Leadership" desc="Meet the OrenGen executive team." />
+                <MegaItem href="/careers" title="Careers" desc="Open roles and what it's like to work here." />
                 <MegaItem href="/sales-partner-program" title="Sales Partner Program" desc="Partner pathway for sales and channel growth." />
                 <MegaItem href="/affiliate-program" title="Affiliate Program" desc="Affiliate growth program and referral pathway." />
                 <MegaItem href="/pricing" title="Pricing" desc="Commercial paths and plan logic." />
@@ -248,11 +250,11 @@ export default function SiteHeader() {
                 aria-expanded="false"
                 aria-controls="loginOptions"
               >
-                Client Portal ▾
+                Sign In ▾
               </button>
               <div className="login-options" id="loginOptions" hidden>
                 <a href="https://app.orengen.io">Client Portal</a>
-                <a href="https://weshare.orengen.io/login">Sales Partner Portal</a>
+                <a href="https://weshare.orengen.io/login">Partner Portal</a>
               </div>
             </div>
 
@@ -335,12 +337,15 @@ export default function SiteHeader() {
         <a href="/integrations">Integrations <span>→</span></a>
         <div className="mobile-group">Company</div>
         <a href="/about">About <span>→</span></a>
+        <a href="/leadership">Leadership <span>→</span></a>
+        <a href="/careers">Careers <span>→</span></a>
         <a href="/affiliate-program">Affiliate Program <span>→</span></a>
         <a href="/sales-partner-program">Sales Partner Program <span>→</span></a>
         <a href="/case-studies">Case Studies <span>→</span></a>
         <a href="/contact-us">Book a Call <span>→</span></a>
+        <div className="mobile-group">Sign In</div>
         <a href="https://app.orengen.io">Client Portal <span>→</span></a>
-        <a href="https://weshare.orengen.io/login">Sales Partner Portal <span>→</span></a>
+        <a href="https://weshare.orengen.io/login">Partner Portal <span>→</span></a>
       </div>
     </>
   );
