@@ -13,11 +13,12 @@ import ScrollProgress from "@/components/site/ScrollProgress";
  *
  * The source is a GoHighLevel-style body fragment with no <title> tag, so the
  * metadata below is constructed from the source's <meta>/<link rel="canonical">
- * head tags (head data, not visible body wording). The source body also
- * contains three unrendered React template artifacts in the Commission section
- * ({t.pct}, {t.label}, {t.desc}); those are literal visible text in the source
- * HTML, so they are reproduced byte-for-byte via numeric entities to keep the
- * wording identical while staying valid JSX.
+ * head tags (head data, not visible body wording).
+ *
+ * Commission Structure previously rendered literal, unrendered template
+ * artifacts ({t.pct}/{t.label}/{t.desc}) left over from the source's
+ * un-expanded .map(); replaced with the actual tiers stated in the intro
+ * copy above (30% direct / 10% downline) instead of reproducing the bug.
  */
 export const metadata: Metadata = {
   title: "Sales Partner Program — OrenGen Worldwide",
@@ -95,9 +96,18 @@ export default function SalesPartnerProgramPage() {
               <h2>
                 Commission <span style={ACCENT}>Structure</span>
               </h2>
-              <p>&#123;t.pct&#125;</p>
-              <p>&#123;t.label&#125;</p>
-              <p>&#123;t.desc&#125;</p>
+              <div className="sector-grid reveal">
+                <article className="sector-card">
+                  <div className="step">30%</div>
+                  <h3>Direct Commission</h3>
+                  <p>Recurring commission on every engagement you close directly.</p>
+                </article>
+                <article className="sector-card">
+                  <div className="step">10%</div>
+                  <h3>Downline</h3>
+                  <p>Recurring commission on engagements closed by your downline.</p>
+                </article>
+              </div>
             </div>
           </section>
 
@@ -116,7 +126,9 @@ export default function SalesPartnerProgramPage() {
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
-                    href="mailto:partners@orengen.io?subject=Sales%20Partner%20Application"
+                    href="https://weshare.orengen.io/register"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Apply Now
                   </a>

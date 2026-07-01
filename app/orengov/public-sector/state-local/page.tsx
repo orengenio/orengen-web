@@ -53,7 +53,7 @@ export default function OrenGovStateLocalPage() {
             <div className="container">
               <header className="section-head center reveal">
                 <div className="eyebrow">
-                  <a href="/orengov/public-sector" style={{ color: "inherit" }}>
+                  <a href="/orengov" style={{ color: "inherit" }}>
                     OrenGov <span>/</span>{" "}
                     <span style={ACCENT}>State &amp; Local</span>
                   </a>
