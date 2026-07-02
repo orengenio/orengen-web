@@ -308,7 +308,7 @@ export default function PricingPage() {
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
-                    href="https://book.orengen.io/coffeechat"
+                    href="https://api.orengen.io/booking/og-j39qvisxpas/sc/discovery-meet"
                   >
                     Book a Strategy Call
                   </a>
