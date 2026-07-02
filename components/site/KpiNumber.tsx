@@ -9,15 +9,14 @@ export default function KpiNumber({ to, decimals = 0, prefix = "", suffix = "" }
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-15%" });
   const reduce = useReducedMotion();
-  const [display, setDisplay] = useState(reduce ? to : 0);
+  // Start at final value so SSR and pre-scroll never flash "0" placeholders.
+  const [display, setDisplay] = useState(to);
 
   useEffect(() => {
-    if (reduce || !inView) {
-      setDisplay(to);
-      return;
-    }
-    const controls = animate(0, to, {
-      duration: 1.1,
+    if (reduce || !inView) return;
+    const from = to * 0.82;
+    const controls = animate(from, to, {
+      duration: 0.9,
       ease: [0.16, 1, 0.3, 1],
       onUpdate: (v) => setDisplay(v),
     });

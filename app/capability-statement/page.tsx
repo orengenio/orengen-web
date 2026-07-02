@@ -376,7 +376,7 @@ export default function CapabilityStatementPage() {
                     <li>Securiti AI Governance — Certified</li>
                     <li>Securiti Privacy Ops — Certified</li>
                     <li>Better Business Bureau — Accredited</li>
-                    <li>Certified Claude Architect</li>
+                    <li>Claude ecosystem training completed (Architect exam in progress)</li>
                     <li>Member of The Claude Partner Network</li>
                   </ul>
                 </article>

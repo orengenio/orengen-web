@@ -1,5 +1,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import { FOUNDER_AVATAR_URL } from "@/lib/brandAssets";
+import { CASE_STUDIES, FEATURED_CASE_STUDY_IDS } from "@/lib/caseStudies";
+import CaseStudyGrid from "./CaseStudyGrid";
 import KpiNumber from "./KpiNumber";
 
 /* ===== Process band — section-specific steps; column count adapts (4 / 5 / 6) ===== */
@@ -96,7 +98,7 @@ const FOUNDER_STATS = [
 ];
 
 const CRED_TIERS = [
-  { step: "Tier 01", h3: "Anthropic / Claude Architecture", p: "Completed core Claude ecosystem training across agent skills, MCP, and API implementation.", note: "Status: Claude Certified Architect exam targeted within the next 10 days.", items: ["AI Fluency: Framework & Foundations", "Claude 101", "Introduction to Claude Cowork", "Introduction to Subagents", "Introduction to Agent Skills", "Claude Code in Action", "Introduction to Model Context Protocol", "Claude with the Anthropic API", "Claude Architect exam scheduled (in progress)"] },
+  { step: "Tier 01", h3: "Anthropic / Claude Architecture", p: "Completed core Claude ecosystem training across agent skills, MCP, and API implementation.", note: "Status: Claude Certified Architect exam in progress.", items: ["AI Fluency: Framework & Foundations", "Claude 101", "Introduction to Claude Cowork", "Introduction to Subagents", "Introduction to Agent Skills", "Claude Code in Action", "Introduction to Model Context Protocol", "Claude with the Anthropic API", "Claude Architect exam scheduled (in progress)"] },
   { step: "Tier 02", h3: "Governance, Security, Privacy", p: "Controls and risk-management proof supporting regulated AI posture.", note: "", items: ["NIST SP 800-53 Risk Management Framework", "NIST SP 800-53 Security and Privacy Controls", "NIST SP 800-53A Assessing Controls", "NIST SP 800-53B Control Baselines", "Securiti AI Security & Governance", "Securiti PrivacyOps Academy Certified", "HIPAA Compliance Training Program"] },
   { step: "Tier 03", h3: "Cybersecurity and ISC2 CC Readiness", p: "ISC2 course proof across all five domains and final assessment.", note: "", items: ["CC Course Pre-assessment", "CC Domain 1: Security Principles", "CC Domain 2: Incident Response, Business Continuity and Disaster Recovery Concepts", "CC Domain 3: Access Control Concepts", "CC Domain 4: Network Security", "CC Domain 5: Security Operations", "CC Course Conclusion & Final Assessment"] },
   { step: "Tier 04", h3: "Business, GovCon, Design, Legal", p: "Commercial authority, contracting literacy, legal foundation, and design thinking.", note: "", items: ["IBM AI Fundamentals", "IBM Enterprise Design Thinking Practitioner", "Federal Research", "Federal Regulations", "Federal Bidding", "Federal Proposal Writing", "HubSpot Inbound Marketing Certified", "Yale American Contract Law I", "Yale American Contract Law II"] },
@@ -109,10 +111,29 @@ const SIGNAL_CARDS = [
 ];
 
 const BLOG_PREVIEWS = [
-  { meta: "AI Infrastructure · 6 min read", h3: "When to choose hosted vs self-hosted enterprise AI.", p: "A practical executive framework for balancing speed, ownership, risk, and long-term operating cost." },
-  { meta: "Governance · 8 min read", h3: "NIST-aligned AI rollouts for regulated teams.", p: "How to map controls, approvals, and implementation sequencing without slowing delivery velocity." },
-  { meta: "Automation · 5 min read", h3: "Replacing fragmented SaaS workflows with one operating layer.", p: "Where orchestration delivers the fastest operational wins across intake, routing, and reporting." },
+  {
+    meta: "Methodology · 7 min read",
+    h3: "The No-Rent Methodology Explained",
+    p: "Why per-seat SaaS dependency is the silent margin killer — and how to convert subscription spend into owned operational assets.",
+    href: "/blog",
+  },
+  {
+    meta: "Healthcare · 8 min read",
+    h3: "HIPAA-Enabled AI Without Third-Party Exposure",
+    p: "Self-hosted Claude environments with executed BAA chains — the credible architecture for clinical AI workflows.",
+    href: "/blog",
+  },
+  {
+    meta: "Voice · 6 min read",
+    h3: "Buy-Lingual at Scale",
+    p: "Lessons from 30+ workforce buildouts: what works, what fails, and what to insist on in your voice stack.",
+    href: "/blog",
+  },
 ];
+
+const FEATURED_CASE_STUDIES = CASE_STUDIES.filter((s) =>
+  (FEATURED_CASE_STUDY_IDS as readonly string[]).includes(s.id),
+);
 
 const FAQS = [
   { q: "What does OrenGen Worldwide do?", a: "OrenGen Worldwide architects hosted and self-hosted AI-enabled ecosystems across Claude-first and multi-model environments for public sector, healthcare, legal, and enterprise operators that need governed automation, data control, and implementation speed." },
@@ -178,6 +199,33 @@ export default function Sections() {
                 <p>{k.p}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Documented outcomes */}
+      <section
+        className="section alt section-brand-white"
+        id="documented-outcomes"
+        aria-label="Documented client outcomes"
+      >
+        <div className="container">
+          <header className="section-head reveal">
+            <div className="eyebrow">Documented Outcomes</div>
+            <h2>Engineering-grade results — not consulting deliverables.</h2>
+            <p>
+              Representative engagements with quantified outcomes. Counterpart identities
+              redacted; full architectural detail available under NDA during discovery.
+            </p>
+          </header>
+          <CaseStudyGrid studies={FEATURED_CASE_STUDIES} compact />
+          <div className="cta-row reveal">
+            <a className="btn btn-primary" href="/case-studies">
+              View all case studies
+            </a>
+            <a className="btn btn-secondary" href="#contact">
+              Request a comparable briefing
+            </a>
           </div>
         </div>
       </section>
@@ -370,7 +418,10 @@ export default function Sections() {
           <header className="section-head reveal">
             <div className="eyebrow">Latest Insights</div>
             <h2>Recent OrenSignal previews on AI infrastructure and governance.</h2>
-            <p>Use this section to feature your newest blog posts and keep the homepage fresh for both buyers and search engines.</p>
+            <p>
+              Operator-grade essays from the OrenGen Field Brief — grounded in active
+              engagements across infrastructure, GovCon, healthcare, and voice deployments.
+            </p>
           </header>
           <div className="blog-preview-grid reveal">
             {BLOG_PREVIEWS.map((b) => (
@@ -378,7 +429,7 @@ export default function Sections() {
                 <div className="blog-preview-meta">{b.meta}</div>
                 <h3>{b.h3}</h3>
                 <p>{b.p}</p>
-                <a href="/blog">Read preview →</a>
+                <a href={b.href}>Read on OrenSignal →</a>
               </article>
             ))}
           </div>
