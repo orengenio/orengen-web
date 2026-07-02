@@ -4,7 +4,15 @@ import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
 import CaseStudyGrid from "@/components/site/CaseStudyGrid";
+import JsonLd from "@/components/seo/JsonLd";
 import { CASE_STUDIES, CASE_STUDY_SUMMARY_METRICS } from "@/lib/caseStudies";
+import { SITE_URL } from "@/lib/seo/constants";
+import {
+  buildBreadcrumbList,
+  buildCaseStudyItemList,
+  buildPageGraph,
+  buildWebPage,
+} from "@/lib/seo/jsonLd";
 
 export const metadata: Metadata = {
   title: "Case Studies | OrenGen Worldwide — AI-Driven Innovations",
@@ -21,9 +29,24 @@ export const metadata: Metadata = {
   },
 };
 
+const CASE_STUDIES_JSON_LD = buildPageGraph(
+  buildWebPage({
+    name: "OrenGen Case Studies — Documented Outcomes",
+    description:
+      "Quantified outcomes from OrenGen engagements: 500% YoY growth, $13M+ savings, 30+ workforce buildouts, and regulated-sector pilots.",
+    path: "/case-studies",
+  }),
+  buildBreadcrumbList([
+    { name: "Home", path: "" },
+    { name: "Case Studies", path: "/case-studies" },
+  ]),
+  buildCaseStudyItemList(),
+);
+
 export default function CaseStudiesPage() {
   return (
     <>
+      <JsonLd data={CASE_STUDIES_JSON_LD} />
       <ScrollProgress />
       <a className="skip-link" href="#main">
         Skip to content

@@ -298,6 +298,7 @@ export default function SiteFooter() {
               <a href="/legal/cookie-policy">Cookies</a>
               <a href="/legal/ai-communications-opt-in">AI Opt-In</a>
               <a href="/sitemap.xml">Sitemap</a>
+              <a href="/llms.txt">AI summary</a>
               <a href="https://orengen-status-page.instatus.com" target="_blank" rel="noopener">Site Status</a>
             </div>
           </div>
