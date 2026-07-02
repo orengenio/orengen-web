@@ -63,7 +63,7 @@ export default function OrenAgentsVoicePage() {
                   <a className="btn btn-primary" href="#pricing">
                     See Pricing
                   </a>
-                  <a className="btn btn-secondary" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="btn btn-secondary" href="https://buy.stripe.com/14AeVd90c4dpc0r0lzfQI3D">
                     Start Now
                   </a>
                 </div>
@@ -285,7 +285,7 @@ export default function OrenAgentsVoicePage() {
                     <li>Standard voices</li>
                     <li>Email support</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/00w00jdgsfW7c0rc4hfQI3B">
                     Activate →
                   </a>
                 </article>
@@ -309,7 +309,7 @@ export default function OrenAgentsVoicePage() {
                     <li>Multi-language support</li>
                     <li>Priority support</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/14AeVd90c4dpc0r0lzfQI3D">
                     Activate →
                   </a>
                 </article>
@@ -332,7 +332,7 @@ export default function OrenAgentsVoicePage() {
                     <li>White-label ready</li>
                     <li>Dedicated success manager</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/00w28r7W86lx3tVfgtfQI3F">
                     Activate →
                   </a>
                 </article>

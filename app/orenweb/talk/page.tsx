@@ -59,7 +59,7 @@ export default function OrenWebTalkPage() {
                   <a className="btn btn-primary" href="#pricing">
                     See Pricing
                   </a>
-                  <a className="btn btn-secondary" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="btn btn-secondary" href="https://buy.stripe.com/dRm9ATdgs25he8z0lzfQI3c">
                     Start Now
                   </a>
                 </div>
@@ -267,7 +267,7 @@ export default function OrenWebTalkPage() {
                     <li>FAQ auto-training</li>
                     <li>CRM integration</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/3cI14n6S45htfcD9W9fQI3a">
                     Activate →
                   </a>
                 </article>
@@ -293,7 +293,7 @@ export default function OrenWebTalkPage() {
                     <li>Advanced analytics</li>
                     <li>Priority support</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/dRm9ATdgs25he8z0lzfQI3c">
                     Activate →
                   </a>
                 </article>
@@ -316,7 +316,7 @@ export default function OrenWebTalkPage() {
                     <li>White-label ready</li>
                     <li>Dedicated success manager</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/dRm8wP4JW8tF0hJfgtfQI3e">
                     Activate →
                   </a>
                 </article>

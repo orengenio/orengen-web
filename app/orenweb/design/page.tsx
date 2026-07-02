@@ -60,7 +60,7 @@ export default function OrenWebDesignPage() {
                   <a className="btn btn-primary" href="#pricing">
                     See Pricing
                   </a>
-                  <a className="btn btn-secondary" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="btn btn-secondary" href="https://buy.stripe.com/eVq9AT90ch0b2pR5FTfQI3O">
                     Start Now
                   </a>
                 </div>
@@ -286,7 +286,7 @@ export default function OrenWebDesignPage() {
                     <li>Hosting included</li>
                     <li>Monthly maintenance</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/00wcN51xK5ht9SjgkxfQI3N">
                     Activate →
                   </a>
                 </article>
@@ -310,7 +310,7 @@ export default function OrenWebDesignPage() {
                     <li>3 revision rounds/month</li>
                     <li>Weekly maintenance</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/eVq9AT90ch0b2pR5FTfQI3O">
                     Activate →
                   </a>
                 </article>
@@ -333,7 +333,7 @@ export default function OrenWebDesignPage() {
                     <li>Unlimited revisions</li>
                     <li>Dedicated web team</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/7sY28r5O025hc0r5FTfQI3P">
                     Activate →
                   </a>
                 </article>
