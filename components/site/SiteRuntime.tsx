@@ -36,6 +36,29 @@ export default function SiteRuntime() {
       localStorage.removeItem("orengen-theme");
     } catch {}
 
+    /* ===== Desktop nav dropdowns (click + keyboard) ===== */
+    const closeNavDrops = () => {
+      document.querySelectorAll<HTMLElement>(".nav-drop.open").forEach((drop) => {
+        drop.classList.remove("open");
+        drop.querySelector(".nav-drop-btn")?.setAttribute("aria-expanded", "false");
+      });
+    };
+    document.querySelectorAll<HTMLElement>(".nav-drop").forEach((drop) => {
+      const btn = drop.querySelector<HTMLElement>(".nav-drop-btn");
+      if (!btn) return;
+      on(btn, "click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const willOpen = !drop.classList.contains("open");
+        closeNavDrops();
+        if (willOpen) {
+          drop.classList.add("open");
+          btn.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+    on(document, "click", closeNavDrops);
+
     /* ===== Mobile panel ===== */
     const mobileToggle = document.getElementById("mobileToggle");
     const mobilePanel = document.getElementById("mobilePanel");
@@ -75,15 +98,33 @@ export default function SiteRuntime() {
 
     /* ===== Mobile accordions ===== */
     document.querySelectorAll<HTMLElement>(".mobile-acc").forEach((toggle) => {
+      const panelId = toggle.getAttribute("aria-controls");
+      const panel = panelId ? document.getElementById(panelId) : toggle.nextElementSibling;
+      if (panel instanceof HTMLElement) {
+        panel.setAttribute("role", "region");
+        panel.hidden = !toggle.classList.contains("open");
+      }
       on(toggle, "click", () => {
         const open = toggle.classList.toggle("open");
         toggle.setAttribute("aria-expanded", String(open));
+        if (panel instanceof HTMLElement) panel.hidden = !open;
       });
     });
 
     /* ===== FAQ ===== */
-    document.querySelectorAll<HTMLElement>(".faq-q").forEach((button) => {
-      on(button, "click", () => button.closest(".faq-item")?.classList.toggle("open"));
+    document.querySelectorAll<HTMLElement>(".faq-item").forEach((item, index) => {
+      const button = item.querySelector<HTMLElement>(".faq-q");
+      const answer = item.querySelector<HTMLElement>(".faq-a");
+      const answerId = answer?.id || `faq-answer-${index + 1}`;
+      if (answer && !answer.id) answer.id = answerId;
+      if (button) {
+        button.setAttribute("aria-controls", answerId);
+        button.setAttribute("aria-expanded", String(item.classList.contains("open")));
+        on(button, "click", () => {
+          const open = item.classList.toggle("open");
+          button.setAttribute("aria-expanded", String(open));
+        });
+      }
     });
 
     /* ===== Footer accordions (inline onclick replaced by listeners) ===== */
@@ -187,6 +228,26 @@ export default function SiteRuntime() {
       });
       on(document, "click", () => setLoginOpen(false));
     }
+
+    on(document, "keydown", (event) => {
+      if (!(event instanceof KeyboardEvent) || event.key !== "Escape") return;
+      closeNavDrops();
+      if (mobilePanel?.classList.contains("open")) {
+        mobilePanel.classList.remove("open");
+        mobilePanel.setAttribute("aria-hidden", "true");
+        mobileToggle?.setAttribute("aria-expanded", "false");
+      }
+      if (langOptions?.classList.contains("open")) {
+        langOptions.classList.remove("open");
+        (langOptions as HTMLElement).hidden = true;
+        langToggle?.setAttribute("aria-expanded", "false");
+      }
+      if (loginOptions?.classList.contains("open")) {
+        loginOptions.classList.remove("open");
+        (loginOptions as HTMLElement).hidden = true;
+        loginToggle?.setAttribute("aria-expanded", "false");
+      }
+    });
 
     /* ===== Reveal-on-scroll ===== */
     const revealObserver = new IntersectionObserver(
