@@ -319,7 +319,7 @@ export default function OrenNexusPage() {
                 </p>
                 <div className="cta-row">
                   <span className="chip">Monthly</span>
-                  <span className="chip">Annual Save up to $967</span>
+                  <span className="chip">Annual Save up to $994</span>
                 </div>
               </header>
               <div className="cost-grid reveal">
