@@ -70,7 +70,7 @@ export default function OrenNexusPage() {
                   </a>
                   <a
                     className="btn btn-secondary"
-                    href="#REPLACE-WITH-YOUR-URL"
+                    href="https://buy.stripe.com/4gMcN5ekweS32pRd8lfQI3i"
                   >
                     Start Now
                   </a>
@@ -340,7 +340,7 @@ export default function OrenNexusPage() {
                     <li>Basic lead scoring</li>
                     <li>Unlimited users</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/6oU9AT0tG5ht0hJecpfQI3g">
                     Select Standard →
                   </a>
                 </article>
@@ -366,7 +366,7 @@ export default function OrenNexusPage() {
                     <li>Reputation management</li>
                     <li>Unlimited users</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/4gMcN5ekweS32pRd8lfQI3i">
                     Select Professional →
                   </a>
                 </article>
@@ -391,7 +391,7 @@ export default function OrenNexusPage() {
                     <li>Unified conversational inbox</li>
                     <li>Unlimited users</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/5kQaEX7W8fW72pR0lzfQI3k">
                     Select Premium →
                   </a>
                 </article>

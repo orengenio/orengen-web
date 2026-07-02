@@ -63,7 +63,7 @@ export default function OrenAgentsBetterTogetherPage() {
                   <a className="btn btn-primary" href="#pricing">
                     See Bundle Pricing
                   </a>
-                  <a className="btn btn-secondary" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="btn btn-secondary" href="https://buy.stripe.com/cNicN590c11daWn9W9fQI3L">
                     Activate Growth Bundle
                   </a>
                 </div>
@@ -354,7 +354,7 @@ export default function OrenAgentsBetterTogetherPage() {
                     <li>Basic workflow setup</li>
                     <li>Standard onboarding</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/3cI14n1xK9xJaWn9W9fQI3K">
                     Activate Launch Bundle →
                   </a>
                 </article>
@@ -388,7 +388,7 @@ export default function OrenAgentsBetterTogetherPage() {
                     <li>Sales/support workflow setup</li>
                     <li>Priority onboarding</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/cNicN590c11daWn9W9fQI3L">
                     Activate Growth Bundle →
                   </a>
                 </article>
@@ -422,7 +422,7 @@ export default function OrenAgentsBetterTogetherPage() {
                     <li>Dedicated launch support</li>
                     <li>Priority optimization</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/dRm4gzdgs8tFfcD5FTfQI3M">
                     Activate Scale Bundle →
                   </a>
                 </article>
