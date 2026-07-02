@@ -51,10 +51,10 @@ const COSTS = [
 ];
 
 const KPIS = [
+  { to: 30, decimals: 0, prefix: "", numSuffix: "", sup: "+", label: "Virtual Workforce Buildouts", p: "Documented AI-augmented operations teams architected, deployed, and operationalized end-to-end across commercial and regulated environments." },
+  { to: 500, decimals: 0, prefix: "", numSuffix: "", sup: "%", label: "Documented YoY Growth", p: "Verified year-over-year revenue growth from enterprise transformation and automation engagements." },
+  { to: 13, decimals: 0, prefix: "$", numSuffix: "M", sup: "+", label: "Operational Savings", p: "Documented transformation and cost-reduction outcomes from enterprise operations modernization." },
   { to: 20, decimals: 0, prefix: "", numSuffix: "", sup: "+", label: "Enterprise Deployments", p: "AI, automation, infrastructure, web, workflow, and operating-system buildouts across commercial and regulated environments." },
-  { to: 4.9, decimals: 1, prefix: "", numSuffix: "", sup: "/5", label: "Client Satisfaction Target", p: "Service delivery built around executive clarity, fast implementation, clean handoff, and operational usefulness." },
-  { to: 99.9, decimals: 1, prefix: "", numSuffix: "", sup: "%", label: "Uptime SLA Path", p: "Architecture designed for production-grade reliability using monitored hosted and self-hosted deployment patterns." },
-  { to: 13, decimals: 0, prefix: "$", numSuffix: "M", sup: "+", label: "Operational Savings", p: "Documented transformation and cost-reduction background from enterprise operations." },
 ];
 
 const JOURNEY = [

@@ -265,7 +265,7 @@ export default function OrenWebDesignPage() {
                 <div className="trust-row" style={{ justifyContent: "center" }}>
                   <span className="chip">Monthly</span>
                   <span className="chip">
-                    Annual Save up to $1,967
+                    Annual Save up to $1,994
                   </span>
                 </div>
               </header>

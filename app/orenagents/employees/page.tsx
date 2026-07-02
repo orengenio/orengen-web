@@ -264,7 +264,7 @@ export default function OrenAgentsEmployeesPage() {
                 </p>
                 <div className="trust-row" style={{ justifyContent: "center" }}>
                   <span className="chip">Monthly</span>
-                  <span className="chip">Annual Save up to $967</span>
+                  <span className="chip">Annual Save up to $994</span>
                 </div>
               </header>
               <div className="cost-grid reveal">
