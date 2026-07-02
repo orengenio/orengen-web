@@ -94,8 +94,8 @@ export default function TrademarkPolicyPage() {
               </p>
               <p>
                 This Trademark Policy governs the use of OrenGen Trademarks by
-                third parties, including customers, partners, affiliates,
-                resellers, and the general public. By using any OrenGen
+                third parties, including customers, partners, referral
+                partners, resellers, and the general public. By using any OrenGen
                 Trademark, you agree to comply with this policy and all
                 applicable trademark laws.
               </p>
@@ -317,9 +317,9 @@ export default function TrademarkPolicyPage() {
               </ul>
               <h3>4.2 Authorized Resellers and Partners</h3>
               <p>
-                If you have a written reseller, partner, or affiliate agreement
-                with OrenGen, you may use our trademarks as specifically
-                permitted in your agreement, subject to:
+                If you have a written reseller, partner, or referral partner
+                agreement with OrenGen, you may use our trademarks as
+                specifically permitted in your agreement, subject to:
               </p>
               <ul>
                 <li>Compliance with usage guidelines provided to you</li>

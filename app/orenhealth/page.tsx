@@ -371,7 +371,7 @@ export default function OrenHealthPage() {
                   <ul>
                     <li>Revenue cycle management analytics</li>
                     <li>Clinical performance dashboards</li>
-                    <li>HIPAA-compliant audit trail architecture</li>
+                    <li>HIPAA-aligned audit trail architecture</li>
                   </ul>
                 </article>
 
@@ -399,7 +399,7 @@ export default function OrenHealthPage() {
                     reminders, follow-ups, care coordination.
                   </p>
                   <ul>
-                    <li>HIPAA-compliant SMS and email</li>
+                    <li>HIPAA-aligned SMS and email</li>
                     <li>Consent-based patient outreach</li>
                     <li>TCPA-aligned messaging architecture</li>
                   </ul>

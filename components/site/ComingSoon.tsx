@@ -37,9 +37,11 @@ export default function ComingSoon({
               <header className="section-head center reveal">
                 <div className="eyebrow">{eyebrow}</div>
                 <h1>
-                  {title}{" "}
-                  <span className="gradient-word shimmer">coming soon.</span>
+                  <span className="gradient-word shimmer">COMING SOON</span>
                 </h1>
+                <p className="lead">
+                  <strong>{title}</strong>
+                </p>
                 <p className="lead">{blurb}</p>
                 <div className="cta-row">
                   <a className="btn btn-primary" href="/contact-us">

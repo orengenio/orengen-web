@@ -303,7 +303,7 @@ export default function OrenHealthResearchPage() {
                   <div className="step">05 / Communication</div>
                   <h3>Participant Communication Infrastructure</h3>
                   <p>
-                    HIPAA-compliant participant messaging — visit reminders,
+                    HIPAA-aligned participant messaging — visit reminders,
                     follow-up sequences, retention outreach, screen-fail
                     communication, study-completion handoff. Scoped to
                     operational and administrative communication; does not

@@ -292,7 +292,7 @@ export default function OrenHealthSpecialtyClinicsPage() {
                   <div className="step">05 / Communication</div>
                   <h3>Patient Communication Infrastructure</h3>
                   <p>
-                    HIPAA-compliant patient messaging — SMS reminders, two-way
+                    HIPAA-aligned patient messaging — SMS reminders, two-way
                     text, secure forms, post-visit follow-up sequences, recall
                     and retention campaigns. Scoped to operational and
                     administrative communication, not clinical advice or triage.

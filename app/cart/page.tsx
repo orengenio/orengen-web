@@ -13,7 +13,7 @@ export default function CartPage() {
   return (
     <ComingSoon
       eyebrow="Cart"
-      title="Secure OrenGen checkout is"
+      title="Secure OrenGen checkout is on the way."
       blurb="A unified checkout for OrenGen modules, packages, and subscriptions. In the meantime, configure and price your build in OrenKanBuilder — or talk to us directly and we'll quote it."
     />
   );

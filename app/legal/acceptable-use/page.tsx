@@ -431,8 +431,8 @@ export default function AcceptableUsePage() {
                   within 10 business days
                 </li>
                 <li>
-                  <strong>Monitor Third Parties:</strong> Ensure affiliates and
-                  marketing partners comply with CAN-SPAM
+                  <strong>Monitor Third Parties:</strong> Ensure your marketing
+                  partners and third-party senders comply with CAN-SPAM
                 </li>
               </ul>
               <h3>4.2 GDPR Compliance (European Union)</h3>

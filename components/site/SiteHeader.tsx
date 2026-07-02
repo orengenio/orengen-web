@@ -91,7 +91,7 @@ export default function SiteHeader() {
                     </div>
                     <MegaItem href="/pricing#orenautomations" title="OrenAutomations" desc="Workflow automation, API sync, and orchestration." />
                     <MegaItem href="/pricing#orenconsulting" title="OrenConsulting" desc="Executive advisory and implementation strategy." />
-                    <MegaItem href="/marketplace" title="Marketplace" desc="Partner, tooling, and integration marketplace." />
+                    <MegaItem href="/marketplace" title="Marketplace — Coming Soon" desc="Partner, tooling, and integration marketplace." />
                   </div>
                 </div>
               </div>
@@ -183,8 +183,8 @@ export default function SiteHeader() {
               <div className="mega small" role="menu">
                 <MegaItem href="/blog" title="OrenSignal" desc="AI, infrastructure, governance, and market signals." />
                 <MegaItem href="/faqs" title="FAQs" desc="Buyer, technical, security, and procurement answers." />
-                <MegaItem href="/integrations" title="Integrations" desc="CRM, forms, calendars, automations, and sync paths." />
-                <MegaItem href="/support" title="Support" desc="Client support and operational help." />
+                <MegaItem href="/integrations" title="Integrations — Coming Soon" desc="CRM, forms, calendars, automations, and sync paths." />
+                <MegaItem href="/support" title="Support — Coming Soon" desc="Client support and operational help." />
               </div>
             </div>
 
@@ -235,7 +235,7 @@ export default function SiteHeader() {
             </div>
 
             {/* Theme toggle removed — site is locked to its dark-first brand theme. */}
-            <a className="icon-btn cart-btn" href="/cart" aria-label="Cart">
+            <a className="icon-btn cart-btn" href="/cart" aria-label="Cart — Coming Soon" title="Cart — Coming Soon">
               🛒
             </a>
             <a className="book-btn" href="/contact-us">
@@ -300,7 +300,7 @@ export default function SiteHeader() {
         <a href="/orensocial">OrenSocial <span>→</span></a>
         <a href="/pricing#orenautomations">OrenAutomations <span>→</span></a>
         <a href="/pricing#orenconsulting">OrenConsulting <span>→</span></a>
-        <a href="/marketplace">Marketplace <span>→</span></a>
+        <a href="/marketplace">Marketplace — Coming Soon <span>→</span></a>
         <div className="mobile-group">Solutions</div>
         <button className="mobile-acc" type="button" aria-expanded="false">
           OrenGov <span className="caret">▾</span>
@@ -334,7 +334,7 @@ export default function SiteHeader() {
         <div className="mobile-group">Resources</div>
         <a href="/blog">OrenSignal <span>→</span></a>
         <a href="/faqs">FAQs <span>→</span></a>
-        <a href="/integrations">Integrations <span>→</span></a>
+        <a href="/integrations">Integrations — Coming Soon <span>→</span></a>
         <div className="mobile-group">Company</div>
         <a href="/about">About <span>→</span></a>
         <a href="/leadership">Leadership <span>→</span></a>

@@ -13,7 +13,7 @@ export default function MarketplacePage() {
   return (
     <ComingSoon
       eyebrow="Marketplace"
-      title="The OrenGen marketplace is"
+      title="The OrenGen marketplace is on the way."
       blurb="A curated marketplace of OrenGen-built AI modules, automations, and integrations you can own — not rent. We're assembling it now. Tell us what you need today and we'll build it."
     />
   );
