@@ -3,6 +3,16 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
+import PageAtAGlance from "@/components/site/PageAtAGlance";
+import ProductPreview from "@/components/site/ProductPreview";
+import ResearchAccordion from "@/components/site/ResearchAccordion";
+import PricingCompareTable from "@/components/site/PricingCompareTable";
+import {
+  ORENNEXUS_AT_A_GLANCE,
+  ORENNEXUS_JUMPS,
+  ORENNEXUS_PRICING_TABLE,
+  ORENNEXUS_RESEARCH,
+} from "@/lib/orennexusPage";
 
 /**
  * OrenNexus hub page.
@@ -88,9 +98,17 @@ export default function OrenNexusPage() {
             </div>
           </section>
 
+          <PageAtAGlance bullets={ORENNEXUS_AT_A_GLANCE} jumps={ORENNEXUS_JUMPS} />
+
+          <ProductPreview
+            productName="OrenNexus"
+            description="Pipeline, unified inbox, automations, and reporting in one command center — built for AI-orchestrated operators."
+          />
+
           {/* CAPABILITIES */}
           <section
             className="section alt section-brand-white"
+            id="capabilities"
             aria-label="Capabilities"
           >
             <div className="container">
@@ -205,103 +223,13 @@ export default function OrenNexusPage() {
             </div>
           </section>
 
-          {/* PAIN POINTS */}
-          <section
-            className="section section-brand-blue"
-            aria-label="Why this matters"
-          >
-            <div className="container">
-              <header className="section-head center reveal">
-                <div className="eyebrow">The Tax of Tool Sprawl</div>
-                <h2>
-                  Six research-backed costs of running fragmented sales,
-                  marketing, and CRM tools instead of a unified command center.
-                </h2>
-              </header>
-              <div className="kpi-grid reveal">
-                <div className="kpi">
-                  <div className="label">App Sprawl</div>
-                  <div className="num">112</div>
-                  <p>SaaS apps used by the average enterprise.</p>
-                  <p>
-                    Most enterprises run 112 separate SaaS subscriptions, up
-                    from 8 in 2015. OrenNexus replaces 20+ enterprise tools
-                    including your CRM, funnel builder, email marketing, SMS,
-                    surveys, calendar scheduling, course hosting, and more.
-                    including your CRM, funnel builder, email marketing, SMS,
-                    surveys, calendar scheduling, and more.
-                  </p>
-                  <p>Source: Productiv State of SaaS report</p>
-                </div>
-                <div className="kpi">
-                  <div className="label">Lost Productivity</div>
-                  <div className="num">
-                    9.4<span>hr</span>
-                  </div>
-                  <p>Wasted per employee, per week, switching between apps.</p>
-                  <p>
-                    Knowledge workers lose a full workday every week toggling
-                    between tools, copying data, and reconciling records.
-                  </p>
-                  <p>Source: Asana Anatomy of Work index</p>
-                </div>
-                <div className="kpi">
-                  <div className="label">Pipeline Leakage</div>
-                  <div className="num">
-                    79<span>%</span>
-                  </div>
-                  <p>
-                    Of marketing leads never convert — usually because of poor
-                    handoff.
-                  </p>
-                  <p>
-                    Leads die in the gap between marketing and sales when the
-                    systems don&apos;t talk. Unified pipeline closes the gap.
-                  </p>
-                  <p>Source: MarketingSherpa benchmark</p>
-                </div>
-                <div className="kpi">
-                  <div className="label">Speed-to-Lead</div>
-                  <div className="num">
-                    5<span>min</span>
-                  </div>
-                  <p>The window where leads are 21x more likely to convert.</p>
-                  <p>
-                    Respond within five minutes and conversion odds increase by
-                    21x. Most teams take hours or days. OrenNexus automates
-                    instant routing.
-                  </p>
-                  <p>Source: HBR / Lead Response Management Study</p>
-                </div>
-                <div className="kpi">
-                  <div className="label">CRM Adoption Failure</div>
-                  <div className="num">
-                    63<span>%</span>
-                  </div>
-                  <p>Of CRM implementations fail to deliver expected ROI.</p>
-                  <p>
-                    Most CRM projects collapse because the platform is bolted
-                    onto five other tools. OrenNexus consolidates the stack so
-                    it&apos;s adopted because it&apos;s the only login your team
-                    needs.
-                  </p>
-                  <p>Source: CSO Insights / Gartner CRM research</p>
-                </div>
-                <div className="kpi">
-                  <div className="label">Per-Seat Tax</div>
-                  <div className="num">
-                    $12K<span>+</span>
-                  </div>
-                  <p>Average annual per-employee SaaS cost.</p>
-                  <p>
-                    Enterprise per-seat SaaS spend climbs while utilization
-                    falls. OrenNexus Premium = unlimited users.
-                  </p>
-                  <p>Source: Vendr / Blissfully SaaS pricing benchmarks</p>
-                </div>
-              </div>
-            </div>
-          </section>
+          {/* RESEARCH */}
+          <ResearchAccordion
+            eyebrow="The Tax of Tool Sprawl"
+            title="Six research-backed costs of running fragmented sales, marketing, and CRM tools instead of a unified command center."
+            items={ORENNEXUS_RESEARCH}
+            defaultOpenId="sprawl"
+          />
 
           {/* PRICING */}
           <section
@@ -319,9 +247,10 @@ export default function OrenNexusPage() {
                 </p>
                 <div className="cta-row">
                   <span className="chip">Monthly</span>
-                  <span className="chip">Annual Save up to $967</span>
+                  <span className="chip">Annual Save up to $994</span>
                 </div>
               </header>
+              <PricingCompareTable tiers={ORENNEXUS_PRICING_TABLE} />
               <div className="cost-grid reveal">
                 {/* STANDARD */}
                 <article className="sector-card">
@@ -431,6 +360,7 @@ export default function OrenNexusPage() {
           {/* FAQ */}
           <section
             className="section alt section-brand-white"
+            id="faq"
             aria-label="Frequently asked questions"
           >
             <div className="container">
