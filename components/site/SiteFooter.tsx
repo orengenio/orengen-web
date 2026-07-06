@@ -179,8 +179,11 @@ export default function SiteFooter() {
               />
             </a>
 
-            {/* Fuse Ignition Tagline — "ONLINE EVERYWHERE | ORENGENIO" */}
-            <div className="og-fuse-container" id="fuseContainer">
+            {/* Fuse Ignition Tagline — "ONLINE EVERYWHERE | ORENGENIO".
+                aria-hidden: decorative logotype animation; per-character spans
+                would otherwise be read letter-by-letter by screen readers, and
+                the unlit 40%-opacity state is exempt logotype text (WCAG 1.4.3). */}
+            <div className="og-fuse-container" id="fuseContainer" aria-hidden="true">
               <div className="og-fuse-line">
                 <div className="og-fuse-burn" id="fuseBurn" />
               </div>

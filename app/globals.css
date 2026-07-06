@@ -11,6 +11,12 @@
       --og-navy-3: #0b1b31;
       --og-orange: #CC5500;
       --og-orange-hot: #E66100;
+      /* WCAG AA fills: white text on #CC5500 is 4.31:1 (fails 4.5:1).
+         These slightly darker fills pass (4.9:1 / 5.7:1) and are used ONLY
+         where white text sits on a solid orange background — the brand
+         #CC5500 stays everywhere else (accents, glows, gradients, marks). */
+      --og-orange-fill: #BD4F00;
+      --og-orange-fill-hot: #AD4700;
       --og-white: #ffffff;
       --og-cloud: #f8fafc;
       --og-cloud-2: #eef3f8;
@@ -97,7 +103,7 @@
       z-index: 999;
       padding: 12px 16px;
       border-radius: 999px;
-      background: var(--og-orange);
+      background: var(--og-orange-fill);
       color: white;
       font-weight: 900;
       transition: top .2s var(--og-ease);
@@ -340,14 +346,14 @@
       justify-content: center;
       padding: 0 17px;
       border-radius: 999px;
-      background: var(--og-orange);
+      background: var(--og-orange-fill);
       color: white;
       font-size: 13px;
       font-weight: 950;
       box-shadow: 0 16px 36px rgba(204,85,0,.28);
       transition: .2s var(--og-ease);
     }
-    .login-btn:hover { background: var(--og-orange-hot); transform: translateY(-1px); }
+    .login-btn:hover { background: var(--og-orange-fill-hot); transform: translateY(-1px); }
     .mobile-btn { display: inline-flex; padding: 0; width: 44px; }
     @media (min-width: 1080px) { .mobile-btn { display: none; } }
 
@@ -483,8 +489,8 @@
       font-weight: 950;
       transition: .22s var(--og-ease);
     }
-    .btn-primary { background: var(--og-orange); color: white; box-shadow: 0 18px 42px rgba(204,85,0,.26); }
-    .btn-primary:hover { background: var(--og-orange-hot); transform: translateY(-2px); }
+    .btn-primary { background: var(--og-orange-fill); color: white; box-shadow: 0 18px 42px rgba(204,85,0,.26); }
+    .btn-primary:hover { background: var(--og-orange-fill-hot); transform: translateY(-2px); }
     .btn-secondary { border: 1px solid var(--og-line); background: var(--og-surface); color: var(--og-text); }
     .btn-secondary:hover { border-color: rgba(204,85,0,.45); transform: translateY(-2px); }
     .btn svg { width: 17px; height: 17px; }
@@ -1091,7 +1097,8 @@
     --og-border-hover: rgba(210, 225, 245, 0.16);
     --og-text: #F0F4FA;
     --og-text-secondary: rgba(210, 225, 245, 0.6);
-    --og-text-muted: rgba(210, 225, 245, 0.35);
+    /* 0.55 alpha = 4.9:1 on the #081628 footer bg (WCAG AA); 0.35 was 2.7:1 */
+    --og-text-muted: rgba(210, 225, 245, 0.55);
     --og-gold-1: #FFD700;
     --og-gold-2: #FFC107;
     --og-gold-3: #B8860B;
@@ -1553,7 +1560,7 @@
     min-height: 42px;
     border: 0;
     border-radius: 10px;
-    background: var(--og-accent);
+    background: var(--og-orange-fill);
     color: #fff;
     font-size: 12px;
     font-weight: 800;
@@ -1562,7 +1569,7 @@
     transition: background .2s ease;
   }
 
-  .og-newsletter-form button:hover { background: #E66100; }
+  .og-newsletter-form button:hover { background: var(--og-orange-fill-hot); }
 
   /* ========================================
      LINK COLUMNS — 5 COLUMNS EVENLY SPACED
@@ -2122,13 +2129,13 @@
 
   .book-btn {
     padding: 0 16px;
-    background: var(--og-orange);
+    background: var(--og-orange-fill);
     color: #fff;
     border-color: transparent;
     box-shadow: 0 14px 32px rgba(204,85,0,.26);
     border-radius: 2px;
   }
-  .book-btn:hover { background: var(--og-orange-hot); transform: translateY(-1px); color: #fff; }
+  .book-btn:hover { background: var(--og-orange-fill-hot); transform: translateY(-1px); color: #fff; }
 
   .login-menu,
   .lang-menu {
