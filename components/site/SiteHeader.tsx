@@ -265,6 +265,8 @@ export default function SiteHeader() {
             </div>
 
             {/* Theme toggle removed — site is locked to its dark-first brand theme. */}
+            <a className="icon-btn cart-btn" href="/cart" aria-label="Cart — Coming Soon" title="Cart — Coming Soon">
+              <span aria-hidden="true">🛒</span>
             </a>
             <a className="book-btn" href="/contact-us">
               Book a Call
