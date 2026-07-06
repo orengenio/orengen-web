@@ -126,7 +126,7 @@ export default function LeadershipPage() {
                 {LEADERS.map((l) => (
                   <article className="sector-card" key={l.name}>
                     <h3>{l.name}</h3>
-                    <div className="sector-trust">{l.title}</div>
+                    <div className="step">{l.title}</div>
                     <p>{l.bio}</p>
                     <div className="trust-row">
                       {l.tags.map((t) => (

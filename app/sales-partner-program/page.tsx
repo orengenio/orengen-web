@@ -90,7 +90,7 @@ export default function SalesPartnerProgramPage() {
               <div className="sector-grid reveal">
                 {PACKAGES.map((p) => (
                   <article className="sector-card" key={p.name}>
-                    {p.featured ? <div className="sector-trust">Most Popular</div> : null}
+                    {p.featured ? <div className="step">Most Popular</div> : null}
                     <h3>{p.name}</h3>
                     <p>{p.monthly} + {p.setup}</p>
                     <p><strong>You earn: {p.partnerSetup} setup + {p.partnerMonthly}</strong></p>
