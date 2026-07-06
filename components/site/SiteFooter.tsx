@@ -85,7 +85,7 @@ const COLUMNS: { title: string; links: { href: string; label: string; ext?: bool
       { href: "/orensocial", label: "OrenSocial" },
       { href: "/pricing#orenautomations", label: "OrenAutomations" },
       { href: "/pricing#orenconsulting", label: "OrenConsulting" },
-      { href: "/marketplace", label: "Marketplace" },
+      { href: "/marketplace", label: "Marketplace — Coming Soon" },
     ],
   },
   {
@@ -96,8 +96,8 @@ const COLUMNS: { title: string; links: { href: string; label: string; ext?: bool
       { href: "/careers", label: "Careers" },
       { href: "/blog", label: "OrenSignal" },
       { href: "/case-studies", label: "Case Studies" },
-      { href: "/integrations", label: "Integrations" },
-      { href: "/support", label: "Support" },
+      { href: "/integrations", label: "Integrations — Coming Soon" },
+      { href: "/support", label: "Support — Coming Soon" },
       { href: "/faqs", label: "FAQs" },
       { href: "/pricing", label: "Pricing" },
       { href: "/contact-us", label: "Contact Us" },
@@ -133,8 +133,8 @@ const COLUMNS: { title: string; links: { href: string; label: string; ext?: bool
   {
     title: "Technical",
     links: [
-      { href: "/integrations", label: "Integrations" },
-      { href: "/support", label: "Technical Support" },
+      { href: "/integrations", label: "Integrations — Coming Soon" },
+      { href: "/support", label: "Technical Support — Coming Soon" },
       { href: "/faqs", label: "Implementation FAQs" },
       { href: "/legal/security-overview", label: "Security Controls" },
       { href: "https://n8n.partnerlinks.io/orengenio", label: "n8n Automation", ext: true },
@@ -179,8 +179,11 @@ export default function SiteFooter() {
               />
             </a>
 
-            {/* Fuse Ignition Tagline — "ONLINE EVERYWHERE | ORENGENIO" */}
-            <div className="og-fuse-container" id="fuseContainer">
+            {/* Fuse Ignition Tagline — "ONLINE EVERYWHERE | ORENGENIO".
+                aria-hidden: decorative logotype animation; per-character spans
+                would otherwise be read letter-by-letter by screen readers, and
+                the unlit 40%-opacity state is exempt logotype text (WCAG 1.4.3). */}
+            <div className="og-fuse-container" id="fuseContainer" aria-hidden="true">
               <div className="og-fuse-line">
                 <div className="og-fuse-burn" id="fuseBurn" />
               </div>

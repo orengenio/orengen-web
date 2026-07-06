@@ -327,7 +327,7 @@ export default function AiCommunicationsOptInPage() {
                 </li>
                 <li>
                   Being referred by an existing OrenGen client, partner, or
-                  affiliate
+                  referral partner
                 </li>
                 <li>
                   Providing business card or contact information at events,

@@ -13,7 +13,7 @@ export default function IntegrationsPage() {
   return (
     <ComingSoon
       eyebrow="Integrations"
-      title="The OrenGen integrations directory is"
+      title="The OrenGen integrations directory is on the way."
       blurb="Native connections between OrenGen and the tools you already run — CRMs, calendars, data sources, and more. The directory is in build. Tell us your stack and we'll map it."
     />
   );

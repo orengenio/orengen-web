@@ -393,11 +393,11 @@ export default function CapabilityStatementPage() {
                     SupplierGateway verification:{" "}
                     <a
                       className="card-link"
-                      href="https://www.suppliergateway.com/verifycert"
+                      href="https://www.suppliergateway.com"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      suppliergateway.com/verifycert
+                      suppliergateway.com
                     </a>
                   </p>
                 </article>

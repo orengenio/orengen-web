@@ -745,7 +745,7 @@ export function KanBuilder() {
                 borderRadius: 6,
                 cursor: "pointer",
                 color: tier === tk ? "#fff" : "rgba(210,225,245,0.5)",
-                background: tier === tk ? "#CC5500" : "transparent",
+                background: tier === tk ? "#BD4F00" : "transparent",
                 transition: "all 0.2s",
               }}
             >
@@ -1057,7 +1057,7 @@ export function KanBuilder() {
               padding: "10px 24px",
               borderRadius: 999,
               border: "1px solid rgba(204,85,0,0.3)",
-              background: "linear-gradient(135deg, #CC5500, #E8762B)",
+              background: "linear-gradient(135deg, #AD4700, #BD4F00)",
               color: "#fff",
               fontWeight: 700,
               fontSize: 14,
@@ -1398,7 +1398,7 @@ export function KanBuilder() {
               padding: "14px 32px",
               background:
                 engineIds.length > 0
-                  ? "linear-gradient(135deg, #CC5500, #E8762B)"
+                  ? "linear-gradient(135deg, #AD4700, #BD4F00)"
                   : "rgba(255,255,255,0.06)",
               color: engineIds.length > 0 ? "#fff" : "rgba(210,225,245,0.3)",
               fontWeight: 700,
@@ -1661,7 +1661,7 @@ export function KanBuilder() {
                       style={{
                         width: "100%",
                         padding: "14px 24px",
-                        background: "linear-gradient(135deg, #CC5500, #E8762B)",
+                        background: "linear-gradient(135deg, #AD4700, #BD4F00)",
                         color: "#fff",
                         fontWeight: 700,
                         fontSize: 15,
