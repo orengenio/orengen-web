@@ -59,7 +59,7 @@ export default function OrenAgentsEmployeesPage() {
                   <a className="btn btn-primary" href="#pricing">
                     See Pricing
                   </a>
-                  <a className="btn btn-secondary" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="btn btn-secondary" href="https://buy.stripe.com/7sY4gz1xK8tF6G75FTfQI3x">
                     Start Now
                   </a>
                 </div>
@@ -284,7 +284,7 @@ export default function OrenAgentsEmployeesPage() {
                     <li>Business hours routing</li>
                     <li>Basic analytics</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/8x214nb8k8tFc0r1pDfQI3v">
                     Activate →
                   </a>
                 </article>
@@ -307,7 +307,7 @@ export default function OrenAgentsEmployeesPage() {
                     <li>Advanced analytics</li>
                     <li>Priority support</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/7sY4gz1xK8tF6G75FTfQI3x">
                     Activate →
                   </a>
                 </article>
@@ -330,7 +330,7 @@ export default function OrenAgentsEmployeesPage() {
                     <li>Revenue attribution</li>
                     <li>Dedicated success manager</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/6oUaEX5O0fW73tVfgtfQI3z">
                     Activate →
                   </a>
                 </article>

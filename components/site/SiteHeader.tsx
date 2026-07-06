@@ -44,10 +44,16 @@ export default function SiteHeader() {
           <nav className="nav-links og-v6-nav" aria-label="Primary navigation">
             {/* Products */}
             <div className="nav-drop">
-              <button className="nav-drop-btn" type="button" aria-expanded="false">
+              <button
+                className="nav-drop-btn"
+                type="button"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="mega-products"
+              >
                 Products <Chevron />
               </button>
-              <div className="mega" role="menu">
+              <div className="mega" id="mega-products" role="menu" aria-label="Products">
                 <div className="mega-head">
                   <div className="mega-title">Products</div>
                   <div className="mega-note">AI operating systems</div>
@@ -99,10 +105,16 @@ export default function SiteHeader() {
 
             {/* Solutions */}
             <div className="nav-drop">
-              <button className="nav-drop-btn" type="button" aria-expanded="false">
+              <button
+                className="nav-drop-btn"
+                type="button"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="mega-solutions"
+              >
                 Solutions <Chevron />
               </button>
-              <div className="mega" role="menu">
+              <div className="mega" id="mega-solutions" role="menu" aria-label="Solutions">
                 <div className="mega-head">
                   <div className="mega-title">Solutions</div>
                   <div className="mega-note">Enterprise paths</div>
@@ -163,10 +175,16 @@ export default function SiteHeader() {
 
             {/* Security & Trust */}
             <div className="nav-drop">
-              <button className="nav-drop-btn" type="button" aria-expanded="false">
+              <button
+                className="nav-drop-btn"
+                type="button"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="mega-security"
+              >
                 Security &amp; Trust <Chevron />
               </button>
-              <div className="mega small" role="menu">
+              <div className="mega small" id="mega-security" role="menu" aria-label="Security and trust">
                 <MegaItem href="/legal" title="Legal Hub" desc="Central legal and compliance policy hub." />
                 <MegaItem href="/legal/security-overview" title="Security Overview" desc="NIST, HIPAA-trained, privacy, risk, and controls." />
                 <MegaItem href="/capability-statement" title="Capability Statement" desc="One consolidated company capability statement." />
@@ -177,10 +195,16 @@ export default function SiteHeader() {
 
             {/* Resources */}
             <div className="nav-drop">
-              <button className="nav-drop-btn" type="button" aria-expanded="false">
+              <button
+                className="nav-drop-btn"
+                type="button"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="mega-resources"
+              >
                 Resources <Chevron />
               </button>
-              <div className="mega small" role="menu">
+              <div className="mega small" id="mega-resources" role="menu" aria-label="Resources">
                 <MegaItem href="/blog" title="OrenSignal" desc="AI, infrastructure, governance, and market signals." />
                 <MegaItem href="/faqs" title="FAQs" desc="Buyer, technical, security, and procurement answers." />
                 <MegaItem href="/integrations" title="Integrations — Coming Soon" desc="CRM, forms, calendars, automations, and sync paths." />
@@ -190,10 +214,16 @@ export default function SiteHeader() {
 
             {/* Company */}
             <div className="nav-drop">
-              <button className="nav-drop-btn" type="button" aria-expanded="false">
+              <button
+                className="nav-drop-btn"
+                type="button"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="mega-company"
+              >
                 Company <Chevron />
               </button>
-              <div className="mega small" role="menu">
+              <div className="mega small" id="mega-company" role="menu" aria-label="Company">
                 <MegaItem href="/about" title="About" desc="Company, leadership, mission, credibility." />
                 <MegaItem href="/leadership" title="Leadership" desc="Meet the OrenGen executive team." />
                 <MegaItem href="/careers" title="Careers" desc="Open roles and what it's like to work here." />
@@ -211,7 +241,7 @@ export default function SiteHeader() {
 
           <div className="nav-actions og-v6-actions">
             <a className="icon-btn search-btn" href="/search" aria-label="Search">
-              ⌕
+              <span aria-hidden="true">⌕</span>
             </a>
 
             <div className="lang-menu" aria-label="Translate website">
@@ -235,8 +265,6 @@ export default function SiteHeader() {
             </div>
 
             {/* Theme toggle removed — site is locked to its dark-first brand theme. */}
-            <a className="icon-btn cart-btn" href="/cart" aria-label="Cart — Coming Soon" title="Cart — Coming Soon">
-              🛒
             </a>
             <a className="book-btn" href="/contact-us">
               Book a Call
@@ -274,25 +302,35 @@ export default function SiteHeader() {
         </div>
       </header>
 
-      <div className="mobile-panel" id="mobilePanel" aria-hidden="true">
+      <nav className="mobile-panel" id="mobilePanel" aria-label="Mobile site navigation" aria-hidden="true">
         <a href="/">
-          Home <span>→</span>
+          Home <span aria-hidden="true">→</span>
         </a>
         <div className="mobile-group">Products</div>
-        <button className="mobile-acc" type="button" aria-expanded="false">
-          OrenAgents <span className="caret">▾</span>
+        <button
+          className="mobile-acc"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-children-orenagents"
+        >
+          OrenAgents <span className="caret" aria-hidden="true">▾</span>
         </button>
-        <div className="mobile-children">
+        <div className="mobile-children" id="mobile-children-orenagents" hidden>
           <a className="mobile-sub" href="/orenagents">OrenAgents <span>→</span></a>
           <a className="mobile-sub" href="/orenagents/voice">OrenAgents Voice <span>→</span></a>
           <a className="mobile-sub" href="/orenagents/employees">OrenAgents Employees <span>→</span></a>
           <a className="mobile-sub" href="/orenagents/better-together-package">OrenAgents Bundle <span>→</span></a>
         </div>
         <a href="/orennexus">OrenNexus <span>→</span></a>
-        <button className="mobile-acc" type="button" aria-expanded="false">
-          OrenWeb <span className="caret">▾</span>
+        <button
+          className="mobile-acc"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-children-orenweb"
+        >
+          OrenWeb <span className="caret" aria-hidden="true">▾</span>
         </button>
-        <div className="mobile-children">
+        <div className="mobile-children" id="mobile-children-orenweb" hidden>
           <a className="mobile-sub" href="/orenweb">OrenWeb <span>→</span></a>
           <a className="mobile-sub" href="/orenweb/design">OrenWeb Design <span>→</span></a>
           <a className="mobile-sub" href="/orenweb/talk">OrenWeb Talk <span>→</span></a>
@@ -302,27 +340,42 @@ export default function SiteHeader() {
         <a href="/pricing#orenconsulting">OrenConsulting <span>→</span></a>
         <a href="/marketplace">Marketplace — Coming Soon <span>→</span></a>
         <div className="mobile-group">Solutions</div>
-        <button className="mobile-acc" type="button" aria-expanded="false">
-          OrenGov <span className="caret">▾</span>
+        <button
+          className="mobile-acc"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-children-orengov"
+        >
+          OrenGov <span className="caret" aria-hidden="true">▾</span>
         </button>
-        <div className="mobile-children">
+        <div className="mobile-children" id="mobile-children-orengov" hidden>
           <a className="mobile-sub" href="/orengov">OrenGov <span>→</span></a>
           <a className="mobile-sub" href="/orengov/public-sector/state-local">State &amp; Local <span>→</span></a>
           <a className="mobile-sub" href="/orengov/public-sector/education">Education <span>→</span></a>
           <a className="mobile-sub" href="/orengov/defense">Defense <span>→</span></a>
         </div>
-        <button className="mobile-acc" type="button" aria-expanded="false">
-          OrenHealth <span className="caret">▾</span>
+        <button
+          className="mobile-acc"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-children-orenhealth"
+        >
+          OrenHealth <span className="caret" aria-hidden="true">▾</span>
         </button>
-        <div className="mobile-children">
+        <div className="mobile-children" id="mobile-children-orenhealth" hidden>
           <a className="mobile-sub" href="/orenhealth">OrenHealth <span>→</span></a>
           <a className="mobile-sub" href="/orenhealth/specialty-clinics">Specialty Clinics <span>→</span></a>
           <a className="mobile-sub" href="/orenhealth/research">Research <span>→</span></a>
         </div>
-        <button className="mobile-acc" type="button" aria-expanded="false">
-          OrenLegal <span className="caret">▾</span>
+        <button
+          className="mobile-acc"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-children-orenlegal"
+        >
+          OrenLegal <span className="caret" aria-hidden="true">▾</span>
         </button>
-        <div className="mobile-children">
+        <div className="mobile-children" id="mobile-children-orenlegal" hidden>
           <a className="mobile-sub" href="/orenlegal">OrenLegal <span>→</span></a>
           <a className="mobile-sub" href="/orenlegal/law-firms">OrenLegal Law Firms <span>→</span></a>
           <a className="mobile-sub" href="/orenlegal/compliance-ops">OrenLegal Compliance Ops <span>→</span></a>
@@ -345,8 +398,8 @@ export default function SiteHeader() {
         <a href="/contact-us">Book a Call <span>→</span></a>
         <div className="mobile-group">Sign In</div>
         <a href="https://app.orengen.io">Client Portal <span>→</span></a>
-        <a href="https://weshare.orengen.io/login">Partner Portal <span>→</span></a>
-      </div>
+        <a href="https://weshare.orengen.io/login">Partner Portal <span aria-hidden="true">→</span></a>
+      </nav>
     </>
   );
 }

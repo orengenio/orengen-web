@@ -93,7 +93,7 @@ export default function OrenSocialPage() {
                   >
                     See Pricing
                   </a>
-                  <a className="btn btn-secondary" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="btn btn-secondary" href="https://buy.stripe.com/9B63cvfoAbFR5C36JXfQI3R">
                     Start Now
                   </a>
                 </div>
@@ -332,7 +332,7 @@ export default function OrenSocialPage() {
                     <li>Community engagement monitoring</li>
                     <li>Standard monthly reporting</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/9B65kD3FSfW71lNecpfQI3Q">
                     Select Standard →
                   </a>
                 </article>
@@ -359,7 +359,7 @@ export default function OrenSocialPage() {
                     <li>Competitor tracking &amp; analysis</li>
                     <li>Custom weekly reporting</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/9B63cvfoAbFR5C36JXfQI3R">
                     Select Professional →
                   </a>
                 </article>
@@ -385,7 +385,7 @@ export default function OrenSocialPage() {
                     <li>Crisis management playbook</li>
                     <li>Real-time custom dashboard</li>
                   </ul>
-                  <a className="card-link" href="#REPLACE-WITH-YOUR-URL">
+                  <a className="card-link" href="https://buy.stripe.com/28EbJ1a4gdNZ9SjgkxfQI3S">
                     Select Premium →
                   </a>
                 </article>
