@@ -1051,7 +1051,7 @@ export function KanBuilder() {
           ))}
           <button
             onClick={() =>
-              window.open("https://api.orengen.io/booking/og-j39qvisxpas/sc/discovery-meet", "_blank")
+              window.open("https://api.orengen.io/booking/coffeechat", "_blank")
             }
             style={{
               padding: "10px 24px",
