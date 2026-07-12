@@ -3,6 +3,7 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
+import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
 
 /**
  * Pricing page.
@@ -26,6 +27,63 @@ export const metadata: Metadata = {
 };
 
 const ACCENT = { color: "var(--og-orange)" } as const;
+
+// Prices, setup fees, and the "Most Popular" (featured) tier are preserved
+// exactly from the live pricing page; annual is derived (monthly × 10) per the
+// account-wide policy in the 2026 catalog.
+const EMPLOYEE_PLANS: PricingPlan[] = [
+  {
+    name: "Standard",
+    monthly: 97,
+    unit: "1 AI Employee",
+    setup: "+ $497 one-time setup",
+    description:
+      "Buy-Lingual™, lead qualification, CRM integration, task automation.",
+  },
+  {
+    name: "Professional",
+    monthly: 197,
+    unit: "3 AI Employees",
+    setup: "+ $997 one-time setup",
+    description:
+      "Advanced automation, multi-CRM integration, priority support.",
+    featured: true,
+  },
+  {
+    name: "Premium",
+    monthly: 497,
+    unit: "Unlimited AI Employees",
+    setup: "+ $2,497 one-time setup",
+    description:
+      "Custom AI personalities, dedicated account manager, full automation stack.",
+  },
+];
+
+const VOICE_PLANS: PricingPlan[] = [
+  {
+    name: "Standard",
+    monthly: 197,
+    unit: "1 AI Voice Agent",
+    setup: "+ $997 one-time setup",
+    description:
+      "Inbound call handling, lead qualification, CRM integration.",
+  },
+  {
+    name: "Professional",
+    monthly: 397,
+    unit: "3 AI Voice Agents",
+    setup: "+ $1,997 one-time setup",
+    description: "Inbound + outbound, appointment booking, multi-CRM.",
+    featured: true,
+  },
+  {
+    name: "Premium",
+    monthly: 797,
+    unit: "Unlimited Voice Agents",
+    setup: "+ $4,997 one-time setup",
+    description: "Full Buy-Lingual™ suite, custom voices, SLA guarantee.",
+  },
+];
 
 export default function PricingPage() {
   return (
@@ -81,32 +139,7 @@ export default function PricingPage() {
                   world languages included.
                 </p>
               </header>
-              <div className="cost-grid reveal">
-                <article className="sector-card">
-                  <div className="step">Standard</div>
-                  <h3>$97/mo · 1 AI Employee</h3>
-                  <p>
-                    + $497 setup. Buy-Lingual™, lead qualification, CRM
-                    integration, task automation.
-                  </p>
-                </article>
-                <article className="sector-card">
-                  <div className="step">Professional · Most Popular</div>
-                  <h3>$197/mo · 3 AI Employees</h3>
-                  <p>
-                    + $997 setup. Advanced automation, multi-CRM integration,
-                    priority support.
-                  </p>
-                </article>
-                <article className="sector-card">
-                  <div className="step">Premium</div>
-                  <h3>$497/mo · Unlimited AI Employees</h3>
-                  <p>
-                    + $2,497 setup. Custom AI personalities, dedicated account
-                    manager, full automation stack.
-                  </p>
-                </article>
-              </div>
+              <PricingTiers plans={EMPLOYEE_PLANS} />
             </div>
           </section>
 
@@ -123,32 +156,7 @@ export default function PricingPage() {
                   languages.
                 </p>
               </header>
-              <div className="cost-grid reveal">
-                <article className="sector-card">
-                  <div className="step">Standard</div>
-                  <h3>$197/mo · 1 AI Voice Agent</h3>
-                  <p>
-                    + $997 setup. Inbound call handling, lead qualification, CRM
-                    integration.
-                  </p>
-                </article>
-                <article className="sector-card">
-                  <div className="step">Professional · Most Popular</div>
-                  <h3>$397/mo · 3 AI Voice Agents</h3>
-                  <p>
-                    + $1,997 setup. Inbound + outbound, appointment booking,
-                    multi-CRM.
-                  </p>
-                </article>
-                <article className="sector-card">
-                  <div className="step">Premium</div>
-                  <h3>$797/mo · Unlimited Voice Agents</h3>
-                  <p>
-                    + $4,997 setup. Full Buy-Lingual™ suite, custom voices, SLA
-                    guarantee.
-                  </p>
-                </article>
-              </div>
+              <PricingTiers plans={VOICE_PLANS} />
             </div>
           </section>
 

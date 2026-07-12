@@ -271,7 +271,7 @@ export default function SiteRuntime() {
        glow simply centres on the card (its CSS fallback), so touch/no-JS still
        get a valid effect. */
     document
-      .querySelectorAll<HTMLElement>(".sector-card, .cost-card")
+      .querySelectorAll<HTMLElement>(".sector-card, .cost-card, .price-card")
       .forEach((card) => {
         on(card, "pointermove", (event) => {
           if (!(event instanceof PointerEvent)) return;
