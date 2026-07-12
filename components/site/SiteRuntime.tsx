@@ -265,6 +265,22 @@ export default function SiteRuntime() {
       .forEach((el) => revealObserver.observe(el));
     cleanups.push(() => revealObserver.disconnect());
 
+    /* ===== Spotlight glow on cards (pointer-tracked) =====
+       Feeds the cursor position into the --mx/--my custom properties the
+       .sector-card/.cost-card spotlight in globals.css reads. Without this the
+       glow simply centres on the card (its CSS fallback), so touch/no-JS still
+       get a valid effect. */
+    document
+      .querySelectorAll<HTMLElement>(".sector-card, .cost-card")
+      .forEach((card) => {
+        on(card, "pointermove", (event) => {
+          if (!(event instanceof PointerEvent)) return;
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+          card.style.setProperty("--my", `${event.clientY - rect.top}px`);
+        });
+      });
+
     /* ===== Section-head parallax ===== */
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const parallaxHeaders = Array.from(document.querySelectorAll<HTMLElement>(".section-head"));

@@ -736,6 +736,7 @@
     @media (min-width: 760px) { .sector-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 1120px) { .sector-grid { grid-template-columns: repeat(4, 1fr); } }
     .sector-card {
+      --og-glow: 204, 85, 0; /* brand orange, as RGB channels for the spotlight */
       min-height: 500px;
       display: flex;
       flex-direction: column;
@@ -745,21 +746,31 @@
       background: var(--og-surface);
       position: relative;
       overflow: hidden;
-      transition: .3s var(--og-ease);
+      transition: transform .3s var(--og-ease), border-color .3s var(--og-ease), box-shadow .3s var(--og-ease);
     }
-    .sector-card::before { content:""; position:absolute; inset:0 0 auto; height: 3px; background: var(--og-orange); transform: scaleX(.16); transform-origin: left; transition: .35s var(--og-ease); }
+    /* Pointer-tracked spotlight glow (brand orange). --mx/--my are set per-card
+       in SiteRuntime and fall back to the card centre, so the glow still works
+       without JS and on touch. Sits behind card content (z-index below .card > *). */
+    .sector-card::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius: inherit;
+      background: radial-gradient(circle 240px at var(--mx, 50%) var(--my, 50%), rgba(var(--og-glow), .20), transparent 60%);
+      opacity: 0;
+      transition: opacity .35s var(--og-ease);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .sector-card > * { position: relative; z-index: 1; }
+    .sector-card::before { content:""; position:absolute; inset:0 0 auto; height: 3px; background: var(--og-orange); transform: scaleX(.16); transform-origin: left; transition: .35s var(--og-ease); z-index: 2; }
     .sector-card h3, .sector-card p, .sector-card li, .sector-card .sector-trust { transition: color .25s var(--og-ease); }
     .sector-card:hover {
       transform: translateY(-7px);
-      border-color: rgba(204,85,0,.42);
-      box-shadow: var(--og-shadow);
-      background: #ffffff;
-      color: var(--og-ink);
+      border-color: rgba(var(--og-glow), .55);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .35), 0 0 34px rgba(var(--og-glow), .16);
     }
-    .sector-card:hover p,
-    .sector-card:hover li,
-    .sector-card:hover .sector-trust { color: #334155; }
-    .sector-card:hover .sector-trust { border-top-color: rgba(0,37,75,.14); }
+    .sector-card:hover::after { opacity: 1; }
     .sector-card:hover::before { transform: scaleX(1); }
     .sector-card p { color: var(--og-text-muted); font-size: 14px; margin: 14px 0; }
     .sector-card ul { margin: 0 0 18px; padding: 0; list-style: none; }
@@ -2213,6 +2224,7 @@
   @media (min-width: 900px) { .cost-grid { grid-template-columns: repeat(3, 1fr); } }
 
   .cost-card {
+    --og-glow: 204, 85, 0; /* brand orange, as RGB channels for the spotlight */
     position: relative;
     overflow:hidden;
     padding: 28px;
@@ -2220,15 +2232,26 @@
     border-radius: 26px;
     background: rgba(255,255,255,.055);
     box-shadow: var(--og-shadow);
+    transition: transform .3s var(--og-ease), border-color .3s var(--og-ease), box-shadow .3s var(--og-ease);
   }
+  /* Pointer-tracked spotlight glow — see .sector-card::after for how --mx/--my work. */
   .cost-card::before {
     content:"";
     position:absolute;
     inset:0;
-    background: transparent;
+    border-radius: inherit;
+    background: radial-gradient(circle 240px at var(--mx, 50%) var(--my, 50%), rgba(var(--og-glow), .20), transparent 60%);
     opacity: 0;
+    transition: opacity .35s var(--og-ease);
     pointer-events:none;
+    z-index: 0;
   }
+  .cost-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(var(--og-glow), .55);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .35), 0 0 34px rgba(var(--og-glow), .16);
+  }
+  .cost-card:hover::before { opacity: 1; }
   .cost-card > * { position:relative; z-index:1; }
   .cost-num {
     color: var(--og-orange);
