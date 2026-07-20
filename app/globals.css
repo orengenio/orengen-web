@@ -479,6 +479,10 @@
       line-height: 1.62;
     }
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    /* When the surrounding header is centered, center its action buttons too
+       (flex children ignore the parent's text-align). Applies site-wide to
+       every centered hero/CTA. */
+    .section-head.center .cta-row { justify-content: center; }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -735,6 +739,11 @@
     .sector-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 16px; }
     @media (min-width: 760px) { .sector-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 1120px) { .sector-grid { grid-template-columns: repeat(4, 1fr); } }
+    /* Compact variant for short-content card grids (e.g. contact info): cards
+       size to their content instead of the tall 500px product-card minimum,
+       and the row auto-fits + centers so 3 cards don't leave a dead column. */
+    .sector-grid.compact { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); max-width: 1040px; margin-inline: auto; }
+    .sector-grid.compact .sector-card { min-height: 0; }
     .sector-card {
       --og-glow: 204, 85, 0; /* brand orange, as RGB channels for the spotlight */
       min-height: 500px;
