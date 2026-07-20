@@ -3,6 +3,7 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
+import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
 
 /**
  * OrenAgents Employees page.
@@ -26,6 +27,70 @@ export const metadata: Metadata = {
 };
 
 const ACCENT = { color: "var(--og-orange)" } as const;
+
+// Monthly prices, setup fees, feature lists, and the featured tier are
+// preserved exactly from the live page; existing monthly Stripe links kept and
+// paired with the official annual links (used when Yearly is toggled). Annual
+// price is monthly × 10 per the account-wide catalog policy.
+const EMPLOYEE_PLANS: PricingPlan[] = [
+  {
+    name: "Standard",
+    monthly: 97,
+    setup: "+ $497 one-time setup",
+    features: [
+      "1 AI Employee (chat)",
+      "5,000 conversations/mo",
+      "Website chat widget",
+      "Lead qualification",
+      "FAQ auto-response",
+      "CRM integration",
+      "Business hours routing",
+      "Basic analytics",
+    ],
+    ctaLabel: "Activate",
+    ctaHref: "https://buy.stripe.com/8x214nb8k8tFc0r1pDfQI3v",
+    ctaHrefAnnual: "https://buy.stripe.com/aFa7sLgsE7pB6G7d8lfQI3w",
+  },
+  {
+    name: "Professional",
+    monthly: 197,
+    setup: "+ $997 one-time setup",
+    featured: true,
+    features: [
+      "Everything in Standard",
+      "3 AI Employees (chat + SMS)",
+      "15,000 conversations/mo",
+      "Multi-channel deployment",
+      "Appointment scheduling",
+      "Custom training data",
+      "Handoff to human agents",
+      "Advanced analytics",
+      "Priority support",
+    ],
+    ctaLabel: "Activate",
+    ctaHref: "https://buy.stripe.com/7sY4gz1xK8tF6G75FTfQI3x",
+    ctaHrefAnnual: "https://buy.stripe.com/bJeaEXb8k7pB2pR8S5fQI3y",
+  },
+  {
+    name: "Premium",
+    monthly: 497,
+    setup: "+ $2,497 one-time setup",
+    features: [
+      "Everything in Professional",
+      "50 AI Employees",
+      "Unlimited conversations",
+      "Multilingual (50+ languages)",
+      "Custom workflows & triggers",
+      "API access",
+      "White-label ready",
+      "Revenue attribution",
+      "Dedicated success manager",
+    ],
+    ctaLabel: "Activate",
+    ctaHref: "https://buy.stripe.com/6oUaEX5O0fW73tVfgtfQI3z",
+    ctaHrefAnnual: "https://buy.stripe.com/3cIcN5dgsaBN0hJ7O1fQI3A",
+  },
+];
 
 export default function OrenAgentsEmployeesPage() {
   return (
@@ -267,74 +332,7 @@ export default function OrenAgentsEmployeesPage() {
                   <span className="chip">Annual Save up to $967</span>
                 </div>
               </header>
-              <div className="cost-grid reveal">
-                <article className="sector-card">
-                  <div className="step">Standard</div>
-                  <h3>
-                    $97 <span style={ACCENT}>/mo</span>
-                  </h3>
-                  <p>+ $497 one-time setup</p>
-                  <ul>
-                    <li>1 AI Employee (chat)</li>
-                    <li>5,000 conversations/mo</li>
-                    <li>Website chat widget</li>
-                    <li>Lead qualification</li>
-                    <li>FAQ auto-response</li>
-                    <li>CRM integration</li>
-                    <li>Business hours routing</li>
-                    <li>Basic analytics</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/8x214nb8k8tFc0r1pDfQI3v">
-                    Activate →
-                  </a>
-                </article>
-                <article className="sector-card">
-                  <div className="step">Most Popular</div>
-                  <h3>
-                    Professional $197 <span style={ACCENT}>/mo</span>
-                  </h3>
-                  <p>+ $997 one-time setup</p>
-                  <ul>
-                    <li>
-                      <strong>Everything in Standard</strong>
-                    </li>
-                    <li>3 AI Employees (chat + SMS)</li>
-                    <li>15,000 conversations/mo</li>
-                    <li>Multi-channel deployment</li>
-                    <li>Appointment scheduling</li>
-                    <li>Custom training data</li>
-                    <li>Handoff to human agents</li>
-                    <li>Advanced analytics</li>
-                    <li>Priority support</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/7sY4gz1xK8tF6G75FTfQI3x">
-                    Activate →
-                  </a>
-                </article>
-                <article className="sector-card">
-                  <div className="step">Premium</div>
-                  <h3>
-                    $497 <span style={ACCENT}>/mo</span>
-                  </h3>
-                  <p>+ $2,497 one-time setup</p>
-                  <ul>
-                    <li>
-                      <strong>Everything in Professional</strong>
-                    </li>
-                    <li>50 AI Employees</li>
-                    <li>Unlimited conversations</li>
-                    <li>Multilingual (50+ languages)</li>
-                    <li>Custom workflows &amp; triggers</li>
-                    <li>API access</li>
-                    <li>White-label ready</li>
-                    <li>Revenue attribution</li>
-                    <li>Dedicated success manager</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/6oUaEX5O0fW73tVfgtfQI3z">
-                    Activate →
-                  </a>
-                </article>
-              </div>
+              <PricingTiers plans={EMPLOYEE_PLANS} />
             </div>
           </section>
 

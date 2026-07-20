@@ -3,6 +3,7 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
+import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
 
 /**
  * OrenWeb — Design page.
@@ -28,6 +29,68 @@ export const metadata: Metadata = {
 };
 
 const ACCENT = { color: "var(--og-orange)" } as const;
+
+// Monthly prices, setup fees, feature lists, and featured tier preserved
+// exactly; existing monthly Stripe links kept, official annual links added.
+const DESIGN_PLANS: PricingPlan[] = [
+  {
+    name: "Standard",
+    monthly: 247,
+    setup: "+ $997 one-time setup",
+    features: [
+      "Up to 5 pages",
+      "Mobile-responsive design",
+      "Basic SEO setup",
+      "Contact form integration",
+      "SSL certificate",
+      "Google Analytics",
+      "Hosting included",
+      "Monthly maintenance",
+    ],
+    ctaLabel: "Activate",
+    ctaHref: "https://buy.stripe.com/00wcN51xK5ht9SjgkxfQI3N",
+    ctaHrefAnnual: "https://buy.stripe.com/4gMaEXb8kbFRe8zb0dfQI3W",
+  },
+  {
+    name: "Professional",
+    monthly: 497,
+    setup: "+ $2,497 one-time setup",
+    featured: true,
+    features: [
+      "Everything in Standard",
+      "Up to 15 pages",
+      "Custom WordPress/CMS",
+      "Blog setup & templates",
+      "Advanced SEO & schema",
+      "Speed optimization",
+      "CRM & calendar integration",
+      "3 revision rounds/month",
+      "Weekly maintenance",
+    ],
+    ctaLabel: "Activate",
+    ctaHref: "https://buy.stripe.com/eVq9AT90ch0b2pR5FTfQI3O",
+    ctaHrefAnnual: "https://buy.stripe.com/28E00ja4gfW7e8zc4hfQI3X",
+  },
+  {
+    name: "Premium",
+    monthly: 997,
+    setup: "+ $4,997 one-time setup",
+    features: [
+      "Everything in Professional",
+      "Unlimited pages",
+      "E-commerce / portals",
+      "Custom functionality & APIs",
+      "A/B testing setup",
+      "Conversion tracking",
+      "Multi-language support",
+      "Unlimited revisions",
+      "Dedicated web team",
+    ],
+    ctaLabel: "Activate",
+    ctaHref: "https://buy.stripe.com/7sY28r5O025hc0r5FTfQI3P",
+    ctaHrefAnnual: "https://buy.stripe.com/9B64gzfoA6lxfcD3xLfQI3Y",
+  },
+];
 
 export default function OrenWebDesignPage() {
   return (
@@ -269,75 +332,7 @@ export default function OrenWebDesignPage() {
                   </span>
                 </div>
               </header>
-              <div className="cost-grid reveal">
-                <article className="sector-card">
-                  <h3>Standard</h3>
-                  <div className="num">
-                    $247<span>/mo</span>
-                  </div>
-                  <div className="sector-trust">+ $997 one-time setup</div>
-                  <ul>
-                    <li>Up to 5 pages</li>
-                    <li>Mobile-responsive design</li>
-                    <li>Basic SEO setup</li>
-                    <li>Contact form integration</li>
-                    <li>SSL certificate</li>
-                    <li>Google Analytics</li>
-                    <li>Hosting included</li>
-                    <li>Monthly maintenance</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/00wcN51xK5ht9SjgkxfQI3N">
-                    Activate →
-                  </a>
-                </article>
-                <article className="sector-card">
-                  <div className="step">Most Popular</div>
-                  <h3>Professional</h3>
-                  <div className="num">
-                    $497<span>/mo</span>
-                  </div>
-                  <div className="sector-trust">+ $2,497 one-time setup</div>
-                  <ul>
-                    <li>
-                      <strong>Everything in Standard</strong>
-                    </li>
-                    <li>Up to 15 pages</li>
-                    <li>Custom WordPress/CMS</li>
-                    <li>Blog setup &amp; templates</li>
-                    <li>Advanced SEO &amp; schema</li>
-                    <li>Speed optimization</li>
-                    <li>CRM &amp; calendar integration</li>
-                    <li>3 revision rounds/month</li>
-                    <li>Weekly maintenance</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/eVq9AT90ch0b2pR5FTfQI3O">
-                    Activate →
-                  </a>
-                </article>
-                <article className="sector-card">
-                  <h3>Premium</h3>
-                  <div className="num">
-                    $997<span>/mo</span>
-                  </div>
-                  <div className="sector-trust">+ $4,997 one-time setup</div>
-                  <ul>
-                    <li>
-                      <strong>Everything in Professional</strong>
-                    </li>
-                    <li>Unlimited pages</li>
-                    <li>E-commerce / portals</li>
-                    <li>Custom functionality &amp; APIs</li>
-                    <li>A/B testing setup</li>
-                    <li>Conversion tracking</li>
-                    <li>Multi-language support</li>
-                    <li>Unlimited revisions</li>
-                    <li>Dedicated web team</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/7sY28r5O025hc0r5FTfQI3P">
-                    Activate →
-                  </a>
-                </article>
-              </div>
+              <PricingTiers plans={DESIGN_PLANS} />
             </div>
           </section>
 

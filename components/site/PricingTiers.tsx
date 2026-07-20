@@ -37,7 +37,10 @@ export type PricingPlan = {
   /** Override the badge label (defaults to "Most Popular" when featured). */
   badge?: string;
   ctaLabel?: string;
+  /** CTA link for monthly billing (falls back to the booking link). */
   ctaHref?: string;
+  /** CTA link used when Yearly is active (falls back to ctaHref). */
+  ctaHrefAnnual?: string;
 };
 
 /** Tweens the displayed integer between values so the price "rolls" on toggle. */
@@ -127,6 +130,10 @@ export default function PricingTiers({
         {plans.map((plan) => {
           const annual = plan.annual ?? plan.monthly * ANNUAL_MULTIPLIER;
           const featured = !!plan.featured;
+          const ctaHref =
+            (yearly && plan.ctaHrefAnnual) ||
+            plan.ctaHref ||
+            BOOKING_URL;
           return (
             <article
               key={plan.name}
@@ -159,7 +166,7 @@ export default function PricingTiers({
               )}
               <a
                 className={`btn ${featured ? "btn-primary" : "btn-secondary"} price-cta`}
-                href={plan.ctaHref ?? BOOKING_URL}
+                href={ctaHref}
                 target="_blank"
                 rel="noopener noreferrer"
               >

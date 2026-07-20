@@ -3,6 +3,7 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
+import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
 
 /**
  * OrenAgents "Better Together" Package page.
@@ -26,6 +27,81 @@ export const metadata: Metadata = {
 };
 
 const ACCENT = { color: "var(--og-orange)" } as const;
+
+// Monthly prices, setup fees, descriptions, feature lists, and the featured
+// ("Most Popular" = Growth) / "Best Value" (Scale) treatments preserved
+// exactly; existing monthly Stripe links kept, official annual links added.
+const BUNDLE_PLANS: PricingPlan[] = [
+  {
+    name: "Launch Bundle",
+    monthly: 297,
+    setup: "$997 setup",
+    description:
+      "For businesses ready to stop missing calls, leads, and basic admin work.",
+    features: [
+      "AI Voice Agent",
+      "AI Employee",
+      "Inbound call handling",
+      "Basic outbound follow-up",
+      "Appointment booking",
+      "CRM notes and task updates",
+      "Lead capture and routing",
+      "Basic workflow setup",
+      "Standard onboarding",
+    ],
+    ctaLabel: "Activate Launch Bundle",
+    ctaHref: "https://buy.stripe.com/3cI14n1xK9xJaWn9W9fQI3K",
+    ctaHrefAnnual: "https://buy.stripe.com/28EfZh3FSbFR8OfecpfQI3T",
+  },
+  {
+    name: "Growth Bundle",
+    monthly: 597,
+    setup: "$1,997 setup",
+    featured: true,
+    description:
+      "For growing businesses that need every lead answered, followed up with, qualified, booked, and tracked.",
+    features: [
+      "Everything in Launch",
+      "Advanced AI Voice Agent",
+      "Advanced AI Employee",
+      "Lead qualification",
+      "Missed-call recovery",
+      "Multi-step follow-up",
+      "CRM pipeline updates",
+      "Appointment reminders",
+      "Admin task automation",
+      "Sales/support workflow setup",
+      "Priority onboarding",
+    ],
+    ctaLabel: "Activate Growth Bundle",
+    ctaHref: "https://buy.stripe.com/cNicN590c11daWn9W9fQI3L",
+    ctaHrefAnnual: "https://buy.stripe.com/00w14nekw8tFe8z7O1fQI3U",
+  },
+  {
+    name: "Scale Bundle",
+    monthly: 1297,
+    setup: "$3,997 setup",
+    badge: "Best Value",
+    description:
+      "For serious operators that want an AI-powered front office, sales desk, and admin layer.",
+    features: [
+      "Everything in Growth",
+      "Premium AI Voice Agent",
+      "Premium AI Employee Workforce",
+      "Advanced outbound campaigns",
+      "Multi-language support",
+      "Advanced CRM automation",
+      "Lead routing and escalation",
+      "Reporting and performance review",
+      "Custom workflow architecture",
+      "Dedicated launch support",
+      "Priority optimization",
+    ],
+    ctaLabel: "Activate Scale Bundle",
+    ctaHref: "https://buy.stripe.com/dRm4gzdgs8tFfcD5FTfQI3M",
+    ctaHrefAnnual: "https://buy.stripe.com/4gMeVd1xKeS3c0rgkxfQI3V",
+  },
+];
 
 export default function OrenAgentsBetterTogetherPage() {
   return (
@@ -329,104 +405,7 @@ export default function OrenAgentsBetterTogetherPage() {
                   </span>
                 </div>
               </header>
-              <div className="cost-grid reveal">
-                {/* Launch Bundle */}
-                <article className="sector-card">
-                  <div className="step">Launch Bundle</div>
-                  <h3>
-                    $297<span style={ACCENT}>/mo</span>
-                  </h3>
-                  <div className="sector-trust">
-                    <span style={ACCENT}>$997 setup</span>
-                  </div>
-                  <p>
-                    For businesses ready to stop missing calls, leads, and basic
-                    admin work.
-                  </p>
-                  <ul>
-                    <li>AI Voice Agent</li>
-                    <li>AI Employee</li>
-                    <li>Inbound call handling</li>
-                    <li>Basic outbound follow-up</li>
-                    <li>Appointment booking</li>
-                    <li>CRM notes and task updates</li>
-                    <li>Lead capture and routing</li>
-                    <li>Basic workflow setup</li>
-                    <li>Standard onboarding</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/3cI14n1xK9xJaWn9W9fQI3K">
-                    Activate Launch Bundle →
-                  </a>
-                </article>
-
-                {/* Growth Bundle */}
-                <article className="sector-card">
-                  <div className="step">Most Popular</div>
-                  <h3>Growth Bundle</h3>
-                  <div className="num" style={{ marginBottom: "14px" }}>
-                    $597<span style={ACCENT}>/mo</span>
-                  </div>
-                  <div className="sector-trust">
-                    <span style={ACCENT}>$1,997 setup</span>
-                  </div>
-                  <p>
-                    For growing businesses that need every lead answered, followed
-                    up with, qualified, booked, and tracked.
-                  </p>
-                  <ul>
-                    <li>
-                      <strong>Everything in Launch</strong>
-                    </li>
-                    <li>Advanced AI Voice Agent</li>
-                    <li>Advanced AI Employee</li>
-                    <li>Lead qualification</li>
-                    <li>Missed-call recovery</li>
-                    <li>Multi-step follow-up</li>
-                    <li>CRM pipeline updates</li>
-                    <li>Appointment reminders</li>
-                    <li>Admin task automation</li>
-                    <li>Sales/support workflow setup</li>
-                    <li>Priority onboarding</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/cNicN590c11daWn9W9fQI3L">
-                    Activate Growth Bundle →
-                  </a>
-                </article>
-
-                {/* Scale Bundle */}
-                <article className="sector-card">
-                  <div className="step">Best Value</div>
-                  <h3>Scale Bundle</h3>
-                  <div className="num" style={{ marginBottom: "14px" }}>
-                    $1,297<span style={ACCENT}>/mo</span>
-                  </div>
-                  <div className="sector-trust">
-                    <span style={ACCENT}>$3,997 setup</span>
-                  </div>
-                  <p>
-                    For serious operators that want an AI-powered front office,
-                    sales desk, and admin layer.
-                  </p>
-                  <ul>
-                    <li>
-                      <strong>Everything in Growth</strong>
-                    </li>
-                    <li>Premium AI Voice Agent</li>
-                    <li>Premium AI Employee Workforce</li>
-                    <li>Advanced outbound campaigns</li>
-                    <li>Multi-language support</li>
-                    <li>Advanced CRM automation</li>
-                    <li>Lead routing and escalation</li>
-                    <li>Reporting and performance review</li>
-                    <li>Custom workflow architecture</li>
-                    <li>Dedicated launch support</li>
-                    <li>Priority optimization</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/dRm4gzdgs8tFfcD5FTfQI3M">
-                    Activate Scale Bundle →
-                  </a>
-                </article>
-              </div>
+              <PricingTiers plans={BUNDLE_PLANS} />
             </div>
           </section>
 

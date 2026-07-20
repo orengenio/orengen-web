@@ -3,6 +3,7 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
+import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
 
 /**
  * OrenSocial page.
@@ -49,13 +50,64 @@ const SOURCE = {
   fontSize: "12px",
   opacity: 0.7,
 } as const;
-const PRICE = {
-  fontSize: "clamp(34px,4vw,50px)",
-  fontWeight: 950,
-  letterSpacing: "-.06em",
-  lineHeight: 1,
-} as const;
-const PRICE_UNIT = { fontSize: ".4em", fontWeight: 700, opacity: 0.7 } as const;
+// Monthly prices, $0 setup, feature lists, and featured tier preserved
+// exactly; existing monthly Stripe links kept, official annual links added.
+const SOCIAL_PLANS: PricingPlan[] = [
+  {
+    name: "Standard",
+    monthly: 97,
+    setup: "$0 setup fee",
+    features: [
+      "3 social profiles managed",
+      "30 optimized posts/mo",
+      "Managed content calendar",
+      "Graphic design included",
+      "Hashtag & keyword strategy",
+      "Community engagement monitoring",
+      "Standard monthly reporting",
+    ],
+    ctaLabel: "Select Standard",
+    ctaHref: "https://buy.stripe.com/9B65kD3FSfW71lNecpfQI3Q",
+    ctaHrefAnnual: "https://buy.stripe.com/6oU28r7W88tFggHd8lfQI3Z",
+  },
+  {
+    name: "Professional",
+    monthly: 247,
+    setup: "$0 setup fee",
+    featured: true,
+    features: [
+      "Everything in Standard",
+      "10 social profiles managed",
+      "Unlimited scheduled posts",
+      "AI content drafting assistant",
+      "Proactive engagement & response",
+      "Short-form video editing (Reels/TikTok)",
+      "Competitor tracking & analysis",
+      "Custom weekly reporting",
+    ],
+    ctaLabel: "Select Professional",
+    ctaHref: "https://buy.stripe.com/9B63cvfoAbFR5C36JXfQI3R",
+    ctaHrefAnnual: "https://buy.stripe.com/bJefZhfoAeS31lNd8lfQI40",
+  },
+  {
+    name: "Premium",
+    monthly: 497,
+    setup: "$0 setup fee",
+    features: [
+      "Everything in Professional",
+      "25+ social profiles managed",
+      "Unlimited everything (posts, edits)",
+      "Social listening & sentiment analysis",
+      "Long-form video production & clipping",
+      "Paid social ad management integration",
+      "Crisis management playbook",
+      "Real-time custom dashboard",
+    ],
+    ctaLabel: "Select Premium",
+    ctaHref: "https://buy.stripe.com/28EbJ1a4gdNZ9SjgkxfQI3S",
+    ctaHrefAnnual: "https://buy.stripe.com/6oUeVd90cdNZ6G7gkxfQI41",
+  },
+];
 
 export default function OrenSocialPage() {
   return (
@@ -313,83 +365,7 @@ export default function OrenSocialPage() {
                   </span>
                 </div>
               </header>
-              <div className="cost-grid reveal">
-                {/* STANDARD */}
-                <article className="sector-card">
-                  <div className="step">Standard</div>
-                  <div style={PRICE}>
-                    $97<span style={PRICE_UNIT}>/mo</span>
-                  </div>
-                  <div style={{ ...ACCENT, fontWeight: 700, marginTop: "8px" }}>
-                    $0 setup fee
-                  </div>
-                  <ul>
-                    <li>3 social profiles managed</li>
-                    <li>30 optimized posts/mo</li>
-                    <li>Managed content calendar</li>
-                    <li>Graphic design included</li>
-                    <li>Hashtag &amp; keyword strategy</li>
-                    <li>Community engagement monitoring</li>
-                    <li>Standard monthly reporting</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/9B65kD3FSfW71lNecpfQI3Q">
-                    Select Standard →
-                  </a>
-                </article>
-
-                {/* PROFESSIONAL */}
-                <article className="sector-card">
-                  <div className="step">Most Popular</div>
-                  <div className="step">Professional</div>
-                  <div style={PRICE}>
-                    $247<span style={PRICE_UNIT}>/mo</span>
-                  </div>
-                  <div style={{ ...ACCENT, fontWeight: 700, marginTop: "8px" }}>
-                    $0 setup fee
-                  </div>
-                  <ul>
-                    <li>
-                      <strong>Everything in Standard</strong>
-                    </li>
-                    <li>10 social profiles managed</li>
-                    <li>Unlimited scheduled posts</li>
-                    <li>AI content drafting assistant</li>
-                    <li>Proactive engagement &amp; response</li>
-                    <li>Short-form video editing (Reels/TikTok)</li>
-                    <li>Competitor tracking &amp; analysis</li>
-                    <li>Custom weekly reporting</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/9B63cvfoAbFR5C36JXfQI3R">
-                    Select Professional →
-                  </a>
-                </article>
-
-                {/* PREMIUM */}
-                <article className="sector-card">
-                  <div className="step">Premium</div>
-                  <div style={PRICE}>
-                    $497<span style={PRICE_UNIT}>/mo</span>
-                  </div>
-                  <div style={{ ...ACCENT, fontWeight: 700, marginTop: "8px" }}>
-                    $0 setup fee
-                  </div>
-                  <ul>
-                    <li>
-                      <strong>Everything in Professional</strong>
-                    </li>
-                    <li>25+ social profiles managed</li>
-                    <li>Unlimited everything (posts, edits)</li>
-                    <li>Social listening &amp; sentiment analysis</li>
-                    <li>Long-form video production &amp; clipping</li>
-                    <li>Paid social ad management integration</li>
-                    <li>Crisis management playbook</li>
-                    <li>Real-time custom dashboard</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/28EbJ1a4gdNZ9SjgkxfQI3S">
-                    Select Premium →
-                  </a>
-                </article>
-              </div>
+              <PricingTiers plans={SOCIAL_PLANS} />
             </div>
           </section>
 
