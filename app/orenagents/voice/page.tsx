@@ -3,6 +3,7 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
+import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
 
 /**
  * OrenAgents Voice page.
@@ -28,6 +29,69 @@ export const metadata: Metadata = {
 };
 
 const ACCENT = { color: "var(--og-orange)" } as const;
+
+// Monthly prices, setup fees, feature lists, and featured tier preserved
+// exactly; existing monthly Stripe links kept, official annual links added.
+const VOICE_PLANS: PricingPlan[] = [
+  {
+    name: "Standard",
+    monthly: 197,
+    setup: "+ $997 one-time setup",
+    features: [
+      "1 AI Voice Agent",
+      "500 minutes/mo",
+      "Inbound call handling",
+      "Basic call routing",
+      "Voicemail detection",
+      "Call recording & transcripts",
+      "CRM logging",
+      "Standard voices",
+      "Email support",
+    ],
+    ctaLabel: "Activate",
+    ctaHref: "https://buy.stripe.com/00w00jdgsfW7c0rc4hfQI3B",
+    ctaHrefAnnual: "https://buy.stripe.com/00w9AT4JW39l2pR0lzfQI3C",
+  },
+  {
+    name: "Professional",
+    monthly: 397,
+    setup: "+ $1,997 one-time setup",
+    featured: true,
+    features: [
+      "Everything in Standard",
+      "3 AI Voice Agents",
+      "2,000 minutes/mo",
+      "Inbound + outbound campaigns",
+      "Appointment scheduling",
+      "Call transfers to live agents",
+      "Custom voice cloning",
+      "Multi-language support",
+      "Priority support",
+    ],
+    ctaLabel: "Activate",
+    ctaHref: "https://buy.stripe.com/14AeVd90c4dpc0r0lzfQI3D",
+    ctaHrefAnnual: "https://buy.stripe.com/cNi8wP0tGeS3c0recpfQI3E",
+  },
+  {
+    name: "Premium",
+    monthly: 797,
+    setup: "+ $4,997 one-time setup",
+    features: [
+      "Everything in Professional",
+      "50 AI Voice Agents",
+      "5,000 minutes/mo",
+      "Custom call flows",
+      "Simultaneous calls (25+)",
+      "Sentiment analysis",
+      "API & webhook access",
+      "White-label ready",
+      "Dedicated success manager",
+    ],
+    ctaLabel: "Activate",
+    ctaHref: "https://buy.stripe.com/00w28r7W86lx3tVfgtfQI3F",
+    ctaHrefAnnual: "https://buy.stripe.com/3cIeVdekw8tF6G78S5fQI3G",
+  },
+];
 
 export default function OrenAgentsVoicePage() {
   return (
@@ -267,76 +331,7 @@ export default function OrenAgentsVoicePage() {
                   </span>
                 </div>
               </header>
-              <div className="cost-grid reveal">
-                <article className="sector-card">
-                  <div className="step">Standard</div>
-                  <div>
-                    <span style={ACCENT}>$197</span> /mo
-                  </div>
-                  <div className="sector-trust">+ $997 one-time setup</div>
-                  <ul>
-                    <li>1 AI Voice Agent</li>
-                    <li>500 minutes/mo</li>
-                    <li>Inbound call handling</li>
-                    <li>Basic call routing</li>
-                    <li>Voicemail detection</li>
-                    <li>Call recording &amp; transcripts</li>
-                    <li>CRM logging</li>
-                    <li>Standard voices</li>
-                    <li>Email support</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/00w00jdgsfW7c0rc4hfQI3B">
-                    Activate →
-                  </a>
-                </article>
-                <article className="sector-card">
-                  <div className="step">Most Popular</div>
-                  <div className="step">Professional</div>
-                  <div>
-                    <span style={ACCENT}>$397</span> /mo
-                  </div>
-                  <div className="sector-trust">+ $1,997 one-time setup</div>
-                  <ul>
-                    <li>
-                      <strong>Everything in Standard</strong>
-                    </li>
-                    <li>3 AI Voice Agents</li>
-                    <li>2,000 minutes/mo</li>
-                    <li>Inbound + outbound campaigns</li>
-                    <li>Appointment scheduling</li>
-                    <li>Call transfers to live agents</li>
-                    <li>Custom voice cloning</li>
-                    <li>Multi-language support</li>
-                    <li>Priority support</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/14AeVd90c4dpc0r0lzfQI3D">
-                    Activate →
-                  </a>
-                </article>
-                <article className="sector-card">
-                  <div className="step">Premium</div>
-                  <div>
-                    <span style={ACCENT}>$797</span> /mo
-                  </div>
-                  <div className="sector-trust">+ $4,997 one-time setup</div>
-                  <ul>
-                    <li>
-                      <strong>Everything in Professional</strong>
-                    </li>
-                    <li>50 AI Voice Agents</li>
-                    <li>5,000 minutes/mo</li>
-                    <li>Custom call flows</li>
-                    <li>Simultaneous calls (25+)</li>
-                    <li>Sentiment analysis</li>
-                    <li>API &amp; webhook access</li>
-                    <li>White-label ready</li>
-                    <li>Dedicated success manager</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/00w28r7W86lx3tVfgtfQI3F">
-                    Activate →
-                  </a>
-                </article>
-              </div>
+              <PricingTiers plans={VOICE_PLANS} />
             </div>
           </section>
 

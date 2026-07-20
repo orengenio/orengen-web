@@ -3,6 +3,7 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
+import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
 
 /**
  * OrenWeb Talk page.
@@ -26,6 +27,68 @@ export const metadata: Metadata = {
 };
 
 const ACCENT = { color: "var(--og-orange)" } as const;
+
+// Monthly prices, setup fees, feature lists, and featured tier preserved
+// exactly; existing monthly Stripe links kept, official annual links added.
+const TALK_PLANS: PricingPlan[] = [
+  {
+    name: "Standard",
+    monthly: 147,
+    setup: "+ $1,497 one-time setup",
+    features: [
+      "AI chat widget on site",
+      "Up to 5 pages",
+      "1,000 conversations/mo",
+      "Lead capture & routing",
+      "Mobile-responsive",
+      "Basic SEO",
+      "FAQ auto-training",
+      "CRM integration",
+    ],
+    ctaLabel: "Activate",
+    ctaHref: "https://buy.stripe.com/3cI14n6S45htfcD9W9fQI3a",
+    ctaHrefAnnual: "https://buy.stripe.com/3cIfZhfoAh0b3tVd8lfQI42",
+  },
+  {
+    name: "Professional",
+    monthly: 297,
+    setup: "+ $2,997 one-time setup",
+    featured: true,
+    features: [
+      "Everything in Standard",
+      "AI voice + chat on site",
+      "Up to 15 pages",
+      "5,000 conversations/mo",
+      "Voice interaction widget",
+      "Appointment scheduling",
+      "Multi-language chat",
+      "Advanced analytics",
+      "Priority support",
+    ],
+    ctaLabel: "Activate",
+    ctaHref: "https://buy.stripe.com/dRm9ATdgs25he8z0lzfQI3c",
+    ctaHrefAnnual: "https://buy.stripe.com/5kQbJ13FS11d8Of3xLfQI43",
+  },
+  {
+    name: "Premium",
+    monthly: 497,
+    setup: "+ $5,997 one-time setup",
+    features: [
+      "Everything in Professional",
+      "Full voice + chat + video",
+      "Unlimited pages",
+      "Unlimited conversations",
+      "Custom AI persona training",
+      "Visitor intent analysis",
+      "API access",
+      "White-label ready",
+      "Dedicated success manager",
+    ],
+    ctaLabel: "Activate",
+    ctaHref: "https://buy.stripe.com/dRm8wP4JW8tF0hJfgtfQI3e",
+    ctaHrefAnnual: "https://buy.stripe.com/14AcN5b8keS32pR7O1fQI44",
+  },
+];
 
 export default function OrenWebTalkPage() {
   return (
@@ -250,77 +313,7 @@ export default function OrenWebTalkPage() {
                   </span>
                 </div>
               </header>
-              <div className="cost-grid reveal">
-                <article className="sector-card">
-                  <div className="step">Standard</div>
-                  <h3>
-                    <span style={ACCENT}>$147</span> /mo
-                  </h3>
-                  <div className="sector-trust">+ $1,497 one-time setup</div>
-                  <ul>
-                    <li>AI chat widget on site</li>
-                    <li>Up to 5 pages</li>
-                    <li>1,000 conversations/mo</li>
-                    <li>Lead capture &amp; routing</li>
-                    <li>Mobile-responsive</li>
-                    <li>Basic SEO</li>
-                    <li>FAQ auto-training</li>
-                    <li>CRM integration</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/3cI14n6S45htfcD9W9fQI3a">
-                    Activate →
-                  </a>
-                </article>
-                <article className="sector-card">
-                  <div className="step">Most Popular</div>
-                  <h3>
-                    <span style={ACCENT}>Professional</span>
-                  </h3>
-                  <h4>
-                    <span style={ACCENT}>$297</span> /mo
-                  </h4>
-                  <div className="sector-trust">+ $2,997 one-time setup</div>
-                  <ul>
-                    <li>
-                      <strong>Everything in Standard</strong>
-                    </li>
-                    <li>AI voice + chat on site</li>
-                    <li>Up to 15 pages</li>
-                    <li>5,000 conversations/mo</li>
-                    <li>Voice interaction widget</li>
-                    <li>Appointment scheduling</li>
-                    <li>Multi-language chat</li>
-                    <li>Advanced analytics</li>
-                    <li>Priority support</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/dRm9ATdgs25he8z0lzfQI3c">
-                    Activate →
-                  </a>
-                </article>
-                <article className="sector-card">
-                  <div className="step">Premium</div>
-                  <h3>
-                    <span style={ACCENT}>$497</span> /mo
-                  </h3>
-                  <div className="sector-trust">+ $5,997 one-time setup</div>
-                  <ul>
-                    <li>
-                      <strong>Everything in Professional</strong>
-                    </li>
-                    <li>Full voice + chat + video</li>
-                    <li>Unlimited pages</li>
-                    <li>Unlimited conversations</li>
-                    <li>Custom AI persona training</li>
-                    <li>Visitor intent analysis</li>
-                    <li>API access</li>
-                    <li>White-label ready</li>
-                    <li>Dedicated success manager</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/dRm8wP4JW8tF0hJfgtfQI3e">
-                    Activate →
-                  </a>
-                </article>
-              </div>
+              <PricingTiers plans={TALK_PLANS} />
             </div>
           </section>
 

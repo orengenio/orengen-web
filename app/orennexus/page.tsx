@@ -3,6 +3,7 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
+import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
 import PageAtAGlance from "@/components/site/PageAtAGlance";
 import ProductPreview from "@/components/site/ProductPreview";
 import ResearchAccordion from "@/components/site/ResearchAccordion";
@@ -38,6 +39,68 @@ export const metadata: Metadata = {
 };
 
 const ACCENT = { color: "var(--og-orange)" } as const;
+
+// Monthly prices, $0 setup, feature lists, and featured tier preserved
+// exactly; existing monthly Stripe links kept, official annual links added.
+const NEXUS_PLANS: PricingPlan[] = [
+  {
+    name: "Standard",
+    monthly: 97,
+    setup: "$0 setup fee",
+    features: [
+      "CRM & pipeline management",
+      "Contact management",
+      "Email marketing (5,000/mo)",
+      "1 sales funnel",
+      "Landing page builder",
+      "Form & survey builder",
+      "Basic lead scoring",
+      "Unlimited users",
+    ],
+    ctaLabel: "Select Standard",
+    ctaHref: "https://buy.stripe.com/6oU9AT0tG5ht0hJecpfQI3g",
+    ctaHrefAnnual: "https://buy.stripe.com/aFa8wP3FS11d5C31pDfQI3h",
+  },
+  {
+    name: "Professional",
+    monthly: 247,
+    setup: "$0 setup fee",
+    featured: true,
+    features: [
+      "Everything in Standard",
+      "Email marketing (25,000/mo)",
+      "Unlimited funnels",
+      "SMS campaigns",
+      "Marketing automation flows",
+      "Advanced lead scoring",
+      "A/B testing",
+      "Reputation management",
+      "Unlimited users",
+    ],
+    ctaLabel: "Select Professional",
+    ctaHref: "https://buy.stripe.com/4gMcN5ekweS32pRd8lfQI3i",
+    ctaHrefAnnual: "https://buy.stripe.com/5kQeVd0tGdNZ2pR3xLfQI3j",
+  },
+  {
+    name: "Premium",
+    monthly: 497,
+    setup: "$0 setup fee",
+    features: [
+      "Everything in Professional",
+      "Unlimited email sends",
+      "Multi-channel campaigns",
+      "Advanced analytics",
+      "Conversion tracking",
+      "Custom workflows",
+      "API access",
+      "Unified conversational inbox",
+      "Unlimited users",
+    ],
+    ctaLabel: "Select Premium",
+    ctaHref: "https://buy.stripe.com/5kQaEX7W8fW72pR0lzfQI3k",
+    ctaHrefAnnual: "https://buy.stripe.com/14A4gz2BO5htd4v3xLfQI3l",
+  },
+];
 
 export default function OrenNexusPage() {
   return (
@@ -251,80 +314,7 @@ export default function OrenNexusPage() {
                 </div>
               </header>
               <PricingCompareTable tiers={ORENNEXUS_PRICING_TABLE} />
-              <div className="cost-grid reveal">
-                {/* STANDARD */}
-                <article className="sector-card">
-                  <div className="step">Standard</div>
-                  <h3>
-                    <span style={ACCENT}>$97</span> /mo
-                  </h3>
-                  <div className="sector-trust">$0 setup fee</div>
-                  <ul>
-                    <li>CRM &amp; pipeline management</li>
-                    <li>Contact management</li>
-                    <li>Email marketing (5,000/mo)</li>
-                    <li>1 sales funnel</li>
-                    <li>Landing page builder</li>
-                    <li>Form &amp; survey builder</li>
-                    <li>Basic lead scoring</li>
-                    <li>Unlimited users</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/6oU9AT0tG5ht0hJecpfQI3g">
-                    Select Standard →
-                  </a>
-                </article>
-
-                {/* PROFESSIONAL */}
-                <article className="sector-card">
-                  <div className="step">Most Popular</div>
-                  <h3>
-                    Professional<br />
-                    <span style={ACCENT}>$247</span> /mo
-                  </h3>
-                  <div className="sector-trust">$0 setup fee</div>
-                  <ul>
-                    <li>
-                      <strong>Everything in Standard</strong>
-                    </li>
-                    <li>Email marketing (25,000/mo)</li>
-                    <li>Unlimited funnels</li>
-                    <li>SMS campaigns</li>
-                    <li>Marketing automation flows</li>
-                    <li>Advanced lead scoring</li>
-                    <li>A/B testing</li>
-                    <li>Reputation management</li>
-                    <li>Unlimited users</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/4gMcN5ekweS32pRd8lfQI3i">
-                    Select Professional →
-                  </a>
-                </article>
-
-                {/* PREMIUM */}
-                <article className="sector-card">
-                  <div className="step">Premium</div>
-                  <h3>
-                    <span style={ACCENT}>$497</span> /mo
-                  </h3>
-                  <div className="sector-trust">$0 setup fee</div>
-                  <ul>
-                    <li>
-                      <strong>Everything in Professional</strong>
-                    </li>
-                    <li>Unlimited email sends</li>
-                    <li>Multi-channel campaigns</li>
-                    <li>Advanced analytics</li>
-                    <li>Conversion tracking</li>
-                    <li>Custom workflows</li>
-                    <li>API access</li>
-                    <li>Unified conversational inbox</li>
-                    <li>Unlimited users</li>
-                  </ul>
-                  <a className="card-link" href="https://buy.stripe.com/5kQaEX7W8fW72pR0lzfQI3k">
-                    Select Premium →
-                  </a>
-                </article>
-              </div>
+              <PricingTiers plans={NEXUS_PLANS} />
             </div>
           </section>
 

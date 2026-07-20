@@ -13,7 +13,7 @@ type Props = {
 export default function ProductPreview({
   productName,
   description,
-  demoHref = "https://api.orengen.io/booking/og-j39qvisxpas/sc/discovery-meet",
+  demoHref = "https://api.orengen.io/booking/coffeechat",
   portalHref = "https://app.orengen.io",
   sectionId = "preview",
 }: Props) {

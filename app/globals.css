@@ -736,6 +736,7 @@
     @media (min-width: 760px) { .sector-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 1120px) { .sector-grid { grid-template-columns: repeat(4, 1fr); } }
     .sector-card {
+      --og-glow: 204, 85, 0; /* brand orange, as RGB channels for the spotlight */
       min-height: 500px;
       display: flex;
       flex-direction: column;
@@ -745,21 +746,31 @@
       background: var(--og-surface);
       position: relative;
       overflow: hidden;
-      transition: .3s var(--og-ease);
+      transition: transform .3s var(--og-ease), border-color .3s var(--og-ease), box-shadow .3s var(--og-ease);
     }
-    .sector-card::before { content:""; position:absolute; inset:0 0 auto; height: 3px; background: var(--og-orange); transform: scaleX(.16); transform-origin: left; transition: .35s var(--og-ease); }
+    /* Pointer-tracked spotlight glow (brand orange). --mx/--my are set per-card
+       in SiteRuntime and fall back to the card centre, so the glow still works
+       without JS and on touch. Sits behind card content (z-index below .card > *). */
+    .sector-card::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius: inherit;
+      background: radial-gradient(circle 240px at var(--mx, 50%) var(--my, 50%), rgba(var(--og-glow), .20), transparent 60%);
+      opacity: 0;
+      transition: opacity .35s var(--og-ease);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .sector-card > * { position: relative; z-index: 1; }
+    .sector-card::before { content:""; position:absolute; inset:0 0 auto; height: 3px; background: var(--og-orange); transform: scaleX(.16); transform-origin: left; transition: .35s var(--og-ease); z-index: 2; }
     .sector-card h3, .sector-card p, .sector-card li, .sector-card .sector-trust { transition: color .25s var(--og-ease); }
     .sector-card:hover {
       transform: translateY(-7px);
-      border-color: rgba(204,85,0,.42);
-      box-shadow: var(--og-shadow);
-      background: #ffffff;
-      color: var(--og-ink);
+      border-color: rgba(var(--og-glow), .55);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .35), 0 0 34px rgba(var(--og-glow), .16);
     }
-    .sector-card:hover p,
-    .sector-card:hover li,
-    .sector-card:hover .sector-trust { color: #334155; }
-    .sector-card:hover .sector-trust { border-top-color: rgba(0,37,75,.14); }
+    .sector-card:hover::after { opacity: 1; }
     .sector-card:hover::before { transform: scaleX(1); }
     .sector-card p { color: var(--og-text-muted); font-size: 14px; margin: 14px 0; }
     .sector-card ul { margin: 0 0 18px; padding: 0; list-style: none; }
@@ -2213,6 +2224,7 @@
   @media (min-width: 900px) { .cost-grid { grid-template-columns: repeat(3, 1fr); } }
 
   .cost-card {
+    --og-glow: 204, 85, 0; /* brand orange, as RGB channels for the spotlight */
     position: relative;
     overflow:hidden;
     padding: 28px;
@@ -2220,15 +2232,26 @@
     border-radius: 26px;
     background: rgba(255,255,255,.055);
     box-shadow: var(--og-shadow);
+    transition: transform .3s var(--og-ease), border-color .3s var(--og-ease), box-shadow .3s var(--og-ease);
   }
+  /* Pointer-tracked spotlight glow — see .sector-card::after for how --mx/--my work. */
   .cost-card::before {
     content:"";
     position:absolute;
     inset:0;
-    background: transparent;
+    border-radius: inherit;
+    background: radial-gradient(circle 240px at var(--mx, 50%) var(--my, 50%), rgba(var(--og-glow), .20), transparent 60%);
     opacity: 0;
+    transition: opacity .35s var(--og-ease);
     pointer-events:none;
+    z-index: 0;
   }
+  .cost-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(var(--og-glow), .55);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .35), 0 0 34px rgba(var(--og-glow), .16);
+  }
+  .cost-card:hover::before { opacity: 1; }
   .cost-card > * { position:relative; z-index:1; }
   .cost-num {
     color: var(--og-orange);
@@ -2246,6 +2269,164 @@
     text-transform: uppercase;
   }
   .cost-card p { color: var(--og-text-muted); margin-top: 12px; line-height: 1.65; }
+
+  /* ===== Pricing tiers — Monthly/Yearly toggle (PricingTiers.tsx) ===== */
+  .pricing-block { margin-top: 8px; }
+  .price-toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 4px 0 32px;
+    flex-wrap: wrap;
+  }
+  .price-toggle {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 5px;
+    border-radius: 999px;
+    background: var(--og-surface);
+    border: 1px solid var(--og-line);
+    min-width: 250px;
+  }
+  .price-toggle .toggle-pill {
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    width: calc(50% - 5px);
+    border-radius: 999px;
+    background: var(--og-orange-fill);
+    box-shadow: 0 8px 22px rgba(204, 85, 0, .35);
+    transition: transform .32s var(--og-ease);
+  }
+  .price-toggle[data-year="true"] .toggle-pill { transform: translateX(100%); }
+  .price-toggle button {
+    position: relative;
+    z-index: 1;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font: inherit;
+    font-weight: 850;
+    font-size: 13px;
+    letter-spacing: .02em;
+    color: var(--og-text-soft);
+    transition: color .25s var(--og-ease);
+  }
+  .price-toggle button[aria-pressed="true"] { color: #fff; }
+  .price-save {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 950;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--og-orange);
+    border: 1px solid rgba(204, 85, 0, .4);
+    border-radius: 999px;
+    padding: 6px 12px;
+    opacity: 0;
+    transform: translateY(-2px);
+    transition: .3s var(--og-ease);
+  }
+  .price-save[data-on="true"] { opacity: 1; transform: none; }
+
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 18px;
+    align-items: stretch;
+  }
+  @media (min-width: 820px) {
+    .price-grid[data-cols="3"] { grid-template-columns: repeat(3, 1fr); }
+    .price-grid[data-cols="2"] { grid-template-columns: repeat(2, 1fr); max-width: 760px; margin: 0 auto; }
+  }
+
+  .price-card {
+    --og-glow: 204, 85, 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 26px;
+    border: 1px solid var(--og-line);
+    border-radius: 24px;
+    background: var(--og-surface);
+    transition: transform .3s var(--og-ease), border-color .3s var(--og-ease), box-shadow .3s var(--og-ease);
+  }
+  .price-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle 240px at var(--mx, 50%) var(--my, 50%), rgba(var(--og-glow), .20), transparent 60%);
+    opacity: 0;
+    transition: opacity .35s var(--og-ease);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .price-card > * { position: relative; z-index: 1; }
+  .price-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(var(--og-glow), .55);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .35), 0 0 34px rgba(var(--og-glow), .16);
+  }
+  .price-card:hover::after { opacity: 1; }
+  .price-card.is-featured {
+    border-color: rgba(204, 85, 0, .6);
+    box-shadow: 0 0 0 1px rgba(204, 85, 0, .35), 0 24px 70px rgba(204, 85, 0, .20);
+    background: linear-gradient(180deg, rgba(204, 85, 0, .10), var(--og-surface) 62%);
+  }
+  @media (min-width: 820px) {
+    .price-card.is-featured { transform: scale(1.03); }
+    .price-card.is-featured:hover { transform: scale(1.03) translateY(-6px); }
+  }
+  .price-badge {
+    align-self: flex-start;
+    font-size: 10px;
+    font-weight: 950;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--og-orange-fill);
+    border-radius: 999px;
+    padding: 6px 12px;
+    margin-bottom: 14px;
+  }
+  .price-name { font-size: 20px; font-weight: 900; letter-spacing: -.02em; margin: 0 0 12px; color: var(--og-text); }
+  .price-amount { display: flex; align-items: baseline; gap: 1px; }
+  .price-cur { font-size: 22px; font-weight: 900; color: var(--og-text); align-self: flex-start; margin-top: 6px; }
+  .price-num {
+    font-size: clamp(38px, 5vw, 52px);
+    font-weight: 1000;
+    letter-spacing: -.05em;
+    line-height: 1;
+    color: var(--og-text);
+    font-variant-numeric: tabular-nums;
+  }
+  .price-per { font-size: 15px; font-weight: 800; color: var(--og-text-soft); margin-left: 3px; }
+  .price-unit { margin-top: 10px; font-size: 13px; font-weight: 850; color: var(--og-orange); }
+  .price-setup { margin-top: 6px; font-size: 12px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--og-text-soft); }
+  .price-desc { margin: 14px 0 0; font-size: 14px; line-height: 1.6; color: var(--og-text-muted); }
+  .price-feat { list-style: none; margin: 16px 0 0; padding: 16px 0 0; border-top: 1px solid var(--og-line); display: flex; flex-direction: column; gap: 9px; }
+  .price-feat li { position: relative; padding-left: 22px; font-size: 13px; line-height: 1.5; color: var(--og-text-muted); }
+  .price-feat li::before { content: ""; position: absolute; left: 0; top: .45em; width: 7px; height: 7px; background: var(--og-orange); transform: rotate(45deg); }
+  .price-card .price-cta { margin-top: auto; width: 100%; justify-content: center; box-sizing: border-box; }
+  /* CTA is pushed to the card bottom (margin-top:auto) for row alignment; these
+     bottom margins guarantee a gap above it even on the tallest card in a row. */
+  .price-card .price-desc,
+  .price-card .price-feat,
+  .price-card .price-setup,
+  .price-card .price-unit { margin-bottom: 22px; }
+  .price-card .price-desc + .price-feat,
+  .price-card .price-unit + .price-setup,
+  .price-card .price-unit + .price-desc,
+  .price-card .price-setup + .price-desc { margin-bottom: 0; }
+  .price-card .price-feat { margin-bottom: 22px; }
 
   .sector-grid-five { grid-template-columns: repeat(1, minmax(0,1fr)); }
   @media (min-width: 760px) { .sector-grid-five { grid-template-columns: repeat(2, minmax(0,1fr)); } }
