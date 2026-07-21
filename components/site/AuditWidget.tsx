@@ -1,73 +1,87 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 
 /**
  * Embeds the LeadConnector (GoHighLevel) prospecting "website audit" widget.
  *
- * The vendor script (widget-embed.js) mounts its audit form *inline, right
- * before its own <script> tag* — it locates that tag via
- * document.currentScript, falling back to the last <script> in the document.
- * For a dynamically-injected script neither is reliable in a Next.js/SPA page
- * (currentScript is null for async-injected scripts, and the "last script" is
- * usually a framework/analytics tag), so the form can land in the wrong place.
+ * The vendor embed injects GLOBAL assets into <head> — flowbite.min.css
+ * (Tailwind, incl. a preflight reset), flowbite JS, and Google Fonts — which
+ * override the host site's styling site-wide (it was flattening the OrenWeb
+ * hero). To contain it completely, we run the widget inside a same-origin
+ * iframe (via srcDoc): its global CSS/JS only affect the iframe document, not
+ * orengen.io. Inside the frame the <script> is parser-inserted, so the widget's
+ * document.currentScript placement works and it mounts normally.
  *
- * To place it *exactly* here regardless: we inject the script into this host,
- * then watch for the widget's container ([data-widget-container]) and relocate
- * it into the host if the vendor dropped it elsewhere. Moving the DOM node is
- * safe — the widget mounts its app by element id, which survives the move.
- *
- * Guards against duplicate injection and tears everything down on unmount so it
- * re-initializes cleanly across client-side navigations instead of stacking.
+ * The iframe auto-sizes to the widget's content height (same-origin, so we can
+ * measure it) and has no inner scrollbar.
  */
 
 const WIDGET_SRC =
   "https://services.leadconnectorhq.com/prospecting/client/widget-embed.js";
 
 export default function AuditWidget({ widgetId }: { widgetId: string }) {
-  const hostRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(560);
+  const cleanupRef = useRef<(() => void) | null>(null);
 
-  useEffect(() => {
-    const host = hostRef.current;
-    if (!host) return;
-    if (host.querySelector("script[data-audit-embed]")) return; // already injected
+  const srcDoc = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base target="_blank"><style>*{box-sizing:border-box}html,body{margin:0;padding:0;background:transparent;overflow:hidden}body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}</style></head><body><script src="${WIDGET_SRC}" data-widget-id="${widgetId}"></script></body></html>`;
 
-    let relocated = false;
-    const relocate = () => {
-      if (relocated) return;
-      const container = document.querySelector<HTMLElement>("[data-widget-container]");
-      if (!container) return;
-      if (!host.contains(container)) host.appendChild(container);
-      relocated = true;
-    };
+  const onLoad = useCallback(
+    (e: React.SyntheticEvent<HTMLIFrameElement>) => {
+      const iframe = e.currentTarget;
+      const doc = iframe.contentDocument;
+      const win = iframe.contentWindow as (Window & typeof globalThis) | null;
+      if (!doc || !win) return;
 
-    const observer = new MutationObserver(relocate);
-    observer.observe(document.body, { childList: true, subtree: true });
+      const measure = () => {
+        const body = doc.body;
+        const root = doc.documentElement;
+        if (!body) return;
+        const h = Math.max(body.scrollHeight, root ? root.scrollHeight : 0);
+        if (h > 0) setHeight((prev) => (Math.abs(prev - h) > 4 ? h : prev));
+      };
 
-    const script = document.createElement("script");
-    script.src = WIDGET_SRC;
-    script.async = true;
-    script.setAttribute("data-widget-id", widgetId);
-    script.setAttribute("data-audit-embed", "true");
-    host.appendChild(script);
-    relocate(); // in case the container already exists
+      measure();
 
-    const stopTimer = window.setTimeout(() => observer.disconnect(), 15000);
+      let ro: ResizeObserver | null = null;
+      try {
+        const RO = win.ResizeObserver;
+        if (RO && doc.body) {
+          ro = new RO(measure);
+          ro.observe(doc.body);
+        }
+      } catch {
+        /* ignore */
+      }
 
-    return () => {
-      observer.disconnect();
-      window.clearTimeout(stopTimer);
-      host
-        .querySelectorAll("[data-widget-container], script[data-audit-embed]")
-        .forEach((el) => el.remove());
-      // Remove any container the vendor left elsewhere in the document.
-      document
-        .querySelectorAll("[data-widget-container]")
-        .forEach((el) => {
-          if (!host.contains(el)) el.remove();
-        });
-    };
-  }, [widgetId]);
+      // The widget mounts asynchronously; poll for a while as a safety net.
+      let ticks = 0;
+      const iv = win.setInterval(() => {
+        measure();
+        if (++ticks > 60) win.clearInterval(iv);
+      }, 300);
 
-  return <div className="audit-widget" ref={hostRef} aria-label="Website audit tool" />;
+      cleanupRef.current = () => {
+        ro?.disconnect();
+        try {
+          win.clearInterval(iv);
+        } catch {
+          /* ignore */
+        }
+      };
+    },
+    [],
+  );
+
+  return (
+    <iframe
+      className="audit-widget"
+      title="Free website audit"
+      srcDoc={srcDoc}
+      onLoad={onLoad}
+      loading="lazy"
+      scrolling="no"
+      style={{ width: "100%", height, border: 0, display: "block" }}
+    />
+  );
 }
