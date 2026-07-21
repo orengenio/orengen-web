@@ -35,10 +35,6 @@ const PATHS = [
   "OrenNexus / Platform Architecture", "OrenConsulting / Executive Strategy",
 ];
 
-const ADDRESS = "1812 Open Range Drive, Mansfield, Texas 76063";
-const MAPS_URL =
-  "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(ADDRESS);
-
 export default function ContactUsPage() {
   return (
     <>
@@ -83,7 +79,7 @@ export default function ContactUsPage() {
             aria-label="Contact information"
           >
             <div className="container">
-              <div className="sector-grid reveal">
+              <div className="sector-grid compact reveal">
                 <article className="sector-card">
                   <h3>Email Us</h3>
                   <p>Sales: <a className="card-link" href="mailto:sales@orengen.io">sales@orengen.io</a></p>
@@ -96,13 +92,6 @@ export default function ContactUsPage() {
                     <a className="card-link" href="tel:+18336736436">833-ORENGEN</a> (833-673-6436)
                   </p>
                   <p>Monday – Friday, 9:00 AM – 6:00 PM CST</p>
-                </article>
-                <article className="sector-card">
-                  <h3>Visit Us</h3>
-                  <p>{ADDRESS}</p>
-                  <a className="card-link" href={MAPS_URL} target="_blank" rel="noopener noreferrer">
-                    Get Directions →
-                  </a>
                 </article>
                 <article className="sector-card">
                   <h3>Office Hours</h3>
@@ -123,7 +112,7 @@ export default function ContactUsPage() {
                 <div className="eyebrow">More Ways to Connect</div>
                 <h2>Pick the channel that works for you.</h2>
               </header>
-              <div className="sector-grid reveal">
+              <div className="sector-grid compact reveal">
                 <article className="sector-card">
                   <h3>Book a Call</h3>
                   <p>Schedule a 30-minute call directly on our calendar.</p>
