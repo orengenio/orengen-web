@@ -743,7 +743,8 @@
        size to their content instead of the tall 500px product-card minimum,
        and the row auto-fits + centers so 3 cards don't leave a dead column. */
     .sector-grid.compact { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); max-width: 1040px; margin-inline: auto; }
-    .sector-grid.compact .sector-card { min-height: 0; }
+    .sector-grid.compact .sector-card,
+    .cost-grid.compact .sector-card { min-height: 0; }
     .sector-card {
       --og-glow: 204, 85, 0; /* brand orange, as RGB channels for the spotlight */
       min-height: 500px;
@@ -3146,6 +3147,71 @@
 
 /* ===== Website audit embed (LeadConnector prospecting widget, iframe-isolated) ===== */
 .audit-widget { display: block; width: 100%; max-width: 760px; margin: 26px auto 0; border: 0; }
+
+/* ===== DesignShowcase — website design directions gallery ===== */
+.dz-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 8px; }
+@media (min-width: 860px) { .dz-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
+.dz-card { margin: 0; }
+.dz-mock {
+  font-family: var(--font);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .42);
+  transition: box-shadow .3s var(--og-ease);
+}
+.dz-card:hover .dz-mock { box-shadow: 0 32px 84px rgba(0, 0, 0, .55), 0 0 0 1px rgba(204, 85, 0, .4); }
+.dz-chrome { display: flex; align-items: center; gap: 7px; padding: 9px 12px; background: rgba(0, 0, 0, .22); border-bottom: 1px solid var(--line); }
+.dz-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
+.dz-chrome .dz-dot:first-child { background: var(--accent); opacity: .85; }
+.dz-addr { margin-left: 8px; font-size: 10px; color: var(--muted); background: rgba(127, 127, 127, .14); border-radius: 999px; padding: 3px 10px; }
+
+.dz-page { background: var(--bg); color: var(--text); padding: 16px 18px; min-height: 300px; display: flex; flex-direction: column; gap: 14px; }
+.dz-nav { display: flex; align-items: center; gap: 12px; }
+.dz-brand { font-weight: 900; font-size: 14px; letter-spacing: -.01em; color: var(--text); }
+.dz-links { display: flex; gap: 12px; margin-left: 6px; }
+.dz-links span { font-size: 10.5px; color: var(--muted); font-weight: 600; }
+.dz-cta { margin-left: auto; font-size: 10.5px; font-weight: 800; color: #fff; background: var(--accent); padding: 5px 11px; border-radius: var(--rad); white-space: nowrap; }
+
+.dz-hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; align-items: center; flex: 1; }
+.dz-hero-copy { display: flex; flex-direction: column; gap: 8px; }
+.dz-eyebrow { font-size: 9px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+.dz-head { font-family: var(--font); font-weight: var(--hw); font-size: 22px; line-height: 1.08; letter-spacing: -.02em; color: var(--text); }
+.dz-sub { font-size: 11.5px; line-height: 1.4; color: var(--muted); max-width: 34ch; }
+.dz-btn { align-self: flex-start; margin-top: 2px; font-size: 11px; font-weight: 800; color: #fff; background: linear-gradient(120deg, var(--accent), var(--accent2)); padding: 8px 16px; border-radius: var(--rad); white-space: nowrap; }
+.dz-visual { border-radius: var(--rad); min-height: 122px; height: 100%; background: linear-gradient(140deg, var(--accent), var(--accent2)); position: relative; overflow: hidden; }
+.dz-visual::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 72% 24%, rgba(255, 255, 255, .35), transparent 42%), radial-gradient(circle at 24% 82%, rgba(0, 0, 0, .28), transparent 46%); }
+
+.dz-hero-center { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+.dz-hero-center .dz-head { font-size: 24px; }
+.dz-hero-center .dz-sub { max-width: 40ch; }
+.dz-hero-center .dz-btn { align-self: center; }
+.dz-visual-wide { width: 100%; min-height: 72px; height: 72px; }
+
+.dz-banner { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: linear-gradient(120deg, var(--accent), var(--accent2)); border-radius: var(--rad); padding: 16px 18px; color: #fff; }
+.dz-banner .dz-eyebrow { color: rgba(255, 255, 255, .85); }
+.dz-banner .dz-head { color: #fff; font-size: 18px; max-width: 20ch; }
+.dz-banner .dz-btn { background: #fff; color: var(--text); }
+.dz-products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; flex: 1; }
+.dz-product { display: flex; flex-direction: column; gap: 7px; }
+.dz-product-img { border-radius: var(--rad); flex: 1; min-height: 64px; background: color-mix(in srgb, var(--accent) 16%, var(--surface)); border: 1px solid var(--line); }
+.dz-price { font-size: 12px; font-weight: 900; color: var(--accent); }
+
+.dz-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.dz-feat { display: flex; flex-direction: column; gap: 6px; padding: 10px; border-radius: var(--rad); background: var(--surface); border: 1px solid var(--line); }
+.dz-feat-dot { width: 16px; height: 16px; border-radius: 5px; background: color-mix(in srgb, var(--accent) 78%, transparent); }
+.dz-feat-label { font-size: 11px; font-weight: 800; color: var(--text); }
+.dz-bar { display: block; height: 6px; border-radius: 999px; background: var(--line); }
+.dz-bar-sm { width: 72%; }
+
+.dz-cap { display: flex; align-items: baseline; gap: 10px; margin-top: 14px; padding-left: 2px; }
+.dz-cap-name { font-size: 14px; font-weight: 900; color: var(--og-text); }
+.dz-cap-tag { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--og-text-soft); }
+@media (max-width: 460px) {
+  .dz-hero { grid-template-columns: 1fr; }
+  .dz-visual { min-height: 70px; }
+}
 
 /* ===== NexusLiveDemo — interactive live product simulation ===== */
 .nx-demo {
