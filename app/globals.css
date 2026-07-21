@@ -3144,6 +3144,10 @@
   font-size: 14px;
 }
 
+/* ===== Website audit embed (LeadConnector prospecting widget) ===== */
+.audit-widget { max-width: 760px; margin: 26px auto 0; min-height: 120px; }
+.audit-widget [data-widget-container] { width: 100%; }
+
 /* ===== NexusLiveDemo — interactive live product simulation ===== */
 .nx-demo {
   max-width: 980px;
