@@ -20,8 +20,10 @@ import { useCallback, useRef, useState } from "react";
 const WIDGET_SRC =
   "https://services.leadconnectorhq.com/prospecting/client/widget-embed.js";
 
+const MIN_HEIGHT = 640;
+
 export default function AuditWidget({ widgetId }: { widgetId: string }) {
-  const [height, setHeight] = useState(560);
+  const [height, setHeight] = useState(720);
   const cleanupRef = useRef<(() => void) | null>(null);
 
   const srcDoc = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base target="_blank"><style>*{box-sizing:border-box}html,body{margin:0;padding:0;background:transparent;overflow:hidden}body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}</style></head><body><script src="${WIDGET_SRC}" data-widget-id="${widgetId}"></script></body></html>`;
@@ -37,8 +39,15 @@ export default function AuditWidget({ widgetId }: { widgetId: string }) {
         const body = doc.body;
         const root = doc.documentElement;
         if (!body) return;
-        const h = Math.max(body.scrollHeight, root ? root.scrollHeight : 0);
-        if (h > 0) setHeight((prev) => (Math.abs(prev - h) > 4 ? h : prev));
+        const container = doc.querySelector<HTMLElement>("[data-widget-container]");
+        const h = Math.max(
+          body.scrollHeight,
+          root ? root.scrollHeight : 0,
+          container ? container.scrollHeight : 0,
+          container ? Math.ceil(container.getBoundingClientRect().height) : 0,
+        );
+        const target = Math.max(h, MIN_HEIGHT);
+        if (target > 0) setHeight((prev) => (Math.abs(prev - target) > 6 ? target : prev));
       };
 
       measure();
@@ -49,17 +58,20 @@ export default function AuditWidget({ widgetId }: { widgetId: string }) {
         if (RO && doc.body) {
           ro = new RO(measure);
           ro.observe(doc.body);
+          const container = doc.querySelector<HTMLElement>("[data-widget-container]");
+          if (container) ro.observe(container);
         }
       } catch {
         /* ignore */
       }
 
-      // The widget mounts asynchronously; poll for a while as a safety net.
+      // The widget mounts (and grows through multi-step states) asynchronously;
+      // poll for a while as a safety net so the full form is always shown.
       let ticks = 0;
       const iv = win.setInterval(() => {
         measure();
-        if (++ticks > 60) win.clearInterval(iv);
-      }, 300);
+        if (++ticks > 100) win.clearInterval(iv);
+      }, 250);
 
       cleanupRef.current = () => {
         ro?.disconnect();

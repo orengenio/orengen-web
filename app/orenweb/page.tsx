@@ -4,6 +4,7 @@ import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
 import AuditWidget from "@/components/site/AuditWidget";
+import DesignShowcase from "@/components/site/DesignShowcase";
 
 /**
  * OrenWeb hub page.
@@ -80,10 +81,12 @@ export default function OrenWebPage() {
                 <div className="eyebrow">The Web Directory</div>
                 <h2>
                   Choose Your Path to{" "}
-                  <span style={ACCENT}>Digital Dominance.</span>
+                  <span style={{ ...ACCENT, whiteSpace: "nowrap" }}>
+                    Digital Dominance.
+                  </span>
                 </h2>
               </header>
-              <div className="cost-grid reveal">
+              <div className="cost-grid compact reveal">
                 {/* Pillar 1 — Design */}
                 <article className="sector-card">
                   <h3>
@@ -140,6 +143,9 @@ export default function OrenWebPage() {
               </div>
             </div>
           </section>
+
+          {/* WEBSITE DESIGN DIRECTIONS */}
+          <DesignShowcase />
 
           {/* AUTHORITY CHIPS */}
           <section
