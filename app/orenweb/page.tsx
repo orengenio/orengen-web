@@ -3,6 +3,7 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
+import AuditWidget from "@/components/site/AuditWidget";
 
 /**
  * OrenWeb hub page.
@@ -159,6 +160,30 @@ export default function OrenWebPage() {
                 <span className="chip">NIST-Aligned</span>
                 <span className="chip">HIPAA-Enabled</span>
               </div>
+            </div>
+          </section>
+
+          {/* FREE WEBSITE AUDIT */}
+          <section
+            className="section section-brand-white"
+            aria-label="Free website audit"
+          >
+            <div className="container">
+              <header className="section-head center reveal">
+                <div className="eyebrow">Free Instant Website Audit</div>
+                <h2>
+                  See how your current site scores —{" "}
+                  <span style={{ color: "var(--og-orange)" }}>
+                    in about a minute.
+                  </span>
+                </h2>
+                <p className="lead">
+                  Drop in your URL for an instant, no-cost report on performance,
+                  SEO, mobile experience, and conversion readiness — then
+                  let&apos;s fix what&apos;s costing you leads.
+                </p>
+              </header>
+              <AuditWidget widgetId="6a5fa76ee07eafbdd6223a3b" />
             </div>
           </section>
 

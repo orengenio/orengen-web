@@ -5,7 +5,7 @@ import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
 import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
 import PageAtAGlance from "@/components/site/PageAtAGlance";
-import ProductPreview from "@/components/site/ProductPreview";
+import NexusLiveDemo from "@/components/site/NexusLiveDemo";
 import ResearchAccordion from "@/components/site/ResearchAccordion";
 import PricingCompareTable from "@/components/site/PricingCompareTable";
 import {
@@ -163,10 +163,7 @@ export default function OrenNexusPage() {
 
           <PageAtAGlance bullets={ORENNEXUS_AT_A_GLANCE} jumps={ORENNEXUS_JUMPS} />
 
-          <ProductPreview
-            productName="OrenNexus"
-            description="Pipeline, unified inbox, automations, and reporting in one command center — built for AI-orchestrated operators."
-          />
+          <NexusLiveDemo />
 
           {/* CAPABILITIES */}
           <section
