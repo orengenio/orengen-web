@@ -7,10 +7,13 @@ import type { CSSProperties } from "react";
  * "Website Design Directions" — an animated gallery of browser-framed mini-site
  * mockups, each in a deliberately distinct visual language (palette, type,
  * radius, layout) so prospects can see the range OrenWeb designs in. These are
- * illustrative design directions rendered in CSS, not real client sites.
+ * illustrative design directions rendered in CSS with realistic sample content
+ * (a metric callout, feature copy, product cards) — not real client sites.
  */
 
 type Layout = "split" | "center" | "commerce";
+type Feat = { t: string; d: string };
+type Product = { n: string; p: string };
 
 type Style = {
   id: string;
@@ -33,7 +36,10 @@ type Style = {
   eyebrow: string;
   headline: string;
   sub: string;
-  features: string[];
+  statK: string;
+  statV: string;
+  feats: Feat[];
+  products?: Product[];
 };
 
 const SANS = "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif";
@@ -48,7 +54,12 @@ const STYLES: Style[] = [
     brand: "Nimbus", nav: ["Product", "Pricing", "Docs"], cta: "Start free",
     eyebrow: "AI PLATFORM", headline: "Ship faster with autonomous AI.",
     sub: "The workspace that builds, tests, and deploys for you.",
-    features: ["Fast", "Secure", "Scales"],
+    statK: "Deploys / day", statV: "1,204",
+    feats: [
+      { t: "Instant deploy", d: "Live in seconds" },
+      { t: "SOC 2", d: "Secure by default" },
+      { t: "Autoscale", d: "Zero config" },
+    ],
   },
   {
     id: "corp", name: "Clean Corporate", tag: "Finance · Consulting", layout: "split",
@@ -57,7 +68,12 @@ const STYLES: Style[] = [
     brand: "Meridian", nav: ["Firm", "Services", "Insights"], cta: "Contact",
     eyebrow: "ESTABLISHED 1998", headline: "Strategy for industry leaders.",
     sub: "Advisory relationships that compound over decades.",
-    features: ["Trusted", "Proven", "Global"],
+    statK: "Assets advised", statV: "$4.2B",
+    feats: [
+      { t: "Proven", d: "40-year record" },
+      { t: "Global", d: "18 offices" },
+      { t: "Bespoke", d: "Tailored plans" },
+    ],
   },
   {
     id: "shop", name: "Bold Commerce", tag: "Retail · DTC", layout: "commerce",
@@ -66,7 +82,13 @@ const STYLES: Style[] = [
     brand: "Marca", nav: ["Shop", "New", "Sale"], cta: "Cart · 2",
     eyebrow: "NEW DROP", headline: "The summer collection is here.",
     sub: "Free shipping over $75.",
-    features: ["$48", "$62", "$54"],
+    statK: "", statV: "",
+    feats: [],
+    products: [
+      { n: "Linen Tee", p: "$48" },
+      { n: "Canvas Tote", p: "$62" },
+      { n: "Wool Cap", p: "$54" },
+    ],
   },
   {
     id: "local", name: "Local Trust", tag: "Home · Services", layout: "split",
@@ -75,7 +97,12 @@ const STYLES: Style[] = [
     brand: "HomePro", nav: ["Services", "About", "Reviews"], cta: "Get quote",
     eyebrow: "★ 4.9 · 800+ REVIEWS", headline: "Your trusted local experts.",
     sub: "Same-day service with upfront, honest pricing.",
-    features: ["Licensed", "Insured", "Same-day"],
+    statK: "Jobs completed", statV: "12,000+",
+    feats: [
+      { t: "Licensed", d: "& fully insured" },
+      { t: "Same-day", d: "Fast response" },
+      { t: "Upfront", d: "Honest pricing" },
+    ],
   },
   {
     id: "lux", name: "Luxury Editorial", tag: "Fashion · Hospitality", layout: "center",
@@ -84,7 +111,12 @@ const STYLES: Style[] = [
     brand: "ATELIER", nav: ["Collections", "Story", "Journal"], cta: "Enquire",
     eyebrow: "MAISON", headline: "Timeless craftsmanship.",
     sub: "Handmade in limited numbers.",
-    features: ["Bespoke", "Rare", "Iconic"],
+    statK: "Atelier since", statV: "1921",
+    feats: [
+      { t: "Bespoke", d: "Made to order" },
+      { t: "Rare", d: "Limited runs" },
+      { t: "Iconic", d: "Timeless design" },
+    ],
   },
   {
     id: "studio", name: "Creative Studio", tag: "Agency · Portfolio", layout: "center",
@@ -93,7 +125,12 @@ const STYLES: Style[] = [
     brand: "Studio", nav: ["Work", "Play", "Hello"], cta: "Let's talk",
     eyebrow: "CREATIVE STUDIO", headline: "Design that moves people.",
     sub: "Brands, websites, and motion.",
-    features: ["Brand", "Web", "Motion"],
+    statK: "Awards won", statV: "37",
+    feats: [
+      { t: "Brand", d: "Identity systems" },
+      { t: "Web", d: "Sites that move" },
+      { t: "Motion", d: "Film & 3D" },
+    ],
   },
 ];
 
@@ -113,14 +150,26 @@ function Nav({ s }: { s: Style }) {
   );
 }
 
+function Visual({ s, wide }: { s: Style; wide?: boolean }) {
+  return (
+    <div className={`dz-visual${wide ? " dz-visual-wide" : ""}`} aria-hidden="true">
+      <span className="dz-vchip">Live</span>
+      <div className="dz-metric">
+        <span className="dz-metric-k">{s.statK}</span>
+        <span className="dz-metric-v">{s.statV}</span>
+      </div>
+    </div>
+  );
+}
+
 function Features({ s }: { s: Style }) {
   return (
     <div className="dz-features">
-      {s.features.map((f) => (
-        <div className="dz-feat" key={f}>
+      {s.feats.map((f) => (
+        <div className="dz-feat" key={f.t}>
           <span className="dz-feat-dot" />
-          <span className="dz-feat-label">{f}</span>
-          <span className="dz-bar dz-bar-sm" />
+          <span className="dz-feat-t">{f.t}</span>
+          <span className="dz-feat-d">{f.d}</span>
         </div>
       ))}
     </div>
@@ -161,7 +210,7 @@ function Mock({ s }: { s: Style }) {
                 <div className="dz-sub">{s.sub}</div>
                 <span className="dz-btn">{s.cta}</span>
               </div>
-              <div className="dz-visual" />
+              <Visual s={s} />
             </div>
             <Features s={s} />
           </>
@@ -175,7 +224,7 @@ function Mock({ s }: { s: Style }) {
               <div className="dz-sub">{s.sub}</div>
               <span className="dz-btn">{s.cta}</span>
             </div>
-            <div className="dz-visual dz-visual-wide" />
+            <Visual s={s} wide />
             <Features s={s} />
           </>
         )}
@@ -190,11 +239,16 @@ function Mock({ s }: { s: Style }) {
               <span className="dz-btn">Shop now</span>
             </div>
             <div className="dz-products">
-              {s.features.map((price) => (
-                <div className="dz-product" key={price}>
-                  <div className="dz-product-img" />
-                  <span className="dz-bar dz-bar-sm" />
-                  <span className="dz-price">{price}</span>
+              {s.products?.map((prod) => (
+                <div className="dz-product" key={prod.n}>
+                  <div className="dz-product-img">
+                    <span className="dz-tag-heart">♡</span>
+                  </div>
+                  <span className="dz-product-name">{prod.n}</span>
+                  <span className="dz-product-row">
+                    <span className="dz-price">{prod.p}</span>
+                    <span className="dz-stars">★★★★★</span>
+                  </span>
                 </div>
               ))}
             </div>
