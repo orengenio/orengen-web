@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SiteHeader from "@/components/site/SiteHeader";
+import HeroMedia from "@/components/site/HeroMedia";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
@@ -121,9 +122,10 @@ export default function OrenSocialPage() {
         <main id="main">
           {/* HERO */}
           <section
-            className="section section-brand-blue"
+            className="section section-brand-blue has-media"
             aria-label="OrenSocial hero"
           >
+            <HeroMedia src="/images/orensocial-hero.webp" />
             <div className="container">
               <header className="section-head center reveal">
                 <div className="eyebrow">Social Media Management</div>

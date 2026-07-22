@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SiteHeader from "@/components/site/SiteHeader";
+import HeroMedia from "@/components/site/HeroMedia";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
@@ -42,10 +43,11 @@ export default function OrenWebPage() {
         <main id="main">
           {/* HERO */}
           <section
-            className="section section-brand-blue"
+            className="section section-brand-blue has-media"
             id="overview"
             aria-label="OrenWeb — Web and Voice-Enabled Sites"
           >
+            <HeroMedia src="/images/orenweb-hero.webp" />
             <div className="container">
               <header className="section-head center reveal">
                 <div className="eyebrow">Web &amp; Voice-Enabled Sites</div>

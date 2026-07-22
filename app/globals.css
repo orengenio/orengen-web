@@ -2727,19 +2727,79 @@
 .btn:hover { transform: translateY(-1px) scale(1.015); }
 .btn:active { transform: translateY(0) scale(.985); }
 
-/* ===== Hero media backdrop placeholder (replace with real asset in public/media/) ===== */
+/* ===== Hero media backdrop (real cinematic render, public/images/) ===== */
 .hero-media {
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  opacity: .5;
-  -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent);
-  mask-image: linear-gradient(180deg, #000 55%, transparent);
-  background: radial-gradient(120% 80% at 80% -10%, rgba(0, 95, 170, .22), transparent 60%);
+  -webkit-mask-image: linear-gradient(180deg, #000 58%, transparent);
+  mask-image: linear-gradient(180deg, #000 58%, transparent);
 }
-.hero-media video, .hero-media img { width: 100%; height: 100%; object-fit: cover; }
+.hero-media video, .hero-media img { width: 100%; height: 100%; object-fit: cover; opacity: .68; }
+/* Navy scrim so hero copy stays crisp over the image (left + bottom weighted) */
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 20, 43, .82) 0%, rgba(0, 20, 43, .45) 34%, rgba(0, 20, 43, 0) 62%),
+    linear-gradient(180deg, rgba(0, 20, 43, .38) 0%, rgba(0, 20, 43, 0) 40%);
+}
+html[data-theme="light"] .hero-media img { opacity: .5; }
+
+/* ===== Section hero media (product-page cinematic backdrops) ===== */
+/* Applied to a `.section.has-media` whose first child is a `.section-media`
+   layer (rendered by components/site/HeroMedia.tsx). Centered-hero friendly:
+   a radial vignette + top/bottom scrim keep centered headings readable. */
+.section.has-media { position: relative; isolation: isolate; overflow: hidden; }
+.section.has-media > .container { position: relative; z-index: 1; }
+.section-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, #000 68%, transparent);
+  mask-image: linear-gradient(180deg, #000 68%, transparent);
+}
+.section-media img,
+.section-media video { width: 100%; height: 100%; object-fit: cover; opacity: .58; }
+.section-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(130% 95% at 50% 34%, rgba(0, 20, 43, .18), rgba(0, 20, 43, .66) 82%),
+    linear-gradient(180deg, rgba(0, 20, 43, .46) 0%, rgba(0, 20, 43, .08) 34%, rgba(0, 20, 43, .5) 100%);
+}
+
+/* Per-card annual savings line in PricingTiers (shown when Yearly is active) */
+.price-save-line {
+  margin-top: 6px;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: var(--og-orange);
+}
+
+/* OrenNexus command-center showcase figure (framed dashboard visual) */
+.nexus-showcase {
+  margin: 34px auto 0;
+  max-width: 1040px;
+  padding: 10px;
+  border-radius: 18px;
+  border: 1px solid rgba(230, 97, 0, .28);
+  background: linear-gradient(180deg, rgba(230, 97, 0, .16), rgba(0, 20, 43, .4));
+  box-shadow: 0 30px 80px rgba(0, 10, 25, .55), 0 0 60px rgba(204, 85, 0, .12);
+}
+.nexus-showcase-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 11px;
+}
 
 /* OrenKanBuilder: clearance below the footer so the interactive builder's
    fixed running-total bar never covers the footer's legal line at full scroll.

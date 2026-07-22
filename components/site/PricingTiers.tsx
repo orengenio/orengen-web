@@ -96,6 +96,16 @@ export default function PricingTiers({
   const [yearly, setYearly] = useState(false);
   const cols = columns ?? (plans.length === 2 ? 2 : 3);
 
+  // Largest annual saving across tiers, for the toggle's "Save up to N%" pill.
+  const maxSavePct = Math.max(
+    0,
+    ...plans.map((p) => {
+      const a = p.annual ?? p.monthly * ANNUAL_MULTIPLIER;
+      const full = p.monthly * 12;
+      return full > 0 ? Math.round(((full - a) / full) * 100) : 0;
+    }),
+  );
+
   return (
     <div className="pricing-block reveal">
       <div className="price-toggle-row">
@@ -122,7 +132,7 @@ export default function PricingTiers({
           </button>
         </div>
         <span className="price-save" data-on={yearly}>
-          Save 17%
+          Save up to {maxSavePct}%
         </span>
       </div>
 
@@ -152,6 +162,11 @@ export default function PricingTiers({
                 </span>
                 <span className="price-per">/{yearly ? "yr" : "mo"}</span>
               </div>
+              {yearly && annual < plan.monthly * 12 && (
+                <div className="price-save-line">
+                  Save ${(plan.monthly * 12 - annual).toLocaleString("en-US")}/yr
+                </div>
+              )}
               {plan.unit && <div className="price-unit">{plan.unit}</div>}
               {plan.setup && <div className="price-setup">{plan.setup}</div>}
               {plan.description && (

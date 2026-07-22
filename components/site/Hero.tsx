@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion, type Variants } from "motion/react";
 import HeroGlow from "./HeroGlow";
 
@@ -35,6 +36,16 @@ export default function Hero() {
 
   return (
     <section className="hero section-brand-blue" id="overview" aria-label="OrenGen Worldwide homepage hero">
+      <div className="hero-media" aria-hidden="true">
+        <Image
+          src="/images/hero-infrastructure.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: "cover", objectPosition: "center 40%" }}
+        />
+      </div>
       <HeroGlow />
       <div className="container hero-grid">
         <motion.div variants={container} initial="hidden" animate="show">
