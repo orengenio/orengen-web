@@ -51,7 +51,14 @@ export const metadata: Metadata = {
       "Hosted and self-hosted AI-enabled ecosystems for public sector, healthcare, and enterprise operations.",
     images: [OG_IMAGE],
   },
-  icons: { icon: FAVICON_URL, shortcut: FAVICON_URL, apple: FAVICON_URL },
+  icons: {
+    icon: [
+      { url: FAVICON_URL, type: "image/svg+xml" },
+      { url: "/favicon.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: FAVICON_URL,
+    apple: "/favicon.png",
+  },
   robots: { index: true, follow: true },
 };
 
