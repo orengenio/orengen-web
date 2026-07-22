@@ -3,6 +3,15 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
+import JsonLd from "@/components/seo/JsonLd";
+import { SITE_URL } from "@/lib/seo/constants";
+import { SITE_FAQS } from "@/lib/seo/faqs";
+import {
+  buildBreadcrumbList,
+  buildFAQPage,
+  buildPageGraph,
+  buildWebPage,
+} from "@/lib/seo/jsonLd";
 
 /**
  * FAQs page.
@@ -26,9 +35,24 @@ export const metadata: Metadata = {
 
 const ACCENT = { color: "var(--og-orange)" } as const;
 
+const FAQS_JSON_LD = buildPageGraph(
+  buildWebPage({
+    name: "OrenGen FAQs — Procurement, Security, and Operations",
+    description:
+      "Frequently asked questions about OrenGen AI solutions, federal procurement credentials, HIPAA readiness, pricing, and deployment.",
+    path: "/faqs",
+  }),
+  buildBreadcrumbList([
+    { name: "Home", path: "" },
+    { name: "FAQs", path: "/faqs" },
+  ]),
+  buildFAQPage(SITE_FAQS, `${SITE_URL}/faqs`),
+);
+
 export default function FaqsPage() {
   return (
     <>
+      <JsonLd data={FAQS_JSON_LD} />
       <ScrollProgress />
       <a className="skip-link" href="#main">
         Skip to content

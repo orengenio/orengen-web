@@ -327,7 +327,7 @@ export default function OrenAgentsVoicePage() {
                 <div className="trust-row">
                   <span className="chip">Monthly</span>
                   <span className="chip">
-                    Annual <span style={ACCENT}>Save up to $1,567</span>
+                    Annual <span style={ACCENT}>Save up to $1,594</span>
                   </span>
                 </div>
               </header>

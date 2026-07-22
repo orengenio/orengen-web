@@ -8,7 +8,6 @@ import { FONT_BODY, FONT_DISPLAY } from "@/lib/typography"
 
 interface Tier {
   mo: number
-  was: number
   setup: number
   feat: string[]
 }
@@ -41,50 +40,40 @@ const M: Module[] = [
     tiers: {
       standard: {
         mo: 197,
-        was: 297,
         setup: 997,
         feat: [
           "1 Buy-Lingual\u2122 AI voice agent",
           "500 minutes / month included",
           "Inbound call handling",
-          "English + 1 language",
-          "Basic call transfers",
-          "Voicemail & transcription",
-          "Business-hours routing",
-          "Email call summaries",
+          "Basic routing & voicemail detection",
+          "Standard voices",
+          "Email support",
         ],
       },
       professional: {
         mo: 397,
-        was: 597,
         setup: 1997,
         feat: [
           "3 Buy-Lingual\u2122 AI voice agents",
           "2,000 minutes / month included",
-          "Inbound + outbound calling",
-          "5 languages supported",
-          "Smart call transfers & warm handoff",
-          "CRM auto-logging",
-          "Appointment booking",
-          "Custom voice & personality",
+          "Inbound + outbound campaigns",
+          "Appointment scheduling & call transfers",
+          "Custom voice cloning",
+          "Multi-language support",
           "Priority support",
         ],
       },
       premium: {
         mo: 797,
-        was: 1197,
         setup: 4997,
         feat: [
-          "Unlimited Buy-Lingual\u2122 AI voice agents",
+          "50 Buy-Lingual\u2122 AI voice agents",
           "5,000 minutes / month included",
-          "Full inbound + outbound + transfers",
-          "29+ languages supported",
-          "Objection handling & rebuttals",
-          "Multi-step booking flows",
-          "Real-time sentiment analysis",
-          "Live supervisor dashboard",
+          "Custom call flows & 25+ simultaneous calls",
+          "100+ languages supported",
+          "Sentiment analysis & API/webhook access",
+          "White-label ready",
           "Dedicated success manager",
-          "Custom integrations",
         ],
       },
     },
@@ -98,49 +87,41 @@ const M: Module[] = [
     tiers: {
       standard: {
         mo: 97,
-        was: 147,
         setup: 497,
         feat: [
-          "1 AI chat employee",
-          "1,000 conversations / month",
-          "Website live chat widget",
-          "Basic FAQ handling",
-          "Lead capture forms",
-          "Business-hours auto-replies",
-          "Email notifications",
+          "1 AI employee (chat)",
+          "5,000 conversations / month",
+          "Website chat widget",
+          "Lead qualification & FAQ auto-response",
+          "CRM integration",
+          "Business hours routing",
+          "Basic analytics",
         ],
       },
       professional: {
         mo: 197,
-        was: 297,
         setup: 997,
         feat: [
-          "3 AI chat employees",
-          "5,000 conversations / month",
-          "Website + SMS channels",
-          "Advanced knowledge base",
+          "3 AI employees (chat + SMS)",
+          "15,000 conversations / month",
+          "Multi-channel deployment",
           "Appointment scheduling",
-          "CRM integration",
-          "Custom branding",
-          "Multi-language support",
+          "Custom training data",
+          "Human handoff & advanced analytics",
           "Priority support",
         ],
       },
       premium: {
         mo: 497,
-        was: 747,
         setup: 2497,
         feat: [
-          "Unlimited AI chat employees",
+          "50 AI employees",
           "Unlimited conversations",
-          "All channels (web, SMS, WhatsApp, etc.)",
-          "Custom AI training on your data",
-          "E-commerce integration",
-          "Payment collection",
-          "Advanced analytics dashboard",
-          "A/B conversation testing",
+          "Multilingual (50+ languages)",
+          "Custom workflows & triggers",
+          "API access & white-label ready",
+          "Revenue attribution",
           "Dedicated success manager",
-          "Custom integrations",
         ],
       },
     },
@@ -148,55 +129,44 @@ const M: Module[] = [
   {
     id: "bundle",
     icon: "\u26A1",
-    name: "Voice + Chat Bundle",
+    name: "Better Together Package",
     tag: "bundle",
-    desc: "Get both Buy-Lingual\u2122 Voice Agents and AI Chat Employees at a bundled discount \u2014 the complete AI workforce.",
+    desc: "Voice Agents and Digital Employees unified in one orchestrated workforce \u2014 the complete AI front office.",
     tiers: {
       standard: {
-        mo: 247,
-        was: 397,
-        setup: 1247,
+        mo: 297,
+        setup: 997,
         feat: [
-          "1 voice agent + 1 chat employee",
-          "500 voice minutes + 1,000 chats / month",
-          "Inbound calls + website chat",
-          "English + 1 language",
-          "Lead capture & FAQ handling",
-          "Business-hours routing",
-          "Email summaries & notifications",
-          "Save $47/mo vs. separate",
+          "Launch Bundle",
+          "Inbound call handling & basic outbound follow-up",
+          "Appointment booking in 100+ languages",
+          "24/7 voice coverage",
+          "CRM notes, task updates & lead routing",
+          "Basic workflow setup",
         ],
       },
       professional: {
-        mo: 497,
-        was: 797,
-        setup: 2497,
+        mo: 597,
+        setup: 1997,
         feat: [
-          "3 voice agents + 3 chat employees",
-          "2,000 voice minutes + 5,000 chats / month",
-          "Inbound + outbound + SMS",
-          "5 languages supported",
-          "Appointment booking + scheduling",
-          "CRM auto-logging",
-          "Custom voice & chat branding",
-          "Priority support",
-          "Save $97/mo vs. separate",
+          "Growth Bundle",
+          "Everything in Launch",
+          "Lead qualification & missed-call recovery",
+          "Multi-step follow-up & appointment reminders",
+          "Admin automation & CRM pipeline updates",
+          "Priority onboarding",
         ],
       },
       premium: {
-        mo: 997,
-        was: 1497,
-        setup: 5997,
+        mo: 1297,
+        setup: 3997,
         feat: [
-          "Unlimited voice agents + chat employees",
-          "5,000 voice minutes + unlimited chats",
-          "All channels & languages (29+)",
-          "Objection handling + sentiment analysis",
-          "Payment collection + e-commerce",
-          "Live dashboards & A/B testing",
-          "Dedicated success manager",
-          "Custom integrations",
-          "Save $297/mo vs. separate",
+          "Scale Bundle",
+          "Everything in Growth",
+          "Advanced outbound campaigns",
+          "Multi-language support & advanced CRM automation",
+          "Lead routing, escalation & reporting",
+          "Dedicated launch support",
         ],
       },
     },
@@ -210,49 +180,37 @@ const M: Module[] = [
     tiers: {
       standard: {
         mo: 97,
-        was: 147,
-        setup: 97,
+        setup: 0,
         feat: [
-          "Up to 2,500 contacts",
-          "1 sales pipeline",
-          "Unified inbox (email + SMS)",
-          "Basic automation workflows",
-          "Task management",
-          "Mobile app access",
-          "Email templates",
+          "3 users",
+          "5,000 emails / month",
+          "Visual pipeline & contact/deal management",
+          "Multi-channel lead capture",
+          "Funnel & form builder",
+          "Basic lead scoring",
         ],
       },
       professional: {
         mo: 247,
-        was: 397,
-        setup: 247,
+        setup: 0,
         feat: [
-          "Up to 25,000 contacts",
-          "5 sales pipelines",
-          "Unified inbox (all channels)",
-          "Advanced automation builder",
-          "Lead scoring",
-          "Custom fields & tags",
-          "Reporting dashboard",
-          "API access",
-          "Priority support",
+          "10 users",
+          "25,000 emails / month + SMS campaigns",
+          "Marketing automation flows",
+          "Advanced lead scoring & A/B testing",
+          "Reputation management",
         ],
       },
       premium: {
         mo: 497,
-        was: 797,
-        setup: 497,
+        setup: 0,
         feat: [
-          "Unlimited contacts",
-          "Unlimited pipelines",
-          "Omnichannel inbox + routing",
-          "AI-powered lead scoring",
-          "Revenue attribution",
-          "Custom objects & workflows",
-          "White-label options",
+          "Unlimited users",
+          "Unlimited email & multi-channel sends",
+          "Unified conversational inbox",
+          "Advanced analytics & conversion tracking",
+          "Custom workflows & API access",
           "Dedicated success manager",
-          "Custom integrations",
-          "SLA guarantee",
         ],
       },
     },
@@ -260,13 +218,12 @@ const M: Module[] = [
   {
     id: "web",
     icon: "\u{1F310}",
-    name: "AI Website Builder",
+    name: "OrenWeb Design",
     tag: "addon",
-    desc: "AI-designed, conversion-optimized websites with built-in chat, booking, and analytics \u2014 no code required.",
+    desc: "Custom, conversion-optimized websites with hosting, SEO, and ongoing maintenance included.",
     tiers: {
       standard: {
         mo: 247,
-        was: 397,
         setup: 997,
         feat: [
           "5-page AI-designed website",
@@ -280,7 +237,6 @@ const M: Module[] = [
       },
       professional: {
         mo: 497,
-        was: 797,
         setup: 2497,
         feat: [
           "15-page AI-designed website",
@@ -296,7 +252,6 @@ const M: Module[] = [
       },
       premium: {
         mo: 997,
-        was: 1497,
         setup: 4997,
         feat: [
           "Unlimited pages",
@@ -316,55 +271,43 @@ const M: Module[] = [
   {
     id: "talk",
     icon: "\u{1F4DE}",
-    name: "OrenTalk Phone System",
+    name: "OrenWeb Talk",
     tag: "addon",
-    desc: "Cloud business phone system with AI call routing, recording, IVR menus, and real-time analytics.",
+    desc: "AI voice and chat embedded directly in your website \u2014 qualify visitors and book meetings inline, 24/7.",
     tiers: {
       standard: {
         mo: 147,
-        was: 247,
         setup: 1497,
         feat: [
-          "1 business phone number",
-          "500 minutes / month included",
-          "Basic IVR menu",
-          "Call recording",
-          "Voicemail to email",
-          "Business-hours routing",
-          "Mobile & desktop apps",
+          "AI chat widget on site",
+          "Up to 5 pages",
+          "1,000 conversations / month",
+          "Lead capture & routing",
+          "FAQ auto-training & CRM integration",
         ],
       },
       professional: {
         mo: 297,
-        was: 497,
         setup: 2997,
         feat: [
-          "5 business phone numbers",
-          "2,000 minutes / month included",
-          "Multi-level IVR",
-          "AI call routing & queues",
-          "Call analytics dashboard",
-          "Ring groups & departments",
-          "CRM integration",
-          "Conference calling",
+          "AI voice + chat on site",
+          "Up to 15 pages",
+          "5,000 conversations / month",
+          "Voice interaction & appointment scheduling",
+          "Multi-language chat & advanced analytics",
           "Priority support",
         ],
       },
       premium: {
         mo: 497,
-        was: 797,
         setup: 5997,
         feat: [
-          "Unlimited phone numbers",
-          "5,000 minutes / month included",
-          "AI-powered smart routing",
-          "Real-time call monitoring",
-          "Custom IVR flows",
-          "Advanced analytics & reporting",
-          "Call whisper & barge",
+          "Full voice + chat + video",
+          "Unlimited pages & conversations",
+          "Custom AI persona training",
+          "100+ languages on voice",
+          "API access & white-label ready",
           "Dedicated success manager",
-          "API access",
-          "SLA guarantee",
         ],
       },
     },
@@ -372,55 +315,44 @@ const M: Module[] = [
   {
     id: "social",
     icon: "\u{1F4F1}",
-    name: "AI Social Manager",
+    name: "OrenSocial",
     tag: "addon",
-    desc: "Automated social media scheduling, content generation, engagement, and analytics across all platforms.",
+    desc: "Managed social content, community engagement, and paid social support across every major channel.",
     tiers: {
       standard: {
-        mo: 47,
-        was: 97,
+        mo: 97,
         setup: 0,
         feat: [
-          "3 social accounts",
-          "30 AI-generated posts / month",
-          "Basic scheduling",
-          "1 platform (choose Facebook, Instagram, or LinkedIn)",
-          "Basic analytics",
-          "Hashtag suggestions",
-          "Content calendar",
+          "3 social profiles managed",
+          "30 optimized posts / month",
+          "Managed content calendar",
+          "Graphic design included",
+          "Community engagement monitoring",
+          "Standard monthly reporting",
         ],
       },
       professional: {
-        mo: 97,
-        was: 197,
+        mo: 247,
         setup: 0,
         feat: [
-          "10 social accounts",
-          "90 AI-generated posts / month",
-          "Advanced scheduling & queue",
-          "All major platforms",
-          "Engagement automation (likes, replies)",
-          "Competitor monitoring",
-          "Performance reports",
-          "Content recycling",
-          "Priority support",
+          "10 social profiles managed",
+          "Unlimited scheduled posts",
+          "AI content drafting assistant",
+          "Short-form video editing (Reels/TikTok)",
+          "Proactive engagement & competitor tracking",
+          "Custom weekly reporting",
         ],
       },
       premium: {
-        mo: 197,
-        was: 397,
+        mo: 497,
         setup: 0,
         feat: [
-          "Unlimited social accounts",
-          "Unlimited AI-generated posts",
-          "All platforms + TikTok & YouTube",
-          "Advanced engagement AI",
-          "Influencer discovery",
-          "Sentiment analysis",
-          "White-label reports",
-          "Dedicated success manager",
-          "A/B content testing",
-          "SLA guarantee",
+          "25+ social profiles managed",
+          "Unlimited posts",
+          "Long-form video production & clipping",
+          "Sentiment analysis & social listening",
+          "Paid social ads integration",
+          "Crisis management playbook",
         ],
       },
     },
@@ -461,8 +393,13 @@ const TIER_LABEL: Record<TierKey, string> = {
 
 /* ──────────────────────────── helpers ──────────────────────────── */
 
-function annualPrice(monthly: number): number {
-  return Math.round(monthly * 0.83)
+/** Effective monthly rate when billed annually (annual total = monthly × 10). */
+function annualMonthlyEquivalent(monthly: number): number {
+  return Math.round((monthly * 10) / 12)
+}
+
+function annualYearTotal(monthly: number): number {
+  return monthly * 10
 }
 
 function fmt(n: number): string {
@@ -551,7 +488,7 @@ export function KanBuilder() {
   engineModules.forEach((mod) => {
     const tier = mod.tiers[cardTiers[mod.id]]
     const bill = cardBills[mod.id]
-    const mo = bill === "annual" ? annualPrice(tier.mo) : tier.mo
+    const mo = bill === "annual" ? annualMonthlyEquivalent(tier.mo) : tier.mo
     totalMonthly += mo
     totalSetup += tier.setup
   })
@@ -571,13 +508,17 @@ export function KanBuilder() {
         billing: cardBills[mod.id],
         monthly:
           cardBills[mod.id] === "annual"
-            ? annualPrice(mod.tiers[cardTiers[mod.id]].mo)
+            ? annualMonthlyEquivalent(mod.tiers[cardTiers[mod.id]].mo)
             : mod.tiers[cardTiers[mod.id]].mo,
         setup: mod.tiers[cardTiers[mod.id]].setup,
       })),
       totalMonthly,
       totalSetup,
-      annualProjection: totalMonthly * 12,
+      annualProjection: engineModules.reduce((sum, mod) => {
+        const tier = mod.tiers[cardTiers[mod.id]]
+        const bill = cardBills[mod.id]
+        return sum + (bill === "annual" ? annualYearTotal(tier.mo) : tier.mo * 12)
+      }, 0),
     }
     try {
       await fetch(`${process.env.NEXT_PUBLIC_WEBHOOK_BASE_URL ?? "https://automate.orengen.io"}/webhook/orenkanbuilder`, { // pragma: allowlist secret
@@ -602,10 +543,10 @@ export function KanBuilder() {
         const tier = cardTiers[mod.id]
         const bill = cardBills[mod.id]
         const t = mod.tiers[tier]
-        const monthly = bill === "annual" ? annualPrice(t.mo) : t.mo
+        const monthly = bill === "annual" ? annualMonthlyEquivalent(t.mo) : t.mo
         const recurring: "month" | "year" = bill === "annual" ? "year" : "month"
         const subscriptionUnit =
-          bill === "annual" ? Math.round(monthly * 12 * 100) : Math.round(monthly * 100)
+          bill === "annual" ? Math.round(t.mo * 10 * 100) : Math.round(monthly * 100)
         const lines: { name: string; price_cents: number; qty: number; recurring?: "month" | "year" }[] = [
           {
             name: `${mod.name} \u2014 ${TIER_LABEL[tier]} (${bill === "annual" ? "Annual" : "Monthly"})`,
@@ -657,7 +598,7 @@ export function KanBuilder() {
     const tier = cardTiers[mod.id]
     const bill = cardBills[mod.id]
     const t = mod.tiers[tier]
-    const price = bill === "annual" ? annualPrice(t.mo) : t.mo
+    const price = bill === "annual" ? annualMonthlyEquivalent(t.mo) : t.mo
     const expanded = expandedFeats[mod.id] ?? false
     const isDragging = dragId === mod.id
 
@@ -839,16 +780,6 @@ export function KanBuilder() {
 
         {/* price */}
         <div style={{ marginBottom: 14 }}>
-          <span
-            style={{
-              fontSize: 13,
-              color: "rgba(210,225,245,0.35)",
-              textDecoration: "line-through",
-              marginRight: 8,
-            }}
-          >
-            ${fmt(t.was)}/mo
-          </span>
           <span style={{ fontSize: 28, fontWeight: 800, color: "#CC5500" }}>
             ${fmt(price)}
           </span>
@@ -1383,7 +1314,14 @@ export function KanBuilder() {
                 Annual Projection
               </div>
               <div style={{ fontSize: 20, fontWeight: 800, color: "#F0F4FA" }}>
-                ${fmt(totalMonthly * 12)}/yr
+                ${fmt(
+                  engineModules.reduce((sum, mod) => {
+                    const tier = mod.tiers[cardTiers[mod.id]]
+                    const bill = cardBills[mod.id]
+                    return sum + (bill === "annual" ? annualYearTotal(tier.mo) : tier.mo * 12)
+                  }, 0),
+                )}
+                /yr
               </div>
             </div>
           </div>
@@ -1511,7 +1449,7 @@ export function KanBuilder() {
                     const tier = cardTiers[mod.id]
                     const bill = cardBills[mod.id]
                     const t = mod.tiers[tier]
-                    const price = bill === "annual" ? annualPrice(t.mo) : t.mo
+                    const price = bill === "annual" ? annualMonthlyEquivalent(t.mo) : t.mo
                     return (
                       <div
                         key={mod.id}

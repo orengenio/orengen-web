@@ -3,6 +3,14 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
+import JsonLd from "@/components/seo/JsonLd";
+import { ORG, SITE_URL } from "@/lib/seo/constants";
+import {
+  buildBreadcrumbList,
+  buildOrganization,
+  buildPageGraph,
+  buildWebPage,
+} from "@/lib/seo/jsonLd";
 
 /**
  * /capability-statement — government-contracting capability statement.
@@ -32,9 +40,35 @@ export const metadata: Metadata = {
 
 const ACCENT = { color: "var(--og-orange)" } as const;
 
+const CAPABILITY_JSON_LD = buildPageGraph(
+  buildWebPage({
+    name: "OrenGen Worldwide LLC Capability Statement",
+    description:
+      "Government-contracting capability statement: sovereign AI infrastructure, SAM.gov registered, SupplierGateway certified, CAGE 12XC1, UEI RX16QFYT6YM5.",
+    path: "/capability-statement",
+  }),
+  buildBreadcrumbList([
+    { name: "Home", path: "" },
+    { name: "Capability Statement", path: "/capability-statement" },
+  ]),
+  {
+    ...buildOrganization(),
+    description:
+      "Enterprise AI infrastructure firm. SAM.gov registered minority-owned small disadvantaged business. Primary NAICS 541519.",
+    naics: ORG.naicsPrimary,
+    knowsAbout: [
+      ...ORG.knowsAbout,
+      "Government contracting",
+      "Capability statement",
+      "Federal procurement",
+    ],
+  },
+);
+
 export default function CapabilityStatementPage() {
   return (
     <>
+      <JsonLd data={CAPABILITY_JSON_LD} />
       <ScrollProgress />
       <a className="skip-link" href="#main">
         Skip to content
@@ -376,7 +410,7 @@ export default function CapabilityStatementPage() {
                     <li>Securiti AI Governance — Certified</li>
                     <li>Securiti Privacy Ops — Certified</li>
                     <li>Better Business Bureau — Accredited</li>
-                    <li>Certified Claude Architect</li>
+                    <li>Claude ecosystem training completed (Architect exam in progress)</li>
                     <li>Member of The Claude Partner Network</li>
                   </ul>
                 </article>

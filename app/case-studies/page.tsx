@@ -3,33 +3,50 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
+import CaseStudyGrid from "@/components/site/CaseStudyGrid";
+import JsonLd from "@/components/seo/JsonLd";
+import { CASE_STUDIES, CASE_STUDY_SUMMARY_METRICS } from "@/lib/caseStudies";
+import { SITE_URL } from "@/lib/seo/constants";
+import {
+  buildBreadcrumbList,
+  buildCaseStudyItemList,
+  buildPageGraph,
+  buildWebPage,
+} from "@/lib/seo/jsonLd";
 
-/**
- * Case Studies page.
- * Re-skinned into the homepage brand system (shared shell + globals.css brand
- * classes). Wording is preserved verbatim from
- * Footer-pages/case-studies/page.html — only presentation/layout changed.
- */
 export const metadata: Metadata = {
   title: "Case Studies | OrenGen Worldwide — AI-Driven Innovations",
   description:
-    "Real results from real businesses. See how OrenGen AI automation drives ROI, cuts costs, and transforms operations across industries.",
+    "Documented outcomes from OrenGen engagements: 500% YoY growth, $13M+ savings, 30+ workforce buildouts, and regulated-sector pilots — quantified results with counterpart confidentiality.",
   keywords:
-    "case-studies, OrenGen, OrenGen Worldwide, AI infrastructure, case studies",
+    "case-studies, OrenGen, OrenGen Worldwide, AI infrastructure, case studies, past performance",
   alternates: { canonical: "/case-studies" },
   openGraph: {
     title: "Case Studies | OrenGen Worldwide — AI-Driven Innovations",
     description:
-      "Real results from real businesses. See how OrenGen AI automation drives ROI, cuts costs, and transforms operations across industries.",
+      "Documented outcomes from OrenGen engagements: 500% YoY growth, $13M+ savings, 30+ workforce buildouts, and regulated-sector pilots.",
     url: "https://orengen.io/case-studies",
   },
 };
 
-const ACCENT = { color: "var(--og-orange)" } as const;
+const CASE_STUDIES_JSON_LD = buildPageGraph(
+  buildWebPage({
+    name: "OrenGen Case Studies — Documented Outcomes",
+    description:
+      "Quantified outcomes from OrenGen engagements: 500% YoY growth, $13M+ savings, 30+ workforce buildouts, and regulated-sector pilots.",
+    path: "/case-studies",
+  }),
+  buildBreadcrumbList([
+    { name: "Home", path: "" },
+    { name: "Case Studies", path: "/case-studies" },
+  ]),
+  buildCaseStudyItemList(),
+);
 
 export default function CaseStudiesPage() {
   return (
     <>
+      <JsonLd data={CASE_STUDIES_JSON_LD} />
       <ScrollProgress />
       <a className="skip-link" href="#main">
         Skip to content
@@ -37,7 +54,6 @@ export default function CaseStudiesPage() {
       <div className="site-shell">
         <SiteHeader />
         <main id="main">
-          {/* HERO */}
           <section
             className="section section-brand-blue"
             aria-label="Documented Outcomes"
@@ -52,26 +68,43 @@ export default function CaseStudiesPage() {
                   </span>
                 </h1>
                 <p className="lead">
-                  Real results from real businesses. See how OrenGen AI
-                  automation drives ROI, cuts costs, and transforms operations
-                  across industries.
+                  Quantified outcomes from commercial, healthcare, legal, and
+                  public-sector engagements. Every card includes a primary metric,
+                  timeframe, and stack — full detail under NDA.
                 </p>
                 <div
                   className="trust-row reveal"
                   style={{ justifyContent: "center" }}
                 >
-                  <span className="chip">500% YoY growth</span>
-                  <span className="chip">$13M+ savings captured</span>
-                  <span className="chip">30+ virtual workforce buildouts</span>
-                  <span className="chip">7 Anthropic certs</span>
+                  {CASE_STUDY_SUMMARY_METRICS.map((m) => (
+                    <span className="chip" key={m.label}>
+                      {m.value} {m.label}
+                    </span>
+                  ))}
                 </div>
               </header>
             </div>
           </section>
 
-          {/* CASE STUDIES */}
           <section
             className="section alt section-brand-white"
+            aria-label="Summary metrics"
+          >
+            <div className="container">
+              <div className="case-study-summary reveal">
+                {CASE_STUDY_SUMMARY_METRICS.map((m) => (
+                  <div className="case-study-summary__item" key={m.label}>
+                    <div className="case-study-summary__value">{m.value}</div>
+                    <div className="case-study-summary__label">{m.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section
+            className="section section-brand-white"
+            id="studies"
             aria-label="Case studies"
           >
             <div className="container">
@@ -79,85 +112,23 @@ export default function CaseStudiesPage() {
                 <h2>Documented Past Performance</h2>
                 <p>
                   Every OrenGen engagement closes with a quantified outcome the
-                  Counterpart owns. Below are representative results from active
-                  engagements (Counterpart identities redacted for
-                  confidentiality).
+                  counterpart owns. Below are {CASE_STUDIES.length} representative
+                  results from active and completed engagements (identities redacted
+                  for confidentiality).
                 </p>
               </header>
 
-              <div className="sector-grid reveal">
-                <article className="sector-card">
-                  <div className="step">Mid-Market · B2B Services</div>
-                  <h3>500% YoY revenue growth</h3>
-                  <p>
-                    Self-hosted Claude environment plus n8n orchestration
-                    replaced four SaaS subscriptions and lifted sales-cycle
-                    velocity by 3.4x across multi-state operations.
-                  </p>
-                </article>
+              <CaseStudyGrid studies={CASE_STUDIES} />
 
-                <article className="sector-card">
-                  <div className="step">Mid-Market · Operations</div>
-                  <h3>$13M+ operational savings captured</h3>
-                  <p>
-                    Workflow consolidation, SaaS sprawl elimination, and
-                    AI-augmented operations across multi-state enterprise —
-                    documented over 18 months of measured cost reduction.
-                  </p>
-                </article>
-
-                <article className="sector-card">
-                  <div className="step">Healthcare · Specialty Clinic</div>
-                  <h3>HIPAA-enabled clinical workflow offload</h3>
-                  <p>
-                    BAA-ready architecture deployed on Counterpart
-                    infrastructure. Administrative burden reduced for clinical
-                    staff; zero PHI exposure to third-party AI vendors.
-                  </p>
-                </article>
-
-                <article className="sector-card">
-                  <div className="step">Public Sector · State Agency</div>
-                  <h3>NIST-aligned AI pilot, on-time delivery</h3>
-                  <p>
-                    Self-hosted Claude pilot deployed against state-agency
-                    procurement specs with documented controls. Foundation for a
-                    multi-year set-aside engagement.
-                  </p>
-                </article>
-
-                <article className="sector-card">
-                  <div className="step">Mid-Market · Logistics</div>
-                  <h3>30+ virtual workforce buildouts</h3>
-                  <p>
-                    AI-augmented operations teams architected, deployed, and
-                    operationalized end-to-end across logistics, dispatch, and
-                    support functions.
-                  </p>
-                </article>
-
-                <article className="sector-card">
-                  <div className="step">Federal Subcontracting</div>
-                  <h3>SDB set-aside positioning under FAR 19.704</h3>
-                  <p>
-                    Active subcontracting posture under existing federal
-                    vehicles. SDB / Minority-Owned Small Business eligibility
-                    supports prime contractor scorecard obligations.
-                  </p>
-                </article>
-              </div>
-
-              <p>
+              <p className="case-study-disclaimer reveal">
                 <strong>Counterpart confidentiality:</strong> OrenGen does not
-                publish named case studies without explicit written
-                authorization. Engagement details, financial outcomes, and
-                architectural specifics are shared under NDA during the
-                discovery phase.
+                publish named case studies without explicit written authorization.
+                Engagement details, financial outcomes, and architectural specifics
+                are shared under NDA during the discovery phase.
               </p>
             </div>
           </section>
 
-          {/* FINAL CTA */}
           <section
             className="section section-brand-blue"
             aria-label="Contact OrenGen"
@@ -172,6 +143,9 @@ export default function CaseStudiesPage() {
                 <div className="cta-row">
                   <a className="btn btn-primary" href="mailto:briefing@orengen.io">
                     Architect the Briefing
+                  </a>
+                  <a className="btn btn-secondary" href="/capability-statement">
+                    View capability statement
                   </a>
                 </div>
               </header>
