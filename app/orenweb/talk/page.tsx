@@ -310,7 +310,7 @@ export default function OrenWebTalkPage() {
                 <div className="trust-row" style={{ justifyContent: "center" }}>
                   <span className="chip">Monthly</span>
                   <span className="chip">
-                    Annual <span style={ACCENT}>Save up to $967</span>
+                    Annual <span style={ACCENT}>Save up to $994</span>
                   </span>
                 </div>
               </header>

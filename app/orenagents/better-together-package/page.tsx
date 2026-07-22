@@ -401,7 +401,7 @@ export default function OrenAgentsBetterTogetherPage() {
                 <div className="trust-row" style={{ justifyContent: "center" }}>
                   <span className="chip">Monthly</span>
                   <span className="chip">
-                    Annual <span style={ACCENT}>Save up to $2,567</span>
+                    Annual <span style={ACCENT}>Save up to $2,594</span>
                   </span>
                 </div>
               </header>
