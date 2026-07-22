@@ -12,8 +12,9 @@ export const OFFICIAL_LOGO_WHITE_URL = `${CDN}/wJb1wZczjrrxwoRKmtjrspq1IJwjW00Ft
 /** Blue/dark wordmark — use on light backgrounds. */
 export const OFFICIAL_LOGO_BLUE_URL = `${CDN}/bmeUUijIh8dkwmEIWUWDktHNGX2nMZ0HewKw9Q0e.png`;
 
-/** Favicon / square mark — OrenGen's own icon (the only icon the site should show). */
-export const FAVICON_URL = `${CDN}/SndVQLK75HyjFd6o7gHWoy3GksWvISLfzVqmOBry.png`;
+/** Favicon / square mark — OrenGen's own icon (the only icon the site should
+ * show). Self-hosted SVG in /public (official mark provided by the owner). */
+export const FAVICON_URL = "/favicon.svg";
 
 /** Founder portrait — Andre Mandel. */
 export const FOUNDER_AVATAR_URL = `${CDN}/riwvGuakJLzWEcGpv4Sc2o6J9shfC9EcUkLd1Q6k.png`;
