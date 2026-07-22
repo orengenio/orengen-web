@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import SiteHeader from "@/components/site/SiteHeader";
 import HeroMedia from "@/components/site/HeroMedia";
 import SiteFooter from "@/components/site/SiteFooter";
@@ -41,12 +42,15 @@ export const metadata: Metadata = {
 
 const ACCENT = { color: "var(--og-orange)" } as const;
 
-// Monthly prices, $0 setup, feature lists, and featured tier preserved
-// exactly; existing monthly Stripe links kept, official annual links added.
+// Official 2026 OrenNexus pricing: $0 setup, tiered by seat count. Each tier
+// carries an explicit annual price + Stripe links (annual is NOT monthly×10
+// here, so `annual` is passed per tier). Prices/links are used verbatim.
 const NEXUS_PLANS: PricingPlan[] = [
   {
     name: "Standard",
     monthly: 97,
+    annual: 997,
+    unit: "3 users",
     setup: "$0 setup fee",
     features: [
       "CRM & pipeline management",
@@ -56,15 +60,16 @@ const NEXUS_PLANS: PricingPlan[] = [
       "Landing page builder",
       "Form & survey builder",
       "Basic lead scoring",
-      "Unlimited users",
     ],
     ctaLabel: "Select Standard",
-    ctaHref: "https://buy.stripe.com/6oU9AT0tG5ht0hJecpfQI3g",
-    ctaHrefAnnual: "https://buy.stripe.com/aFa8wP3FS11d5C31pDfQI3h",
+    ctaHref: "https://buy.stripe.com/aFa4gzgsE25h8Of2tHfQI45",
+    ctaHrefAnnual: "https://buy.stripe.com/cNi28rcco6lx5C32tHfQI46",
   },
   {
     name: "Professional",
-    monthly: 247,
+    monthly: 297,
+    annual: 2997,
+    unit: "25 users",
     setup: "$0 setup fee",
     featured: true,
     features: [
@@ -76,15 +81,16 @@ const NEXUS_PLANS: PricingPlan[] = [
       "Advanced lead scoring",
       "A/B testing",
       "Reputation management",
-      "Unlimited users",
     ],
     ctaLabel: "Select Professional",
-    ctaHref: "https://buy.stripe.com/4gMcN5ekweS32pRd8lfQI3i",
-    ctaHrefAnnual: "https://buy.stripe.com/5kQeVd0tGdNZ2pR3xLfQI3j",
+    ctaHref: "https://buy.stripe.com/28EfZhdgscJV4xZgkxfQI47",
+    ctaHrefAnnual: "https://buy.stripe.com/7sY3cvcco5ht1lN3xLfQJ00",
   },
   {
     name: "Premium",
     monthly: 497,
+    annual: 4997,
+    unit: "Unlimited users",
     setup: "$0 setup fee",
     features: [
       "Everything in Professional",
@@ -95,11 +101,10 @@ const NEXUS_PLANS: PricingPlan[] = [
       "Custom workflows",
       "API access",
       "Unified conversational inbox",
-      "Unlimited users",
     ],
     ctaLabel: "Select Premium",
-    ctaHref: "https://buy.stripe.com/5kQaEX7W8fW72pR0lzfQI3k",
-    ctaHrefAnnual: "https://buy.stripe.com/14A4gz2BO5htd4v3xLfQI3l",
+    ctaHref: "https://buy.stripe.com/dRmbJ14JW5htd4v9W9fQJ01",
+    ctaHrefAnnual: "https://buy.stripe.com/7sYfZhfoAbFR8Of1pDfQJ02",
   },
 ];
 
@@ -145,7 +150,7 @@ export default function OrenNexusPage() {
                   </a>
                   <a
                     className="btn btn-secondary"
-                    href="https://buy.stripe.com/4gMcN5ekweS32pRd8lfQI3i"
+                    href="https://buy.stripe.com/28EfZhdgscJV4xZgkxfQI47"
                   >
                     Start Now
                   </a>
@@ -285,6 +290,37 @@ export default function OrenNexusPage() {
             </div>
           </section>
 
+          {/* COMMAND CENTER SHOWCASE */}
+          <section
+            className="section section-brand-blue"
+            aria-label="One unified command center"
+          >
+            <div className="container">
+              <header className="section-head center reveal">
+                <div className="eyebrow">One Command Center</div>
+                <h2>
+                  Every pipeline, campaign, and conversation —{" "}
+                  <span style={ACCENT}>on one screen.</span>
+                </h2>
+                <p className="lead">
+                  Dashboards, pipelines, automations, and a unified inbox in a
+                  single AI-powered command center. No tab-hopping, no per-seat
+                  tax, no sprawl.
+                </p>
+              </header>
+              <figure className="nexus-showcase reveal">
+                <Image
+                  src="/images/orennexus-dashboard.webp"
+                  alt="OrenNexus unified command center visualization"
+                  width={2400}
+                  height={1371}
+                  sizes="(max-width: 1040px) 100vw, 1040px"
+                  className="nexus-showcase-img"
+                />
+              </figure>
+            </div>
+          </section>
+
           {/* RESEARCH */}
           <ResearchAccordion
             eyebrow="The Tax of Tool Sprawl"
@@ -308,8 +344,8 @@ export default function OrenNexusPage() {
                   scheduled, and managed by AI &amp; Human experts.
                 </p>
                 <div className="cta-row">
-                  <span className="chip">Monthly</span>
-                  <span className="chip">Annual Save up to $994</span>
+                  <span className="chip">$0 setup fee</span>
+                  <span className="chip">Annual billing saves up to $967/yr</span>
                 </div>
               </header>
               <PricingCompareTable tiers={ORENNEXUS_PRICING_TABLE} />
@@ -319,9 +355,10 @@ export default function OrenNexusPage() {
 
           {/* AUTHORITY */}
           <section
-            className="section section-brand-blue"
+            className="section section-brand-blue has-media"
             aria-label="Authority and credentials"
           >
+            <HeroMedia src="/images/orennexus-flow.webp" />
             <div className="container">
               <header className="section-head center reveal">
                 <div className="eyebrow">Architected By</div>
@@ -390,7 +427,8 @@ export default function OrenNexusPage() {
                     <span className="faq-icon">+</span>
                   </button>
                   <div className="faq-a">
-                    Standard: 3. Professional: 10. Premium: Unlimited.
+                    Standard: 3 users. Professional: 25 users. Premium:
+                    Unlimited users.
                   </div>
                 </div>
                 <div className="faq-item">
@@ -410,7 +448,8 @@ export default function OrenNexusPage() {
                     <span className="faq-icon">+</span>
                   </button>
                   <div className="faq-a">
-                    Monthly = cancel anytime. Annual = monthly × 10 (Save 17%).
+                    Monthly plans cancel anytime. Annual plans are billed once
+                    for the year and save you up to $967 versus paying monthly.
                   </div>
                 </div>
               </div>
