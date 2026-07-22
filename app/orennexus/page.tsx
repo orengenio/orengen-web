@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import SiteHeader from "@/components/site/SiteHeader";
 import HeroMedia from "@/components/site/HeroMedia";
 import SiteFooter from "@/components/site/SiteFooter";
@@ -8,6 +7,8 @@ import ScrollProgress from "@/components/site/ScrollProgress";
 import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
 import PageAtAGlance from "@/components/site/PageAtAGlance";
 import NexusLiveDemo from "@/components/site/NexusLiveDemo";
+import NexusModules from "@/components/site/NexusModules";
+import NexusCapabilities from "@/components/site/NexusCapabilities";
 import ResearchAccordion from "@/components/site/ResearchAccordion";
 import PricingCompareTable from "@/components/site/PricingCompareTable";
 import {
@@ -172,154 +173,11 @@ export default function OrenNexusPage() {
 
           <NexusLiveDemo />
 
-          {/* CAPABILITIES */}
-          <section
-            className="section alt section-brand-white"
-            id="capabilities"
-            aria-label="Capabilities"
-          >
-            <div className="container">
-              <header className="section-head center reveal">
-                <div className="eyebrow">Capabilities</div>
-                <h2>What&apos;s Included</h2>
-              </header>
-              <div className="sector-grid reveal">
-                <article className="sector-card">
-                  <div
-                    aria-hidden="true"
-                    style={{
-                      fontSize: "1.6rem",
-                      lineHeight: 1,
-                      marginBottom: "10px",
-                    }}
-                  >
-                    &#x1F4BC;
-                  </div>
-                  <h3>CRM &amp; Pipeline</h3>
-                  <p>
-                    Visual pipeline, contact management, deal tracking, task
-                    &amp; appointment management.
-                  </p>
-                </article>
-                <article className="sector-card">
-                  <div
-                    aria-hidden="true"
-                    style={{
-                      fontSize: "1.6rem",
-                      lineHeight: 1,
-                      marginBottom: "10px",
-                    }}
-                  >
-                    &#x1F3AF;
-                  </div>
-                  <h3>Lead Generation</h3>
-                  <p>
-                    Multi-channel lead capture, automated scoring, real-time
-                    routing, landing pages, funnel builder.
-                  </p>
-                </article>
-                <article className="sector-card">
-                  <div
-                    aria-hidden="true"
-                    style={{
-                      fontSize: "1.6rem",
-                      lineHeight: 1,
-                      marginBottom: "10px",
-                    }}
-                  >
-                    &#x1F4E3;
-                  </div>
-                  <h3>Marketing Automation</h3>
-                  <p>
-                    Drag-and-drop campaign builder, email + SMS sequences,
-                    audience segmentation, A/B testing.
-                  </p>
-                </article>
-                <article className="sector-card">
-                  <div
-                    aria-hidden="true"
-                    style={{
-                      fontSize: "1.6rem",
-                      lineHeight: 1,
-                      marginBottom: "10px",
-                    }}
-                  >
-                    &#x1F4C5;
-                  </div>
-                  <h3>Forms &amp; Surveys</h3>
-                  <p>
-                    Built-in form &amp; survey builder. Branching logic.
-                    Real-time routing into your pipeline.
-                  </p>
-                </article>
-                <article className="sector-card">
-                  <div
-                    aria-hidden="true"
-                    style={{
-                      fontSize: "1.6rem",
-                      lineHeight: 1,
-                      marginBottom: "10px",
-                    }}
-                  >
-                    &#x1F4CA;
-                  </div>
-                  <h3>Analytics &amp; Reporting</h3>
-                  <p>
-                    Visual dashboards, conversion tracking, reputation
-                    management, ROI attribution.
-                  </p>
-                </article>
-                <article className="sector-card">
-                  <div
-                    aria-hidden="true"
-                    style={{
-                      fontSize: "1.6rem",
-                      lineHeight: 1,
-                      marginBottom: "10px",
-                    }}
-                  >
-                    &#x1F4E9;
-                  </div>
-                  <h3>Unified Inbox</h3>
-                  <p>
-                    Manage email, SMS, social DMs, web chat, and Google Business
-                    messages from a single conversational inbox.
-                  </p>
-                </article>
-              </div>
-            </div>
-          </section>
+          {/* MODULE SHOWCASE — what your team logs into */}
+          <NexusModules />
 
-          {/* COMMAND CENTER SHOWCASE */}
-          <section
-            className="section section-brand-blue"
-            aria-label="One unified command center"
-          >
-            <div className="container">
-              <header className="section-head center reveal">
-                <div className="eyebrow">One Command Center</div>
-                <h2>
-                  Every pipeline, campaign, and conversation —{" "}
-                  <span style={ACCENT}>on one screen.</span>
-                </h2>
-                <p className="lead">
-                  Dashboards, pipelines, automations, and a unified inbox in a
-                  single AI-powered command center. No tab-hopping, no per-seat
-                  tax, no sprawl.
-                </p>
-              </header>
-              <figure className="nexus-showcase reveal">
-                <Image
-                  src="/images/orennexus-dashboard.webp"
-                  alt="OrenNexus unified command center visualization"
-                  width={2400}
-                  height={1371}
-                  sizes="(max-width: 1040px) 100vw, 1040px"
-                  className="nexus-showcase-img"
-                />
-              </figure>
-            </div>
-          </section>
+          {/* EVERYTHING INCLUDED — full capability grid */}
+          <NexusCapabilities />
 
           {/* RESEARCH */}
           <ResearchAccordion

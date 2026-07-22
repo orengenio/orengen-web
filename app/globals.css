@@ -2801,6 +2801,136 @@ html[data-theme="light"] .hero-media img { opacity: .5; }
   border-radius: 11px;
 }
 
+/* OrenNexus hero: trim vertical dead space so the centered content reads as
+   balanced (was floating high with empty navy beneath the trust chips). */
+section[aria-label="OrenNexus hero"] {
+  padding-top: clamp(48px, 6vw, 80px);
+  padding-bottom: clamp(40px, 4.5vw, 64px);
+}
+
+/* ===== OrenNexus capabilities grid (compact, icon-rich) — light section ===== */
+.ncap-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 34px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+@media (min-width: 720px) { .ncap-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .ncap-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1240px) { .ncap-grid { grid-template-columns: repeat(4, 1fr); } }
+.ncap-card {
+  padding: 20px 20px 18px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(0, 37, 75, .10);
+  box-shadow: 0 1px 2px rgba(0, 37, 75, .05);
+  transition: transform .2s var(--og-ease), box-shadow .2s var(--og-ease), border-color .2s var(--og-ease);
+}
+.ncap-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 42px rgba(0, 37, 75, .13);
+  border-color: rgba(204, 85, 0, .38);
+}
+.ncap-ic {
+  display: grid;
+  place-items: center;
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  margin-bottom: 13px;
+  color: var(--og-orange);
+  background: linear-gradient(135deg, rgba(204, 85, 0, .15), rgba(230, 97, 0, .06));
+  border: 1px solid rgba(204, 85, 0, .22);
+}
+.ncap-ic svg { width: 22px; height: 22px; }
+.ncap-card h3 { font-size: 1.03rem; line-height: 1.2; margin: 0 0 6px; color: #0f2233; }
+.ncap-card p { font-size: .9rem; line-height: 1.45; margin: 0 0 13px; color: #54687d; }
+.ncap-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.ncap-tag {
+  font-size: .72rem; font-weight: 700; letter-spacing: .01em;
+  padding: 3px 9px; border-radius: 999px;
+  color: #00254B; background: rgba(0, 37, 75, .06);
+}
+
+/* ===== OrenNexus module mockups — dark section ===== */
+.nmod-grid {
+  display: grid;
+  gap: 20px;
+  margin-top: 34px;
+  grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
+}
+@media (min-width: 760px) { .nmod-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1160px) { .nmod-grid { grid-template-columns: repeat(4, 1fr); } }
+.nmod { margin: 0; }
+.nmod-screen {
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  background: linear-gradient(180deg, #0b1a2e, #08131f);
+  box-shadow: 0 20px 44px rgba(0, 8, 20, .5);
+  overflow: hidden;
+  min-height: 210px;
+}
+.nmod-bar {
+  display: flex; align-items: center; gap: 6px;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+  background: rgba(255, 255, 255, .03);
+}
+.nmod-d { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, .18); }
+.nmod-bar em {
+  margin-left: auto; font-style: normal; font-size: .72rem; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase; color: rgba(255, 255, 255, .5);
+}
+/* Calendar / agenda */
+.nmod-agenda { padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.nmod-slot { display: flex; align-items: center; gap: 10px; }
+.nmod-time { width: 34px; flex: none; font-size: .72rem; font-weight: 700; color: rgba(255, 255, 255, .45); text-align: right; }
+.nmod-appt {
+  flex: 1; padding: 8px 10px; border-radius: 8px; font-size: .78rem; font-weight: 600; color: #fff;
+  border-left: 3px solid var(--og-orange);
+  background: rgba(204, 85, 0, .18);
+}
+.nmod-appt.is-b { border-left-color: #4f8cff; background: rgba(79, 140, 255, .16); }
+.nmod-appt.is-c { border-left-color: #2fbf7a; background: rgba(47, 191, 122, .15); }
+.nmod-free {
+  flex: 1; padding: 8px 10px; border-radius: 8px; font-size: .78rem; font-weight: 600;
+  color: rgba(255, 255, 255, .4);
+  border: 1px dashed rgba(255, 255, 255, .16);
+}
+/* Funnel */
+.nmod-funnel { padding: 16px 14px; display: flex; flex-direction: column; gap: 9px; align-items: center; }
+.nmod-fstep {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 12px; border-radius: 8px; color: #fff; font-size: .78rem; font-weight: 600;
+  background: linear-gradient(90deg, rgba(204, 85, 0, .92), rgba(230, 97, 0, .7));
+  box-shadow: 0 6px 16px rgba(204, 85, 0, .2);
+}
+.nmod-fstep b { font-weight: 800; }
+/* Reputation */
+.nmod-rep { padding: 14px; display: flex; flex-direction: column; gap: 11px; }
+.nmod-rep-top { display: flex; align-items: baseline; gap: 8px; }
+.nmod-rep-top b { font-size: 1.6rem; font-weight: 900; color: #fff; line-height: 1; }
+.nmod-stars { color: #ffb020; letter-spacing: 1px; font-size: .9rem; }
+.nmod-stars.sm { font-size: .72rem; }
+.nmod-rep-sub { margin-left: auto; font-size: .74rem; color: rgba(255, 255, 255, .5); }
+.nmod-review { display: flex; gap: 9px; }
+.nmod-ava {
+  width: 26px; height: 26px; flex: none; border-radius: 50%; display: grid; place-items: center;
+  font-size: .74rem; font-weight: 800; color: #fff; background: rgba(255, 255, 255, .12);
+}
+.nmod-rev-h { font-size: .78rem; font-weight: 700; color: #fff; display: flex; gap: 6px; align-items: center; }
+.nmod-review p { margin: 2px 0 0; font-size: .76rem; color: rgba(255, 255, 255, .6); }
+/* Payments */
+.nmod-pay { padding: 14px; display: flex; flex-direction: column; gap: 9px; }
+.nmod-pay-h { display: flex; align-items: center; justify-content: space-between; font-size: .82rem; font-weight: 700; color: #fff; }
+.nmod-paid { font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; color: #2fbf7a; background: rgba(47, 191, 122, .14); padding: 3px 8px; border-radius: 999px; }
+.nmod-line { display: flex; justify-content: space-between; font-size: .78rem; color: rgba(255, 255, 255, .7); }
+.nmod-line b { color: #fff; font-weight: 700; }
+.nmod-total { display: flex; justify-content: space-between; font-size: .84rem; color: #fff; font-weight: 800; padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, .1); }
+.nmod-paybtn { margin-top: 4px; text-align: center; padding: 8px; border-radius: 8px; font-size: .78rem; font-weight: 800; color: #fff; background: linear-gradient(90deg, var(--og-orange), var(--og-orange-hot)); }
+.nmod-cap { margin-top: 12px; padding: 0 4px; }
+.nmod-cap b { display: block; font-size: .92rem; color: #fff; }
+.nmod-cap span { display: block; font-size: .8rem; color: rgba(255, 255, 255, .6); margin-top: 2px; }
+
 /* OrenKanBuilder: clearance below the footer so the interactive builder's
    fixed running-total bar never covers the footer's legal line at full scroll.
    The bar wraps taller as the viewport narrows (~81px desktop → ~143px when the
