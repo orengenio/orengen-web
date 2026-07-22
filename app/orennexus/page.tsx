@@ -10,11 +10,9 @@ import NexusLiveDemo from "@/components/site/NexusLiveDemo";
 import NexusModules from "@/components/site/NexusModules";
 import NexusCapabilities from "@/components/site/NexusCapabilities";
 import ResearchAccordion from "@/components/site/ResearchAccordion";
-import PricingCompareTable from "@/components/site/PricingCompareTable";
 import {
   ORENNEXUS_AT_A_GLANCE,
   ORENNEXUS_JUMPS,
-  ORENNEXUS_PRICING_TABLE,
   ORENNEXUS_RESEARCH,
 } from "@/lib/orennexusPage";
 
@@ -206,7 +204,6 @@ export default function OrenNexusPage() {
                   <span className="chip">Annual billing saves up to $967/yr</span>
                 </div>
               </header>
-              <PricingCompareTable tiers={ORENNEXUS_PRICING_TABLE} />
               <PricingTiers plans={NEXUS_PLANS} />
             </div>
           </section>
