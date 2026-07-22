@@ -538,9 +538,9 @@ export default function OrenGovStateLocalPage() {
                     certification. The firm is also registered as Small
                     Disadvantaged Business (SDB) eligible at the federal level,
                     which carries cross-acceptance into many state programs.
-                    State-specific certifications (such as Texas HUB) are added
-                    based on engagement pipeline. The firm does not list state
-                    certifications it has not earned. Specific state program
+                    State-specific certifications are added based on engagement
+                    pipeline. The firm does not list state certifications it has
+                    not earned. Specific state program
                     eligibility is confirmed in writing at the briefing stage.
                   </div>
                 </div>

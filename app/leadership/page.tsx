@@ -67,14 +67,14 @@ const TIMELINE = [
   { year: "2015", h3: "The Tech Pivot", p: "Recognizing the transformative power of technology, a deliberate pivot begins. Coding, programming, automation, and digital systems become the new frontier." },
   { year: "2018", h3: "The Origin", p: "The company that would become OrenGen is born under a different name, combining decades of business acumen with rapidly evolving technical expertise." },
   { year: "2021", h3: "The AI Awakening", p: "Artificial intelligence changes everything. A deep dive into AI systems, machine learning, and intelligent automation begins." },
-  { year: "2025", h3: "OrenGen Worldwide is Born", p: "The rebrand is complete. OrenGen Worldwide LLC launches with a mission to automate the future — BBB Accredited, Texas HUB Certified, Minority Certified." },
+  { year: "2025", h3: "OrenGen Worldwide is Born", p: "The rebrand is complete. OrenGen Worldwide LLC launches with a mission to automate the future — BBB Accredited and Minority Certified." },
   { year: "2026", h3: "20X Growth & Beyond", p: "In one year, OrenGen has grown massively. With a powerful, diverse leadership team, the mission is clear: enterprise clients, government contracts, and global reach." },
 ];
 
 const WHY = [
   { h3: "Rare Hybrid Expertise", p: "Deep business acumen fused with a rapidly expanding technical toolkit. We bridge strategic leadership and technology implementation." },
   { h3: "Executive-Level Vision", p: "We don't execute someone else's vision. We orchestrate tech-driven solutions from the top, seeing the big picture and building the machine that delivers it." },
-  { h3: "Government-Ready", p: "BBB Accredited, Texas HUB Certified, and Minority Certified through the State of Texas. Built for enterprise and government contracts." },
+  { h3: "Government-Ready", p: "BBB Accredited and Minority Certified through the State of Texas. Built for enterprise and government contracts." },
   { h3: "AI That Actually Works", p: "Virtual employees, AI call agents, and email systems reaching millions — we build intelligent solutions that do the work, not just promise it." },
   { h3: "Built to Disrupt", p: "We exist to eliminate complexity and build intelligent solutions that automate growth, enhance security, and deliver scalable results." },
   { h3: "Servant Leadership", p: "Over a century of combined servant leadership experience. We lead from the front with both business instincts and technical fluency." },
