@@ -2727,19 +2727,27 @@
 .btn:hover { transform: translateY(-1px) scale(1.015); }
 .btn:active { transform: translateY(0) scale(.985); }
 
-/* ===== Hero media backdrop placeholder (replace with real asset in public/media/) ===== */
+/* ===== Hero media backdrop (real cinematic render, public/images/) ===== */
 .hero-media {
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  opacity: .5;
-  -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent);
-  mask-image: linear-gradient(180deg, #000 55%, transparent);
-  background: radial-gradient(120% 80% at 80% -10%, rgba(0, 95, 170, .22), transparent 60%);
+  -webkit-mask-image: linear-gradient(180deg, #000 58%, transparent);
+  mask-image: linear-gradient(180deg, #000 58%, transparent);
 }
-.hero-media video, .hero-media img { width: 100%; height: 100%; object-fit: cover; }
+.hero-media video, .hero-media img { width: 100%; height: 100%; object-fit: cover; opacity: .68; }
+/* Navy scrim so hero copy stays crisp over the image (left + bottom weighted) */
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 20, 43, .82) 0%, rgba(0, 20, 43, .45) 34%, rgba(0, 20, 43, 0) 62%),
+    linear-gradient(180deg, rgba(0, 20, 43, .38) 0%, rgba(0, 20, 43, 0) 40%);
+}
+html[data-theme="light"] .hero-media img { opacity: .5; }
 
 /* OrenKanBuilder: clearance below the footer so the interactive builder's
    fixed running-total bar never covers the footer's legal line at full scroll.
