@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SiteHeader from "@/components/site/SiteHeader";
+import HeroMedia from "@/components/site/HeroMedia";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
@@ -39,10 +40,11 @@ export default function OrenHealthPage() {
         <main id="main">
           {/* ========== 1. HERO ========== */}
           <section
-            className="section section-brand-blue"
+            className="section section-brand-blue has-media"
             id="overview"
             aria-label="OrenHealth — Healthcare & Life Sciences Division"
           >
+            <HeroMedia src="/images/orenhealth-hero.webp" />
             <div className="container">
               <header className="section-head reveal">
                 <div className="eyebrow">
