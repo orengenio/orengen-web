@@ -55,6 +55,7 @@ const VOICE_PLANS: PricingPlan[] = [
   {
     name: "Professional",
     monthly: 397,
+    annual: 3997,
     setup: "+ $1,997 one-time setup",
     featured: true,
     features: [
@@ -69,8 +70,8 @@ const VOICE_PLANS: PricingPlan[] = [
       "Priority support",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/14AeVd90c4dpc0r0lzfQI3D",
-    ctaHrefAnnual: "https://buy.stripe.com/cNi8wP0tGeS3c0recpfQI3E",
+    ctaHref: "https://api.orengen.io/payment-link/6a61e21d7b99151a540400ee",
+    ctaHrefAnnual: "https://api.orengen.io/payment-link/6a61e21d7b99151a540400ee",
   },
   {
     name: "Premium",
@@ -127,7 +128,7 @@ export default function OrenAgentsVoicePage() {
                   <a className="btn btn-primary" href="#pricing">
                     See Pricing
                   </a>
-                  <a className="btn btn-secondary" href="https://buy.stripe.com/14AeVd90c4dpc0r0lzfQI3D">
+                  <a className="btn btn-secondary" href="https://api.orengen.io/payment-link/6a61e21d7b99151a540400ee">
                     Start Now
                   </a>
                 </div>
