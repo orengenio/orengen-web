@@ -36,6 +36,7 @@ const VOICE_PLANS: PricingPlan[] = [
   {
     name: "Standard",
     monthly: 197,
+    annual: 1997,
     setup: "+ $997 one-time setup",
     features: [
       "1 AI Voice Agent",
@@ -49,12 +50,13 @@ const VOICE_PLANS: PricingPlan[] = [
       "Email support",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/00w00jdgsfW7c0rc4hfQI3B",
-    ctaHrefAnnual: "https://buy.stripe.com/00w9AT4JW39l2pR0lzfQI3C",
+    ctaHref: "https://api.orengen.io/payment-link/6a61eee47b99151a54040116",
+    ctaHrefAnnual: "https://api.orengen.io/payment-link/6a61eee47b99151a54040116",
   },
   {
     name: "Professional",
     monthly: 397,
+    annual: 3997,
     setup: "+ $1,997 one-time setup",
     featured: true,
     features: [
@@ -69,12 +71,13 @@ const VOICE_PLANS: PricingPlan[] = [
       "Priority support",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/14AeVd90c4dpc0r0lzfQI3D",
-    ctaHrefAnnual: "https://buy.stripe.com/cNi8wP0tGeS3c0recpfQI3E",
+    ctaHref: "https://api.orengen.io/payment-link/6a61e21d7b99151a540400ee",
+    ctaHrefAnnual: "https://api.orengen.io/payment-link/6a61e21d7b99151a540400ee",
   },
   {
     name: "Premium",
     monthly: 797,
+    annual: 7997,
     setup: "+ $4,997 one-time setup",
     features: [
       "Everything in Professional",
@@ -88,8 +91,8 @@ const VOICE_PLANS: PricingPlan[] = [
       "Dedicated success manager",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/00w28r7W86lx3tVfgtfQI3F",
-    ctaHrefAnnual: "https://buy.stripe.com/3cIeVdekw8tF6G78S5fQI3G",
+    ctaHref: "https://api.orengen.io/payment-link/6a61f26ba655fa0b802a5c06",
+    ctaHrefAnnual: "https://api.orengen.io/payment-link/6a61f26ba655fa0b802a5c06",
   },
 ];
 
@@ -127,7 +130,7 @@ export default function OrenAgentsVoicePage() {
                   <a className="btn btn-primary" href="#pricing">
                     See Pricing
                   </a>
-                  <a className="btn btn-secondary" href="https://buy.stripe.com/14AeVd90c4dpc0r0lzfQI3D">
+                  <a className="btn btn-secondary" href="https://api.orengen.io/payment-link/6a61e21d7b99151a540400ee">
                     Start Now
                   </a>
                 </div>
