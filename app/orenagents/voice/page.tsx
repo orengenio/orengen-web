@@ -36,6 +36,7 @@ const VOICE_PLANS: PricingPlan[] = [
   {
     name: "Standard",
     monthly: 197,
+    annual: 1997,
     setup: "+ $997 one-time setup",
     features: [
       "1 AI Voice Agent",
@@ -49,8 +50,8 @@ const VOICE_PLANS: PricingPlan[] = [
       "Email support",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/00w00jdgsfW7c0rc4hfQI3B",
-    ctaHrefAnnual: "https://buy.stripe.com/00w9AT4JW39l2pR0lzfQI3C",
+    ctaHref: "https://api.orengen.io/payment-link/6a61eee47b99151a54040116",
+    ctaHrefAnnual: "https://api.orengen.io/payment-link/6a61eee47b99151a54040116",
   },
   {
     name: "Professional",
@@ -76,6 +77,7 @@ const VOICE_PLANS: PricingPlan[] = [
   {
     name: "Premium",
     monthly: 797,
+    annual: 7997,
     setup: "+ $4,997 one-time setup",
     features: [
       "Everything in Professional",
@@ -89,8 +91,8 @@ const VOICE_PLANS: PricingPlan[] = [
       "Dedicated success manager",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/00w28r7W86lx3tVfgtfQI3F",
-    ctaHrefAnnual: "https://buy.stripe.com/3cIeVdekw8tF6G78S5fQI3G",
+    ctaHref: "https://api.orengen.io/payment-link/6a61f26ba655fa0b802a5c06",
+    ctaHrefAnnual: "https://api.orengen.io/payment-link/6a61f26ba655fa0b802a5c06",
   },
 ];
 
