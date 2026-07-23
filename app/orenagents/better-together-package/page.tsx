@@ -35,6 +35,7 @@ const BUNDLE_PLANS: PricingPlan[] = [
   {
     name: "Launch Bundle",
     monthly: 297,
+    annual: 2997,
     setup: "$997 setup",
     description:
       "For businesses ready to stop missing calls, leads, and basic admin work.",
@@ -56,6 +57,7 @@ const BUNDLE_PLANS: PricingPlan[] = [
   {
     name: "Growth Bundle",
     monthly: 597,
+    annual: 5997,
     setup: "$1,997 setup",
     featured: true,
     description:
@@ -80,6 +82,7 @@ const BUNDLE_PLANS: PricingPlan[] = [
   {
     name: "Scale Bundle",
     monthly: 1297,
+    annual: 12997,
     setup: "$3,997 setup",
     badge: "Best Value",
     description:

@@ -36,6 +36,7 @@ const EMPLOYEE_PLANS: PricingPlan[] = [
   {
     name: "Standard",
     monthly: 97,
+    annual: 997,
     setup: "+ $497 one-time setup",
     features: [
       "1 AI Employee (chat)",
@@ -54,6 +55,7 @@ const EMPLOYEE_PLANS: PricingPlan[] = [
   {
     name: "Professional",
     monthly: 197,
+    annual: 1997,
     setup: "+ $997 one-time setup",
     featured: true,
     features: [
@@ -74,6 +76,7 @@ const EMPLOYEE_PLANS: PricingPlan[] = [
   {
     name: "Premium",
     monthly: 497,
+    annual: 4997,
     setup: "+ $2,497 one-time setup",
     features: [
       "Everything in Professional",
