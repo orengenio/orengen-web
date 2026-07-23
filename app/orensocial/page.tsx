@@ -57,7 +57,8 @@ const SOCIAL_PLANS: PricingPlan[] = [
   {
     name: "Standard",
     monthly: 97,
-    setup: "$0 setup fee",
+    annual: 997,
+    setup: "+ $47 one-time setup",
     features: [
       "3 social profiles managed",
       "30 optimized posts/mo",
@@ -74,7 +75,8 @@ const SOCIAL_PLANS: PricingPlan[] = [
   {
     name: "Professional",
     monthly: 247,
-    setup: "$0 setup fee",
+    annual: 2447,
+    setup: "+ $147 one-time setup",
     featured: true,
     features: [
       "Everything in Standard",
@@ -93,7 +95,8 @@ const SOCIAL_PLANS: PricingPlan[] = [
   {
     name: "Premium",
     monthly: 497,
-    setup: "$0 setup fee",
+    annual: 4997,
+    setup: "+ $297 one-time setup",
     features: [
       "Everything in Professional",
       "25+ social profiles managed",
