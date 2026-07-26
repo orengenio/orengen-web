@@ -93,6 +93,7 @@ export default function SiteHeader() {
                         <MegaItem href="/orenweb" title="OrenWeb" desc="Main web systems overview and architecture path." />
                         <MegaItem href="/orenweb/design" title="OrenWeb Design" desc="High-conversion website and digital property builds." />
                         <MegaItem href="/orenweb/talk" title="OrenWeb Talk" desc="Voice and conversational AI embedded in websites." />
+                        <MegaItem href="/orenweb/instant-site-audit" title="Instant Site Audit" desc="Free SEO · GEO · AEO visibility audit in about a minute." />
                       </div>
                     </div>
                     <MegaItem href="/pricing#orenautomations" title="OrenAutomations" desc="Workflow automation, API sync, and orchestration." />
@@ -336,6 +337,7 @@ export default function SiteHeader() {
           <a className="mobile-sub" href="/orenweb">OrenWeb <span>→</span></a>
           <a className="mobile-sub" href="/orenweb/design">OrenWeb Design <span>→</span></a>
           <a className="mobile-sub" href="/orenweb/talk">OrenWeb Talk <span>→</span></a>
+          <a className="mobile-sub" href="/orenweb/instant-site-audit">Instant Site Audit <span>→</span></a>
         </div>
         <a href="/orensocial">OrenSocial <span>→</span></a>
         <a href="/pricing#orenautomations">OrenAutomations <span>→</span></a>
