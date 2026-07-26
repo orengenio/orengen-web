@@ -192,6 +192,14 @@ export default function OrenWebPage() {
                 </p>
               </header>
               <AuditWidget widgetId="6a5fa76ee07eafbdd6223a3b" />
+              <div
+                className="cta-row"
+                style={{ justifyContent: "center", marginTop: "28px" }}
+              >
+                <a className="btn btn-secondary" href="/orenweb/instant-site-audit">
+                  Want the full SEO · GEO · AEO breakdown? →
+                </a>
+              </div>
             </div>
           </section>
 
