@@ -111,51 +111,15 @@ export default function InstantSiteAuditPage() {
                   </div>
                 </div>
 
-                <div className="audit-hero-visual reveal" aria-hidden="true">
-                  <div className="ahv">
-                    <div className="ahv-chrome">
-                      <span />
-                      <span />
-                      <span />
-                      <em>results for “your business”</em>
+                <div className="audit-hero-visual reveal" id="audit">
+                  <div className="audit-panel audit-panel-hero">
+                    <div className="audit-panel-head">
+                      <span className="audit-panel-k">Free Instant Audit</span>
+                      <span className="audit-panel-sub">
+                        SEO · GEO · AEO · results in ~60 seconds
+                      </span>
                     </div>
-                    <div className="ahv-searchbar">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                        <circle cx="11" cy="11" r="7" />
-                        <path d="m21 21-4.3-4.3" />
-                      </svg>
-                      <span className="ahv-q">your business</span>
-                      <span className="ahv-go">Search</span>
-                    </div>
-                    <div className="ahv-ai">
-                      <span className="ahv-ai-badge">AI Answer</span>
-                      <p>
-                        “The one I&apos;d recommend is <strong>Your Business</strong>{" "}
-                        — trusted, top-rated, and the clear choice.”
-                      </p>
-                    </div>
-                    <div className="ahv-res is-top">
-                      <span className="ahv-rank">1</span>
-                      <div className="ahv-res-body">
-                        <b>Your Business</b>
-                        <small>yourbusiness.com</small>
-                      </div>
-                      <span className="ahv-star">★ 4.9</span>
-                    </div>
-                    <div className="ahv-res">
-                      <span className="ahv-rank">2</span>
-                      <div className="ahv-res-body">
-                        <b>A competitor</b>
-                        <small>competitor.com</small>
-                      </div>
-                    </div>
-                    <div className="ahv-res">
-                      <span className="ahv-rank">3</span>
-                      <div className="ahv-res-body">
-                        <b>Another option</b>
-                        <small>example.com</small>
-                      </div>
-                    </div>
+                    <AuditWidget widgetId="6a5fa76ee07eafbdd6223a3b" />
                   </div>
                 </div>
               </div>
@@ -236,11 +200,10 @@ export default function InstantSiteAuditPage() {
             </div>
           </section>
 
-          {/* FREE AUDIT WIDGET (rendered once) */}
+          {/* AUDIT RECAP CTA (form lives in the hero) */}
           <section
             className="section section-brand-blue"
-            id="audit"
-            aria-label="Free instant site audit"
+            aria-label="Run your free instant site audit"
           >
             <div className="container">
               <header className="section-head center reveal">
@@ -259,11 +222,13 @@ export default function InstantSiteAuditPage() {
                   <span>What&apos;s blocking AI visibility</span>
                   <span>The fastest fixes to reclaim leads</span>
                 </div>
+                <div className="cta-row" style={{ justifyContent: "center" }}>
+                  <a className="btn btn-primary" href="#audit">
+                    Run my free audit ↑
+                  </a>
+                </div>
               </header>
-              <div className="audit-panel reveal">
-                <AuditWidget widgetId="6a5fa76ee07eafbdd6223a3b" />
-              </div>
-              <div className="trust-row reveal" style={{ justifyContent: "center", marginTop: "20px" }}>
+              <div className="trust-row reveal" style={{ justifyContent: "center", marginTop: "6px" }}>
                 <span className="chip">Instant report</span>
                 <span className="chip">No credit card</span>
                 <span className="chip">100% free</span>
