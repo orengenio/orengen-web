@@ -61,8 +61,8 @@ const NEXUS_PLANS: PricingPlan[] = [
       "Basic lead scoring",
     ],
     ctaLabel: "Select Standard",
-    ctaHref: "https://buy.stripe.com/aFa4gzgsE25h8Of2tHfQI45",
-    ctaHrefAnnual: "https://buy.stripe.com/cNi28rcco6lx5C32tHfQI46",
+    ctaHref: "https://buy.stripe.com/00w28rekw9xJ3tV8S5fQJ1c",
+    ctaHrefAnnual: "https://buy.stripe.com/cNi7sL5O0eS30hJ4BPfQJ1d",
   },
   {
     name: "Professional",
@@ -82,8 +82,8 @@ const NEXUS_PLANS: PricingPlan[] = [
       "Reputation management",
     ],
     ctaLabel: "Select Professional",
-    ctaHref: "https://buy.stripe.com/28EfZhdgscJV4xZgkxfQI47",
-    ctaHrefAnnual: "https://buy.stripe.com/7sY3cvcco5ht1lN3xLfQJ00",
+    ctaHref: "https://buy.stripe.com/bJe7sLekwh0b0hJ9W9fQJ1e",
+    ctaHrefAnnual: "https://buy.stripe.com/4gM7sLgsE9xJaWn5FTfQJ1f",
   },
   {
     name: "Premium",
@@ -102,8 +102,8 @@ const NEXUS_PLANS: PricingPlan[] = [
       "Unified conversational inbox",
     ],
     ctaLabel: "Select Premium",
-    ctaHref: "https://buy.stripe.com/dRmbJ14JW5htd4v9W9fQJ01",
-    ctaHrefAnnual: "https://buy.stripe.com/7sYfZhfoAbFR8Of1pDfQJ02",
+    ctaHref: "https://buy.stripe.com/eVq00j2BOh0b6G70lzfQJ1g",
+    ctaHrefAnnual: "https://buy.stripe.com/fZucN52BOfW7aWnb0dfQJ1h",
   },
 ];
 
@@ -149,7 +149,7 @@ export default function OrenNexusPage() {
                   </a>
                   <a
                     className="btn btn-secondary"
-                    href="https://buy.stripe.com/28EfZhdgscJV4xZgkxfQI47"
+                    href="https://buy.stripe.com/bJe7sLekwh0b0hJ9W9fQJ1e"
                   >
                     Start Now
                   </a>

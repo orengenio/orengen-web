@@ -50,8 +50,8 @@ const VOICE_PLANS: PricingPlan[] = [
       "Email support",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://api.orengen.io/payment-link/6a61eee47b99151a54040116",
-    ctaHrefAnnual: "https://api.orengen.io/payment-link/6a61eee47b99151a54040116",
+    ctaHref: "https://buy.stripe.com/7sYbJ1ccobFR3tV9W9fQJ1J",
+    ctaHrefAnnual: "https://buy.stripe.com/7sY6oH3FS9xJ0hJ4BPfQJ1K",
   },
   {
     name: "Professional",
@@ -71,8 +71,8 @@ const VOICE_PLANS: PricingPlan[] = [
       "Priority support",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://api.orengen.io/payment-link/6a61e21d7b99151a540400ee",
-    ctaHrefAnnual: "https://api.orengen.io/payment-link/6a61e21d7b99151a540400ee",
+    ctaHref: "https://buy.stripe.com/eVqdR9a4g7pBaWngkxfQJ1L",
+    ctaHrefAnnual: "https://buy.stripe.com/dRm4gz90c7pB5C32tHfQJ1M",
   },
   {
     name: "Premium",
@@ -91,8 +91,8 @@ const VOICE_PLANS: PricingPlan[] = [
       "Dedicated success manager",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://api.orengen.io/payment-link/6a61f26ba655fa0b802a5c06",
-    ctaHrefAnnual: "https://api.orengen.io/payment-link/6a61f26ba655fa0b802a5c06",
+    ctaHref: "https://buy.stripe.com/4gM14n1xK6lx3tV9W9fQJ1O",
+    ctaHrefAnnual: "https://buy.stripe.com/4gMaEX5O04dp3tVc4hfQJ1N",
   },
 ];
 
@@ -130,7 +130,7 @@ export default function OrenAgentsVoicePage() {
                   <a className="btn btn-primary" href="#pricing">
                     See Pricing
                   </a>
-                  <a className="btn btn-secondary" href="https://api.orengen.io/payment-link/6a61e21d7b99151a540400ee">
+                  <a className="btn btn-secondary" href="https://buy.stripe.com/eVqdR9a4g7pBaWngkxfQJ1L">
                     Start Now
                   </a>
                 </div>

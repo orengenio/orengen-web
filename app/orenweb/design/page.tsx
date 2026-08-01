@@ -37,6 +37,7 @@ const DESIGN_PLANS: PricingPlan[] = [
   {
     name: "Standard",
     monthly: 247,
+    annual: 2497,
     setup: "+ $997 one-time setup",
     features: [
       "Up to 5 pages",
@@ -49,12 +50,13 @@ const DESIGN_PLANS: PricingPlan[] = [
       "Monthly maintenance",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/00wcN51xK5ht9SjgkxfQI3N",
-    ctaHrefAnnual: "https://buy.stripe.com/4gMaEXb8kbFRe8zb0dfQI3W",
+    ctaHref: "https://buy.stripe.com/5kQfZh6S4bFR6G7c4hfQJ1T",
+    ctaHrefAnnual: "https://buy.stripe.com/9B6fZh7W8fW7e8z0lzfQJ1U",
   },
   {
     name: "Professional",
     monthly: 497,
+    annual: 4997,
     setup: "+ $2,497 one-time setup",
     featured: true,
     features: [
@@ -69,12 +71,13 @@ const DESIGN_PLANS: PricingPlan[] = [
       "Weekly maintenance",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/eVq9AT90ch0b2pR5FTfQI3O",
-    ctaHrefAnnual: "https://buy.stripe.com/28E00ja4gfW7e8zc4hfQI3X",
+    ctaHref: "https://buy.stripe.com/fZu9AT90c39l5C39W9fQJ1w",
+    ctaHrefAnnual: "https://buy.stripe.com/bJe00jccoeS3ggHb0dfQJ1x",
   },
   {
     name: "Premium",
     monthly: 997,
+    annual: 9997,
     setup: "+ $4,997 one-time setup",
     features: [
       "Everything in Professional",
@@ -88,8 +91,8 @@ const DESIGN_PLANS: PricingPlan[] = [
       "Dedicated web team",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/7sY28r5O025hc0r5FTfQI3P",
-    ctaHrefAnnual: "https://buy.stripe.com/9B64gzfoA6lxfcD3xLfQI3Y",
+    ctaHref: "https://buy.stripe.com/9B68wPekwh0b7Kb7O1fQJ1V",
+    ctaHrefAnnual: "https://buy.stripe.com/aFacN53FS8tF1lNecpfQJ1W",
   },
 ];
 
@@ -124,7 +127,7 @@ export default function OrenWebDesignPage() {
                   <a className="btn btn-primary" href="#pricing">
                     See Pricing
                   </a>
-                  <a className="btn btn-secondary" href="https://buy.stripe.com/eVq9AT90ch0b2pR5FTfQI3O">
+                  <a className="btn btn-secondary" href="https://buy.stripe.com/fZu9AT90c39l5C39W9fQJ1w">
                     Start Now
                   </a>
                 </div>

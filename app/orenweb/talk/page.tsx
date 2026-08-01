@@ -35,6 +35,7 @@ const TALK_PLANS: PricingPlan[] = [
   {
     name: "Standard",
     monthly: 147,
+    annual: 1497,
     setup: "+ $1,497 one-time setup",
     features: [
       "AI chat widget on site",
@@ -47,12 +48,13 @@ const TALK_PLANS: PricingPlan[] = [
       "CRM integration",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/3cI14n6S45htfcD9W9fQI3a",
-    ctaHrefAnnual: "https://buy.stripe.com/3cIfZhfoAh0b3tVd8lfQI42",
+    ctaHref: "https://buy.stripe.com/cNi4gz0tGfW79Sj2tHfQJ1y",
+    ctaHrefAnnual: "https://buy.stripe.com/9B64gzekweS3d4v4BPfQJ1z",
   },
   {
     name: "Professional",
     monthly: 297,
+    annual: 2997,
     setup: "+ $2,997 one-time setup",
     featured: true,
     features: [
@@ -67,12 +69,13 @@ const TALK_PLANS: PricingPlan[] = [
       "Priority support",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/dRm9ATdgs25he8z0lzfQI3c",
-    ctaHrefAnnual: "https://buy.stripe.com/5kQbJ13FS11d8Of3xLfQI43",
+    ctaHref: "https://buy.stripe.com/fZu6oH6S45ht6G75FTfQJ1A",
+    ctaHrefAnnual: "https://buy.stripe.com/bJe00jdgsh0b6G7c4hfQJ1B",
   },
   {
     name: "Premium",
-    monthly: 497,
+    monthly: 597,
+    annual: 5997,
     setup: "+ $5,997 one-time setup",
     features: [
       "Everything in Professional",
@@ -86,8 +89,8 @@ const TALK_PLANS: PricingPlan[] = [
       "Dedicated success manager",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/dRm8wP4JW8tF0hJfgtfQI3e",
-    ctaHrefAnnual: "https://buy.stripe.com/14AcN5b8keS32pR7O1fQI44",
+    ctaHref: "https://buy.stripe.com/6oUfZhdgs39le8zb0dfQJ1C",
+    ctaHrefAnnual: "https://buy.stripe.com/cNi9ATfoA9xJd4v2tHfQJ1D",
   },
 ];
 
@@ -123,7 +126,7 @@ export default function OrenWebTalkPage() {
                   <a className="btn btn-primary" href="#pricing">
                     See Pricing
                   </a>
-                  <a className="btn btn-secondary" href="https://buy.stripe.com/dRm9ATdgs25he8z0lzfQI3c">
+                  <a className="btn btn-secondary" href="https://buy.stripe.com/fZu6oH6S45ht6G75FTfQJ1A">
                     Start Now
                   </a>
                 </div>

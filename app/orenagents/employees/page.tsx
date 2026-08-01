@@ -14,14 +14,14 @@ import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
 export const metadata: Metadata = {
   title: "OrenAgents Employees — Autonomous AI Digital Workforce | OrenGen",
   description:
-    "Hire AI digital employees that handle qualification, CRM workflows, task automation, and back-office operations 24/7. From $97/mo.",
+    "Hire AI digital employees that handle qualification, CRM workflows, task automation, and back-office operations 24/7. From $147/mo.",
   keywords:
     "employees, OrenGen, OrenGen Worldwide, Autonomous AI Workforce, AI infrastructure",
   alternates: { canonical: "/orenagents/employees" },
   openGraph: {
     title: "OrenAgents Employees — Autonomous AI Digital Workforce | OrenGen",
     description:
-      "Hire AI digital employees that handle qualification, CRM workflows, task automation, and back-office operations 24/7. From $97/mo.",
+      "Hire AI digital employees that handle qualification, CRM workflows, task automation, and back-office operations 24/7. From $147/mo.",
     url: "https://orengen.io/orenagents/employees",
   },
 };
@@ -35,8 +35,8 @@ const ACCENT = { color: "var(--og-orange)" } as const;
 const EMPLOYEE_PLANS: PricingPlan[] = [
   {
     name: "Standard",
-    monthly: 97,
-    annual: 997,
+    monthly: 147,
+    annual: 1497,
     setup: "+ $497 one-time setup",
     features: [
       "1 AI Employee (chat)",
@@ -49,13 +49,13 @@ const EMPLOYEE_PLANS: PricingPlan[] = [
       "Basic analytics",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/8x214nb8k8tFc0r1pDfQI3v",
-    ctaHrefAnnual: "https://buy.stripe.com/aFa7sLgsE7pB6G7d8lfQI3w",
+    ctaHref: "https://buy.stripe.com/bJe5kD90caBN1lN3xLfQJ1i",
+    ctaHrefAnnual: "https://buy.stripe.com/28E8wP5O0fW74xZb0dfQJ1j",
   },
   {
     name: "Professional",
-    monthly: 197,
-    annual: 1997,
+    monthly: 297,
+    annual: 2997,
     setup: "+ $997 one-time setup",
     featured: true,
     features: [
@@ -70,13 +70,13 @@ const EMPLOYEE_PLANS: PricingPlan[] = [
       "Priority support",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/7sY4gz1xK8tF6G75FTfQI3x",
-    ctaHrefAnnual: "https://buy.stripe.com/bJeaEXb8k7pB2pR8S5fQI3y",
+    ctaHref: "https://buy.stripe.com/aFa5kDb8keS35C3fgtfQJ1k",
+    ctaHrefAnnual: "https://buy.stripe.com/aFa8wP4JW25h2pR1pDfQJ1l",
   },
   {
     name: "Premium",
-    monthly: 497,
-    annual: 4997,
+    monthly: 597,
+    annual: 5997,
     setup: "+ $2,497 one-time setup",
     features: [
       "Everything in Professional",
@@ -90,8 +90,8 @@ const EMPLOYEE_PLANS: PricingPlan[] = [
       "Dedicated success manager",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/6oUaEX5O0fW73tVfgtfQI3z",
-    ctaHrefAnnual: "https://buy.stripe.com/3cIcN5dgsaBN0hJ7O1fQI3A",
+    ctaHref: "https://buy.stripe.com/4gM9ATgsE6lxd4vc4hfQJ1m",
+    ctaHrefAnnual: "https://buy.stripe.com/5kQ7sL3FSh0b1lNfgtfQJ1n",
   },
 ];
 
@@ -127,7 +127,7 @@ export default function OrenAgentsEmployeesPage() {
                   <a className="btn btn-primary" href="#pricing">
                     See Pricing
                   </a>
-                  <a className="btn btn-secondary" href="https://buy.stripe.com/7sY4gz1xK8tF6G75FTfQI3x">
+                  <a className="btn btn-secondary" href="https://buy.stripe.com/aFa5kDb8keS35C3fgtfQJ1k">
                     Start Now
                   </a>
                 </div>
@@ -138,7 +138,7 @@ export default function OrenAgentsEmployeesPage() {
                   <span className="chip">From 1 to 50 employees</span>
                   <span className="chip">Multi-channel chat + SMS</span>
                   <span className="chip">100+ languages</span>
-                  <span className="chip">From $97/mo</span>
+                  <span className="chip">From $147/mo</span>
                 </div>
               </header>
             </div>
@@ -248,7 +248,7 @@ export default function OrenAgentsEmployeesPage() {
                   <p>
                     Salary, benefits, tax, equipment, training, attrition
                     replacement. OrenAgents Employees delivers equivalent
-                    throughput at $97–$497/mo per AI worker.
+                    throughput at $147–$597/mo per AI worker.
                   </p>
                   <p>Source: BLS / SHRM total compensation research</p>
                 </div>

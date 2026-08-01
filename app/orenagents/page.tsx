@@ -115,7 +115,7 @@ export default function OrenAgentsPage() {
                     execute tasks across your entire stack.
                   </p>
                   <div className="sector-trust">
-                    Starting from <strong>$97/mo</strong>
+                    Starting from <strong>$147/mo</strong>
                   </div>
                   <a className="card-link" href="/orenagents/employees">
                     Explore Digital Employees →

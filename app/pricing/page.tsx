@@ -28,34 +28,43 @@ export const metadata: Metadata = {
 
 const ACCENT = { color: "var(--og-orange)" } as const;
 
-// Prices, setup fees, and the "Most Popular" (featured) tier are preserved
-// exactly from the live pricing page; annual is derived (monthly × 10) per the
-// account-wide policy in the 2026 catalog.
+// Prices, annual totals, setup fees, the "Most Popular" (featured) tier, and
+// the Stripe checkout links mirror the 2026 catalog and the dedicated product
+// pages (OrenAgents Employees and Buy-Lingual™ AI Voice).
 const EMPLOYEE_PLANS: PricingPlan[] = [
   {
     name: "Standard",
-    monthly: 97,
+    monthly: 147,
+    annual: 1497,
     unit: "1 AI Employee",
     setup: "+ $497 one-time setup",
     description:
       "Buy-Lingual™, lead qualification, CRM integration, task automation.",
+    ctaHref: "https://buy.stripe.com/bJe5kD90caBN1lN3xLfQJ1i",
+    ctaHrefAnnual: "https://buy.stripe.com/28E8wP5O0fW74xZb0dfQJ1j",
   },
   {
     name: "Professional",
-    monthly: 197,
+    monthly: 297,
+    annual: 2997,
     unit: "3 AI Employees",
     setup: "+ $997 one-time setup",
     description:
       "Advanced automation, multi-CRM integration, priority support.",
     featured: true,
+    ctaHref: "https://buy.stripe.com/aFa5kDb8keS35C3fgtfQJ1k",
+    ctaHrefAnnual: "https://buy.stripe.com/aFa8wP4JW25h2pR1pDfQJ1l",
   },
   {
     name: "Premium",
-    monthly: 497,
+    monthly: 597,
+    annual: 5997,
     unit: "Unlimited AI Employees",
     setup: "+ $2,497 one-time setup",
     description:
       "Custom AI personalities, dedicated account manager, full automation stack.",
+    ctaHref: "https://buy.stripe.com/4gM9ATgsE6lxd4vc4hfQJ1m",
+    ctaHrefAnnual: "https://buy.stripe.com/5kQ7sL3FSh0b1lNfgtfQJ1n",
   },
 ];
 
@@ -63,25 +72,34 @@ const VOICE_PLANS: PricingPlan[] = [
   {
     name: "Standard",
     monthly: 197,
+    annual: 1997,
     unit: "1 AI Voice Agent",
     setup: "+ $997 one-time setup",
     description:
       "Inbound call handling, lead qualification, CRM integration.",
+    ctaHref: "https://buy.stripe.com/7sYbJ1ccobFR3tV9W9fQJ1J",
+    ctaHrefAnnual: "https://buy.stripe.com/7sY6oH3FS9xJ0hJ4BPfQJ1K",
   },
   {
     name: "Professional",
     monthly: 397,
+    annual: 3997,
     unit: "3 AI Voice Agents",
     setup: "+ $1,997 one-time setup",
     description: "Inbound + outbound, appointment booking, multi-CRM.",
     featured: true,
+    ctaHref: "https://buy.stripe.com/eVqdR9a4g7pBaWngkxfQJ1L",
+    ctaHrefAnnual: "https://buy.stripe.com/dRm4gz90c7pB5C32tHfQJ1M",
   },
   {
     name: "Premium",
     monthly: 797,
+    annual: 7997,
     unit: "Unlimited Voice Agents",
     setup: "+ $4,997 one-time setup",
     description: "Full Buy-Lingual™ suite, custom voices, SLA guarantee.",
+    ctaHref: "https://buy.stripe.com/4gM14n1xK6lx3tV9W9fQJ1O",
+    ctaHrefAnnual: "https://buy.stripe.com/4gMaEX5O04dp3tVc4hfQJ1N",
   },
 ];
 
@@ -226,7 +244,7 @@ export default function PricingPage() {
                 </article>
                 <article className="sector-card">
                   <div className="step">OrenSocial</div>
-                  <h3>From $47/mo</h3>
+                  <h3>From $97/mo</h3>
                   <p>
                     Multi-channel social scheduling, AI content, engagement
                     inbox, white-label reports.
