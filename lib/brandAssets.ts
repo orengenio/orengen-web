@@ -6,11 +6,13 @@
 const CDN =
   "https://cdn.content360.io/ea2381f4-12e0-4efd-b95b-6012c981eae0/uploads/05-2026";
 
-/** White wordmark — use on dark (navy) backgrounds. */
-export const OFFICIAL_LOGO_WHITE_URL = `${CDN}/wJb1wZczjrrxwoRKmtjrspq1IJwjW00FtCsIfdn6.png`;
+/** White wordmark — use on dark (navy) backgrounds. Self-hosted in /public
+ * (official 2026 mark provided by the owner). */
+export const OFFICIAL_LOGO_WHITE_URL = "/logo-orengen-white.png";
 
-/** Blue/dark wordmark — use on light backgrounds. */
-export const OFFICIAL_LOGO_BLUE_URL = `${CDN}/bmeUUijIh8dkwmEIWUWDktHNGX2nMZ0HewKw9Q0e.png`;
+/** Navy wordmark — use on light backgrounds. Derived from the white mark by
+ * recoloring the light "W"/"GEN" glyphs to brand navy; "OREN" stays orange. */
+export const OFFICIAL_LOGO_BLUE_URL = "/logo-orengen-navy.png";
 
 /** Favicon / square mark — OrenGen's own icon (the only icon the site should
  * show). Self-hosted SVG in /public (official mark provided by the owner). */
