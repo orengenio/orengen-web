@@ -15,8 +15,9 @@ export const OFFICIAL_LOGO_WHITE_URL = "/logo-orengen-white.png";
 export const OFFICIAL_LOGO_BLUE_URL = "/logo-orengen-navy.png";
 
 /** Favicon / square mark — OrenGen's own icon (the only icon the site should
- * show). Self-hosted SVG in /public (official mark provided by the owner). */
-export const FAVICON_URL = "/favicon.svg";
+ * show). Self-hosted PNG in /public: the 2026 "W" monogram + orange dot on a
+ * navy tile (official mark provided by the owner). */
+export const FAVICON_URL = "/favicon.png";
 
 /** Founder portrait — Andre Mandel. */
 export const FOUNDER_AVATAR_URL = `${CDN}/riwvGuakJLzWEcGpv4Sc2o6J9shfC9EcUkLd1Q6k.png`;
