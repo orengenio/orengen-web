@@ -51,8 +51,8 @@ const BUNDLE_PLANS: PricingPlan[] = [
       "Standard onboarding",
     ],
     ctaLabel: "Activate Launch Bundle",
-    ctaHref: "https://buy.stripe.com/3cI14n1xK9xJaWn9W9fQI3K",
-    ctaHrefAnnual: "https://buy.stripe.com/28EfZh3FSbFR8OfecpfQI3T",
+    ctaHref: "https://buy.stripe.com/dRmaEXdgsfW78Ofb0dfQJ1o",
+    ctaHrefAnnual: "https://buy.stripe.com/cNiaEXekw4dpe8zecpfQJ1p",
   },
   {
     name: "Growth Bundle",
@@ -76,8 +76,8 @@ const BUNDLE_PLANS: PricingPlan[] = [
       "Priority onboarding",
     ],
     ctaLabel: "Activate Growth Bundle",
-    ctaHref: "https://buy.stripe.com/cNicN590c11daWn9W9fQI3L",
-    ctaHrefAnnual: "https://buy.stripe.com/00w14nekw8tFe8z7O1fQI3U",
+    ctaHref: "https://buy.stripe.com/cNi3cv1xKdNZc0rfgtfQJ1P",
+    ctaHrefAnnual: "https://buy.stripe.com/5kQ6oH6S47pB4xZd8lfQJ1Q",
   },
   {
     name: "Scale Bundle",
@@ -101,8 +101,8 @@ const BUNDLE_PLANS: PricingPlan[] = [
       "Priority optimization",
     ],
     ctaLabel: "Activate Scale Bundle",
-    ctaHref: "https://buy.stripe.com/dRm4gzdgs8tFfcD5FTfQI3M",
-    ctaHrefAnnual: "https://buy.stripe.com/4gMeVd1xKeS3c0rgkxfQI3V",
+    ctaHref: "https://buy.stripe.com/28E00j2BObFR2pRb0dfQJ1s",
+    ctaHrefAnnual: "https://buy.stripe.com/7sYdR92BOcJVd4vd8lfQJ1t",
   },
 ];
 
@@ -142,7 +142,7 @@ export default function OrenAgentsBetterTogetherPage() {
                   <a className="btn btn-primary" href="#pricing">
                     See Bundle Pricing
                   </a>
-                  <a className="btn btn-secondary" href="https://buy.stripe.com/cNicN590c11daWn9W9fQI3L">
+                  <a className="btn btn-secondary" href="https://buy.stripe.com/cNi3cv1xKdNZc0rfgtfQJ1P">
                     Activate Growth Bundle
                   </a>
                 </div>

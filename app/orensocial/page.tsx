@@ -69,13 +69,13 @@ const SOCIAL_PLANS: PricingPlan[] = [
       "Standard monthly reporting",
     ],
     ctaLabel: "Select Standard",
-    ctaHref: "https://buy.stripe.com/9B65kD3FSfW71lNecpfQI3Q",
-    ctaHrefAnnual: "https://buy.stripe.com/6oU28r7W88tFggHd8lfQI3Z",
+    ctaHref: "https://buy.stripe.com/cNieVdcco6lxe8z9W9fQJ1H",
+    ctaHrefAnnual: "https://buy.stripe.com/28EfZh2BO39l3tV7O1fQJ1I",
   },
   {
     name: "Professional",
     monthly: 247,
-    annual: 2447,
+    annual: 2497,
     setup: "+ $147 one-time setup",
     featured: true,
     features: [
@@ -89,8 +89,8 @@ const SOCIAL_PLANS: PricingPlan[] = [
       "Custom weekly reporting",
     ],
     ctaLabel: "Select Professional",
-    ctaHref: "https://buy.stripe.com/9B63cvfoAbFR5C36JXfQI3R",
-    ctaHrefAnnual: "https://buy.stripe.com/bJefZhfoAeS31lNd8lfQI40",
+    ctaHref: "https://buy.stripe.com/6oU8wP1xKfW78Of8S5fQJ1R",
+    ctaHrefAnnual: "https://buy.stripe.com/fZucN55O0dNZc0r4BPfQJ1S",
   },
   {
     name: "Premium",
@@ -108,8 +108,8 @@ const SOCIAL_PLANS: PricingPlan[] = [
       "Real-time custom dashboard",
     ],
     ctaLabel: "Select Premium",
-    ctaHref: "https://buy.stripe.com/28EbJ1a4gdNZ9SjgkxfQI3S",
-    ctaHrefAnnual: "https://buy.stripe.com/6oUeVd90cdNZ6G7gkxfQI41",
+    ctaHref: "https://buy.stripe.com/7sY5kD5O08tFd4v2tHfQJ1E",
+    ctaHrefAnnual: "https://buy.stripe.com/6oUbJ17W89xJ0hJ9W9fQJ1F",
   },
 ];
 
@@ -150,7 +150,7 @@ export default function OrenSocialPage() {
                   >
                     See Pricing
                   </a>
-                  <a className="btn btn-secondary" href="https://buy.stripe.com/9B63cvfoAbFR5C36JXfQI3R">
+                  <a className="btn btn-secondary" href="https://buy.stripe.com/6oU8wP1xKfW78Of8S5fQJ1R">
                     Start Now
                   </a>
                 </div>
