@@ -66,7 +66,7 @@ export default function OrenGovPage() {
                   for Counterparts.
                 </p>
                 <div className="cta-row">
-                  <a className="btn btn-primary" href="https://api.orengen.io/widget/bookings/locked-in" target="_blank" rel="noopener noreferrer">
+                  <a className="btn btn-primary" href="https://api.orengen.io/widget/groups/coffeechat" target="_blank" rel="noopener noreferrer">
                     Open a Capability Briefing
                   </a>
                   <a className="btn btn-secondary" href="/capability-statement">
@@ -678,7 +678,7 @@ export default function OrenGovPage() {
                   contracting conversation begins.
                 </p>
                 <div className="cta-row">
-                  <a className="btn btn-primary" href="https://api.orengen.io/widget/bookings/locked-in" target="_blank" rel="noopener noreferrer">
+                  <a className="btn btn-primary" href="https://api.orengen.io/widget/groups/coffeechat" target="_blank" rel="noopener noreferrer">
                     Open a Capability Briefing
                   </a>
                   <a className="btn btn-secondary" href="/capability-statement">

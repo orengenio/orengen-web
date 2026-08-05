@@ -75,7 +75,7 @@ export default function OrenHealthSpecialtyClinicsPage() {
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
-                    href="https://api.orengen.io/widget/bookings/locked-in"
+                    href="https://api.orengen.io/widget/groups/coffeechat"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -592,7 +592,7 @@ export default function OrenHealthSpecialtyClinicsPage() {
                 <div className="cta-row" style={{ justifyContent: "center" }}>
                   <a
                     className="btn btn-primary"
-                    href="https://api.orengen.io/widget/bookings/locked-in"
+                    href="https://api.orengen.io/widget/groups/coffeechat"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

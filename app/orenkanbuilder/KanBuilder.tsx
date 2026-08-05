@@ -1051,7 +1051,7 @@ export function KanBuilder() {
           ))}
           <button
             onClick={() =>
-              window.open("https://api.orengen.io/widget/bookings/locked-in", "_blank")
+              window.open("https://api.orengen.io/widget/groups/coffeechat", "_blank")
             }
             style={{
               padding: "10px 24px",
