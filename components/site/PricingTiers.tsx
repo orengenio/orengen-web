@@ -9,21 +9,17 @@ import { useEffect, useRef, useState } from "react";
  * price, "most popular" highlight) into the existing plain-CSS brand system —
  * no Tailwind/shadcn/NumberFlow dependency.
  *
- * Pricing rule: annual = monthly × 10 ("save 17%"), which is OrenGen's real,
- * account-wide policy verified against the live site in the 2026 catalog. It is
- * derived from each tier's monthly price, so existing monthly prices are the
- * single source of truth and are never altered here. Pass an explicit `annual`
- * only to override a specific tier.
+ * Every plan receives explicit monthly and annual totals from the approved
+ * pricing catalog. Nothing is derived inside this presentation component.
  */
 
 const BOOKING_URL = "https://api.orengen.io/booking/coffeechat";
-const ANNUAL_MULTIPLIER = 10; // 12 months billed at 10× monthly = 2 months free (~17% off)
 
 export type PricingPlan = {
   name: string;
   monthly: number;
-  /** Annual total. Defaults to monthly × 10. */
-  annual?: number;
+  /** Final annual total from the approved commercial catalog. */
+  annual: number;
   /** Small qualifier under the price, e.g. "3 AI Employees". */
   unit?: string;
   /** One-time setup line, shown verbatim, e.g. "+ $997 one-time setup". */
@@ -100,7 +96,7 @@ export default function PricingTiers({
   const maxSavePct = Math.max(
     0,
     ...plans.map((p) => {
-      const a = p.annual ?? p.monthly * ANNUAL_MULTIPLIER;
+      const a = p.annual;
       const full = p.monthly * 12;
       return full > 0 ? Math.round(((full - a) / full) * 100) : 0;
     }),
@@ -128,7 +124,7 @@ export default function PricingTiers({
             aria-pressed={yearly}
             onClick={() => setYearly(true)}
           >
-            Yearly
+            Annual
           </button>
         </div>
         <span className="price-save" data-on={yearly}>
@@ -138,7 +134,7 @@ export default function PricingTiers({
 
       <div className="price-grid" data-cols={cols}>
         {plans.map((plan) => {
-          const annual = plan.annual ?? plan.monthly * ANNUAL_MULTIPLIER;
+          const annual = plan.annual;
           const featured = !!plan.featured;
           const ctaHref =
             (yearly && plan.ctaHrefAnnual) ||
@@ -149,29 +145,35 @@ export default function PricingTiers({
               key={plan.name}
               className={`price-card${featured ? " is-featured" : ""}`}
             >
-              {(featured || plan.badge) && (
-                <div className="price-badge">
-                  {plan.badge ?? "Most Popular"}
-                </div>
-              )}
-              <h3 className="price-name">{plan.name}</h3>
-              <div className="price-amount">
-                <span className="price-cur">$</span>
-                <span className="price-num">
-                  <AnimatedPrice value={yearly ? annual : plan.monthly} />
-                </span>
-                <span className="price-per">/{yearly ? "yr" : "mo"}</span>
+              <div className="price-plan-heading">
+                {(featured || plan.badge) && (
+                  <div className="price-badge">
+                    {plan.badge ?? "Most Popular"}
+                  </div>
+                )}
+                <h3 className="price-name">{plan.name}</h3>
               </div>
-              {yearly && annual < plan.monthly * 12 && (
-                <div className="price-save-line">
-                  Save ${(plan.monthly * 12 - annual).toLocaleString("en-US")}/yr
+              <div className="price-plan-rate">
+                <div className="price-amount">
+                  <span className="price-cur">$</span>
+                  <span className="price-num">
+                    <AnimatedPrice value={yearly ? annual : plan.monthly} />
+                  </span>
+                  <span className="price-per">/{yearly ? "yr" : "mo"}</span>
                 </div>
-              )}
-              {plan.unit && <div className="price-unit">{plan.unit}</div>}
-              {plan.setup && <div className="price-setup">{plan.setup}</div>}
-              {plan.description && (
-                <p className="price-desc">{plan.description}</p>
-              )}
+                {yearly && annual < plan.monthly * 12 && (
+                  <div className="price-save-line">
+                    Save ${(plan.monthly * 12 - annual).toLocaleString("en-US")}/yr
+                  </div>
+                )}
+              </div>
+              <div className="price-plan-terms">
+                {plan.unit && <div className="price-unit">{plan.unit}</div>}
+                {plan.setup && <div className="price-setup">{plan.setup}</div>}
+                {plan.description && (
+                  <p className="price-desc">{plan.description}</p>
+                )}
+              </div>
               {plan.features && plan.features.length > 0 && (
                 <ul className="price-feat">
                   {plan.features.map((f) => (

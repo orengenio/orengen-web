@@ -1,5 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 
+const INTAKE_CSRF_TOKEN = "orengen-intake-v1";
+
+function isTrustedFormOrigin(req: NextRequest) {
+  if (req.headers.get("sec-fetch-site") === "cross-site") return false;
+
+  const origin = req.headers.get("origin");
+  if (!origin) return true;
+
+  const forwardedHost = req.headers.get("x-forwarded-host");
+  const host = forwardedHost || req.headers.get("host");
+  const forwardedProto = req.headers.get("x-forwarded-proto");
+  const protocol = forwardedProto || req.nextUrl.protocol.replace(":", "");
+  const deployedOrigin = host ? `${protocol}://${host}` : req.nextUrl.origin;
+
+  return new Set([
+    req.nextUrl.origin,
+    deployedOrigin,
+    "https://orengen.io",
+    "https://www.orengen.io",
+  ]).has(origin);
+}
+
 /**
  * Free, self-owned intake endpoint — no third-party form service.
  *
@@ -13,6 +35,10 @@ import { NextRequest, NextResponse } from "next/server";
  * - A native <form> POST is redirected back to the page with `?intake=received`.
  */
 export async function POST(req: NextRequest) {
+  if (!isTrustedFormOrigin(req)) {
+    return NextResponse.json({ ok: false, error: "Untrusted form origin" }, { status: 403 });
+  }
+
   let data: Record<string, unknown> = {};
   const contentType = req.headers.get("content-type") || "";
 
@@ -26,8 +52,13 @@ export async function POST(req: NextRequest) {
       if (paths.length) data.paths = paths.map(String);
     }
   } catch {
-    // Ignore parse errors — we still return success below.
+    return NextResponse.json({ ok: false, error: "Invalid form payload" }, { status: 400 });
   }
+
+  if (data.csrf_token !== INTAKE_CSRF_TOKEN) {
+    return NextResponse.json({ ok: false, error: "Invalid form token" }, { status: 403 });
+  }
+  delete data.csrf_token;
 
   const webhook =
     process.env.OREN_INTAKE_WEBHOOK ||

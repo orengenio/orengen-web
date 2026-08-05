@@ -5,6 +5,7 @@ import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
 import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
+import { commercialTerms, FINAL_PRICING } from "@/lib/pricingCatalog";
 
 /**
  * OrenSocial page.
@@ -56,9 +57,7 @@ const SOURCE = {
 const SOCIAL_PLANS: PricingPlan[] = [
   {
     name: "Standard",
-    monthly: 97,
-    annual: 997,
-    setup: "+ $47 one-time setup",
+    ...commercialTerms("socialStandard"),
     features: [
       "3 social profiles managed",
       "30 optimized posts/mo",
@@ -69,14 +68,10 @@ const SOCIAL_PLANS: PricingPlan[] = [
       "Standard monthly reporting",
     ],
     ctaLabel: "Select Standard",
-    ctaHref: "https://buy.stripe.com/cNieVdcco6lxe8z9W9fQJ1H",
-    ctaHrefAnnual: "https://buy.stripe.com/28EfZh2BO39l3tV7O1fQJ1I",
   },
   {
     name: "Professional",
-    monthly: 247,
-    annual: 2497,
-    setup: "+ $147 one-time setup",
+    ...commercialTerms("socialProfessional"),
     featured: true,
     features: [
       "Everything in Standard",
@@ -89,14 +84,10 @@ const SOCIAL_PLANS: PricingPlan[] = [
       "Custom weekly reporting",
     ],
     ctaLabel: "Select Professional",
-    ctaHref: "https://buy.stripe.com/6oU8wP1xKfW78Of8S5fQJ1R",
-    ctaHrefAnnual: "https://buy.stripe.com/fZucN55O0dNZc0r4BPfQJ1S",
   },
   {
     name: "Premium",
-    monthly: 497,
-    annual: 4997,
-    setup: "+ $297 one-time setup",
+    ...commercialTerms("socialPremium"),
     features: [
       "Everything in Professional",
       "25+ social profiles managed",
@@ -108,8 +99,6 @@ const SOCIAL_PLANS: PricingPlan[] = [
       "Real-time custom dashboard",
     ],
     ctaLabel: "Select Premium",
-    ctaHref: "https://buy.stripe.com/7sY5kD5O08tFd4v2tHfQJ1E",
-    ctaHrefAnnual: "https://buy.stripe.com/6oUbJ17W89xJ0hJ9W9fQJ1F",
   },
 ];
 
@@ -150,12 +139,15 @@ export default function OrenSocialPage() {
                   >
                     See Pricing
                   </a>
-                  <a className="btn btn-secondary" href="https://buy.stripe.com/6oU8wP1xKfW78Of8S5fQJ1R">
+                  <a
+                    className="btn btn-secondary"
+                    href={FINAL_PRICING.socialProfessional.monthlyCheckout}
+                  >
                     Start Now
                   </a>
                 </div>
                 <div className="trust-row" style={{ justifyContent: "center" }}>
-                  <span className="chip">No setup fees</span>
+                  <span className="chip">Setup from $47</span>
                   <span className="chip">Fully managed</span>
                   <span className="chip">From $97/mo</span>
                   <span className="chip">AI-assisted content</span>
@@ -360,8 +352,8 @@ export default function OrenSocialPage() {
                 <div className="eyebrow">Pricing &amp; Plans</div>
                 <h2>OrenSocial Pricing</h2>
                 <p>
-                  No setup fees. Complete social presence built, scheduled, and
-                  managed by AI &amp; Human experts.
+                  Complete social presence built, scheduled, and managed by
+                  AI &amp; Human experts. One-time setup starts at $47.
                 </p>
                 <div className="trust-row" style={{ justifyContent: "center" }}>
                   <span className="chip">Monthly</span>
@@ -429,7 +421,8 @@ export default function OrenSocialPage() {
                     <span className="faq-icon">+</span>
                   </button>
                   <div className="faq-a">
-                    Monthly = cancel anytime. Annual = monthly × 10 (Save 17%).
+                    Monthly plans cancel anytime. Annual plans are billed once
+                    per year at the total shown.
                   </div>
                 </div>
                 <div className="faq-item">

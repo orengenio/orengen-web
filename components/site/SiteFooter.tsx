@@ -83,7 +83,6 @@ const COLUMNS: { title: string; links: { href: string; label: string; ext?: bool
       { href: "/orenweb/design", label: "OrenWeb Design" },
       { href: "/orenweb/talk", label: "OrenWeb Talk" },
       { href: "/orensocial", label: "OrenSocial" },
-      { href: "/pricing#orenautomations", label: "OrenAutomations" },
       { href: "/pricing#orenconsulting", label: "OrenConsulting" },
       { href: "/marketplace", label: "Marketplace — Coming Soon" },
     ],
@@ -137,7 +136,7 @@ const COLUMNS: { title: string; links: { href: string; label: string; ext?: bool
       { href: "/support", label: "Technical Support — Coming Soon" },
       { href: "/faqs", label: "Implementation FAQs" },
       { href: "/legal/security-overview", label: "Security Controls" },
-      { href: "https://n8n.partnerlinks.io/orengenio", label: "n8n Automation", ext: true },
+      { href: "https://n8n.io/", label: "n8n Automation", ext: true },
       { href: "https://orengen-status-page.instatus.com", label: "Platform Status", ext: true },
     ],
   },
@@ -228,7 +227,7 @@ export default function SiteFooter() {
             <div className="og-solidify-grid">
               <article className="og-solidify-card">
                 <h4>Platform + Product Architecture</h4>
-                <p>OrenNexus and OrenAgents power the core operating layer, with OrenAutomations, OrenWeb, and OrenCustoms supporting delivery, orchestration, and integration.</p>
+                <p>OrenNexus and OrenAgents power the core operating layer, with OrenWeb, workflow orchestration, and custom systems supporting delivery and integration.</p>
               </article>
               <article className="og-solidify-card">
                 <h4>Buyer Journey Clarity</h4>
@@ -255,6 +254,7 @@ export default function SiteFooter() {
               <p>Launching now: practical enterprise AI briefings on infrastructure, governance, implementation strategy, and modernization playbooks.</p>
             </div>
             <form className="og-newsletter-form" action="/api/intake-sync" method="post">
+              <input type="hidden" name="csrf_token" value="orengen-intake-v1" />
               <input type="hidden" name="source" value="orensignal-newsletter-footer" />
               <input type="hidden" name="intent" value="newsletter-subscribe" />
               <input type="email" name="email" placeholder="name@company.com" autoComplete="email" required />

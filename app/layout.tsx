@@ -1,6 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Public_Sans } from "next/font/google";
-import { FAVICON_URL } from "@/lib/brandAssets";
+import {
+  OFFICIAL_FAVICON_NAVY_URL,
+  OFFICIAL_FAVICON_WHITE_URL,
+  OFFICIAL_LOGO_BLUE_URL,
+} from "@/lib/brandAssets";
 import ChatWidget from "@/components/site/ChatWidget";
 import "./globals.css";
 
@@ -11,9 +15,95 @@ const publicSans = Public_Sans({
   variable: "--font-public-sans",
 });
 
-// Social-share card: the 2026 OrenGen wordmark on brand navy (self-hosted in
-// /public). metadataBase resolves this relative path to an absolute URL.
-const OG_IMAGE = "/og-image.png";
+const OG_IMAGE =
+  "https://cdn.content360.io/ea2381f4-12e0-4efd-b95b-6012c981eae0/uploads/05-2026/bmeUUijIh8dkwmEIWUWDktHNGX2nMZ0HewKw9Q0e.png";
+
+const ORGANIZATION_JSON_LD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://orengen.io/#organization",
+      name: "OrenGen Worldwide LLC",
+      alternateName: ["OrenGen", "OrenGen Worldwide"],
+      url: "https://orengen.io/",
+      logo: {
+        "@type": "ImageObject",
+        url: OFFICIAL_LOGO_BLUE_URL,
+      },
+      description:
+        "OrenGen Worldwide architects hosted and self-hosted AI-enabled enterprise ecosystems, governed automation, CRM, AI agents, and digital infrastructure.",
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        url: "https://orengen.io/contact-us",
+        telephone: "+1-833-673-6436",
+      },
+      telephone: "+1-833-673-6436",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "1812 Open Range Drive",
+        addressLocality: "Mansfield",
+        addressRegion: "TX",
+        postalCode: "76063",
+        addressCountry: "US",
+      },
+      founder: {
+        "@type": "Person",
+        name: "Andre Mandel",
+        jobTitle: "Founder and Global Chief AI Officer",
+      },
+      areaServed: ["United States", "Worldwide"],
+      sameAs: [
+        "https://www.linkedin.com/company/orengenio",
+        "https://x.com/orengenio",
+        "https://www.instagram.com/orengenio",
+        "https://www.facebook.com/orengenio",
+        "https://github.com/orengenio",
+        "https://www.youtube.com/@orengenio",
+        "https://tiktok.com/@orengenio",
+      ],
+      knowsAbout: [
+        "Enterprise AI infrastructure",
+        "Hosted and self-hosted AI",
+        "AI governance",
+        "Workflow automation",
+        "AI voice agents",
+        "CRM architecture",
+        "Public-sector AI",
+        "Healthcare operations automation",
+        "Legal operations automation",
+      ],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "OrenGen Enterprise Systems",
+        itemListElement: [
+          { "@type": "OfferCatalog", name: "Nexus CRM", url: "https://orengen.io/orennexus" },
+          { "@type": "OfferCatalog", name: "AI Employees", url: "https://orengen.io/orenagents/employees" },
+          { "@type": "OfferCatalog", name: "Buy-Lingual™ AI Voice", url: "https://orengen.io/orenagents/voice" },
+          { "@type": "OfferCatalog", name: "OrenWeb", url: "https://orengen.io/orenweb" },
+          { "@type": "OfferCatalog", name: "OrenSocial", url: "https://orengen.io/orensocial" },
+        ],
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://orengen.io/#website",
+      url: "https://orengen.io/",
+      name: "OrenGen Worldwide",
+      publisher: { "@id": "https://orengen.io/#organization" },
+      inLanguage: "en-US",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: "https://orengen.io/search?q={search_term_string}",
+        },
+        "query-input": "required name=search_term_string",
+      },
+    },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://orengen.io"),
@@ -24,14 +114,6 @@ export const metadata: Metadata = {
   authors: [{ name: "OrenGen Worldwide LLC" }],
   alternates: {
     canonical: "/",
-    languages: {
-      en: "/",
-      es: "/es/",
-      fr: "/fr/",
-      de: "/de/",
-      pt: "/pt/",
-      "x-default": "/",
-    },
   },
   openGraph: {
     type: "website",
@@ -53,9 +135,20 @@ export const metadata: Metadata = {
     images: [OG_IMAGE],
   },
   icons: {
-    icon: [{ url: FAVICON_URL, type: "image/png", sizes: "512x512" }],
-    shortcut: FAVICON_URL,
-    apple: FAVICON_URL,
+    icon: [
+      {
+        url: OFFICIAL_FAVICON_NAVY_URL,
+        type: "image/png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: OFFICIAL_FAVICON_WHITE_URL,
+        type: "image/png",
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
+    shortcut: OFFICIAL_FAVICON_NAVY_URL,
+    apple: OFFICIAL_FAVICON_NAVY_URL,
   },
   robots: { index: true, follow: true },
 };
@@ -73,7 +166,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="dark" className={publicSans.variable}>
+      <head>
+        <link rel="preconnect" href="https://assets.cdn.filesafe.space" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://cdn.content360.io" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://widgets.leadconnectorhq.com" />
+      </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }}
+        />
         {children}
         <ChatWidget />
       </body>

@@ -198,8 +198,8 @@ export default function FaqsPage() {
                     Per-product or per-suite. Bundle discounts apply when
                     multiple products are deployed together. OrenAgents starts at
                     $97/mo, OrenNexus at $97/mo, OrenWeb at $247/mo, OrenSocial at
-                    $47/mo. See the pricing page or open OrenKanBuilder™ for live
-                    configuration with bundle pricing.
+                    $97/mo. See the pricing page for complete plan details and
+                    bundle pricing.
                   </div>
                 </div>
                 <div className="faq-item">
@@ -222,8 +222,8 @@ export default function FaqsPage() {
                   </button>
                   <div className="faq-a">
                     OrenAgents and OrenNexus typically go live within days.
-                    Custom enterprise engagements (OrenConsulting, OrenAutomations
-                    white-glove) deploy in 2–4 weeks for initial scope. Federal
+                    Custom OrenConsulting and white-glove workflow engagements
+                    deploy in 2–4 weeks for initial scope. Federal
                     and healthcare engagements include longer governance phases
                     per compliance requirements.
                   </div>
@@ -235,7 +235,8 @@ export default function FaqsPage() {
                   </button>
                   <div className="faq-a">
                     Monthly plans on SaaS products have no long-term commitment —
-                    cancel anytime. Annual plans are monthly × 10 (Save 17%).
+                    cancel anytime. Annual plans display their final annual
+                    total and route to a dedicated annual checkout.
                     OrenConsulting fractional engagements can be cancelled at any
                     time. Enterprise custom engagements are scoped per statement
                     of work.

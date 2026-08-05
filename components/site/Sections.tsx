@@ -69,7 +69,7 @@ const SECTORS = [
   { step: "02 · OrenHealth / Healthcare", h3: "HIPAA-trained AI workflows for healthcare and life sciences.", p: "Governed automation for hospitals, specialty clinics, research operations, and administrative lift.", ul: ["Healthcare intake", "Clinic operations support", "HIPAA-trained delivery awareness"], trust: "HIPAA Trained · Healthcare AI Path", href: "/orenhealth", link: "View OrenHealth" },
   { step: "03 · OrenLegal / Legal", h3: "AI-enabled legal operations, intake, document routing, and compliance workflows.", p: "Structured systems for law firms, legal support operators, compliance teams, and contract-heavy organizations.", ul: ["Legal intake workflows", "Document and case routing", "Contract and compliance support"], trust: "Legal ops · Contract workflow · Compliance support", href: "/orenlegal", link: "View OrenLegal" },
   { step: "04 · Enterprise", h3: "Owned operations infrastructure for growth-stage and mid-market operators.", p: "Replace fragmented tools with a governed AI operating layer that consolidates workflows and data surfaces.", ul: ["Workflow orchestration", "Automation modernization", "Executive operating dashboards"], trust: "No-rent methodology · Owned systems", href: "/pricing#orenconsulting", link: "View Consulting" },
-  { step: "05 · OrenNexus / Platform", h3: "Accelerated enterprise operating capability.", p: "Structured operations layer for CRM, content, automation, funnels, knowledge systems, and AI delivery.", ul: ["OrenNexus", "OrenAgents", "OrenAutomations"], trust: "Platform stack · Enterprise routing", href: "/orennexus", link: "View OrenNexus" },
+  { step: "05 · OrenNexus / Platform", h3: "Accelerated enterprise operating capability.", p: "Structured operations layer for CRM, content, automation, funnels, knowledge systems, and AI delivery.", ul: ["OrenNexus", "OrenAgents", "Workflow Orchestration"], trust: "Platform stack · Enterprise routing", href: "/orennexus", link: "View OrenNexus" },
 ];
 
 const CAPS = [
@@ -133,13 +133,13 @@ const PATHS = [
   "OrenGov / Public Sector", "OrenGov / State & Local", "OrenGov / Education", "OrenGov / Defense",
   "OrenHealth / Healthcare", "OrenHealth / Hospitals", "OrenHealth / Specialty Clinics", "OrenHealth / Research",
   "OrenLegal / Legal Operations", "OrenAgents / Voice Agents", "OrenAgents / AI Employees",
-  "OrenAutomations / Workflow Automation", "OrenWeb / Portal Architecture", "OrenSocial / Authority Systems",
+  "Workflow Automation / Orchestration", "OrenWeb / Portal Architecture", "OrenSocial / Authority Systems",
   "OrenNexus / Platform Architecture", "OrenConsulting / Executive Strategy",
 ];
 
 export default function Sections() {
   return (
-    <>
+    <div className="og-continuum">
       {/* Cost of inertia */}
       <section className="section alt og-cost-section section-brand-white" id="cost-of-inertia" aria-label="The real cost of tech inertia">
         <div className="container">
@@ -425,6 +425,8 @@ export default function Sections() {
             </div>
             <div className="briefing-card" aria-label="Briefing intake form">
               <form action="/api/intake-sync" method="post">
+                <input type="hidden" name="csrf_token" value="orengen-intake-v1" />
+                <input type="hidden" name="source" value="homepage-architecture-brief" />
                 <label htmlFor="name">Name</label>
                 <input id="name" name="name" type="text" placeholder="Full name" autoComplete="name" required />
                 <label htmlFor="email">Email</label>
@@ -445,6 +447,6 @@ export default function Sections() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

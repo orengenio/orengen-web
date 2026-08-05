@@ -4,6 +4,7 @@ import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
 import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
+import { commercialTerms, FINAL_PRICING } from "@/lib/pricingCatalog";
 
 /**
  * OrenAgents Voice page.
@@ -35,9 +36,7 @@ const ACCENT = { color: "var(--og-orange)" } as const;
 const VOICE_PLANS: PricingPlan[] = [
   {
     name: "Standard",
-    monthly: 197,
-    annual: 1997,
-    setup: "+ $997 one-time setup",
+    ...commercialTerms("voiceStandard"),
     features: [
       "1 AI Voice Agent",
       "500 minutes/mo",
@@ -50,14 +49,10 @@ const VOICE_PLANS: PricingPlan[] = [
       "Email support",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/7sYbJ1ccobFR3tV9W9fQJ1J",
-    ctaHrefAnnual: "https://buy.stripe.com/7sY6oH3FS9xJ0hJ4BPfQJ1K",
   },
   {
     name: "Professional",
-    monthly: 397,
-    annual: 3997,
-    setup: "+ $1,997 one-time setup",
+    ...commercialTerms("voiceProfessional"),
     featured: true,
     features: [
       "Everything in Standard",
@@ -71,14 +66,10 @@ const VOICE_PLANS: PricingPlan[] = [
       "Priority support",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/eVqdR9a4g7pBaWngkxfQJ1L",
-    ctaHrefAnnual: "https://buy.stripe.com/dRm4gz90c7pB5C32tHfQJ1M",
   },
   {
     name: "Premium",
-    monthly: 797,
-    annual: 7997,
-    setup: "+ $4,997 one-time setup",
+    ...commercialTerms("voicePremium"),
     features: [
       "Everything in Professional",
       "50 AI Voice Agents",
@@ -91,8 +82,6 @@ const VOICE_PLANS: PricingPlan[] = [
       "Dedicated success manager",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/4gM14n1xK6lx3tV9W9fQJ1O",
-    ctaHrefAnnual: "https://buy.stripe.com/4gMaEX5O04dp3tVc4hfQJ1N",
   },
 ];
 
@@ -130,7 +119,10 @@ export default function OrenAgentsVoicePage() {
                   <a className="btn btn-primary" href="#pricing">
                     See Pricing
                   </a>
-                  <a className="btn btn-secondary" href="https://buy.stripe.com/eVqdR9a4g7pBaWngkxfQJ1L">
+                  <a
+                    className="btn btn-secondary"
+                    href={FINAL_PRICING.voiceProfessional.monthlyCheckout}
+                  >
                     Start Now
                   </a>
                 </div>
@@ -325,7 +317,7 @@ export default function OrenAgentsVoicePage() {
                 <h2>AI Voice Agents Pricing</h2>
                 <p className="lead">
                   All plans include Buy-Lingual™ multi-language capability.
-                  Annual billing saves 17%.
+                  Annual billing lowers the effective monthly cost.
                 </p>
                 <div className="trust-row">
                   <span className="chip">Monthly</span>
@@ -447,7 +439,8 @@ export default function OrenAgentsVoicePage() {
                     <span className="faq-icon">+</span>
                   </button>
                   <div className="faq-a">
-                    Monthly = cancel anytime. Annual = monthly × 10 (Save 17%).
+                    Monthly plans cancel anytime. Annual plans are billed once
+                    per year at the total shown.
                   </div>
                 </div>
                 <div className="faq-item">

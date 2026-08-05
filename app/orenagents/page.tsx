@@ -4,6 +4,9 @@ import HeroMedia from "@/components/site/HeroMedia";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
+import GradientCardShowcase, {
+  type GradientCardItem,
+} from "@/components/ui/gradient-card-showcase";
 
 /**
  * OrenAgents hub page.
@@ -27,6 +30,44 @@ export const metadata: Metadata = {
 };
 
 const ACCENT = { color: "var(--og-orange)" } as const;
+
+const AGENT_CARDS = [
+  {
+    eyebrow: "The Voice",
+    title: "Buy-Lingual™ AI Voice",
+    description:
+      "Autonomous inbound and outbound voice agents that answer every call, qualify leads, and book appointments in 100+ world languages with zero lag.",
+    price: "Starting at $197/month",
+    href: "/orenagents/voice",
+    cta: "Explore Voice Agents",
+    gradientFrom: "#ff8a3d",
+    gradientTo: "#7a2f00",
+    badge: "Trademarked",
+  },
+  {
+    eyebrow: "The Brain",
+    title: "Autonomous Digital Employees",
+    description:
+      "AI workers for chat, SMS, and complex CRM workflows. They manage your inbox, follow up with leads, and execute tasks across your entire stack.",
+    price: "Starting at $197/month",
+    href: "/orenagents/employees",
+    cta: "Explore Digital Employees",
+    gradientFrom: "#1683c5",
+    gradientTo: "#00254b",
+  },
+  {
+    eyebrow: "Unified Workforce",
+    title: 'The “Better Together” Package',
+    description:
+      "Unify Voice Agents and Digital Employees into one orchestrated workforce. The ultimate 360° deployment for high-growth enterprises.",
+    price: "Starting at $297/month · Best value",
+    href: "/orenagents/better-together-package",
+    cta: "View Bundle Pricing",
+    gradientFrom: "#aebdca",
+    gradientTo: "#cc5500",
+    badge: "Recommended",
+  },
+] satisfies GradientCardItem[];
 
 export default function OrenAgentsPage() {
   return (
@@ -73,7 +114,7 @@ export default function OrenAgentsPage() {
 
           {/* THE PILLARS */}
           <section
-            className="section alt section-brand-white"
+            className="section section-brand-blue og-gradient-card-section"
             id="ecosystem"
             aria-label="The Workforce Directory"
           >
@@ -85,66 +126,11 @@ export default function OrenAgentsPage() {
                   <span style={ACCENT}>Autonomous Scale.</span>
                 </h2>
               </header>
-              <div className="cost-grid reveal">
-                {/* Pillar 1 — Voice */}
-                <article className="sector-card">
-                  <h3>
-                    <span style={ACCENT}>The Voice:</span> Buy-Lingual™ Agents
-                  </h3>
-                  <p>
-                    Autonomous inbound and outbound voice agents that answer
-                    every call, qualify leads, and book appointments in 100+
-                    world languages with zero lag.
-                  </p>
-                  <div className="sector-trust">
-                    Starting from <strong>$197/mo</strong>
-                  </div>
-                  <a className="card-link" href="/orenagents/voice">
-                    Explore Voice Agents →
-                  </a>
-                </article>
-
-                {/* Pillar 2 — Employees */}
-                <article className="sector-card">
-                  <h3>
-                    <span style={ACCENT}>The Brain:</span> Digital Employees
-                  </h3>
-                  <p>
-                    Autonomous AI workers for chat, SMS, and complex CRM
-                    workflows. They manage your inbox, follow up with leads, and
-                    execute tasks across your entire stack.
-                  </p>
-                  <div className="sector-trust">
-                    Starting from <strong>$147/mo</strong>
-                  </div>
-                  <a className="card-link" href="/orenagents/employees">
-                    Explore Digital Employees →
-                  </a>
-                </article>
-
-                {/* Pillar 3 — Better Together (Recommended) */}
-                <article className="sector-card">
-                  <div className="step">Recommended Configuration</div>
-                  <h3>
-                    The <span style={ACCENT}>&quot;Better Together&quot;</span>{" "}
-                    Package
-                  </h3>
-                  <p>
-                    Maximum synergy. Unify Voice Agents and Digital Employees
-                    into a single orchestrated workforce. The ultimate 360°
-                    deployment for high-growth enterprises.
-                  </p>
-                  <div className="sector-trust">
-                    Starting from <strong>$297/mo</strong>{" "}
-                    <span style={{ color: "#34d399" }}>(Best Value)</span>
-                  </div>
-                  <a
-                    className="card-link"
-                    href="/orenagents/better-together-package"
-                  >
-                    View &quot;Better Together&quot; Pricing →
-                  </a>
-                </article>
+              <div className="reveal">
+                <GradientCardShowcase
+                  cards={AGENT_CARDS}
+                  ariaLabel="OrenAgents workforce options"
+                />
               </div>
             </div>
           </section>
@@ -185,7 +171,7 @@ export default function OrenAgentsPage() {
                 <p>
                   Our automated onboarding system can have your first AI agent
                   provisioned and learning your brand today. No long-term
-                  contracts. No setup fees.
+                  contracts on monthly plans. Setup fees are shown upfront.
                 </p>
                 <div className="cta-row">
                   <a className="btn btn-primary" href="#ecosystem">
