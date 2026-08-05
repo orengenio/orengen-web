@@ -4,6 +4,7 @@ import HeroMedia from "@/components/site/HeroMedia";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
+import { JsonLd, serviceJsonLd } from "@/lib/seo";
 
 /**
  * OrenGov — Public Sector & Federal vertical page.
@@ -33,6 +34,15 @@ const ACCENT = { color: "var(--og-orange)" } as const;
 export default function OrenGovPage() {
   return (
     <>
+      <JsonLd
+        data={serviceJsonLd({
+          name: "OrenGov Public Sector AI",
+          description:
+            "Federal-grade hosted and self-hosted AI infrastructure for agencies, education, and defense-facing environments. NIST-aligned. SAM.gov ready.",
+          path: "/orengov",
+          serviceType: "Government AI Infrastructure",
+        })}
+      />
       <ScrollProgress />
       <a className="skip-link" href="#main">
         Skip to content

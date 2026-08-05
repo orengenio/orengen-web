@@ -55,21 +55,24 @@ function DestinationLane({
         {item.price && <div className="og-command-card__price">{item.price}</div>}
       </div>
       <div className="og-command-card__actions">
-          {item.inline && (
-            <a href={`/${item.inline.hash}`} onClick={(event) => onInline(event, item)}>
-              Explore <span aria-hidden="true">→</span>
-            </a>
-          )}
           <a
-            className="is-secondary"
             href={item.href}
             target={item.external ? "_blank" : undefined}
             rel={item.external ? "noopener noreferrer" : undefined}
             aria-current={current ? "page" : undefined}
             onClick={onNavigate}
           >
-            {item.external ? "Open portal ↗" : "Full page ↗"}
+            {item.external ? "Open portal ↗" : "Open full page →"}
           </a>
+          {item.inline && (
+            <a
+              className="is-secondary"
+              href={`/${item.inline.hash}`}
+              onClick={(event) => onInline(event, item)}
+            >
+              Explore inline
+            </a>
+          )}
       </div>
     </article>
   );

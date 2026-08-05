@@ -7,6 +7,7 @@ import ScrollProgress from "@/components/site/ScrollProgress";
 import GradientCardShowcase, {
   type GradientCardItem,
 } from "@/components/ui/gradient-card-showcase";
+import { JsonLd, serviceJsonLd } from "@/lib/seo";
 
 /**
  * OrenAgents hub page.
@@ -72,6 +73,15 @@ const AGENT_CARDS = [
 export default function OrenAgentsPage() {
   return (
     <>
+      <JsonLd
+        data={serviceJsonLd({
+          name: "OrenAgents Autonomous AI Workforce",
+          description:
+            "Buy-Lingual™ AI Voice and AI Digital Employees that answer, qualify, book, and execute workflows in 100+ languages.",
+          path: "/orenagents",
+          serviceType: "AI Agent Software",
+        })}
+      />
       <ScrollProgress />
       <a className="skip-link" href="#main">
         Skip to content

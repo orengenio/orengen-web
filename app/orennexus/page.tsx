@@ -16,6 +16,7 @@ import {
   ORENNEXUS_RESEARCH,
 } from "@/lib/orennexusPage";
 import { commercialTerms, FINAL_PRICING } from "@/lib/pricingCatalog";
+import { JsonLd, serviceJsonLd } from "@/lib/seo";
 
 /**
  * OrenNexus hub page.
@@ -99,6 +100,15 @@ const NEXUS_PLANS: PricingPlan[] = [
 export default function OrenNexusPage() {
   return (
     <>
+      <JsonLd
+        data={serviceJsonLd({
+          name: "OrenNexus CRM",
+          description:
+            "Unified CRM, pipeline, email, SMS, funnels, and marketing automation command center. From $97/mo.",
+          path: "/orennexus",
+          serviceType: "CRM Software",
+        })}
+      />
       <ScrollProgress />
       <a className="skip-link" href="#main">
         Skip to content
