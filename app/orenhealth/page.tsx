@@ -4,6 +4,7 @@ import HeroMedia from "@/components/site/HeroMedia";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
+import { JsonLd, serviceJsonLd } from "@/lib/seo";
 
 /**
  * OrenHealth vertical landing page.
@@ -31,6 +32,15 @@ const ACCENT = { color: "var(--og-orange)" } as const;
 export default function OrenHealthPage() {
   return (
     <>
+      <JsonLd
+        data={serviceJsonLd({
+          name: "OrenHealth Healthcare AI",
+          description:
+            "HIPAA-aligned AI workflows for hospitals, specialty clinics, and research operations with patient-data sovereignty by default.",
+          path: "/orenhealth",
+          serviceType: "Healthcare AI Infrastructure",
+        })}
+      />
       <ScrollProgress />
       <a className="skip-link" href="#main">
         Skip to content

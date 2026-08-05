@@ -3,6 +3,7 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
+import { JsonLd, faqJsonLd } from "@/lib/seo";
 
 /**
  * FAQs page.
@@ -26,9 +27,33 @@ export const metadata: Metadata = {
 
 const ACCENT = { color: "var(--og-orange)" } as const;
 
+const FAQ_SCHEMA = faqJsonLd([
+  {
+    question: "What does OrenGen Worldwide do?",
+    answer:
+      "OrenGen Worldwide architects hosted and self-hosted AI-enabled enterprise ecosystems with governed automation, CRM, AI agents, and digital infrastructure for public sector, healthcare, legal, and mid-market operators.",
+  },
+  {
+    question: "How does pricing work across the OrenGen suite?",
+    answer:
+      "Each product family offers Standard, Professional, and Premium tiers with monthly or annual billing and published setup fees. Compare every plan on the pricing page and activate through secure checkout.",
+  },
+  {
+    question: "Does OrenGen only build self-hosted systems?",
+    answer:
+      "No. OrenGen designs both hosted and self-hosted AI-enabled ecosystems based on risk profile, budget, data-residency needs, compliance expectations, and timeline.",
+  },
+  {
+    question: "Which sectors does OrenGen serve?",
+    answer:
+      "Primary focus areas include OrenGov public sector, OrenHealth healthcare, OrenLegal legal operations, mid-market enterprise, and platform-based organizations.",
+  },
+]);
+
 export default function FaqsPage() {
   return (
     <>
+      <JsonLd data={FAQ_SCHEMA} />
       <ScrollProgress />
       <a className="skip-link" href="#main">
         Skip to content

@@ -4,6 +4,7 @@ import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
 import PricingExplorer from "@/components/site/PricingExplorer";
+import { JsonLd, serviceJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Pricing — OrenGen Worldwide",
@@ -23,6 +24,15 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <>
+      <JsonLd
+        data={serviceJsonLd({
+          name: "OrenGen Enterprise Plans",
+          description:
+            "Transparent monthly and annual pricing across Nexus CRM, AI Employees, Buy-Lingual™ AI Voice, bundles, OrenSocial, and OrenWeb.",
+          path: "/pricing",
+          serviceType: "Software as a Service",
+        })}
+      />
       <ScrollProgress />
       <a className="skip-link" href="#main">
         Skip to content

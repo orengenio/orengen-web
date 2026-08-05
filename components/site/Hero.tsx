@@ -975,19 +975,27 @@ export default function Hero() {
                     <h1>{activeView.title}</h1>
                     <p>{activeView.description}</p>
                     <div className="universe-stage__actions">
+                      <a
+                        className="btn btn-primary"
+                        href="https://api.orengen.io/widget/groups/coffeechat"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Book a Call
+                      </a>
                       <button
                         type="button"
-                        className="btn btn-primary"
+                        className="btn btn-secondary"
                         onClick={() => setActiveChapter("plans")}
                       >
                         {activeDivision === "partners"
-                          ? "See What You Can Earn"
+                          ? "See earnings"
                           : activeView.productId || activeDivision === "worldwide"
-                            ? "Explore Plans Inline"
-                            : "Explore This Path"}
+                            ? "See plans"
+                            : "Explore path"}
                       </button>
                       <a className="btn btn-secondary" href={activeView.href}>
-                        Open Full Page ↗
+                        Open full page →
                       </a>
                     </div>
                   </div>
