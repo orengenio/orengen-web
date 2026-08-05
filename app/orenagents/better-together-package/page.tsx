@@ -4,6 +4,7 @@ import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
 import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
+import { commercialTerms, FINAL_PRICING } from "@/lib/pricingCatalog";
 
 /**
  * OrenAgents "Better Together" Package page.
@@ -34,9 +35,7 @@ const ACCENT = { color: "var(--og-orange)" } as const;
 const BUNDLE_PLANS: PricingPlan[] = [
   {
     name: "Launch Bundle",
-    monthly: 297,
-    annual: 2997,
-    setup: "$997 setup",
+    ...commercialTerms("bundleLaunch"),
     description:
       "For businesses ready to stop missing calls, leads, and basic admin work.",
     features: [
@@ -51,14 +50,10 @@ const BUNDLE_PLANS: PricingPlan[] = [
       "Standard onboarding",
     ],
     ctaLabel: "Activate Launch Bundle",
-    ctaHref: "https://buy.stripe.com/dRmaEXdgsfW78Ofb0dfQJ1o",
-    ctaHrefAnnual: "https://buy.stripe.com/cNiaEXekw4dpe8zecpfQJ1p",
   },
   {
     name: "Growth Bundle",
-    monthly: 597,
-    annual: 5997,
-    setup: "$1,997 setup",
+    ...commercialTerms("bundleGrowth"),
     featured: true,
     description:
       "For growing businesses that need every lead answered, followed up with, qualified, booked, and tracked.",
@@ -76,14 +71,10 @@ const BUNDLE_PLANS: PricingPlan[] = [
       "Priority onboarding",
     ],
     ctaLabel: "Activate Growth Bundle",
-    ctaHref: "https://buy.stripe.com/cNi3cv1xKdNZc0rfgtfQJ1P",
-    ctaHrefAnnual: "https://buy.stripe.com/5kQ6oH6S47pB4xZd8lfQJ1Q",
   },
   {
     name: "Scale Bundle",
-    monthly: 1297,
-    annual: 12997,
-    setup: "$3,997 setup",
+    ...commercialTerms("bundleScale"),
     badge: "Best Value",
     description:
       "For serious operators that want an AI-powered front office, sales desk, and admin layer.",
@@ -101,8 +92,6 @@ const BUNDLE_PLANS: PricingPlan[] = [
       "Priority optimization",
     ],
     ctaLabel: "Activate Scale Bundle",
-    ctaHref: "https://buy.stripe.com/28E00j2BObFR2pRb0dfQJ1s",
-    ctaHrefAnnual: "https://buy.stripe.com/7sYdR92BOcJVd4vd8lfQJ1t",
   },
 ];
 
@@ -142,7 +131,10 @@ export default function OrenAgentsBetterTogetherPage() {
                   <a className="btn btn-primary" href="#pricing">
                     See Bundle Pricing
                   </a>
-                  <a className="btn btn-secondary" href="https://buy.stripe.com/cNi3cv1xKdNZc0rfgtfQJ1P">
+                  <a
+                    className="btn btn-secondary"
+                    href={FINAL_PRICING.bundleGrowth.monthlyCheckout}
+                  >
                     Activate Growth Bundle
                   </a>
                 </div>
@@ -545,8 +537,8 @@ export default function OrenAgentsBetterTogetherPage() {
                     <span className="faq-icon">+</span>
                   </button>
                   <div className="faq-a">
-                    Monthly = cancel anytime. Annual = monthly &times; 10 (Save
-                    17%). Scale up or down per month.
+                    Monthly plans cancel anytime. Annual plans are billed once
+                    per year at the total shown. Scale up or down per month.
                   </div>
                 </div>
               </div>

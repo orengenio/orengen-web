@@ -15,6 +15,7 @@ import {
   ORENNEXUS_JUMPS,
   ORENNEXUS_RESEARCH,
 } from "@/lib/orennexusPage";
+import { commercialTerms, FINAL_PRICING } from "@/lib/pricingCatalog";
 
 /**
  * OrenNexus hub page.
@@ -47,10 +48,8 @@ const ACCENT = { color: "var(--og-orange)" } as const;
 const NEXUS_PLANS: PricingPlan[] = [
   {
     name: "Standard",
-    monthly: 97,
-    annual: 997,
+    ...commercialTerms("nexusStandard"),
     unit: "3 users",
-    setup: "$0 setup fee",
     features: [
       "CRM & pipeline management",
       "Contact management",
@@ -61,15 +60,11 @@ const NEXUS_PLANS: PricingPlan[] = [
       "Basic lead scoring",
     ],
     ctaLabel: "Select Standard",
-    ctaHref: "https://buy.stripe.com/00w28rekw9xJ3tV8S5fQJ1c",
-    ctaHrefAnnual: "https://buy.stripe.com/cNi7sL5O0eS30hJ4BPfQJ1d",
   },
   {
     name: "Professional",
-    monthly: 297,
-    annual: 2997,
+    ...commercialTerms("nexusProfessional"),
     unit: "25 users",
-    setup: "$0 setup fee",
     featured: true,
     features: [
       "Everything in Standard",
@@ -82,15 +77,11 @@ const NEXUS_PLANS: PricingPlan[] = [
       "Reputation management",
     ],
     ctaLabel: "Select Professional",
-    ctaHref: "https://buy.stripe.com/bJe7sLekwh0b0hJ9W9fQJ1e",
-    ctaHrefAnnual: "https://buy.stripe.com/4gM7sLgsE9xJaWn5FTfQJ1f",
   },
   {
     name: "Premium",
-    monthly: 497,
-    annual: 4997,
+    ...commercialTerms("nexusPremium"),
     unit: "Unlimited users",
-    setup: "$0 setup fee",
     features: [
       "Everything in Professional",
       "Unlimited email sends",
@@ -102,8 +93,6 @@ const NEXUS_PLANS: PricingPlan[] = [
       "Unified conversational inbox",
     ],
     ctaLabel: "Select Premium",
-    ctaHref: "https://buy.stripe.com/eVq00j2BOh0b6G70lzfQJ1g",
-    ctaHrefAnnual: "https://buy.stripe.com/fZucN52BOfW7aWnb0dfQJ1h",
   },
 ];
 
@@ -149,7 +138,7 @@ export default function OrenNexusPage() {
                   </a>
                   <a
                     className="btn btn-secondary"
-                    href="https://buy.stripe.com/bJe7sLekwh0b0hJ9W9fQJ1e"
+                    href={FINAL_PRICING.nexusProfessional.monthlyCheckout}
                   >
                     Start Now
                   </a>

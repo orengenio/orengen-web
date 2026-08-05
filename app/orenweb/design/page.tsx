@@ -5,6 +5,7 @@ import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
 import AuditWidget from "@/components/site/AuditWidget";
 import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
+import { commercialTerms, FINAL_PRICING } from "@/lib/pricingCatalog";
 
 /**
  * OrenWeb — Design page.
@@ -36,9 +37,7 @@ const ACCENT = { color: "var(--og-orange)" } as const;
 const DESIGN_PLANS: PricingPlan[] = [
   {
     name: "Standard",
-    monthly: 247,
-    annual: 2497,
-    setup: "+ $997 one-time setup",
+    ...commercialTerms("webDesignStandard"),
     features: [
       "Up to 5 pages",
       "Mobile-responsive design",
@@ -50,14 +49,10 @@ const DESIGN_PLANS: PricingPlan[] = [
       "Monthly maintenance",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/5kQfZh6S4bFR6G7c4hfQJ1T",
-    ctaHrefAnnual: "https://buy.stripe.com/9B6fZh7W8fW7e8z0lzfQJ1U",
   },
   {
     name: "Professional",
-    monthly: 497,
-    annual: 4997,
-    setup: "+ $2,497 one-time setup",
+    ...commercialTerms("webDesignProfessional"),
     featured: true,
     features: [
       "Everything in Standard",
@@ -71,14 +66,10 @@ const DESIGN_PLANS: PricingPlan[] = [
       "Weekly maintenance",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/fZu9AT90c39l5C39W9fQJ1w",
-    ctaHrefAnnual: "https://buy.stripe.com/bJe00jccoeS3ggHb0dfQJ1x",
   },
   {
     name: "Premium",
-    monthly: 997,
-    annual: 9997,
-    setup: "+ $4,997 one-time setup",
+    ...commercialTerms("webDesignPremium"),
     features: [
       "Everything in Professional",
       "Unlimited pages",
@@ -91,8 +82,6 @@ const DESIGN_PLANS: PricingPlan[] = [
       "Dedicated web team",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/9B68wPekwh0b7Kb7O1fQJ1V",
-    ctaHrefAnnual: "https://buy.stripe.com/aFacN53FS8tF1lNecpfQJ1W",
   },
 ];
 
@@ -127,7 +116,10 @@ export default function OrenWebDesignPage() {
                   <a className="btn btn-primary" href="#pricing">
                     See Pricing
                   </a>
-                  <a className="btn btn-secondary" href="https://buy.stripe.com/fZu9AT90c39l5C39W9fQJ1w">
+                  <a
+                    className="btn btn-secondary"
+                    href={FINAL_PRICING.webDesignProfessional.monthlyCheckout}
+                  >
                     Start Now
                   </a>
                 </div>
@@ -434,7 +426,8 @@ export default function OrenWebDesignPage() {
                     <span className="faq-icon">+</span>
                   </button>
                   <div className="faq-a">
-                    Monthly = cancel anytime. Annual = save 17%.
+                    Monthly plans cancel anytime. Annual plans are billed once
+                    per year at the total shown.
                   </div>
                 </div>
               </div>

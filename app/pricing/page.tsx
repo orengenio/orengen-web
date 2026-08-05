@@ -3,105 +3,22 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
-import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
+import PricingExplorer from "@/components/site/PricingExplorer";
 
-/**
- * Pricing page.
- * Re-skinned into the homepage brand system (shared shell + globals.css brand
- * classes). Wording is preserved verbatim from Footer-pages/pricing/page.html —
- * only presentation/layout changed. Source is a GoHighLevel body fragment with
- * no <title>; metadata title derived from og:title.
- */
 export const metadata: Metadata = {
   title: "Pricing — OrenGen Worldwide",
   description:
-    "Transparent pricing across the OrenGen suite. Voice agents, CRM, automation, web, email, social, and consulting tiers in one place.",
-  keywords: "pricing, OrenGen, OrenGen Worldwide, AI infrastructure, pricing",
+    "Compare every OrenGen plan in one place: Nexus CRM, AI Employees, Buy-Lingual™ AI Voice, Better Together bundles, OrenSocial, OrenWeb Design, and OrenWeb Talk.",
+  keywords:
+    "OrenGen pricing, Nexus CRM pricing, AI Employees pricing, Buy-Lingual AI Voice pricing, OrenWeb pricing",
   alternates: { canonical: "/pricing" },
   openGraph: {
     title: "Pricing — OrenGen Worldwide",
     description:
-      "Transparent pricing across the OrenGen suite. Voice agents, CRM, automation, web, email, social, and consulting tiers in one place.",
+      "Seven product families, monthly and annual billing, setup fees, and direct secure checkout in one clear experience.",
     url: "https://orengen.io/pricing",
   },
 };
-
-const ACCENT = { color: "var(--og-orange)" } as const;
-
-// Prices, annual totals, setup fees, the "Most Popular" (featured) tier, and
-// the Stripe checkout links mirror the 2026 catalog and the dedicated product
-// pages (OrenAgents Employees and Buy-Lingual™ AI Voice).
-const EMPLOYEE_PLANS: PricingPlan[] = [
-  {
-    name: "Standard",
-    monthly: 147,
-    annual: 1497,
-    unit: "1 AI Employee",
-    setup: "+ $497 one-time setup",
-    description:
-      "Buy-Lingual™, lead qualification, CRM integration, task automation.",
-    ctaHref: "https://buy.stripe.com/bJe5kD90caBN1lN3xLfQJ1i",
-    ctaHrefAnnual: "https://buy.stripe.com/28E8wP5O0fW74xZb0dfQJ1j",
-  },
-  {
-    name: "Professional",
-    monthly: 297,
-    annual: 2997,
-    unit: "3 AI Employees",
-    setup: "+ $997 one-time setup",
-    description:
-      "Advanced automation, multi-CRM integration, priority support.",
-    featured: true,
-    ctaHref: "https://buy.stripe.com/aFa5kDb8keS35C3fgtfQJ1k",
-    ctaHrefAnnual: "https://buy.stripe.com/aFa8wP4JW25h2pR1pDfQJ1l",
-  },
-  {
-    name: "Premium",
-    monthly: 597,
-    annual: 5997,
-    unit: "Unlimited AI Employees",
-    setup: "+ $2,497 one-time setup",
-    description:
-      "Custom AI personalities, dedicated account manager, full automation stack.",
-    ctaHref: "https://buy.stripe.com/4gM9ATgsE6lxd4vc4hfQJ1m",
-    ctaHrefAnnual: "https://buy.stripe.com/5kQ7sL3FSh0b1lNfgtfQJ1n",
-  },
-];
-
-const VOICE_PLANS: PricingPlan[] = [
-  {
-    name: "Standard",
-    monthly: 197,
-    annual: 1997,
-    unit: "1 AI Voice Agent",
-    setup: "+ $997 one-time setup",
-    description:
-      "Inbound call handling, lead qualification, CRM integration.",
-    ctaHref: "https://buy.stripe.com/7sYbJ1ccobFR3tV9W9fQJ1J",
-    ctaHrefAnnual: "https://buy.stripe.com/7sY6oH3FS9xJ0hJ4BPfQJ1K",
-  },
-  {
-    name: "Professional",
-    monthly: 397,
-    annual: 3997,
-    unit: "3 AI Voice Agents",
-    setup: "+ $1,997 one-time setup",
-    description: "Inbound + outbound, appointment booking, multi-CRM.",
-    featured: true,
-    ctaHref: "https://buy.stripe.com/eVqdR9a4g7pBaWngkxfQJ1L",
-    ctaHrefAnnual: "https://buy.stripe.com/dRm4gz90c7pB5C32tHfQJ1M",
-  },
-  {
-    name: "Premium",
-    monthly: 797,
-    annual: 7997,
-    unit: "Unlimited Voice Agents",
-    setup: "+ $4,997 one-time setup",
-    description: "Full Buy-Lingual™ suite, custom voices, SLA guarantee.",
-    ctaHref: "https://buy.stripe.com/4gM14n1xK6lx3tV9W9fQJ1O",
-    ctaHrefAnnual: "https://buy.stripe.com/4gMaEX5O04dp3tVc4hfQJ1N",
-  },
-];
 
 export default function PricingPage() {
   return (
@@ -113,230 +30,70 @@ export default function PricingPage() {
       <div className="site-shell">
         <SiteHeader />
         <main id="main">
-          {/* HERO */}
           <section
-            className="section section-brand-blue"
-            aria-label="Pricing"
+            className="section section-brand-blue pricing-hero"
+            aria-label="OrenGen pricing"
           >
             <div className="container">
               <header className="section-head center reveal">
-                <div className="eyebrow">Pricing</div>
+                <div className="eyebrow">The complete plan room</div>
                 <h1>
-                  Transparent. Modular.{" "}
-                  <span className="gradient-word shimmer">No Per-Seat Tax.</span>
+                  Every Plan. Every Price.{" "}
+                  <span className="gradient-word shimmer">
+                    One Decision Surface.
+                  </span>
                 </h1>
                 <p className="lead">
-                  Pick the products you need. Bundle for compound discounts. Open
-                  OrenKanBuilder™ to configure your exact engine with live
-                  pricing.
+                  Move between products without opening another page. Compare
+                  all three tiers, switch between Monthly and Annual, see the
+                  one-time setup fee, and activate through the correct secure
+                  Stripe link.
                 </p>
                 <div
                   className="trust-row reveal"
                   style={{ justifyContent: "center" }}
                 >
-                  <span className="chip">Monthly or annual</span>
-                  <span className="chip">Bundle discounts auto-applied</span>
-                  <span className="chip">White-label optional</span>
-                  <span className="chip">No long-term contracts on monthly</span>
+                  <span className="chip">21 final plans</span>
+                  <span className="chip">Monthly + annual checkout</span>
+                  <span className="chip">Setup fees shown upfront</span>
+                  <span className="chip">No hidden navigation maze</span>
                 </div>
               </header>
             </div>
           </section>
 
-          {/* OrenAgents — AI Digital Employees */}
           <section
-            className="section alt section-brand-white"
-            aria-label="OrenAgents — AI Digital Employees"
+            className="section alt section-brand-white pricing-explorer-section"
+            aria-label="Explore all OrenGen plans"
           >
             <div className="container">
-              <header className="section-head reveal">
-                <h2>OrenAgents — AI Digital Employees</h2>
-                <p>
-                  AI employees that handle inbound and outbound calls,
-                  qualification, CRM logging, and reporting. Buy-Lingual™ 100+
-                  world languages included.
-                </p>
-              </header>
-              <PricingTiers plans={EMPLOYEE_PLANS} />
+              <PricingExplorer />
             </div>
           </section>
 
-          {/* OrenAgents — AI Voice Agents */}
           <section
             className="section section-brand-blue"
-            aria-label="OrenAgents — AI Voice Agents"
-          >
-            <div className="container">
-              <header className="section-head reveal">
-                <h2>OrenAgents — AI Voice Agents</h2>
-                <p>
-                  Voice agents handling inbound + outbound calls in 100+ world
-                  languages.
-                </p>
-              </header>
-              <PricingTiers plans={VOICE_PLANS} />
-            </div>
-          </section>
-
-          {/* OrenNexus — Unified CRM + Automation Hub */}
-          <section
-            className="section alt section-brand-white"
-            aria-label="OrenNexus — Unified CRM + Automation Hub"
-          >
-            <div className="container">
-              <header className="section-head reveal">
-                <h2>OrenNexus — Unified CRM + Automation Hub</h2>
-                <p>
-                  Replaces standalone CRM, lead-gen, marketing automation, and
-                  email/SMS platforms.
-                </p>
-              </header>
-              <div className="cost-grid reveal">
-                <article className="sector-card">
-                  <div className="step">Starter</div>
-                  <h3>From $97/mo</h3>
-                  <p>
-                    Unified CRM, pipeline, automation, email + SMS, white-label
-                    optional.
-                  </p>
-                </article>
-                <article className="sector-card">
-                  <div className="step">Agency · White-Label</div>
-                  <h3>Custom</h3>
-                  <p>
-                    Multi-tenant agency edition, sub-account management, full
-                    brand control.
-                  </p>
-                </article>
-              </div>
-            </div>
-          </section>
-
-          {/* The OrenGen Suite */}
-          <section
-            className="section section-brand-blue"
-            aria-label="The OrenGen Suite"
-          >
-            <div className="container">
-              <header className="section-head reveal">
-                <h2>The OrenGen Suite</h2>
-                <p>
-                  Bundle multiple products for compound discounts. Every product
-                  is also available standalone.
-                </p>
-              </header>
-              <div className="sector-grid reveal">
-                <article className="sector-card">
-                  <div className="step">OrenWeb</div>
-                  <h3>From $247/mo</h3>
-                  <p>
-                    Custom websites, AI voice-enabled sites, web apps,
-                    e-commerce, UI/UX, maintenance.
-                  </p>
-                </article>
-                <article className="sector-card">
-                  <div className="step">OrenMail</div>
-                  <h3>From $97/mo</h3>
-                  <p>
-                    Bulk email engine on your sending domain. Unlimited contacts.
-                    Full deliverability intel.
-                  </p>
-                </article>
-                <article className="sector-card">
-                  <div className="step">OrenSocial</div>
-                  <h3>From $97/mo</h3>
-                  <p>
-                    Multi-channel social scheduling, AI content, engagement
-                    inbox, white-label reports.
-                  </p>
-                </article>
-                <article className="sector-card" id="orenautomations">
-                  <div className="step">OrenAutomations</div>
-                  <h3>Custom</h3>
-                  <p>
-                    White-glove workflow automation on self-hosted n8n. We
-                    design, build, deploy, manage.
-                  </p>
-                </article>
-                <article className="sector-card">
-                  <div className="step">OrenForms</div>
-                  <h3>From $47/mo</h3>
-                  <p>Smart surveys, NPS, lead forms. AI-scored, real-time routing.</p>
-                </article>
-                <article className="sector-card">
-                  <div className="step">OrenBase, OrenFlow, OrenObserve</div>
-                  <h3>Bundle pricing</h3>
-                  <p>
-                    Backend, LLM orchestration, and observability. Available as
-                    part of OrenGen Suite engagements.
-                  </p>
-                </article>
-              </div>
-            </div>
-          </section>
-
-          {/* OrenConsulting — Fractional C-Suite + Custom AI Engineering */}
-          <section
-            className="section alt section-brand-white"
             id="orenconsulting"
-            aria-label="OrenConsulting — Fractional C-Suite + Custom AI Engineering"
-          >
-            <div className="container">
-              <header className="section-head reveal">
-                <h2>
-                  OrenConsulting — Fractional C-Suite + Custom AI Engineering
-                </h2>
-                <p>
-                  Fractional CTO, CEO, CMO, COO, CIO — with hands-on AI
-                  engineering included. Deploy in 2 weeks, cancel anytime.
-                </p>
-              </header>
-              <div className="cost-grid reveal">
-                <article className="sector-card">
-                  <div className="step">Advisory</div>
-                  <h3>Fractional engagement</h3>
-                  <p>
-                    10, 20, or 40 hours/week. Strategy plus engineering. Cancel
-                    anytime.
-                  </p>
-                </article>
-                <article className="sector-card">
-                  <div className="step">Embedded</div>
-                  <h3>Custom enterprise</h3>
-                  <p>
-                    Full embedded executive plus engineering team. Multi-quarter
-                    modernization scope.
-                  </p>
-                </article>
-              </div>
-              <div className="sector-trust reveal">
-                <p>
-                  <strong>Bundle discounts:</strong> 10% off when deploying 2+
-                  products. 20% off when deploying 4+. 30% off OrenGen Suite
-                  engagements (5+ products with consulting overlay).
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* FINAL CTA */}
-          <section
-            className="section section-brand-blue"
-            aria-label="Contact OrenGen"
+            aria-label="Custom and advisory engagements"
           >
             <div className="container">
               <header className="section-head center reveal">
-                <h2>Configure the exact AI engine your business needs.</h2>
-                <p>
-                  Open OrenKanBuilder™ for live pricing, or book a 30-min call to
-                  map the right configuration.
+                <div className="eyebrow">Need a custom operating layer?</div>
+                <h2>Products when they fit. Architecture when they do not.</h2>
+                <p className="lead">
+                  OrenConsulting covers fractional leadership, custom AI
+                  engineering, regulated deployments, and multi-product
+                  implementations that need a scoped Statement of Work.
                 </p>
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
                     href="https://api.orengen.io/booking/coffeechat"
                   >
-                    Book a Strategy Call
+                    Architect the Briefing
+                  </a>
+                  <a className="btn btn-secondary" href="/contact-us">
+                    Send Your Requirements
                   </a>
                 </div>
               </header>

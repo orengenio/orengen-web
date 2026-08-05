@@ -4,6 +4,7 @@ import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
 import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
+import { commercialTerms, FINAL_PRICING } from "@/lib/pricingCatalog";
 
 /**
  * OrenAgents Employees page.
@@ -14,14 +15,14 @@ import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
 export const metadata: Metadata = {
   title: "OrenAgents Employees — Autonomous AI Digital Workforce | OrenGen",
   description:
-    "Hire AI digital employees that handle qualification, CRM workflows, task automation, and back-office operations 24/7. From $147/mo.",
+    "Hire AI digital employees that handle qualification, CRM workflows, task automation, and back-office operations 24/7. From $197/mo.",
   keywords:
     "employees, OrenGen, OrenGen Worldwide, Autonomous AI Workforce, AI infrastructure",
   alternates: { canonical: "/orenagents/employees" },
   openGraph: {
     title: "OrenAgents Employees — Autonomous AI Digital Workforce | OrenGen",
     description:
-      "Hire AI digital employees that handle qualification, CRM workflows, task automation, and back-office operations 24/7. From $147/mo.",
+      "Hire AI digital employees that handle qualification, CRM workflows, task automation, and back-office operations 24/7. From $197/mo.",
     url: "https://orengen.io/orenagents/employees",
   },
 };
@@ -30,14 +31,11 @@ const ACCENT = { color: "var(--og-orange)" } as const;
 
 // Monthly prices, setup fees, feature lists, and the featured tier are
 // preserved exactly from the live page; existing monthly Stripe links kept and
-// paired with the official annual links (used when Yearly is toggled). Annual
-// price is monthly × 10 per the account-wide catalog policy.
+// paired with the official annual links used when Annual is toggled.
 const EMPLOYEE_PLANS: PricingPlan[] = [
   {
     name: "Standard",
-    monthly: 147,
-    annual: 1497,
-    setup: "+ $497 one-time setup",
+    ...commercialTerms("employeesStandard"),
     features: [
       "1 AI Employee (chat)",
       "5,000 conversations/mo",
@@ -49,14 +47,10 @@ const EMPLOYEE_PLANS: PricingPlan[] = [
       "Basic analytics",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/bJe5kD90caBN1lN3xLfQJ1i",
-    ctaHrefAnnual: "https://buy.stripe.com/28E8wP5O0fW74xZb0dfQJ1j",
   },
   {
     name: "Professional",
-    monthly: 297,
-    annual: 2997,
-    setup: "+ $997 one-time setup",
+    ...commercialTerms("employeesProfessional"),
     featured: true,
     features: [
       "Everything in Standard",
@@ -70,14 +64,10 @@ const EMPLOYEE_PLANS: PricingPlan[] = [
       "Priority support",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/aFa5kDb8keS35C3fgtfQJ1k",
-    ctaHrefAnnual: "https://buy.stripe.com/aFa8wP4JW25h2pR1pDfQJ1l",
   },
   {
     name: "Premium",
-    monthly: 597,
-    annual: 5997,
-    setup: "+ $2,497 one-time setup",
+    ...commercialTerms("employeesPremium"),
     features: [
       "Everything in Professional",
       "50 AI Employees",
@@ -90,8 +80,6 @@ const EMPLOYEE_PLANS: PricingPlan[] = [
       "Dedicated success manager",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/4gM9ATgsE6lxd4vc4hfQJ1m",
-    ctaHrefAnnual: "https://buy.stripe.com/5kQ7sL3FSh0b1lNfgtfQJ1n",
   },
 ];
 
@@ -127,7 +115,10 @@ export default function OrenAgentsEmployeesPage() {
                   <a className="btn btn-primary" href="#pricing">
                     See Pricing
                   </a>
-                  <a className="btn btn-secondary" href="https://buy.stripe.com/aFa5kDb8keS35C3fgtfQJ1k">
+                  <a
+                    className="btn btn-secondary"
+                    href={FINAL_PRICING.employeesProfessional.monthlyCheckout}
+                  >
                     Start Now
                   </a>
                 </div>
@@ -138,7 +129,7 @@ export default function OrenAgentsEmployeesPage() {
                   <span className="chip">From 1 to 50 employees</span>
                   <span className="chip">Multi-channel chat + SMS</span>
                   <span className="chip">100+ languages</span>
-                  <span className="chip">From $147/mo</span>
+                  <span className="chip">From $197/mo</span>
                 </div>
               </header>
             </div>
@@ -248,7 +239,7 @@ export default function OrenAgentsEmployeesPage() {
                   <p>
                     Salary, benefits, tax, equipment, training, attrition
                     replacement. OrenAgents Employees delivers equivalent
-                    throughput at $147–$597/mo per AI worker.
+                    throughput at $197–$597/mo per AI workforce plan.
                   </p>
                   <p>Source: BLS / SHRM total compensation research</p>
                 </div>
@@ -328,11 +319,12 @@ export default function OrenAgentsEmployeesPage() {
                 <div className="eyebrow">Pricing</div>
                 <h2>AI Employee Workforce Pricing</h2>
                 <p className="lead">
-                  From 1 AI employee to 50. Annual billing saves 17%.
+                  From 1 AI employee to 50. Annual billing lowers the effective
+                  monthly cost.
                 </p>
                 <div className="trust-row" style={{ justifyContent: "center" }}>
                   <span className="chip">Monthly</span>
-                  <span className="chip">Annual Save up to $967</span>
+                  <span className="chip">Annual Save up to $1,167</span>
                 </div>
               </header>
               <PricingTiers plans={EMPLOYEE_PLANS} />
@@ -444,7 +436,8 @@ export default function OrenAgentsEmployeesPage() {
                     <span className="faq-icon">+</span>
                   </button>
                   <div className="faq-a">
-                    Monthly = cancel anytime. Annual = monthly × 10 (Save 17%).
+                    Monthly plans cancel anytime. Annual plans are billed once
+                    per year at the total shown.
                   </div>
                 </div>
               </div>

@@ -31,7 +31,7 @@ const PATHS = [
   "OrenGov / Public Sector", "OrenGov / State & Local", "OrenGov / Education", "OrenGov / Defense",
   "OrenHealth / Healthcare", "OrenHealth / Hospitals", "OrenHealth / Specialty Clinics", "OrenHealth / Research",
   "OrenLegal / Legal Operations", "OrenAgents / Voice Agents", "OrenAgents / AI Employees",
-  "OrenAutomations / Workflow Automation", "OrenWeb / Portal Architecture", "OrenSocial / Authority Systems",
+  "Workflow Automation / Orchestration", "OrenWeb / Portal Architecture", "OrenSocial / Authority Systems",
   "OrenNexus / Platform Architecture", "OrenConsulting / Executive Strategy",
 ];
 
@@ -154,6 +154,8 @@ export default function ContactUsPage() {
                 </div>
                 <div className="briefing-card" aria-label="Contact form">
                   <form action="/api/intake-sync" method="post">
+                    <input type="hidden" name="csrf_token" value="orengen-intake-v1" />
+                    <input type="hidden" name="source" value="contact-page" />
                     <label htmlFor="name">Name</label>
                     <input id="name" name="name" type="text" placeholder="Full name" autoComplete="name" required />
                     <label htmlFor="email">Email</label>

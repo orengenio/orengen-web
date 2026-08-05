@@ -5,6 +5,7 @@ import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
 import AuditWidget from "@/components/site/AuditWidget";
 import PricingTiers, { type PricingPlan } from "@/components/site/PricingTiers";
+import { commercialTerms, FINAL_PRICING } from "@/lib/pricingCatalog";
 
 /**
  * OrenWeb Talk page.
@@ -34,9 +35,7 @@ const ACCENT = { color: "var(--og-orange)" } as const;
 const TALK_PLANS: PricingPlan[] = [
   {
     name: "Standard",
-    monthly: 147,
-    annual: 1497,
-    setup: "+ $1,497 one-time setup",
+    ...commercialTerms("webTalkStandard"),
     features: [
       "AI chat widget on site",
       "Up to 5 pages",
@@ -48,14 +47,10 @@ const TALK_PLANS: PricingPlan[] = [
       "CRM integration",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/cNi4gz0tGfW79Sj2tHfQJ1y",
-    ctaHrefAnnual: "https://buy.stripe.com/9B64gzekweS3d4v4BPfQJ1z",
   },
   {
     name: "Professional",
-    monthly: 297,
-    annual: 2997,
-    setup: "+ $2,997 one-time setup",
+    ...commercialTerms("webTalkProfessional"),
     featured: true,
     features: [
       "Everything in Standard",
@@ -69,14 +64,10 @@ const TALK_PLANS: PricingPlan[] = [
       "Priority support",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/fZu6oH6S45ht6G75FTfQJ1A",
-    ctaHrefAnnual: "https://buy.stripe.com/bJe00jdgsh0b6G7c4hfQJ1B",
   },
   {
     name: "Premium",
-    monthly: 597,
-    annual: 5997,
-    setup: "+ $5,997 one-time setup",
+    ...commercialTerms("webTalkPremium"),
     features: [
       "Everything in Professional",
       "Full voice + chat + video",
@@ -89,8 +80,6 @@ const TALK_PLANS: PricingPlan[] = [
       "Dedicated success manager",
     ],
     ctaLabel: "Activate",
-    ctaHref: "https://buy.stripe.com/6oUfZhdgs39le8zb0dfQJ1C",
-    ctaHrefAnnual: "https://buy.stripe.com/cNi9ATfoA9xJd4v2tHfQJ1D",
   },
 ];
 
@@ -126,7 +115,10 @@ export default function OrenWebTalkPage() {
                   <a className="btn btn-primary" href="#pricing">
                     See Pricing
                   </a>
-                  <a className="btn btn-secondary" href="https://buy.stripe.com/fZu6oH6S45ht6G75FTfQJ1A">
+                  <a
+                    className="btn btn-secondary"
+                    href={FINAL_PRICING.webTalkProfessional.monthlyCheckout}
+                  >
                     Start Now
                   </a>
                 </div>
@@ -308,12 +300,13 @@ export default function OrenWebTalkPage() {
                 <h2>OrenWeb Talk Pricing</h2>
                 <p className="lead">
                   AI voice + chat embedded on your site. Includes lead capture,
-                  scheduling, CRM integration. Annual billing saves 17%.
+                  scheduling, CRM integration. Annual billing lowers the
+                  effective monthly cost.
                 </p>
                 <div className="trust-row" style={{ justifyContent: "center" }}>
                   <span className="chip">Monthly</span>
                   <span className="chip">
-                    Annual <span style={ACCENT}>Save up to $967</span>
+                    Annual <span style={ACCENT}>Save up to $1,167</span>
                   </span>
                 </div>
               </header>
@@ -415,7 +408,8 @@ export default function OrenWebTalkPage() {
                     <span className="faq-icon">+</span>
                   </button>
                   <div className="faq-a">
-                    Monthly = cancel anytime. Annual = save 17%.
+                    Monthly plans cancel anytime. Annual plans are billed once
+                    per year at the total shown.
                   </div>
                 </div>
               </div>

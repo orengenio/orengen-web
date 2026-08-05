@@ -20,7 +20,6 @@ const ROUTES: string[] = [
   "/blog",
   "/referral-partner-program",
   "/sales-partner-program",
-  "/orenkanbuilder",
   // Products
   "/orenagents",
   "/orenagents/voice",
