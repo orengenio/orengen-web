@@ -17,7 +17,7 @@ import { useEffect } from "react";
 const LOADER_SRC = "https://widgets.leadconnectorhq.com/loader.js";
 const RESOURCES_URL =
   "https://widgets.leadconnectorhq.com/chat-widget/loader.js";
-const WIDGET_ID = "6a44d91d686a90131ba0d5cb"; // public client-side id, not a secret
+const WIDGET_ID = "6a44d92b686a90131ba0d8d9"; // public client-side id, not a secret
 const SCRIPT_ID = "leadconnector-chat-widget";
 
 export default function ChatWidget() {
