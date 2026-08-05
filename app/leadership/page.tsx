@@ -239,7 +239,7 @@ export default function LeadershipPage() {
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
-                    href="https://api.orengen.io/booking/coffeechat"
+                    href="https://api.orengen.io/widget/groups/coffeechat"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

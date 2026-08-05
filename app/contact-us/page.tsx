@@ -118,7 +118,7 @@ export default function ContactUsPage() {
                   <p>Schedule a 30-minute call directly on our calendar.</p>
                   <a
                     className="card-link"
-                    href="https://api.orengen.io/booking/coffeechat"
+                    href="https://api.orengen.io/widget/groups/coffeechat"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
