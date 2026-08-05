@@ -6233,7 +6233,7 @@ html.og-command-locked {
 .og-command-backdrop {
   position: fixed;
   z-index: 154;
-  inset: 0 0 0 72px;
+  inset: 0 0 0 192px;
   border: 0;
   opacity: 0;
   visibility: hidden;
