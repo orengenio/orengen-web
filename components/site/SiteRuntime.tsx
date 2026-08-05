@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 /**
@@ -12,6 +13,8 @@ import { useEffect } from "react";
  * prevents the fire from double-igniting under React StrictMode's double-effect.
  */
 export default function SiteRuntime() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const root = document.documentElement;
     const cleanups: Array<() => void> = [];
@@ -250,20 +253,37 @@ export default function SiteRuntime() {
     });
 
     /* ===== Reveal-on-scroll ===== */
+    const revealSelector =
+      ".reveal, .reveal-stagger, .sector-card, .cost-card, .signal-card, .signal-feature, .kpi, .cap, .journey-card";
+    const revealNodes = Array.from(document.querySelectorAll<HTMLElement>(revealSelector));
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("in");
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            revealObserver.unobserve(entry.target);
+          }
         });
       },
       { threshold: 0.12, rootMargin: "0px 0px -10% 0px" },
     );
-    document
-      .querySelectorAll(
-        ".reveal, .reveal-stagger, .sector-card, .cost-card, .signal-card, .signal-feature, .kpi, .cap, .journey-card",
-      )
-      .forEach((el) => revealObserver.observe(el));
-    cleanups.push(() => revealObserver.disconnect());
+    revealNodes.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.bottom > 0 && rect.top < window.innerHeight * 0.92) el.classList.add("in");
+      revealObserver.observe(el);
+    });
+    root.classList.add("og-motion-ready");
+
+    // Content is always readable without JavaScript. This guard also makes all
+    // copy visible if the animation layer is interrupted by a browser or route.
+    const revealFailsafe = window.setTimeout(() => {
+      revealNodes.forEach((el) => el.classList.add("in"));
+    }, 2400);
+    cleanups.push(() => {
+      window.clearTimeout(revealFailsafe);
+      revealObserver.disconnect();
+      root.classList.remove("og-motion-ready");
+    });
 
     /* ===== Spotlight glow on cards (pointer-tracked) =====
        Feeds the cursor position into the --mx/--my custom properties the
@@ -450,7 +470,7 @@ export default function SiteRuntime() {
       if (ambientSparkInterval) clearInterval(ambientSparkInterval);
       fuseObserver?.disconnect();
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }

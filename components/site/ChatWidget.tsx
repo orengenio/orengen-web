@@ -22,7 +22,8 @@ const SCRIPT_ID = "leadconnector-chat-widget";
 
 export default function ChatWidget() {
   useEffect(() => {
-    if (!document.getElementById(SCRIPT_ID)) {
+    const mountWidget = () => {
+      if (document.getElementById(SCRIPT_ID)) return;
       const script = document.createElement("script");
       script.id = SCRIPT_ID;
       script.src = LOADER_SRC;
@@ -30,7 +31,21 @@ export default function ChatWidget() {
       script.setAttribute("data-widget-id", WIDGET_ID);
       script.async = true;
       document.body.appendChild(script);
-    }
+    };
+
+    // Preserve an unobstructed first impression. The chat remains available
+    // after a visitor begins exploring or after a short idle window.
+    const revealAfterExploration = () => {
+      if (window.scrollY > 420) {
+        mountWidget();
+        window.removeEventListener("scroll", revealAfterExploration);
+      }
+    };
+    window.addEventListener("scroll", revealAfterExploration, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", revealAfterExploration);
+    };
   }, []);
 
   return null;
