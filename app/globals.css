@@ -6078,9 +6078,8 @@ html.og-command-locked {
 }
 
 @media (min-width: 900px) {
-  /* Command rail removed — keep content full-bleed. */
   .site-shell {
-    padding-left: 0;
+    padding-left: 192px;
   }
 }
 
@@ -6234,7 +6233,7 @@ html.og-command-locked {
 .og-command-backdrop {
   position: fixed;
   z-index: 154;
-  inset: 0 0 0 72px;
+  inset: 0 0 0 192px;
   border: 0;
   opacity: 0;
   visibility: hidden;
@@ -6257,10 +6256,10 @@ html.og-command-locked {
   position: fixed;
   z-index: 162;
   inset: 0 auto 0 0;
-  width: 72px;
+  width: 192px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   color: #fff;
   border-right: 1px solid rgba(139, 197, 238, .16);
   background:
@@ -6274,8 +6273,11 @@ html.og-command-locked {
   width: 100%;
   height: 76px;
   flex: none;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 0 13px;
   overflow: hidden;
   border: 0;
   border-bottom: 1px solid rgba(139, 197, 238, .14);
@@ -6286,8 +6288,8 @@ html.og-command-locked {
 .og-command-rail__brand img {
   position: relative;
   z-index: 2;
-  width: 41px;
-  height: 41px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
   transition: transform .35s var(--og-ease), filter .35s ease;
 }
@@ -6296,6 +6298,46 @@ html.og-command-locked {
 .og-command-root.is-open .og-command-rail__brand img {
   transform: scale(1.09);
   filter: drop-shadow(0 0 12px rgba(255, 117, 23, .35));
+}
+
+.og-command-rail__mark {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  display: grid;
+  place-items: center;
+}
+
+.og-command-rail__prompt {
+  min-width: 0;
+  flex: 1;
+  text-align: left;
+}
+
+.og-command-rail__prompt strong,
+.og-command-rail__prompt small {
+  display: block;
+}
+
+.og-command-rail__prompt strong {
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .02em;
+}
+
+.og-command-rail__prompt strong i {
+  font-style: normal;
+  color: #ff9a52;
+}
+
+.og-command-rail__prompt small {
+  margin-top: 3px;
+  color: #7f9eb3;
+  font-size: 8px;
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-transform: uppercase;
 }
 
 .og-command-rail__energy {
@@ -6321,43 +6363,65 @@ html.og-command-locked {
 
 .og-command-rail__sections {
   width: 100%;
+  padding-inline: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 5px;
 }
 
 .og-command-rail__sections button {
   position: relative;
-  width: 52px;
-  height: 48px;
+  width: 100%;
+  height: 49px;
+  padding: 0 10px;
   display: grid;
-  place-items: center;
-  border: 1px solid transparent;
-  border-radius: 14px;
-  color: #65839a;
-  background: transparent;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: center;
+  justify-items: start;
+  gap: 10px;
+  border: 1px solid rgba(127, 186, 228, .12);
+  border-radius: 13px;
+  color: #aebdc7;
+  background: rgba(255, 255, 255, .02);
   cursor: pointer;
+  text-align: left;
   transition: color .22s ease, background .22s ease, border-color .22s ease, transform .22s var(--og-ease);
 }
 
 .og-command-rail__sections button > span {
-  font-size: 10px;
+  width: 34px;
+  height: 29px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(220, 230, 237, .16);
+  border-radius: 9px;
+  color: #b8c5ce;
+  background: rgba(255, 255, 255, .04);
+  font-size: 8px;
   font-weight: 950;
-  letter-spacing: .08em;
+  letter-spacing: .06em;
+}
+
+.og-command-rail__sections button > b {
+  color: inherit;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .01em;
+  line-height: 1.15;
 }
 
 .og-command-rail__sections button:hover {
   color: #fff;
-  transform: translateX(2px);
-  border-color: rgba(127, 186, 228, .22);
-  background: rgba(255, 255, 255, .04);
+  transform: translateX(3px);
+  border-color: rgba(127, 186, 228, .28);
+  background: rgba(255, 255, 255, .06);
 }
 
 .og-command-rail__sections button.is-active {
   color: #fff;
-  border-color: rgba(255, 142, 66, .48);
-  background: linear-gradient(145deg, rgba(204, 85, 0, .24), rgba(8, 54, 91, .55));
+  border-color: rgba(255, 142, 66, .55);
+  background: linear-gradient(145deg, rgba(204, 85, 0, .22), rgba(8, 54, 91, .5));
   box-shadow: 0 10px 24px rgba(0, 0, 0, .2), 0 0 18px rgba(204, 85, 0, .09);
 }
 
@@ -6366,32 +6430,27 @@ html.og-command-locked {
   position: absolute;
   left: -11px;
   width: 3px;
-  height: 19px;
+  height: 23px;
   border-radius: 3px;
   background: #ff7b20;
   box-shadow: 0 0 14px rgba(255, 123, 32, .75);
 }
 
+.og-command-rail__sections button.is-active > span {
+  color: #ffb17b;
+  border-color: rgba(255, 149, 79, .5);
+  background: rgba(204, 85, 0, .28);
+}
+
 .og-command-rail__sections button.is-partner {
-  margin-block: 5px;
+  margin-block: 4px;
   color: #ffac72;
   border-color: rgba(255, 135, 54, .28);
 }
 
+/* Labels are always visible on the rail — no hover-only tooltips. */
 .og-command-root:not(.is-open) .og-command-rail__sections button:hover::after {
-  content: attr(data-label);
-  position: absolute;
-  left: 62px;
-  z-index: 2;
-  padding: 8px 10px;
-  border: 1px solid rgba(138, 192, 231, .2);
-  border-radius: 9px;
-  color: #fff;
-  background: rgba(5, 16, 28, .96);
-  box-shadow: 0 10px 30px rgba(0,0,0,.25);
-  font-size: 10px;
-  font-weight: 850;
-  white-space: nowrap;
+  display: none;
 }
 
 .og-command-rail__status {
@@ -6422,8 +6481,8 @@ html.og-command-locked {
 .og-command-deck {
   position: fixed;
   z-index: 160;
-  inset: 0 auto 0 72px;
-  width: min(448px, calc(100vw - 72px));
+  inset: 0 auto 0 192px;
+  width: min(448px, calc(100vw - 192px));
   color: #eaf4fb;
   border: 0;
   border-right: 1px solid rgba(143, 198, 238, .2);
@@ -7346,31 +7405,40 @@ html.og-command-locked {
   .og-command-mobile-categories {
     margin-bottom: 14px;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 6px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
   }
 
   .og-command-mobile-categories button {
-    min-height: 48px;
-    padding: 5px 3px;
-    display: flex;
-    flex-direction: column;
+    min-height: 52px;
+    padding: 8px 10px;
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr);
     align-items: center;
-    justify-content: center;
-    gap: 3px;
+    justify-items: start;
+    gap: 8px;
     border: 1px solid rgba(127, 187, 229, .16);
-    border-radius: 11px;
-    color: #6f8da3;
-    background: rgba(255,255,255,.02);
-    font-size: 6px;
+    border-radius: 12px;
+    color: #c5d5e0;
+    background: rgba(255,255,255,.03);
+    font-size: 11px;
     font-weight: 850;
+    text-align: left;
     cursor: pointer;
   }
 
   .og-command-mobile-categories button span {
-    color: #8eabbf;
+    width: 34px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(142, 191, 226, .2);
+    border-radius: 8px;
+    color: #9eb6c8;
+    background: rgba(255,255,255,.04);
     font-size: 8px;
     font-weight: 950;
+    letter-spacing: .06em;
   }
 
   .og-command-mobile-categories button.is-active {
@@ -7379,7 +7447,16 @@ html.og-command-locked {
     background: rgba(204,85,0,.14);
   }
 
-  .og-command-mobile-categories button.is-active span { color: #ff9b55; }
+  .og-command-mobile-categories button.is-active span {
+    color: #ff9b55;
+    border-color: rgba(255, 149, 79, .45);
+  }
+
+  .og-command-mobile-categories button > b {
+    font-size: 11px;
+    font-weight: 900;
+    line-height: 1.15;
+  }
 }
 
 @media (max-width: 520px) {
@@ -7403,7 +7480,7 @@ html.og-command-locked {
   }
 
   .og-command-mobile-categories {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 
   .og-command-visual {
@@ -7449,13 +7526,12 @@ html.og-command-locked {
 /* ========================================================================== */
 
 @media (min-width: 900px) {
-  /* Command rail removed — keep content full-bleed. */
   .site-shell {
-    padding-left: 0;
+    padding-left: 192px;
   }
 
   .og-command-backdrop {
-    left: 0;
+    left: 192px;
   }
 
   .og-command-rail {
