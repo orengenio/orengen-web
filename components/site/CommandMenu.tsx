@@ -245,7 +245,12 @@ export default function CommandMenu() {
               Search
             </button>
             <a href="/login">Sign In</a>
-            <a className="is-primary" href="/contact-us">
+            <a
+              className="is-primary"
+              href="https://api.orengen.io/widget/groups/coffeechat"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Book a Call
             </a>
           </nav>
@@ -320,7 +325,9 @@ export default function CommandMenu() {
               <img src={OFFICIAL_LOGO_WHITE_URL} alt="OrenGen Worldwide" />
             </a>
             <div>
-              <span>COMMAND / {activeCategory.code}</span>
+              <span>
+                {activeCategory.code} · {activeCategory.label}
+              </span>
               <button type="button" onClick={closeMenu} aria-label="Close command menu">
                 <i />
                 <i />
@@ -339,7 +346,7 @@ export default function CommandMenu() {
                   onClick={() => chooseCategory(category.id)}
                 >
                   <span>{category.code}</span>
-                  {category.label}
+                  <b>{category.label}</b>
                 </button>
               ))}
             </div>
