@@ -73,7 +73,7 @@ function CountUp({ value, suffix }: { value: number; suffix?: string }) {
 export default function ProductPreview({
   productName,
   description,
-  demoHref = "https://api.orengen.io/booking/coffeechat",
+  demoHref = "https://api.orengen.io/widget/bookings/locked-in",
   portalHref = "https://app.orengen.io",
   sectionId = "preview",
 }: Props) {

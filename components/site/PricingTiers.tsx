@@ -13,7 +13,7 @@ import { useEffect, useRef, useState } from "react";
  * pricing catalog. Nothing is derived inside this presentation component.
  */
 
-const BOOKING_URL = "https://api.orengen.io/booking/coffeechat";
+const BOOKING_URL = "https://api.orengen.io/widget/bookings/locked-in";
 
 export type PricingPlan = {
   name: string;
