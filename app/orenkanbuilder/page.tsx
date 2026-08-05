@@ -32,9 +32,8 @@ export const metadata: Metadata = {
     "Drag-and-drop AI solution builder. Choose Buy-Lingual™ voice agents, CRM, social, web — select tiers, toggle billing, and lock in your custom AI engine.",
   keywords:
     "orenkanbuilder, OrenGen, Visual AI Engine Builder, AI infrastructure, sovereign AI, self-hosted, white-label, open-source",
-  robots:
-    "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
-  alternates: { canonical: "https://orengen.io/orenkanbuilder" },
+  robots: { index: false, follow: false },
+  alternates: { canonical: "/orenkanbuilder" },
   openGraph: {
     type: "website",
     url: "https://orengen.io/orenkanbuilder",

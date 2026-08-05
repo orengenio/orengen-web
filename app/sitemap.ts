@@ -31,7 +31,6 @@ const ROUTES: string[] = [
   "/orenweb/design",
   "/orenweb/talk",
   "/orenweb/instant-site-audit",
-  "/orenkanbuilder",
   // Sectors
   "/orengov",
   "/orengov/defense",

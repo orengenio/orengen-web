@@ -47,8 +47,8 @@ export default function ComingSoon({
                   <a className="btn btn-primary" href="/contact-us">
                     Talk to OrenGen
                   </a>
-                  <a className="btn btn-secondary" href="/orenkanbuilder">
-                    Explore the Builder
+                  <a className="btn btn-secondary" href="/pricing">
+                    See Pricing
                   </a>
                 </div>
               </header>
