@@ -6481,8 +6481,8 @@ html.og-command-locked {
 .og-command-deck {
   position: fixed;
   z-index: 160;
-  inset: 0 auto 0 72px;
-  width: min(448px, calc(100vw - 72px));
+  inset: 0 auto 0 192px;
+  width: min(448px, calc(100vw - 192px));
   color: #eaf4fb;
   border: 0;
   border-right: 1px solid rgba(143, 198, 238, .2);
