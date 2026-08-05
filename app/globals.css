@@ -6078,8 +6078,9 @@ html.og-command-locked {
 }
 
 @media (min-width: 900px) {
+  /* Command rail removed — keep content full-bleed. */
   .site-shell {
-    padding-left: 72px;
+    padding-left: 0;
   }
 }
 
@@ -7448,12 +7449,13 @@ html.og-command-locked {
 /* ========================================================================== */
 
 @media (min-width: 900px) {
+  /* Command rail removed — keep content full-bleed. */
   .site-shell {
-    padding-left: 192px;
+    padding-left: 0;
   }
 
   .og-command-backdrop {
-    left: 192px;
+    left: 0;
   }
 
   .og-command-rail {
