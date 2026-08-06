@@ -15,8 +15,7 @@ const publicSans = Public_Sans({
   variable: "--font-public-sans",
 });
 
-const OG_IMAGE =
-  "https://cdn.content360.io/ea2381f4-12e0-4efd-b95b-6012c981eae0/uploads/05-2026/bmeUUijIh8dkwmEIWUWDktHNGX2nMZ0HewKw9Q0e.png";
+const OG_IMAGE = "/og-image.png";
 
 const ORGANIZATION_JSON_LD = {
   "@context": "https://schema.org",

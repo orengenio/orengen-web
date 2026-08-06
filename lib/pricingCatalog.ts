@@ -290,8 +290,25 @@ export const PRICING_PRODUCT_GROUPS: Record<
   },
 };
 
+/** Sales booking widget — used when a distinct annual checkout link is not yet live. */
+export const BOOKING_URL =
+  "https://api.orengen.io/widget/groups/coffeechat";
+
 export function formatCurrency(value: number) {
   return `$${value.toLocaleString("en-US")}`;
+}
+
+/**
+ * Until distinct annual payment links exist in FINAL_PRICING, annual CTAs must
+ * not silently reuse the monthly checkout (that would bill the wrong cadence).
+ */
+export function checkoutForPeriod(
+  plan: (typeof FINAL_PRICING)[PricingPlanKey],
+  period: "monthly" | "annual",
+) {
+  if (period === "monthly") return plan.monthlyCheckout;
+  if (plan.annualCheckout !== plan.monthlyCheckout) return plan.annualCheckout;
+  return BOOKING_URL;
 }
 
 export function commercialTerms(planKey: PricingPlanKey) {
@@ -305,7 +322,7 @@ export function commercialTerms(planKey: PricingPlanKey) {
         ? "$0 setup fee"
         : `+ ${formatCurrency(plan.setupFee)} one-time setup`,
     ctaHref: plan.monthlyCheckout,
-    ctaHrefAnnual: plan.annualCheckout,
+    ctaHrefAnnual: checkoutForPeriod(plan, "annual"),
   };
 }
 

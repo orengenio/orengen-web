@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description:
     "Sign in to your OrenGen Counterpart portal. Self-hosted authentication on OrenBase. Single sign-on available for enterprise tiers.",
   keywords: "login, OrenGen, OrenGen Worldwide, AI infrastructure, sign in",
-  robots: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+  robots: { index: false, follow: false },
   alternates: { canonical: "/login" },
   openGraph: {
     type: "website",

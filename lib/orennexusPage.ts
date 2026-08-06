@@ -1,5 +1,5 @@
 import type { ResearchItem } from "@/components/site/ResearchAccordion";
-import type { PricingTierRow } from "@/components/site/PricingCompareTable";
+import { FINAL_PRICING } from "@/lib/pricingCatalog";
 
 export const ORENNEXUS_AT_A_GLANCE = [
   "Unified CRM, pipeline, email, SMS, funnels, and inbox — from $97/mo, $0 setup.",
@@ -67,29 +67,30 @@ export const ORENNEXUS_RESEARCH: ResearchItem[] = [
   },
 ];
 
-export const ORENNEXUS_PRICING_TABLE: PricingTierRow[] = [
+/** Kept for any compare-table consumers — checkout always from FINAL_PRICING. */
+export const ORENNEXUS_PRICING_TABLE = [
   {
     name: "Standard",
-    monthly: "$97/mo",
+    monthly: `$${FINAL_PRICING.nexusStandard.monthly}/mo`,
     setup: "$0",
-    ctaHref: "https://buy.stripe.com/aFa4gzgsE25h8Of2tHfQI45",
+    ctaHref: FINAL_PRICING.nexusStandard.monthlyCheckout,
     ctaLabel: "Select Standard →",
     highlights: ["3 users", "5,000 emails/mo", "1 funnel", "Pipeline + forms"],
   },
   {
     name: "Professional",
-    monthly: "$297/mo",
+    monthly: `$${FINAL_PRICING.nexusProfessional.monthly}/mo`,
     setup: "$0",
-    ctaHref: "https://buy.stripe.com/28EfZhdgscJV4xZgkxfQI47",
+    ctaHref: FINAL_PRICING.nexusProfessional.monthlyCheckout,
     ctaLabel: "Select Professional →",
     featured: true,
     highlights: ["25 users", "25,000 emails/mo", "SMS + automation", "A/B testing"],
   },
   {
     name: "Premium",
-    monthly: "$497/mo",
+    monthly: `$${FINAL_PRICING.nexusPremium.monthly}/mo`,
     setup: "$0",
-    ctaHref: "https://buy.stripe.com/dRmbJ14JW5htd4v9W9fQJ01",
+    ctaHref: FINAL_PRICING.nexusPremium.monthlyCheckout,
     ctaLabel: "Select Premium →",
     highlights: ["Unlimited users", "Unlimited sends", "Unified inbox", "API access"],
   },

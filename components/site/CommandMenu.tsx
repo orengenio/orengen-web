@@ -62,7 +62,11 @@ function DestinationLane({
             aria-current={current ? "page" : undefined}
             onClick={onNavigate}
           >
-            {item.external ? "Open portal ↗" : "Open full page →"}
+            {item.external
+              ? item.href.includes("widget/groups/")
+                ? "Book a call ↗"
+                : "Open portal ↗"
+              : "Open full page →"}
           </a>
           {item.inline && (
             <a

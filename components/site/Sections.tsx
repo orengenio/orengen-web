@@ -158,7 +158,7 @@ export default function Sections() {
             ))}
           </div>
           <div className="cta-row reveal">
-            <a className="btn btn-primary" href="#contact">Book an Architecture Brief</a>
+            <a className="btn btn-primary" href="https://api.orengen.io/widget/groups/coffeechat" target="_blank" rel="noopener noreferrer">Book an Architecture Brief</a>
             <a className="btn btn-secondary" href="#architecture">Explore Components →</a>
           </div>
         </div>

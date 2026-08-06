@@ -76,18 +76,17 @@ export default function BlogPage() {
           >
             <div className="container">
               <header className="section-head reveal">
-                <h2>Latest Insights</h2>
+                <h2>Upcoming Field Briefs</h2>
                 <p>
-                  OrenGen publishes operator-grade writing on enterprise AI
-                  infrastructure, federal procurement, healthcare compliance,
-                  and the mechanics of sovereign deployments. Every post is
-                  grounded in active engagements &mdash; no theory, no fluff.
+                  Upcoming operator-grade essays on enterprise AI infrastructure,
+                  federal procurement, healthcare compliance, and sovereign
+                  deployments. New Field Briefs publish here as they ship.
                 </p>
               </header>
 
               <div className="sector-grid reveal">
                 <article className="sector-card">
-                  <div className="step">Methodology</div>
+                  <div className="step">Queued</div>
                   <h3>The No-Rent Methodology Explained</h3>
                   <p>
                     Why per-seat SaaS dependency is the silent margin killer of
@@ -97,7 +96,7 @@ export default function BlogPage() {
                 </article>
 
                 <article className="sector-card">
-                  <div className="step">Federal</div>
+                  <div className="step">Queued</div>
                   <h3>Subcontracting Under FAR 19.704</h3>
                   <p>
                     How SDB-certified firms (like OrenGen) plug into defense and
@@ -106,7 +105,7 @@ export default function BlogPage() {
                 </article>
 
                 <article className="sector-card">
-                  <div className="step">Healthcare</div>
+                  <div className="step">Queued</div>
                   <h3>HIPAA-Enabled AI Without Third-Party Exposure</h3>
                   <p>
                     Why self-hosted Claude environments with executed BAA chains
@@ -116,7 +115,7 @@ export default function BlogPage() {
                 </article>
 
                 <article className="sector-card">
-                  <div className="step">Observability</div>
+                  <div className="step">Queued</div>
                   <h3>AI Cost Attribution Beyond the Dashboard</h3>
                   <p>
                     Six trace patterns every team should run before approving an
@@ -126,7 +125,7 @@ export default function BlogPage() {
                 </article>
 
                 <article className="sector-card">
-                  <div className="step">Voice</div>
+                  <div className="step">Queued</div>
                   <h3>Buy-Lingual&trade; at Scale</h3>
                   <p>
                     Lessons from deploying multi-language AI voice agents across
@@ -136,7 +135,7 @@ export default function BlogPage() {
                 </article>
 
                 <article className="sector-card">
-                  <div className="step">Governance</div>
+                  <div className="step">Queued</div>
                   <h3>NIST 800-53 Aligned AI Deployments</h3>
                   <p>
                     The control framework checklist OrenGen runs against every
@@ -174,9 +173,14 @@ export default function BlogPage() {
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
-                    href="mailto:briefing@orengen.io"
+                    href="https://api.orengen.io/widget/groups/coffeechat"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    Architect the Briefing
+                    Book a Call
+                  </a>
+                  <a className="btn btn-secondary" href="/pricing">
+                    See Plans
                   </a>
                 </div>
               </header>

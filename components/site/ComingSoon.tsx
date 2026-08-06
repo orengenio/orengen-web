@@ -44,11 +44,16 @@ export default function ComingSoon({
                 </p>
                 <p className="lead">{blurb}</p>
                 <div className="cta-row">
-                  <a className="btn btn-primary" href="/contact-us">
-                    Talk to OrenGen
+                  <a
+                    className="btn btn-primary"
+                    href="https://api.orengen.io/widget/groups/coffeechat"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Book a Call
                   </a>
-                  <a className="btn btn-secondary" href="/orenkanbuilder">
-                    Explore the Builder
+                  <a className="btn btn-secondary" href="/pricing">
+                    See Pricing
                   </a>
                 </div>
               </header>

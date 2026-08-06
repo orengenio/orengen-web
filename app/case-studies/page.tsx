@@ -170,8 +170,13 @@ export default function CaseStudiesPage() {
                   No discovery calls with intake associates.
                 </p>
                 <div className="cta-row">
-                  <a className="btn btn-primary" href="mailto:briefing@orengen.io">
-                    Architect the Briefing
+                  <a
+                    className="btn btn-primary"
+                    href="https://api.orengen.io/widget/groups/coffeechat"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Book a Call
                   </a>
                 </div>
               </header>

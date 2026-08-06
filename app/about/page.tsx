@@ -207,9 +207,11 @@ export default function AboutPage() {
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
-                    href="mailto:briefing@orengen.io"
+                    href="https://api.orengen.io/widget/groups/coffeechat"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    Architect the Briefing
+                    Book a Call
                   </a>
                 </div>
               </header>
