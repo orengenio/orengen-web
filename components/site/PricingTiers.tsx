@@ -140,6 +140,9 @@ export default function PricingTiers({
             (yearly && plan.ctaHrefAnnual) ||
             plan.ctaHref ||
             BOOKING_URL;
+          const annualNeedsBriefing =
+            yearly &&
+            (!plan.ctaHrefAnnual || plan.ctaHrefAnnual === BOOKING_URL);
           return (
             <article
               key={plan.name}
@@ -187,7 +190,9 @@ export default function PricingTiers({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {plan.ctaLabel ?? "Get Started"}
+                {annualNeedsBriefing
+                  ? "Book Annual Setup"
+                  : (plan.ctaLabel ?? "Get Started")}
               </a>
             </article>
           );

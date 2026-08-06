@@ -67,6 +67,9 @@ const nextConfig = {
       // /gdpr-compliance never existed as a page; the footer linked it dead.
       // GDPR content lives in the privacy policy's own section.
       { source: "/gdpr-compliance", destination: "/legal/privacy-policy#gdpr-rights", permanent: false },
+      // OrenKanBuilder retired from the public site — send bookmarks/indexes to pricing.
+      { source: "/orenkanbuilder", destination: "/pricing", permanent: true },
+      { source: "/orenkanbuilder/:path*", destination: "/pricing", permanent: true },
     ];
   },
 };

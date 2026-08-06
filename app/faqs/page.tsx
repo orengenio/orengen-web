@@ -284,8 +284,13 @@ export default function FaqsPage() {
                   four hours.
                 </p>
                 <div className="cta-row">
-                  <a className="btn btn-primary" href="mailto:briefing@orengen.io">
-                    Contact OrenGen
+                  <a
+                    className="btn btn-primary"
+                    href="https://api.orengen.io/widget/groups/coffeechat"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Book a Call
                   </a>
                 </div>
               </header>

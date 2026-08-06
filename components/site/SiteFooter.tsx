@@ -84,7 +84,6 @@ const COLUMNS: { title: string; links: { href: string; label: string; ext?: bool
       { href: "/orenweb/talk", label: "OrenWeb Talk" },
       { href: "/orensocial", label: "OrenSocial" },
       { href: "/pricing#orenconsulting", label: "OrenConsulting" },
-      { href: "/marketplace", label: "Marketplace — Coming Soon" },
     ],
   },
   {
@@ -95,8 +94,6 @@ const COLUMNS: { title: string; links: { href: string; label: string; ext?: bool
       { href: "/careers", label: "Careers" },
       { href: "/blog", label: "OrenSignal" },
       { href: "/case-studies", label: "Case Studies" },
-      { href: "/integrations", label: "Integrations — Coming Soon" },
-      { href: "/support", label: "Support — Coming Soon" },
       { href: "/faqs", label: "FAQs" },
       { href: "/pricing", label: "Pricing" },
       { href: "/contact-us", label: "Contact Us" },
@@ -106,13 +103,16 @@ const COLUMNS: { title: string; links: { href: string; label: string; ext?: bool
   {
     title: "Buyer Journey",
     links: [
-      { href: "/contact-us", label: "Book Architecture Brief" },
+      {
+        href: "https://api.orengen.io/widget/groups/coffeechat",
+        label: "Book Architecture Brief",
+        ext: true,
+      },
       { href: "/orengov", label: "OrenGov" },
       { href: "/orengov/public-sector/state-local", label: "OrenGov State Local" },
       { href: "/orengov/public-sector/education", label: "OrenGov Education" },
       { href: "/orengov/defense", label: "OrenGov Defense" },
       { href: "/orenhealth", label: "OrenHealth" },
-      { href: "/orenhealth", label: "OrenHealth Healthcare" },
       { href: "/orenhealth/specialty-clinics", label: "OrenHealth Specialty Clinics" },
       { href: "/orenhealth/research", label: "OrenHealth Research" },
       { href: "/orenlegal", label: "OrenLegal" },
@@ -132,10 +132,9 @@ const COLUMNS: { title: string; links: { href: string; label: string; ext?: bool
   {
     title: "Technical",
     links: [
-      { href: "/integrations", label: "Integrations — Coming Soon" },
-      { href: "/support", label: "Technical Support — Coming Soon" },
       { href: "/faqs", label: "Implementation FAQs" },
       { href: "/legal/security-overview", label: "Security Controls" },
+      { href: "/contact-us", label: "Technical Support" },
       { href: "https://n8n.io/", label: "n8n Automation", ext: true },
       { href: "https://orengen-status-page.instatus.com", label: "Platform Status", ext: true },
     ],

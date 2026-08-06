@@ -7,6 +7,8 @@ export function absoluteUrl(path = "/") {
   return `${SITE}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
+const DEFAULT_OG_IMAGE = absoluteUrl("/og-image.png");
+
 export function pageMetadata({
   title,
   description,
@@ -30,11 +32,13 @@ export function pageMetadata({
       url,
       type: "website",
       siteName: "OrenGen Worldwide",
+      images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [DEFAULT_OG_IMAGE],
     },
   };
 }

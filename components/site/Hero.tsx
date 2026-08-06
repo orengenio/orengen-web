@@ -6,6 +6,7 @@ import PricingExplorer from "./PricingExplorer";
 import {
   FINAL_PRICING,
   PRICING_PRODUCT_GROUPS,
+  checkoutForPeriod,
   type PricingPlanKey,
   type PricingProductId,
 } from "@/lib/pricingCatalog";
@@ -625,9 +626,12 @@ function CompactPricing({ productId }: { productId: PricingProductId }) {
         {group.planKeys.map((planKey, index) => {
           const plan = FINAL_PRICING[planKey as PricingPlanKey];
           const value = annual ? plan.annual : plan.monthly;
-          const checkout = annual
-            ? plan.annualCheckout
-            : plan.monthlyCheckout;
+          const checkout = checkoutForPeriod(
+            plan,
+            annual ? "annual" : "monthly",
+          );
+          const annualNeedsBriefing =
+            annual && plan.annualCheckout === plan.monthlyCheckout;
           return (
             <article
               key={planKey}
@@ -653,7 +657,9 @@ function CompactPricing({ productId }: { productId: PricingProductId }) {
                 </em>
               )}
               <a href={checkout} target="_blank" rel="noopener noreferrer">
-                Choose {plan.tier} →
+                {annualNeedsBriefing
+                  ? `Book ${plan.tier} annual →`
+                  : `Choose ${plan.tier} →`}
               </a>
             </article>
           );

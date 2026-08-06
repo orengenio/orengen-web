@@ -11,6 +11,11 @@
 # misc
 .DS_Store
 *.pem
+*.zip
+trace
+*-manifest.json
+.codex-dev.*
+*.skill
 
 # debug
 npm-debug.log*

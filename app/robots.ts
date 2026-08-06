@@ -13,7 +13,15 @@ const PUBLIC_CRAWLERS = [
 ];
 
 export default function robots(): MetadataRoute.Robots {
-  const privatePaths = ["/api/", "/cart", "/login", "/search"];
+  const privatePaths = [
+    "/api/",
+    "/cart",
+    "/login",
+    "/search",
+    "/marketplace",
+    "/integrations",
+    "/support",
+  ];
 
   return {
     rules: [
