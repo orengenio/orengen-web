@@ -121,11 +121,6 @@ export default function LoginPage() {
           >
             <div className="container">
               <header className="section-head center reveal">
-                <h2>Account or sign-in issues?</h2>
-                <p>
-                  Reach OrenGen support directly. We respond to access issues
-                  within one business hour.
-                </p>
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
