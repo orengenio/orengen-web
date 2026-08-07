@@ -3,15 +3,14 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
+import BookingScheduler from "@/components/site/BookingScheduler";
 
 /**
- * /contact-us — standard contact page: direct contact info (email, phone,
- * address, hours), a booking link, and the architecture-brief intake form
- * that posts to /api/intake-sync (same backend as the homepage section).
- * All contact details below are the real, already-published facts used
- * across the /legal pages (address, hours, department emails) — nothing
- * here is invented.
+ * /contact-us — contact info, embedded branded booking, and architecture-brief
+ * intake form. Booking uses the same HighLevel-synced scheduler as /book.
  */
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Contact Us | OrenGen Worldwide — Enterprise AI Infrastructure",
   description:
@@ -62,8 +61,8 @@ export default function ContactUsPage() {
                   respond to every inquiry within one business day.
                 </p>
                 <div className="cta-row">
-                  <a className="btn btn-primary" href="mailto:sales@orengen.io">
-                    Email Us
+                  <a className="btn btn-primary" href="#book">
+                    Book a Call
                   </a>
                   <a className="btn btn-secondary" href="tel:+18336736436">
                     Call 833-ORENGEN
@@ -102,22 +101,44 @@ export default function ContactUsPage() {
             </div>
           </section>
 
-          {/* SUPPORT CHANNELS */}
+          {/* EMBEDDED BOOKING */}
           <section
             className="section section-brand-blue"
+            id="book"
+            aria-label="Book a call with OrenGen"
+          >
+            <div className="container">
+              <header className="section-head center reveal">
+                <div className="eyebrow">Book Direct</div>
+                <h2>
+                  Schedule here —{" "}
+                  <span className="gradient-word shimmer">no widget detour.</span>
+                </h2>
+                <p className="lead">
+                  Coffee Chat or Strategy Session. Live HighLevel availability,
+                  embedded in the OrenGen experience.
+                </p>
+              </header>
+              <BookingScheduler variant="embed" />
+            </div>
+          </section>
+
+          {/* SUPPORT CHANNELS */}
+          <section
+            className="section alt section-brand-white"
             aria-label="More ways to connect"
           >
             <div className="container">
               <header className="section-head center reveal">
                 <div className="eyebrow">More Ways to Connect</div>
-                <h2>Pick the channel that works for you.</h2>
+                <h2>Other channels.</h2>
               </header>
               <div className="sector-grid compact reveal">
                 <article className="sector-card">
-                  <h3>Book a Call</h3>
-                  <p>Schedule a Coffee Chat or Strategy Session on our branded calendar.</p>
+                  <h3>Full Booking Page</h3>
+                  <p>Prefer a dedicated scheduling surface? Open the full Book experience.</p>
                   <a className="card-link" href="/book">
-                    Open scheduler →
+                    Open /book →
                   </a>
                 </article>
                 <article className="sector-card">

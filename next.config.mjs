@@ -56,6 +56,20 @@ const nextConfig = {
         source: "/(.*)",
         headers: securityHeaders,
       },
+      // Allow same-origin iframe embeds of the branded scheduler.
+      {
+        source: "/book/embed",
+        headers: [
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          {
+            key: "Content-Security-Policy",
+            value: contentSecurityPolicy.replace(
+              "frame-ancestors 'none'",
+              "frame-ancestors 'self' https://orengen.io https://www.orengen.io",
+            ),
+          },
+        ],
+      },
     ];
   },
   async redirects() {
