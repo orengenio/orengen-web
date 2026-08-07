@@ -50,10 +50,13 @@ export type BookingEnvConfig = {
 export function getBookingEnvConfig():
   | { ok: true; config: BookingEnvConfig }
   | { ok: false; missing: string[] } {
-  const token = process.env.GHL_PRIVATE_TOKEN?.trim() || "";
-  const locationId = process.env.GHL_LOCATION_ID?.trim() || "";
-  const coffee = process.env.GHL_CALENDAR_COFFEECHAT_ID?.trim() || "";
-  const strategy = process.env.GHL_CALENDAR_STRATEGY_ID?.trim() || "";
+  const read = (key: string) =>
+    (process.env[key] || "").trim().replace(/^['"]|['"]$/g, "");
+
+  const token = read("GHL_PRIVATE_TOKEN");
+  const locationId = read("GHL_LOCATION_ID");
+  const coffee = read("GHL_CALENDAR_COFFEECHAT_ID");
+  const strategy = read("GHL_CALENDAR_STRATEGY_ID");
 
   const missing: string[] = [];
   if (!token) missing.push("GHL_PRIVATE_TOKEN");
