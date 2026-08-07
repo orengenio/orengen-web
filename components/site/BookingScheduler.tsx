@@ -1,7 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { MEETING_TYPES, type MeetingTypeId } from "@/lib/booking";
+import {
+  BOOKING_SLOT_LOOKAHEAD_DAYS,
+  MEETING_TYPES,
+  type MeetingTypeId,
+} from "@/lib/booking";
 
 type DaySlots = { date: string; slots: string[] };
 
@@ -83,8 +87,10 @@ export default function BookingScheduler({
     setTimezone(detectTimezone());
   }, []);
 
+  // Fetch only on the schedule step. Re-running on "details" was clearing
+  // selectedSlot and blanking the details form.
   useEffect(() => {
-    if (!typeId || step === "type" || step === "done") return;
+    if (!typeId || step !== "schedule") return;
 
     let cancelled = false;
     const load = async () => {
@@ -93,7 +99,9 @@ export default function BookingScheduler({
       setUnavailable(false);
       try {
         const from = new Date();
-        const to = new Date(from.getTime() + 14 * 24 * 60 * 60 * 1000);
+        const to = new Date(
+          from.getTime() + BOOKING_SLOT_LOOKAHEAD_DAYS * 24 * 60 * 60 * 1000,
+        );
         const params = new URLSearchParams({
           type: typeId,
           from: from.toISOString(),
@@ -120,7 +128,11 @@ export default function BookingScheduler({
           if (prev && nextDays.some((d) => d.date === prev)) return prev;
           return nextDays[0]?.date || null;
         });
-        setSelectedSlot(null);
+        setSelectedSlot((prev) => {
+          if (!prev) return null;
+          const stillOpen = nextDays.some((d) => d.slots.includes(prev));
+          return stillOpen ? prev : null;
+        });
       } catch {
         if (!cancelled) setError("Could not load availability.");
       } finally {
@@ -248,7 +260,7 @@ export default function BookingScheduler({
             <div>
               <div className="eyebrow">{meeting.title}</div>
               <h2>Pick a time that works.</h2>
-              <p>{meeting.durationLabel} · live calendar availability</p>
+              <p>{meeting.durationLabel} · next 5 weekdays · no weekends</p>
             </div>
             <label className="booking-timezone">
               <span>Timezone</span>
@@ -289,8 +301,8 @@ export default function BookingScheduler({
             <p className="booking-loading">Loading open times…</p>
           ) : days.length === 0 ? (
             <p className="booking-loading">
-              No open times in the next two weeks. Try another meeting type or
-              email briefing@orengen.io.
+              No open weekday times in the next few weeks. Try another meeting
+              type or email briefing@orengen.io.
             </p>
           ) : (
             <div className="booking-schedule-grid">
@@ -360,6 +372,22 @@ export default function BookingScheduler({
               </button>
             </div>
           )}
+        </div>
+      )}
+
+      {step === "details" && meeting && !selectedSlot && (
+        <div className="booking-status" role="status">
+          <h2>Pick a time again</h2>
+          <p>Your selected time was cleared. Choose an open slot to continue.</p>
+          <div className="booking-actions">
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => setStep("schedule")}
+            >
+              Back to times
+            </button>
+          </div>
         </div>
       )}
 
