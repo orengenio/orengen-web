@@ -17,6 +17,9 @@ export const BOOKING_WEEKDAY_DAYS = 5;
 /** Lookahead window so we can fill 5 weekdays even when near weekends / sparse calendars. */
 export const BOOKING_SLOT_LOOKAHEAD_DAYS = 28;
 
+/** No last-minute bookings — slots must start at least this far out. */
+export const BOOKING_MIN_LEAD_MS = 2 * 60 * 60 * 1000;
+
 export type MeetingTypeId = "coffee-chat" | "strategy-session";
 
 /** Civil YYYY-MM-DD weekday check (Sat/Sun excluded). */
@@ -28,6 +31,24 @@ export function isWeekdayDate(dateIso: string): boolean {
   const day = Number(match[3]);
   const weekday = new Date(Date.UTC(year, month - 1, day, 12, 0, 0)).getUTCDay();
   return weekday !== 0 && weekday !== 6;
+}
+
+/** Drop slots that start sooner than the minimum lead time. */
+export function filterSlotsByMinLead<T extends { date: string; slots: string[] }>(
+  days: T[],
+  minLeadMs = BOOKING_MIN_LEAD_MS,
+  nowMs = Date.now(),
+): T[] {
+  const earliest = nowMs + minLeadMs;
+  const next: T[] = [];
+  for (const day of days) {
+    const slots = day.slots.filter((slot) => {
+      const ms = Date.parse(slot);
+      return Number.isFinite(ms) && ms >= earliest;
+    });
+    if (slots.length) next.push({ ...day, slots });
+  }
+  return next;
 }
 
 /** Keep Mon–Fri open days only, capped to the next `limit` days with slots. */

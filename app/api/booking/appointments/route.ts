@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getBookingEnvConfig, meetingTypeById } from "@/lib/booking";
+import {
+  BOOKING_MIN_LEAD_MS,
+  getBookingEnvConfig,
+  meetingTypeById,
+} from "@/lib/booking";
 import { createAppointment, upsertContact } from "@/lib/ghl";
 
 function isTrustedOrigin(req: NextRequest) {
@@ -23,10 +27,16 @@ function isEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
+function isPhone(value: string) {
+  const digits = value.replace(/\D/g, "");
+  return digits.length >= 10 && digits.length <= 15;
+}
+
 /**
  * POST /api/booking/appointments
- * Body: { type, startTime, timezone, name, email, phone?, notes?, website? }
+ * Body: { type, startTime, timezone, name, email, phone, notes?, website? }
  * `website` is a honeypot — must be empty.
+ * Phone is required so GHL can send SMS along with email confirmations.
  */
 export async function POST(req: NextRequest) {
   if (!isTrustedOrigin(req)) {
@@ -75,11 +85,27 @@ export async function POST(req: NextRequest) {
   if (!startTime || Number.isNaN(Date.parse(startTime))) {
     return NextResponse.json({ ok: false, error: "Invalid start time" }, { status: 400 });
   }
+  const startMs = Date.parse(startTime);
+  if (startMs < Date.now() + BOOKING_MIN_LEAD_MS) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "That time is too soon. Please pick a slot at least 2 hours from now.",
+      },
+      { status: 400 },
+    );
+  }
   if (!name || name.length < 2) {
     return NextResponse.json({ ok: false, error: "Name is required" }, { status: 400 });
   }
   if (!email || !isEmail(email)) {
     return NextResponse.json({ ok: false, error: "Valid email is required" }, { status: 400 });
+  }
+  if (!phone || !isPhone(phone)) {
+    return NextResponse.json(
+      { ok: false, error: "A valid phone number is required for SMS confirmation." },
+      { status: 400 },
+    );
   }
 
   const ghl = { token: env.config.token, locationId: env.config.locationId };
@@ -88,9 +114,9 @@ export async function POST(req: NextRequest) {
   const contact = await upsertContact(ghl, {
     name,
     email,
-    phone: phone || undefined,
+    phone,
     source: "orengen.io/book",
-    tags: ["orengen-web-book", type.id],
+    tags: ["orengen-web-book", type.id, "sms-opt-in-booking"],
   });
 
   if (!contact.ok) {
@@ -110,6 +136,7 @@ export async function POST(req: NextRequest) {
     startTime,
     title,
     appointmentStatus: "confirmed",
+    toNotify: true,
   });
 
   if (!appointment.ok) {
@@ -123,7 +150,13 @@ export async function POST(req: NextRequest) {
           ? "That time was just taken. Please pick another slot."
           : appointment.error,
       },
-      { status: taken ? 409 : appointment.status >= 400 && appointment.status < 600 ? appointment.status : 502 },
+      {
+        status: taken
+          ? 409
+          : appointment.status >= 400 && appointment.status < 600
+            ? appointment.status
+            : 502,
+      },
     );
   }
 
@@ -133,6 +166,7 @@ export async function POST(req: NextRequest) {
     type: type.id,
     startTime,
     timezone,
+    notified: true,
     meeting: {
       title: type.title,
       durationLabel: type.durationLabel,
