@@ -25,8 +25,9 @@ const INDEX: Entry[] = [
   { cat: "Partners", title: "Referral Partner Program", url: "/referral-partner-program", desc: "Earn by referring clients to OrenGen." },
   { cat: "Partners", title: "Sales Partner Program", url: "/sales-partner-program", desc: "Build your book as an OrenGen sales partner." },
   { cat: "Company", title: "Contact", url: "/contact-us", desc: "Get in touch or book a strategy call." },
-  { cat: "Account", title: "Client Portal", url: "https://app.orengen.io", desc: "Sign in to your OrenGen Counterpart portal." },
-  { cat: "Partners", title: "Partner Portal", url: "https://weshare.orengen.io/login", desc: "Sign in to your OrenGen referral partner / sales partner dashboard." },
+  { cat: "Account", title: "OrenNexus Portal", url: "https://app.orengen.io", desc: "Sign in to OrenNexus at app.orengen.io." },
+  { cat: "Partners", title: "Affiliates Portal", url: "https://affiliates.orengen.io", desc: "Sign in to the OrenGen Affiliates portal." },
+  { cat: "Partners", title: "Sales Partners Portal", url: "https://salespartners.orengen.io", desc: "Sign in to the OrenGen Sales Partners portal." },
   // Products
   { cat: "Products", title: "OrenAgents", url: "/orenagents", desc: "AI voice and chat agents and digital employees." },
   { cat: "Products", title: "Buy-Lingual Voice Agents", url: "/orenagents/voice", desc: "AI voice agents that speak 100+ languages — inbound & outbound calls, bookings, transfers." },

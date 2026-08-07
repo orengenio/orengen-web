@@ -451,8 +451,11 @@ export default function CommandMenu() {
             <div className="og-command-utility-dock">
               <a href="/pricing" onClick={closeMenu}>Pricing</a>
               <a href="/login" onClick={closeMenu}>Client Sign In</a>
-              <a href="https://weshare.orengen.io/login" target="_blank" rel="noopener noreferrer">
-                Partner Portal
+              <a href="https://affiliates.orengen.io" target="_blank" rel="noopener noreferrer">
+                Affiliates
+              </a>
+              <a href="https://salespartners.orengen.io" target="_blank" rel="noopener noreferrer">
+                Sales Partners
               </a>
               <div className="lang-menu og-command-language" aria-label="Translate website">
                 <button

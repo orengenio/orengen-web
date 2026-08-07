@@ -100,7 +100,7 @@ const COLUMNS: { title: string; links: { href: string; label: string; ext?: bool
       { href: "/faqs", label: "FAQs" },
       { href: "/pricing", label: "Pricing" },
       { href: "/contact-us", label: "Contact Us" },
-      { href: "https://app.orengen.io", label: "Client Portal", ext: true },
+      { href: "https://app.orengen.io", label: "OrenNexus Portal", ext: true },
     ],
   },
   {
@@ -125,7 +125,8 @@ const COLUMNS: { title: string; links: { href: string; label: string; ext?: bool
     links: [
       { href: "/referral-partner-program", label: "Referral Partner Program" },
       { href: "/sales-partner-program", label: "Sales Partner Program" },
-      { href: "https://weshare.orengen.io/login", label: "Partner Portal", ext: true },
+      { href: "https://affiliates.orengen.io", label: "Affiliates Portal", ext: true },
+      { href: "https://salespartners.orengen.io", label: "Sales Partners Portal", ext: true },
       { href: "/legal/legal-disclaimers", label: "Legal Disclaimers" },
     ],
   },

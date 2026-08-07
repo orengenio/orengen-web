@@ -9500,7 +9500,30 @@ html[data-theme="light"] .booking-panel {
   }
 }
 
-/* Embedded booking variants */
+/* Login portal access note — full-width single line (avoid .cap 88px squeeze) */
+.login-access-note {
+  margin: 2rem auto 0;
+  max-width: 920px;
+  text-align: center;
+  color: var(--og-text-muted);
+  font-size: 15px;
+  line-height: 1.55;
+  white-space: normal;
+}
+.login-access-note a {
+  color: var(--og-orange);
+  font-weight: 800;
+  white-space: nowrap;
+}
+.login-portal-grid {
+  max-width: 980px;
+  margin-inline: auto;
+}
+@media (min-width: 760px) {
+  .login-portal-grid.sector-grid.compact {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
 .booking-panel--embed {
   margin-top: 18px;
 }

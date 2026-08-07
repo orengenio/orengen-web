@@ -8,23 +8,19 @@ import ScrollProgress from "@/components/site/ScrollProgress";
  * Referral Partner Program page (formerly "Affiliate Program" — renamed
  * sitewide so automated SMS/10DLC compliance scans don't flag the page;
  * program terms are unchanged).
- * Rebuilt from the real, published program terms on weshare.orengen.io (the
- * platform that actually runs this program) — commissions, payout schedule,
- * and package pricing below are the live figures, not estimates. Do not
- * add numbers that aren't published there; weshare has no public cookie
- * duration, FAQ, or terms page, so none is stated here either.
+ * Partner signup/sign-in runs on affiliates.orengen.io.
  */
 export const metadata: Metadata = {
   title: "Referral Partner Program — OrenGen Worldwide",
   description:
-    "Earn 10-25% setup commission and 5-10% monthly residual (rank-based) referring OrenGen website packages. Free to join, weekly payouts via Stripe. Powered by WeShare.",
+    "Earn 10-25% setup commission and 5-10% monthly residual (rank-based) referring OrenGen website packages. Free to join, weekly payouts via Stripe.",
   keywords:
     "referral-partner-program, OrenGen, OrenGen Worldwide, website referral program, referral commissions",
   alternates: { canonical: "/referral-partner-program" },
   openGraph: {
     title: "Referral Partner Program — OrenGen Worldwide",
     description:
-      "Earn 10-25% setup commission and 5-10% monthly residual (rank-based) referring OrenGen website packages. Powered by WeShare.",
+      "Earn 10-25% setup commission and 5-10% monthly residual (rank-based) referring OrenGen website packages.",
     url: "https://orengen.io/referral-partner-program",
   },
 };
@@ -196,7 +192,7 @@ export default function ReferralPartnerProgramPage() {
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
-                    href="https://weshare.orengen.io/register"
+                    href="https://affiliates.orengen.io"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -204,7 +200,7 @@ export default function ReferralPartnerProgramPage() {
                   </a>
                   <a
                     className="btn btn-secondary"
-                    href="https://weshare.orengen.io/login"
+                    href="https://affiliates.orengen.io"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
