@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
+  BOOKING_CALENDAR_TIMEZONE,
   BOOKING_SLOT_LOOKAHEAD_DAYS,
   getBookingEnvConfig,
   meetingTypeById,
@@ -28,8 +29,8 @@ function isTrustedOrigin(req: NextRequest) {
 }
 
 /**
- * GET /api/booking/slots?type=coffee-chat&from=<iso>&to=<iso>&timezone=America/Chicago
- * Proxies GHL free-slots. Secrets never leave the server.
+ * GET /api/booking/slots?type=coffee-chat&from=<iso>&to=<iso>
+ * Proxies GHL free-slots in Central Time. Secrets never leave the server.
  */
 export async function GET(req: NextRequest) {
   if (!isTrustedOrigin(req)) {
@@ -55,7 +56,8 @@ export async function GET(req: NextRequest) {
 
   const fromRaw = req.nextUrl.searchParams.get("from");
   const toRaw = req.nextUrl.searchParams.get("to");
-  const timezone = req.nextUrl.searchParams.get("timezone") || "America/Chicago";
+  // Calendar hours are always Central Time — ignore client timezone overrides.
+  const timezone = BOOKING_CALENDAR_TIMEZONE;
 
   const startMs = fromRaw ? Date.parse(fromRaw) : Date.now();
   const endMs = toRaw
@@ -86,7 +88,7 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  // Weekdays only — no Sat/Sun — and surface the next 5 open days.
+  // Weekdays only — no Sat/Sun (Central) — and surface the next 5 open days.
   const days = selectOpenWeekdays(result.data);
 
   return NextResponse.json({

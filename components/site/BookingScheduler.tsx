@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import {
+  BOOKING_CALENDAR_TIMEZONE,
   BOOKING_SLOT_LOOKAHEAD_DAYS,
   MEETING_TYPES,
   type MeetingTypeId,
@@ -13,20 +14,66 @@ type Step = "type" | "schedule" | "details" | "done";
 
 function detectTimezone() {
   try {
-    return Intl.DateTimeFormat().resolvedOptions().timeZone || "America/Chicago";
+    return Intl.DateTimeFormat().resolvedOptions().timeZone || BOOKING_CALENDAR_TIMEZONE;
   } catch {
-    return "America/Chicago";
+    return BOOKING_CALENDAR_TIMEZONE;
   }
 }
 
-function formatDayLabel(dateIso: string, timeZone: string) {
-  const d = new Date(`${dateIso}T12:00:00`);
+function timezoneShortName(timeZone: string, at = new Date()) {
+  try {
+    const parts = new Intl.DateTimeFormat("en-US", {
+      timeZone,
+      timeZoneName: "short",
+    }).formatToParts(at);
+    return parts.find((p) => p.type === "timeZoneName")?.value || timeZone;
+  } catch {
+    return timeZone;
+  }
+}
+
+/** Local civil YYYY-MM-DD for an instant in the given IANA zone. */
+function localDateKey(iso: string, timeZone: string) {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date(iso));
+}
+
+/** Regroup Central-keyed days into the visitor's local calendar dates. */
+function groupSlotsByLocalDay(days: DaySlots[], timeZone: string): DaySlots[] {
+  const map = new Map<string, string[]>();
+  for (const day of days) {
+    for (const slot of day.slots) {
+      const key = localDateKey(slot, timeZone);
+      const list = map.get(key) || [];
+      list.push(slot);
+      map.set(key, list);
+    }
+  }
+  return Array.from(map.entries())
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([date, slots]) => ({
+      date,
+      slots: slots.sort((a, b) => a.localeCompare(b)),
+    }));
+}
+
+function formatDayLabel(dateIso: string) {
+  // dateIso is already a civil YYYY-MM-DD in the visitor's local calendar.
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateIso);
+  if (!match) return dateIso;
+  const utc = new Date(
+    Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3]), 12, 0, 0),
+  );
   return new Intl.DateTimeFormat("en-US", {
     weekday: "short",
     month: "short",
     day: "numeric",
-    timeZone,
-  }).format(d);
+    timeZone: "UTC",
+  }).format(utc);
 }
 
 function formatSlotLabel(iso: string, timeZone: string) {
@@ -57,7 +104,8 @@ export default function BookingScheduler({
 }) {
   const [step, setStep] = useState<Step>("type");
   const [typeId, setTypeId] = useState<MeetingTypeId | null>(null);
-  const [timezone, setTimezone] = useState("America/Chicago");
+  /** Visitor timezone for display only — calendar stays locked to Central. */
+  const [displayTimezone, setDisplayTimezone] = useState(BOOKING_CALENDAR_TIMEZONE);
   const [days, setDays] = useState<DaySlots[]>([]);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
@@ -78,14 +126,44 @@ export default function BookingScheduler({
     [typeId],
   );
 
+  const localDays = useMemo(
+    () => groupSlotsByLocalDay(days, displayTimezone),
+    [days, displayTimezone],
+  );
+
   const selectedDaySlots = useMemo(() => {
     if (!selectedDate) return [];
-    return days.find((d) => d.date === selectedDate)?.slots || [];
-  }, [days, selectedDate]);
+    return localDays.find((d) => d.date === selectedDate)?.slots || [];
+  }, [localDays, selectedDate]);
+
+  const localTzShort = useMemo(
+    () => timezoneShortName(displayTimezone),
+    [displayTimezone],
+  );
+  const centralTzShort = useMemo(
+    () => timezoneShortName(BOOKING_CALENDAR_TIMEZONE),
+    [],
+  );
 
   useEffect(() => {
-    setTimezone(detectTimezone());
+    setDisplayTimezone(detectTimezone());
   }, []);
+
+  // Keep selected date valid when local regrouping changes.
+  useEffect(() => {
+    if (!localDays.length) {
+      setSelectedDate(null);
+      return;
+    }
+    setSelectedDate((prev) => {
+      if (prev && localDays.some((d) => d.date === prev)) return prev;
+      if (selectedSlot) {
+        const fromSlot = localDateKey(selectedSlot, displayTimezone);
+        if (localDays.some((d) => d.date === fromSlot)) return fromSlot;
+      }
+      return localDays[0]?.date || null;
+    });
+  }, [localDays, selectedSlot, displayTimezone]);
 
   // Fetch only on the schedule step. Re-running on "details" was clearing
   // selectedSlot and blanking the details form.
@@ -106,7 +184,6 @@ export default function BookingScheduler({
           type: typeId,
           from: from.toISOString(),
           to: to.toISOString(),
-          timezone,
         });
         const res = await fetch(`/api/booking/slots?${params}`);
         const data = await res.json();
@@ -124,10 +201,6 @@ export default function BookingScheduler({
         }
         const nextDays: DaySlots[] = Array.isArray(data.days) ? data.days : [];
         setDays(nextDays);
-        setSelectedDate((prev) => {
-          if (prev && nextDays.some((d) => d.date === prev)) return prev;
-          return nextDays[0]?.date || null;
-        });
         setSelectedSlot((prev) => {
           if (!prev) return null;
           const stillOpen = nextDays.some((d) => d.slots.includes(prev));
@@ -143,7 +216,7 @@ export default function BookingScheduler({
     return () => {
       cancelled = true;
     };
-  }, [typeId, timezone, step]);
+  }, [typeId, step]);
 
   const pickType = (id: MeetingTypeId) => {
     setTypeId(id);
@@ -173,7 +246,7 @@ export default function BookingScheduler({
         body: JSON.stringify({
           type: typeId,
           startTime: selectedSlot,
-          timezone,
+          timezone: displayTimezone,
           name,
           email,
           phone,
@@ -260,16 +333,16 @@ export default function BookingScheduler({
             <div>
               <div className="eyebrow">{meeting.title}</div>
               <h2>Pick a time that works.</h2>
-              <p>{meeting.durationLabel} · next 5 weekdays · no weekends</p>
+              <p>
+                {meeting.durationLabel} · next 5 weekdays ({centralTzShort}) ·
+                times shown in {localTzShort}
+              </p>
             </div>
-            <label className="booking-timezone">
-              <span>Timezone</span>
-              <input
-                value={timezone}
-                onChange={(e) => setTimezone(e.target.value)}
-                aria-label="Timezone"
-              />
-            </label>
+            <p className="booking-timezone-note" aria-live="polite">
+              Auto-set to your local time
+              <strong>{displayTimezone}</strong>
+              <span>Calendar locked to {centralTzShort}</span>
+            </p>
           </header>
 
           {unavailable ? (
@@ -299,7 +372,7 @@ export default function BookingScheduler({
             </div>
           ) : loadingSlots ? (
             <p className="booking-loading">Loading open times…</p>
-          ) : days.length === 0 ? (
+          ) : localDays.length === 0 ? (
             <p className="booking-loading">
               No open weekday times in the next few weeks. Try another meeting
               type or email briefing@orengen.io.
@@ -307,7 +380,7 @@ export default function BookingScheduler({
           ) : (
             <div className="booking-schedule-grid">
               <div className="booking-dates" role="listbox" aria-label="Available dates">
-                {days.map((day) => (
+                {localDays.map((day) => (
                   <button
                     key={day.date}
                     type="button"
@@ -323,7 +396,7 @@ export default function BookingScheduler({
                       setSelectedSlot(null);
                     }}
                   >
-                    {formatDayLabel(day.date, timezone)}
+                    {formatDayLabel(day.date)}
                     <small>{day.slots.length} open</small>
                   </button>
                 ))}
@@ -342,7 +415,7 @@ export default function BookingScheduler({
                     }
                     onClick={() => setSelectedSlot(slot)}
                   >
-                    {formatSlotLabel(slot, timezone)}
+                    {formatSlotLabel(slot, displayTimezone)}
                   </button>
                 ))}
               </div>
@@ -396,7 +469,7 @@ export default function BookingScheduler({
           <header className="booking-form-head">
             <div className="eyebrow">{meeting.title}</div>
             <h2>Your details</h2>
-            <p>{formatConfirmWhen(selectedSlot, timezone)}</p>
+            <p>{formatConfirmWhen(selectedSlot, displayTimezone)}</p>
           </header>
 
           <label>
@@ -472,7 +545,7 @@ export default function BookingScheduler({
           <p>
             <strong>{meeting.title}</strong> · {meeting.durationLabel}
           </p>
-          <p>{formatConfirmWhen(selectedSlot, timezone)}</p>
+          <p>{formatConfirmWhen(selectedSlot, displayTimezone)}</p>
           <p>
             A confirmation will arrive from OrenGen. If anything changes, reply
             to that email or call 833-ORENGEN.

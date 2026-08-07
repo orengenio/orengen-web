@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: "Book a Call | OrenGen Worldwide",
     description:
-      "Book a Coffee Chat or Strategy Session with OrenGen. Branded scheduling powered by live HighLevel availability.",
+      "Book a Coffee Chat or Strategy Session with OrenGen.",
     path: "/book",
     keywords: "book orengen, coffee chat, strategy session, architecture brief",
   }),
@@ -41,8 +41,7 @@ export default function BookPage() {
                   <span className="gradient-word shimmer">OrenGen.</span>
                 </h1>
                 <p className="lead">
-                  Choose a Coffee Chat or Strategy Session. Times sync live from
-                  HighLevel — no generic widget, no dead ends.
+                  Choose a Coffee Chat or Strategy Session.
                 </p>
               </header>
               <BookingScheduler />
