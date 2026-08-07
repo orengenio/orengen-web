@@ -335,7 +335,7 @@ export default function BookingScheduler({
               <h2>Pick a time that works.</h2>
               <p>
                 {meeting.durationLabel} · next 5 weekdays ({centralTzShort}) ·
-                times shown in {localTzShort}
+                book at least 2 hours ahead · times in {localTzShort}
               </p>
             </div>
             <p className="booking-timezone-note" aria-live="polite">
@@ -494,15 +494,22 @@ export default function BookingScheduler({
             />
           </label>
           <label>
-            Phone <span className="booking-optional">(optional)</span>
+            Phone
             <input
               name="phone"
               type="tel"
               autoComplete="tel"
+              required
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
+              placeholder="For SMS confirmation"
             />
           </label>
+          <p className="booking-sms-note">
+            By booking, you agree to receive a confirmation email and SMS about
+            this appointment. Message &amp; data rates may apply. Reply STOP to
+            opt out.
+          </p>
           <label>
             What should we know? <span className="booking-optional">(optional)</span>
             <textarea
@@ -547,8 +554,8 @@ export default function BookingScheduler({
           </p>
           <p>{formatConfirmWhen(selectedSlot, displayTimezone)}</p>
           <p>
-            A confirmation will arrive from OrenGen. If anything changes, reply
-            to that email or call 833-ORENGEN.
+            A confirmation email and SMS are on the way from OrenGen. If anything
+            changes, reply to that message or call 833-ORENGEN.
           </p>
           <div className="booking-actions">
             <a className="btn btn-primary" href="/pricing">

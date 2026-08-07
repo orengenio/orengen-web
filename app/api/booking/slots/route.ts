@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
   BOOKING_CALENDAR_TIMEZONE,
+  BOOKING_MIN_LEAD_MS,
   BOOKING_SLOT_LOOKAHEAD_DAYS,
+  filterSlotsByMinLead,
   getBookingEnvConfig,
   meetingTypeById,
   selectOpenWeekdays,
@@ -59,7 +61,9 @@ export async function GET(req: NextRequest) {
   // Calendar hours are always Central Time — ignore client timezone overrides.
   const timezone = BOOKING_CALENDAR_TIMEZONE;
 
-  const startMs = fromRaw ? Date.parse(fromRaw) : Date.now();
+  // Never advertise slots sooner than the 2-hour lead time.
+  const earliestMs = Date.now() + BOOKING_MIN_LEAD_MS;
+  const startMs = Math.max(fromRaw ? Date.parse(fromRaw) : earliestMs, earliestMs);
   const endMs = toRaw
     ? Date.parse(toRaw)
     : startMs + BOOKING_SLOT_LOOKAHEAD_DAYS * DAY_MS;
@@ -88,13 +92,14 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  // Weekdays only — no Sat/Sun (Central) — and surface the next 5 open days.
-  const days = selectOpenWeekdays(result.data);
+  // Drop last-minute slots, weekdays only, next 5 open days.
+  const days = selectOpenWeekdays(filterSlotsByMinLead(result.data));
 
   return NextResponse.json({
     ok: true,
     type: type.id,
     timezone,
+    minLeadMinutes: BOOKING_MIN_LEAD_MS / 60000,
     days,
   });
 }

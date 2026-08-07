@@ -9384,19 +9384,28 @@ html[data-theme="light"] .booking-panel {
 }
 .booking-schedule-grid {
   display: grid;
-  grid-template-columns: minmax(160px, 220px) 1fr;
+  grid-template-columns: 1fr;
   gap: 14px;
 }
-.booking-dates, .booking-slots {
+.booking-dates {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 8px;
+  max-height: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 2px 10px;
+  scrollbar-width: thin;
+}
+.booking-slots {
   display: grid;
   gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
+  align-content: start;
   max-height: 360px;
   overflow: auto;
   padding-right: 4px;
-}
-.booking-slots {
-  grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
-  align-content: start;
 }
 .booking-date, .booking-slot {
   border-radius: 14px;
@@ -9410,6 +9419,10 @@ html[data-theme="light"] .booking-panel {
 .booking-date {
   display: grid;
   gap: 4px;
+  flex: 1 1 0;
+  min-width: 118px;
+  text-align: center;
+  justify-items: center;
 }
 .booking-date small { color: var(--og-text-soft); font-size: 11px; }
 .booking-date.is-selected,
@@ -9437,6 +9450,12 @@ html[data-theme="light"] .booking-panel {
 .booking-form-head h2 { margin: 6px 0; }
 .booking-form-head p { margin: 0; color: var(--og-text-muted); }
 .booking-optional { font-weight: 600; opacity: .7; }
+.booking-sms-note {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--og-text-soft);
+}
 .booking-honeypot {
   position: absolute;
   left: -9999px;
@@ -9464,13 +9483,20 @@ html[data-theme="light"] .booking-panel {
   font-size: 13px;
 }
 @media (max-width: 760px) {
-  .booking-type-grid,
-  .booking-schedule-grid {
+  .booking-type-grid {
     grid-template-columns: 1fr;
   }
   .booking-dates {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-height: none;
+    scroll-snap-type: x mandatory;
+  }
+  .booking-date {
+    flex: 0 0 42%;
+    scroll-snap-align: start;
+  }
+  .booking-timezone-note {
+    justify-items: start;
+    text-align: left;
+    max-width: none;
   }
 }
 

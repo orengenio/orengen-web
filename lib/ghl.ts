@@ -138,6 +138,8 @@ export type CreateAppointmentInput = {
   startTime: string;
   title?: string;
   appointmentStatus?: string;
+  /** When true, GHL runs contact email/SMS calendar notifications. */
+  toNotify?: boolean;
 };
 
 export async function createAppointment(
@@ -151,6 +153,7 @@ export async function createAppointment(
     startTime: input.startTime,
     title: input.title,
     appointmentStatus: input.appointmentStatus || "confirmed",
+    toNotify: input.toNotify !== false,
   };
 
   return ghlFetch<Record<string, unknown>>(
