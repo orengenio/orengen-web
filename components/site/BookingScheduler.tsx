@@ -45,7 +45,12 @@ function formatConfirmWhen(iso: string, timeZone: string) {
   }).format(new Date(iso));
 }
 
-export default function BookingScheduler() {
+export default function BookingScheduler({
+  variant = "page",
+}: {
+  /** `embed` = compact inline block for Contact and other pages. */
+  variant?: "page" | "embed";
+}) {
   const [step, setStep] = useState<Step>("type");
   const [typeId, setTypeId] = useState<MeetingTypeId | null>(null);
   const [timezone, setTimezone] = useState("America/Chicago");
@@ -61,6 +66,8 @@ export default function BookingScheduler() {
   const [phone, setPhone] = useState("");
   const [notes, setNotes] = useState("");
   const [honeypot, setHoneypot] = useState("");
+
+  const isEmbed = variant === "embed";
 
   const meeting = useMemo(
     () => MEETING_TYPES.find((t) => t.id === typeId) || null,
@@ -181,7 +188,11 @@ export default function BookingScheduler() {
   };
 
   return (
-    <div className="booking-panel reveal">
+    <div
+      className={
+        isEmbed ? "booking-panel booking-panel--embed reveal" : "booking-panel reveal"
+      }
+    >
       <nav className="booking-steps" aria-label="Booking progress">
         {(
           [

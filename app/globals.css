@@ -9445,3 +9445,21 @@ html[data-theme="light"] .booking-panel {
     max-height: none;
   }
 }
+
+/* Embedded booking variants */
+.booking-panel--embed {
+  margin-top: 18px;
+}
+.booking-embed-shell {
+  min-height: 100vh;
+  padding: 20px;
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(255,122,26,.18), transparent 55%),
+    linear-gradient(180deg, #001a33 0%, #00254b 55%, #001428 100%);
+  color: #fff;
+  font-family: var(--font-public-sans), system-ui, sans-serif;
+}
+.booking-embed-shell .booking-panel {
+  max-width: 920px;
+  margin: 0 auto;
+}
