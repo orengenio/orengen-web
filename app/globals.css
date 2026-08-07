@@ -9524,6 +9524,9 @@ html[data-theme="light"] .booking-panel {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+.booking-panel--embed {
+  margin-top: 18px;
+}
 .booking-embed-shell {
   min-height: 100vh;
   padding: 20px;
