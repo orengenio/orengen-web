@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { BOOKING_URL } from "@/lib/booking";
 
 /**
  * Brand-native pricing table with a Monthly/Yearly toggle.
@@ -12,8 +13,6 @@ import { useEffect, useRef, useState } from "react";
  * Every plan receives explicit monthly and annual totals from the approved
  * pricing catalog. Nothing is derived inside this presentation component.
  */
-
-const BOOKING_URL = "https://api.orengen.io/widget/groups/coffeechat";
 
 export type PricingPlan = {
   name: string;
@@ -140,6 +139,8 @@ export default function PricingTiers({
             (yearly && plan.ctaHrefAnnual) ||
             plan.ctaHref ||
             BOOKING_URL;
+          const annualNeedsBriefing =
+            yearly && (!plan.ctaHrefAnnual || plan.ctaHrefAnnual === BOOKING_URL);
           return (
             <article
               key={plan.name}
@@ -184,10 +185,13 @@ export default function PricingTiers({
               <a
                 className={`btn ${featured ? "btn-primary" : "btn-secondary"} price-cta`}
                 href={ctaHref}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...(ctaHref.startsWith("http")
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
               >
-                {plan.ctaLabel ?? "Get Started"}
+                {annualNeedsBriefing
+                  ? "Book Annual Setup"
+                  : (plan.ctaLabel ?? "Get Started")}
               </a>
             </article>
           );

@@ -68,9 +68,7 @@ export default function CapabilityStatementPage() {
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
-                    href="https://api.orengen.io/widget/groups/coffeechat"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/book"
                   >
                     Open a Capability Briefing
                   </a>
@@ -472,9 +470,7 @@ export default function CapabilityStatementPage() {
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
-                    href="https://api.orengen.io/widget/groups/coffeechat"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/book"
                   >
                     Open a Capability Briefing
                   </a>

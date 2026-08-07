@@ -205,11 +205,8 @@ export default function AboutPage() {
                   associates. The first conversation is with the architect.
                 </p>
                 <div className="cta-row">
-                  <a
-                    className="btn btn-primary"
-                    href="mailto:briefing@orengen.io"
-                  >
-                    Architect the Briefing
+                  <a className="btn btn-primary" href="/book">
+                    Book a Call
                   </a>
                 </div>
               </header>

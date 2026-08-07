@@ -98,7 +98,7 @@ export default function PricingPage() {
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
-                    href="https://api.orengen.io/widget/groups/coffeechat"
+                    href="/book"
                   >
                     Architect the Briefing
                   </a>

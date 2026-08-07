@@ -115,13 +115,8 @@ export default function ContactUsPage() {
               <div className="sector-grid compact reveal">
                 <article className="sector-card">
                   <h3>Book a Call</h3>
-                  <p>Schedule a 30-minute call directly on our calendar.</p>
-                  <a
-                    className="card-link"
-                    href="https://api.orengen.io/widget/groups/coffeechat"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <p>Schedule a Coffee Chat or Strategy Session on our branded calendar.</p>
+                  <a className="card-link" href="/book">
                     Open scheduler →
                   </a>
                 </article>
