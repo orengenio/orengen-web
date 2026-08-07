@@ -5,6 +5,12 @@
 
 export const BOOKING_URL = "/book";
 
+/**
+ * Business calendar is locked to Central Time (CDT/CST).
+ * Visitors still see slot times converted to their local timezone in the UI.
+ */
+export const BOOKING_CALENDAR_TIMEZONE = "America/Chicago";
+
 /** How many weekday open days to surface in the date rail. */
 export const BOOKING_WEEKDAY_DAYS = 5;
 

@@ -9362,6 +9362,26 @@ html[data-theme="light"] .booking-panel {
   background: rgba(0,0,0,.22);
   color: inherit;
 }
+.booking-timezone-note {
+  margin: 0;
+  display: grid;
+  gap: 4px;
+  justify-items: end;
+  text-align: right;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--og-text-muted);
+  max-width: 240px;
+}
+.booking-timezone-note strong {
+  font-weight: 800;
+  color: inherit;
+  word-break: break-word;
+}
+.booking-timezone-note span {
+  font-weight: 650;
+  opacity: .85;
+}
 .booking-schedule-grid {
   display: grid;
   grid-template-columns: minmax(160px, 220px) 1fr;

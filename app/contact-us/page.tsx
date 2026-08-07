@@ -115,8 +115,7 @@ export default function ContactUsPage() {
                   <span className="gradient-word shimmer">no widget detour.</span>
                 </h2>
                 <p className="lead">
-                  Coffee Chat or Strategy Session. Live HighLevel availability,
-                  embedded in the OrenGen experience.
+                  Coffee Chat or Strategy Session — pick a time that works.
                 </p>
               </header>
               <BookingScheduler variant="embed" />
