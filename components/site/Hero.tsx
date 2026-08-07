@@ -977,9 +977,7 @@ export default function Hero() {
                     <div className="universe-stage__actions">
                       <a
                         className="btn btn-primary"
-                        href="https://api.orengen.io/widget/groups/coffeechat"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="/book"
                       >
                         Book a Call
                       </a>

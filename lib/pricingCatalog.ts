@@ -6,6 +6,9 @@
  * `commercialTerms(...)` into each plan instead of repeating commercial data.
  */
 
+import { BOOKING_URL } from "@/lib/booking";
+export { BOOKING_URL };
+
 export const FINAL_PRICING = {
   nexusStandard: {
     product: "Nexus CRM",
@@ -294,6 +297,19 @@ export function formatCurrency(value: number) {
   return `$${value.toLocaleString("en-US")}`;
 }
 
+/**
+ * Until distinct annual payment links exist in FINAL_PRICING, annual CTAs must
+ * not silently reuse the monthly checkout (that would bill the wrong cadence).
+ */
+export function checkoutForPeriod(
+  plan: (typeof FINAL_PRICING)[PricingPlanKey],
+  period: "monthly" | "annual",
+) {
+  if (period === "monthly") return plan.monthlyCheckout;
+  if (plan.annualCheckout !== plan.monthlyCheckout) return plan.annualCheckout;
+  return BOOKING_URL;
+}
+
 export function commercialTerms(planKey: PricingPlanKey) {
   const plan = FINAL_PRICING[planKey];
 
@@ -305,7 +321,7 @@ export function commercialTerms(planKey: PricingPlanKey) {
         ? "$0 setup fee"
         : `+ ${formatCurrency(plan.setupFee)} one-time setup`,
     ctaHref: plan.monthlyCheckout,
-    ctaHrefAnnual: plan.annualCheckout,
+    ctaHrefAnnual: checkoutForPeriod(plan, "annual"),
   };
 }
 

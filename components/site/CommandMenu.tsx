@@ -250,9 +250,7 @@ export default function CommandMenu() {
             <a href="/login">Sign In</a>
             <a
               className="is-primary"
-              href="https://api.orengen.io/widget/groups/coffeechat"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/book"
             >
               Book a Call
             </a>

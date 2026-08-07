@@ -16,6 +16,7 @@ const ROUTES: string[] = [
   "/pricing",
   "/faqs",
   "/contact-us",
+  "/book",
   "/case-studies",
   "/blog",
   "/referral-partner-program",

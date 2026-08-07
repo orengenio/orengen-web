@@ -77,9 +77,7 @@ export default function OrenHealthResearchPage() {
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
-                    href="https://api.orengen.io/widget/groups/coffeechat"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/book"
                   >
                     Open a Research Briefing
                   </a>
@@ -608,9 +606,7 @@ export default function OrenHealthResearchPage() {
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
-                    href="https://api.orengen.io/widget/groups/coffeechat"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/book"
                   >
                     Schedule the Briefing
                   </a>

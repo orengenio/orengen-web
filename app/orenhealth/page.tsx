@@ -74,7 +74,7 @@ export default function OrenHealthPage() {
                   what it is — protected.
                 </p>
                 <div className="cta-row">
-                  <a className="btn btn-primary" href="https://api.orengen.io/widget/groups/coffeechat" target="_blank" rel="noopener noreferrer">
+                  <a className="btn btn-primary" href="/book">
                     Open a Capability Briefing
                   </a>
                   <a
@@ -691,7 +691,7 @@ export default function OrenHealthPage() {
                   before BAA execution or scope confirmation.
                 </p>
                 <div className="cta-row">
-                  <a className="btn btn-primary" href="https://api.orengen.io/widget/groups/coffeechat" target="_blank" rel="noopener noreferrer">
+                  <a className="btn btn-primary" href="/book">
                     Open a Capability Briefing
                   </a>
                   <a

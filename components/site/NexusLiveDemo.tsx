@@ -88,7 +88,7 @@ const money = (n: number) => n.toLocaleString("en-US");
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 export default function NexusLiveDemo({
-  demoHref = "https://api.orengen.io/widget/groups/coffeechat",
+  demoHref = "/book",
   portalHref = "https://app.orengen.io",
 }: {
   demoHref?: string;

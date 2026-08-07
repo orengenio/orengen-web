@@ -106,7 +106,7 @@ const COLUMNS: { title: string; links: { href: string; label: string; ext?: bool
   {
     title: "Buyer Journey",
     links: [
-      { href: "/contact-us", label: "Book Architecture Brief" },
+      { href: "/book", label: "Book Architecture Brief" },
       { href: "/orengov", label: "OrenGov" },
       { href: "/orengov/public-sector/state-local", label: "OrenGov State Local" },
       { href: "/orengov/public-sector/education", label: "OrenGov Education" },

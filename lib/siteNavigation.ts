@@ -85,7 +85,7 @@ export const COMMAND_CATEGORIES: CommandCategory[] = [
           {
             title: "Architect a Briefing",
             description: "Bring the mission, constraint, or growth target to the OrenGen team.",
-            href: "/contact-us",
+            href: "/book",
             badge: "Book",
           },
         ],
