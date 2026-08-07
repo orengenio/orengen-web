@@ -45,13 +45,7 @@ function formatConfirmWhen(iso: string, timeZone: string) {
   }).format(new Date(iso));
 }
 
-export default function BookingScheduler({
-  configured,
-  missingEnv = [],
-}: {
-  configured: boolean;
-  missingEnv?: string[];
-}) {
+export default function BookingScheduler() {
   const [step, setStep] = useState<Step>("type");
   const [typeId, setTypeId] = useState<MeetingTypeId | null>(null);
   const [timezone, setTimezone] = useState("America/Chicago");
@@ -61,6 +55,7 @@ export default function BookingScheduler({
   const [loadingSlots, setLoadingSlots] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [unavailable, setUnavailable] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -82,12 +77,13 @@ export default function BookingScheduler({
   }, []);
 
   useEffect(() => {
-    if (!configured || !typeId || step === "type" || step === "done") return;
+    if (!typeId || step === "type" || step === "done") return;
 
     let cancelled = false;
     const load = async () => {
       setLoadingSlots(true);
       setError(null);
+      setUnavailable(false);
       try {
         const from = new Date();
         const to = new Date(from.getTime() + 14 * 24 * 60 * 60 * 1000);
@@ -100,6 +96,12 @@ export default function BookingScheduler({
         const res = await fetch(`/api/booking/slots?${params}`);
         const data = await res.json();
         if (cancelled) return;
+        if (res.status === 503) {
+          setDays([]);
+          setUnavailable(true);
+          setError(null);
+          return;
+        }
         if (!res.ok || !data.ok) {
           setDays([]);
           setError(data.error || "Could not load availability.");
@@ -122,12 +124,13 @@ export default function BookingScheduler({
     return () => {
       cancelled = true;
     };
-  }, [configured, typeId, timezone, step]);
+  }, [typeId, timezone, step]);
 
   const pickType = (id: MeetingTypeId) => {
     setTypeId(id);
     setStep("schedule");
     setError(null);
+    setUnavailable(false);
   };
 
   const goDetails = () => {
@@ -163,6 +166,10 @@ export default function BookingScheduler({
       if (!res.ok || !data.ok) {
         setError(data.error || "Could not book that time.");
         if (res.status === 409) setStep("schedule");
+        if (res.status === 503) {
+          setUnavailable(true);
+          setStep("schedule");
+        }
         return;
       }
       setStep("done");
@@ -172,40 +179,6 @@ export default function BookingScheduler({
       setSubmitting(false);
     }
   };
-
-  if (!configured) {
-    return (
-      <div className="booking-panel reveal">
-        <div className="booking-status" role="status">
-          <h2>Scheduler almost ready</h2>
-          <p>
-            The branded booking UI is live. Connect HighLevel with these
-            environment variables to unlock live availability:
-          </p>
-          <ul className="booking-env-list">
-            {(missingEnv.length
-              ? missingEnv
-              : [
-                  "GHL_PRIVATE_TOKEN",
-                  "GHL_LOCATION_ID",
-                  "GHL_CALENDAR_COFFEECHAT_ID",
-                  "GHL_CALENDAR_STRATEGY_ID",
-                ]
-            ).map((key) => (
-              <li key={key}>
-                <code>{key}</code>
-              </li>
-            ))}
-          </ul>
-          <p>
-            Meanwhile, email{" "}
-            <a href="mailto:briefing@orengen.io">briefing@orengen.io</a> or call{" "}
-            <a href="tel:+18336736436">833-ORENGEN</a>.
-          </p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="booking-panel reveal">
@@ -264,7 +237,7 @@ export default function BookingScheduler({
             <div>
               <div className="eyebrow">{meeting.title}</div>
               <h2>Pick a time that works.</h2>
-              <p>{meeting.durationLabel} · availability from HighLevel</p>
+              <p>{meeting.durationLabel} · live calendar availability</p>
             </div>
             <label className="booking-timezone">
               <span>Timezone</span>
@@ -276,7 +249,32 @@ export default function BookingScheduler({
             </label>
           </header>
 
-          {loadingSlots ? (
+          {unavailable ? (
+            <div className="booking-status" role="status">
+              <h2>Scheduling is briefly unavailable</h2>
+              <p>
+                Our live calendar could not be reached right now. Email{" "}
+                <a href="mailto:briefing@orengen.io">briefing@orengen.io</a> or
+                call <a href="tel:+18336736436">833-ORENGEN</a> and we will get
+                you on the books.
+              </p>
+              <div className="booking-actions">
+                <a className="btn btn-primary" href="/contact-us">
+                  Contact form
+                </a>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => {
+                    setStep("type");
+                    setTypeId(null);
+                  }}
+                >
+                  Back
+                </button>
+              </div>
+            </div>
+          ) : loadingSlots ? (
             <p className="booking-loading">Loading open times…</p>
           ) : days.length === 0 ? (
             <p className="booking-loading">
@@ -328,27 +326,29 @@ export default function BookingScheduler({
             </div>
           )}
 
-          <div className="booking-actions">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              onClick={() => {
-                setStep("type");
-                setTypeId(null);
-                setSelectedSlot(null);
-              }}
-            >
-              Back
-            </button>
-            <button
-              type="button"
-              className="btn btn-primary"
-              disabled={!selectedSlot}
-              onClick={goDetails}
-            >
-              Continue
-            </button>
-          </div>
+          {!unavailable && (
+            <div className="booking-actions">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => {
+                  setStep("type");
+                  setTypeId(null);
+                  setSelectedSlot(null);
+                }}
+              >
+                Back
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                disabled={!selectedSlot}
+                onClick={goDetails}
+              >
+                Continue
+              </button>
+            </div>
+          )}
         </div>
       )}
 
@@ -435,8 +435,8 @@ export default function BookingScheduler({
           </p>
           <p>{formatConfirmWhen(selectedSlot, timezone)}</p>
           <p>
-            A confirmation will arrive from OrenGen / HighLevel. If anything
-            changes, reply to that email or call 833-ORENGEN.
+            A confirmation will arrive from OrenGen. If anything changes, reply
+            to that email or call 833-ORENGEN.
           </p>
           <div className="booking-actions">
             <a className="btn btn-primary" href="/pricing">

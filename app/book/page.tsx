@@ -4,8 +4,10 @@ import SiteFooter from "@/components/site/SiteFooter";
 import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
 import BookingScheduler from "@/components/site/BookingScheduler";
-import { getBookingEnvConfig } from "@/lib/booking";
 import { pageMetadata } from "@/lib/seo";
+
+/** Runtime env (GHL secrets) must be read per request — never bake at build. */
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   ...pageMetadata({
@@ -18,8 +20,6 @@ export const metadata: Metadata = {
 };
 
 export default function BookPage() {
-  const env = getBookingEnvConfig();
-
   return (
     <>
       <ScrollProgress />
@@ -45,10 +45,7 @@ export default function BookPage() {
                   HighLevel — no generic widget, no dead ends.
                 </p>
               </header>
-              <BookingScheduler
-                configured={env.ok}
-                missingEnv={env.ok ? [] : env.missing}
-              />
+              <BookingScheduler />
             </div>
           </section>
         </main>
