@@ -5,7 +5,32 @@
 
 export const BOOKING_URL = "/book";
 
+/** How many weekday open days to surface in the date rail. */
+export const BOOKING_WEEKDAY_DAYS = 5;
+
+/** Lookahead window so we can fill 5 weekdays even when near weekends / sparse calendars. */
+export const BOOKING_SLOT_LOOKAHEAD_DAYS = 28;
+
 export type MeetingTypeId = "coffee-chat" | "strategy-session";
+
+/** Civil YYYY-MM-DD weekday check (Sat/Sun excluded). */
+export function isWeekdayDate(dateIso: string): boolean {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateIso);
+  if (!match) return false;
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  const weekday = new Date(Date.UTC(year, month - 1, day, 12, 0, 0)).getUTCDay();
+  return weekday !== 0 && weekday !== 6;
+}
+
+/** Keep Mon–Fri open days only, capped to the next `limit` days with slots. */
+export function selectOpenWeekdays<T extends { date: string }>(
+  days: T[],
+  limit = BOOKING_WEEKDAY_DAYS,
+): T[] {
+  return days.filter((d) => isWeekdayDate(d.date)).slice(0, limit);
+}
 
 export type MeetingType = {
   id: MeetingTypeId;

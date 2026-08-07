@@ -9404,7 +9404,15 @@ html[data-theme="light"] .booking-panel {
   gap: 10px;
   margin-top: 20px;
 }
-.booking-form { margin-top: 8px; }
+.booking-form {
+  margin-top: 8px;
+  display: grid;
+  gap: 12px;
+}
+.booking-form label {
+  display: grid;
+  gap: 6px;
+}
 .booking-form-head { margin-bottom: 8px; }
 .booking-form-head h2 { margin: 6px 0; }
 .booking-form-head p { margin: 0; color: var(--og-text-muted); }

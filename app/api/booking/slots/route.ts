@@ -1,8 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getBookingEnvConfig, meetingTypeById } from "@/lib/booking";
+import {
+  BOOKING_SLOT_LOOKAHEAD_DAYS,
+  getBookingEnvConfig,
+  meetingTypeById,
+  selectOpenWeekdays,
+} from "@/lib/booking";
 import { getFreeSlots } from "@/lib/ghl";
 
 const MAX_RANGE_MS = 31 * 24 * 60 * 60 * 1000;
+const DAY_MS = 24 * 60 * 60 * 1000;
 
 function isTrustedOrigin(req: NextRequest) {
   if (req.headers.get("sec-fetch-site") === "cross-site") return false;
@@ -52,7 +58,9 @@ export async function GET(req: NextRequest) {
   const timezone = req.nextUrl.searchParams.get("timezone") || "America/Chicago";
 
   const startMs = fromRaw ? Date.parse(fromRaw) : Date.now();
-  const endMs = toRaw ? Date.parse(toRaw) : startMs + 14 * 24 * 60 * 60 * 1000;
+  const endMs = toRaw
+    ? Date.parse(toRaw)
+    : startMs + BOOKING_SLOT_LOOKAHEAD_DAYS * DAY_MS;
 
   if (!Number.isFinite(startMs) || !Number.isFinite(endMs) || endMs <= startMs) {
     return NextResponse.json({ ok: false, error: "Invalid date range" }, { status: 400 });
@@ -78,10 +86,13 @@ export async function GET(req: NextRequest) {
     );
   }
 
+  // Weekdays only — no Sat/Sun — and surface the next 5 open days.
+  const days = selectOpenWeekdays(result.data);
+
   return NextResponse.json({
     ok: true,
     type: type.id,
     timezone,
-    days: result.data,
+    days,
   });
 }
