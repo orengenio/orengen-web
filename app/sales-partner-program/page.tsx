@@ -6,23 +6,19 @@ import ScrollProgress from "@/components/site/ScrollProgress";
 
 /**
  * Sales Partner Program page.
- * Rebuilt from the real, published program terms on weshare.orengen.io (the
- * platform that actually runs this program) — commissions, payout schedule,
- * and package pricing below are the live figures, not estimates. Do not
- * add numbers that aren't published there; weshare has no public cookie
- * duration, FAQ, or terms page, so none is stated here either.
+ * Partner signup/sign-in runs on salespartners.orengen.io.
  */
 export const metadata: Metadata = {
   title: "Sales Partner Program — OrenGen Worldwide",
   description:
-    "Earn a flat 25% of the setup fee and 25% monthly residual, for life, referring OrenGen website packages. Free to join, weekly payouts via Stripe. Powered by WeShare.",
+    "Earn a flat 25% of the setup fee and 25% monthly residual, for life, referring OrenGen website packages. Free to join, weekly payouts via Stripe.",
   keywords:
     "sales-partner-program, OrenGen, OrenGen Worldwide, website referral program, sales partner commissions",
   alternates: { canonical: "/sales-partner-program" },
   openGraph: {
     title: "Sales Partner Program — OrenGen Worldwide",
     description:
-      "Earn a flat 25% of the setup fee and 25% monthly residual, for life, referring OrenGen website packages. Powered by WeShare.",
+      "Earn a flat 25% of the setup fee and 25% monthly residual, for life, referring OrenGen website packages.",
     url: "https://orengen.io/sales-partner-program",
   },
 };
@@ -161,7 +157,7 @@ export default function SalesPartnerProgramPage() {
                 <div className="cta-row">
                   <a
                     className="btn btn-primary"
-                    href="https://weshare.orengen.io/register"
+                    href="https://salespartners.orengen.io"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -169,7 +165,7 @@ export default function SalesPartnerProgramPage() {
                   </a>
                   <a
                     className="btn btn-secondary"
-                    href="https://weshare.orengen.io/login"
+                    href="https://salespartners.orengen.io"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

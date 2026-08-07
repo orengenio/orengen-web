@@ -5,27 +5,45 @@ import SiteRuntime from "@/components/site/SiteRuntime";
 import ScrollProgress from "@/components/site/ScrollProgress";
 
 /**
- * Login page (Counterpart Portal).
- * Re-skinned into the homepage brand system (shared shell + globals.css brand
- * classes). Wording is preserved verbatim from Footer-pages/login/page.html —
- * only presentation/layout changed. Title taken from og:title (no <title> tag
- * in source); description/keywords/canonical/openGraph from source meta tags.
+ * Login page — real portals only:
+ * OrenNexus (app), Affiliates, Sales Partners.
  */
 export const metadata: Metadata = {
   title: "Sign In — OrenGen Worldwide",
   description:
-    "Sign in to your OrenGen Counterpart portal. Self-hosted authentication on OrenBase. Single sign-on available for enterprise tiers.",
-  keywords: "login, OrenGen, OrenGen Worldwide, AI infrastructure, sign in",
+    "Sign in to OrenNexus, Affiliates, or Sales Partners. Choose the portal that matches your OrenGen account.",
+  keywords: "login, OrenGen, OrenNexus, Affiliates, Sales Partners, sign in",
   robots: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
   alternates: { canonical: "/login" },
   openGraph: {
     type: "website",
     title: "Sign In — OrenGen Worldwide",
     description:
-      "Sign in to your OrenGen Counterpart portal. Self-hosted authentication on OrenBase. Single sign-on available for enterprise tiers.",
+      "Sign in to OrenNexus, Affiliates, or Sales Partners. Choose the portal that matches your OrenGen account.",
     url: "https://orengen.io/login",
   },
 };
+
+const PORTALS = [
+  {
+    name: "OrenNexus",
+    blurb: "Client CRM & pipeline",
+    href: "https://app.orengen.io",
+    cta: "Sign in to OrenNexus →",
+  },
+  {
+    name: "Affiliates",
+    blurb: "Affiliate partner dashboard",
+    href: "https://affiliates.orengen.io",
+    cta: "Sign in to Affiliates →",
+  },
+  {
+    name: "Sales Partners",
+    blurb: "Sales partner dashboard",
+    href: "https://salespartners.orengen.io",
+    cta: "Sign in to Sales Partners →",
+  },
+] as const;
 
 export default function LoginPage() {
   return (
@@ -37,14 +55,13 @@ export default function LoginPage() {
       <div className="site-shell">
         <SiteHeader />
         <main id="main">
-          {/* HERO */}
           <section
             className="section section-brand-blue"
-            aria-label="Counterpart Portal"
+            aria-label="OrenGen portals"
           >
             <div className="container">
               <header className="section-head center reveal">
-                <div className="eyebrow">Counterpart Portal</div>
+                <div className="eyebrow">Portals</div>
                 <h1>
                   Sign In to Your{" "}
                   <span className="gradient-word shimmer">
@@ -52,23 +69,13 @@ export default function LoginPage() {
                   </span>
                 </h1>
                 <p className="lead">
-                  Sign in to your OrenGen Counterpart portal. Self-hosted
-                  authentication on OrenBase. Single sign-on available for
-                  enterprise tiers.
+                  Choose the portal that matches your role — client, affiliate,
+                  or sales partner.
                 </p>
-                <div
-                  className="trust-row reveal"
-                  style={{ justifyContent: "center" }}
-                >
-                  <span className="chip">SSO available</span>
-                  <span className="chip">MFA enforced</span>
-                  <span className="chip">Self-hosted auth via OrenBase</span>
-                </div>
               </header>
             </div>
           </section>
 
-          {/* CHOOSE YOUR PORTAL */}
           <section
             className="section alt section-brand-white"
             aria-label="Sign in surface"
@@ -77,98 +84,37 @@ export default function LoginPage() {
               <header className="section-head center reveal">
                 <h2>Choose Your Portal</h2>
                 <p>
-                  OrenGen Counterparts authenticate through the portal
-                  corresponding to their deployed products. Single sign-on
-                  across portals is available on enterprise tiers.
+                  Sign in through the portal for your deployed product or partner
+                  program.
                 </p>
               </header>
-              <div className="sector-grid reveal">
-                <article className="sector-card">
-                  <div className="step">OrenNexus</div>
-                  <h3>CRM &amp; Pipeline</h3>
-                  <a
-                    className="card-link"
-                    href="https://app.orengen.pro"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Sign in to OrenNexus →
-                  </a>
-                </article>
-                <article className="sector-card">
-                  <div className="step">OrenBase</div>
-                  <h3>Backend &amp; Auth</h3>
-                  <a
-                    className="card-link"
-                    href="https://appwrite.orengen.io"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Sign in to OrenBase →
-                  </a>
-                </article>
-                <article className="sector-card">
-                  <div className="step">OrenFlow</div>
-                  <h3>Visual LLM Orchestration</h3>
-                  <a
-                    className="card-link"
-                    href="https://langflow.orengen.io"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Sign in to OrenFlow →
-                  </a>
-                </article>
-                <article className="sector-card">
-                  <div className="step">OrenObserve</div>
-                  <h3>LLM Observability</h3>
-                  <a
-                    className="card-link"
-                    href="https://langfuse.orengen.io"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Sign in to OrenObserve →
-                  </a>
-                </article>
-                <article className="sector-card">
-                  <div className="step">OrenForms</div>
-                  <h3>Forms &amp; Surveys</h3>
-                  <a
-                    className="card-link"
-                    href="https://formbricks.orengen.io"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Sign in to OrenForms →
-                  </a>
-                </article>
-                <article className="sector-card">
-                  <div className="step">OrenMail</div>
-                  <h3>Email Engine</h3>
-                  <a
-                    className="card-link"
-                    href="https://orengen.pro"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Sign in to OrenMail →
-                  </a>
-                </article>
+
+              <div className="sector-grid compact reveal login-portal-grid">
+                {PORTALS.map((portal) => (
+                  <article className="sector-card" key={portal.name}>
+                    <div className="step">{portal.name}</div>
+                    <h3>{portal.blurb}</h3>
+                    <a
+                      className="card-link"
+                      href={portal.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {portal.cta}
+                    </a>
+                  </article>
+                ))}
               </div>
 
-              <div className="cap reveal" style={{ marginTop: "2rem" }}>
-                <p>
-                  <strong>Need access?</strong> If you don&apos;t yet have a
-                  Counterpart account, open the briefing at{" "}
-                  <a href="mailto:briefing@orengen.io">briefing@orengen.io</a>{" "}
-                  to deploy your stack.
-                </p>
-              </div>
+              <p className="login-access-note reveal">
+                <strong>Need access?</strong> If you don&apos;t yet have a
+                Counterpart account, open the briefing at{" "}
+                <a href="mailto:support@orengen.io">support@orengen.io</a> to
+                deploy your stack.
+              </p>
             </div>
           </section>
 
-          {/* FINAL CTA */}
           <section
             className="section section-brand-blue"
             aria-label="Contact OrenGen"
