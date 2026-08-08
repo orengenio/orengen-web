@@ -97,7 +97,16 @@ export type BookingEnvConfig = {
   token: string;
   locationId: string;
   calendars: Record<MeetingTypeId, string>;
+  /** Optional override for calendar assignee; otherwise primary team member is used. */
+  assignedUserId: string;
+  /** Team inboxes that should get a booking alert email. */
+  alertEmails: string[];
 };
+
+const DEFAULT_BOOKING_ALERT_EMAILS = [
+  "briefing@orengen.io",
+  "support@orengen.io",
+];
 
 export function getBookingEnvConfig():
   | { ok: true; config: BookingEnvConfig }
@@ -109,6 +118,11 @@ export function getBookingEnvConfig():
   const locationId = read("GHL_LOCATION_ID");
   const coffee = read("GHL_CALENDAR_COFFEECHAT_ID");
   const strategy = read("GHL_CALENDAR_STRATEGY_ID");
+  const assignedUserId = read("GHL_ASSIGNED_USER_ID");
+  const alertRaw = read("BOOKING_ALERT_EMAILS");
+  const alertEmails = (alertRaw ? alertRaw.split(",") : DEFAULT_BOOKING_ALERT_EMAILS)
+    .map((e) => e.trim().toLowerCase())
+    .filter(Boolean);
 
   const missing: string[] = [];
   if (!token) missing.push("GHL_PRIVATE_TOKEN");
@@ -127,6 +141,8 @@ export function getBookingEnvConfig():
         "coffee-chat": coffee,
         "strategy-session": strategy,
       },
+      assignedUserId,
+      alertEmails,
     },
   };
 }
