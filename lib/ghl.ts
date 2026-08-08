@@ -98,6 +98,29 @@ export async function getFreeSlots(
   return { ok: true as const, data: normalizeFreeSlots(result.data) };
 }
 
+/** Resolve the primary (or first selected) calendar assignee for notifications. */
+export async function getCalendarAssignedUserId(
+  config: GhlConfig,
+  calendarId: string,
+) {
+  const result = await ghlFetch<{
+    calendar?: {
+      teamMembers?: Array<{ userId?: string; isPrimary?: boolean; selected?: boolean }>;
+    };
+  }>(config, `/calendars/${encodeURIComponent(calendarId)}`);
+
+  if (!result.ok) return result;
+
+  const members = result.data.calendar?.teamMembers || [];
+  const primary = members.find((m) => m.isPrimary && m.userId);
+  const selected = members.find((m) => m.selected && m.userId);
+  const userId = primary?.userId || selected?.userId || members[0]?.userId;
+  if (!userId) {
+    return { ok: false as const, status: 502, error: "Calendar has no assigned user" };
+  }
+  return { ok: true as const, data: { userId } };
+}
+
 export type UpsertContactInput = {
   name: string;
   email: string;
@@ -138,6 +161,7 @@ export type CreateAppointmentInput = {
   startTime: string;
   title?: string;
   appointmentStatus?: string;
+  assignedUserId?: string;
   /** When true, GHL runs contact email/SMS calendar notifications. */
   toNotify?: boolean;
 };
@@ -146,7 +170,7 @@ export async function createAppointment(
   config: GhlConfig,
   input: CreateAppointmentInput,
 ) {
-  const body = {
+  const body: Record<string, unknown> = {
     calendarId: input.calendarId,
     locationId: config.locationId,
     contactId: input.contactId,
@@ -155,10 +179,94 @@ export async function createAppointment(
     appointmentStatus: input.appointmentStatus || "confirmed",
     toNotify: input.toNotify !== false,
   };
+  if (input.assignedUserId) body.assignedUserId = input.assignedUserId;
 
   return ghlFetch<Record<string, unknown>>(
     config,
     "/calendars/events/appointments",
     { method: "POST", body: JSON.stringify(body) },
   );
+}
+
+export type TeamBookingAlertInput = {
+  to: string;
+  meetingTitle: string;
+  startTime: string;
+  timezone: string;
+  bookerName: string;
+  bookerEmail: string;
+  bookerPhone?: string;
+  notes?: string;
+};
+
+/**
+ * Explicit team alert via GHL Conversations email.
+ * Calendar notifications should also fire (toNotify + assignedUser), but this
+ * guarantees sales/briefing inboxes get a message even if calendar automations miss.
+ */
+export async function sendTeamBookingAlert(
+  config: GhlConfig,
+  input: TeamBookingAlertInput,
+) {
+  const contact = await upsertContact(config, {
+    name: `Booking Alert · ${input.to.split("@")[0] || "team"}`,
+    email: input.to,
+    source: "orengen.io/book-alert",
+    tags: ["orengen-web-book-alert"],
+  });
+  if (!contact.ok) return contact;
+
+  const when = (() => {
+    try {
+      return new Intl.DateTimeFormat("en-US", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        timeZoneName: "short",
+        timeZone: input.timezone || "America/Chicago",
+      }).format(new Date(input.startTime));
+    } catch {
+      return input.startTime;
+    }
+  })();
+
+  const html = `
+    <p><strong>New ${escapeHtml(input.meetingTitle)} booking</strong></p>
+    <p><strong>When:</strong> ${escapeHtml(when)}</p>
+    <p><strong>Name:</strong> ${escapeHtml(input.bookerName)}<br/>
+    <strong>Email:</strong> ${escapeHtml(input.bookerEmail)}<br/>
+    <strong>Phone:</strong> ${escapeHtml(input.bookerPhone || "—")}</p>
+    ${input.notes ? `<p><strong>Notes:</strong> ${escapeHtml(input.notes)}</p>` : ""}
+    <p>Booked via orengen.io/book</p>
+  `.trim();
+
+  const emailFrom =
+    (process.env.GHL_EMAIL_FROM || "").trim() || "team@crm.orengen.com";
+
+  return ghlFetch<Record<string, unknown>>(
+    config,
+    "/conversations/messages",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        type: "Email",
+        contactId: contact.data.contactId,
+        subject: `New booking: ${input.meetingTitle} — ${input.bookerName}`,
+        html,
+        emailFrom,
+        emailTo: input.to,
+        emailReplyTo: "support@orengen.io",
+      }),
+    },
+  );
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }

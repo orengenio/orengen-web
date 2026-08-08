@@ -4,7 +4,12 @@ import {
   getBookingEnvConfig,
   meetingTypeById,
 } from "@/lib/booking";
-import { createAppointment, upsertContact } from "@/lib/ghl";
+import {
+  createAppointment,
+  getCalendarAssignedUserId,
+  sendTeamBookingAlert,
+  upsertContact,
+} from "@/lib/ghl";
 
 function isTrustedOrigin(req: NextRequest) {
   if (req.headers.get("sec-fetch-site") === "cross-site") return false;
@@ -126,6 +131,12 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  let assignedUserId = env.config.assignedUserId;
+  if (!assignedUserId) {
+    const assignee = await getCalendarAssignedUserId(ghl, calendarId);
+    if (assignee.ok) assignedUserId = assignee.data.userId;
+  }
+
   const title = notes
     ? `${type.title} — ${name}`
     : `${type.title} with ${name}`;
@@ -136,6 +147,7 @@ export async function POST(req: NextRequest) {
     startTime,
     title,
     appointmentStatus: "confirmed",
+    assignedUserId: assignedUserId || undefined,
     toNotify: true,
   });
 
@@ -160,6 +172,23 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  // Explicit team inbox alerts (calendar notifications alone were in-app only).
+  const alertResults = await Promise.all(
+    env.config.alertEmails.map((to) =>
+      sendTeamBookingAlert(ghl, {
+        to,
+        meetingTitle: type.title,
+        startTime,
+        timezone,
+        bookerName: name,
+        bookerEmail: email,
+        bookerPhone: phone,
+        notes: notes || undefined,
+      }),
+    ),
+  );
+  const alertsSent = alertResults.filter((r) => r.ok).length;
+
   return NextResponse.json({
     ok: true,
     booked: true,
@@ -167,6 +196,8 @@ export async function POST(req: NextRequest) {
     startTime,
     timezone,
     notified: true,
+    assignedUserId: assignedUserId || null,
+    alertsSent,
     meeting: {
       title: type.title,
       durationLabel: type.durationLabel,
